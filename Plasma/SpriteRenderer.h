@@ -4,6 +4,8 @@
 #include <GLFW/glfw3.h>
 #include <soil.h>
 
+#include "glad.h"
+
 class SpriteRenderer
 {
 public:
