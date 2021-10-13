@@ -1,3 +1,5 @@
+#pragma once
+
 #include "glad.h"
 
 // Texture2D is able to store and configure a texture in OpenGL.
