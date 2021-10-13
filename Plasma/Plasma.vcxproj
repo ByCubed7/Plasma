@@ -143,18 +143,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Resources.cpp" />
+    <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game.h" />
     <ClInclude Include="glad.h" />
+    <ClInclude Include="Settings.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="khrplatform.h" />
-    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Resources.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="Texture.h" />

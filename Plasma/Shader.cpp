@@ -1,35 +1,41 @@
-/*******************************************************************
-** This code is part of Breakout.
-**
-** Breakout is free software: you can redistribute it and/or modify
-** it under the terms of the CC BY 4.0 license as published by
-** Creative Commons, either version 4 of the License, or (at your
-** option) any later version.
-******************************************************************/
-#include "shader.h"
+/*/ See: 
+//  https://www.khronos.org/opengl/wiki/Shader
+//  https://www.khronos.org/opengl/wiki/Shader_Compilation
+//  https://www.khronos.org/opengl/wiki/GLSL_Object#Program_objects
+//*/
 
 #include <iostream>
 
+#include "shader.h"
+
+// Default Constructor
+Shader::Shader() {}
+
+// Tell the renderer that we're using this Shader
 Shader& Shader::Use()
 {
-    glUseProgram(this->ID);
+    // Bound the program as we're intending on rendering this
+    glUseProgram(this->Program);
     return *this;
 }
 
 void Shader::Compile(const char* vertexSource, const char* fragmentSource, const char* geometrySource)
 {
     unsigned int sVertex, sFragment, gShader;
-    // vertex Shader
+    
+    // Vertex Shader
     sVertex = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(sVertex, 1, &vertexSource, NULL);
     glCompileShader(sVertex);
     checkCompileErrors(sVertex, "VERTEX");
-    // fragment Shader
+    
+    // Fragment Shader
     sFragment = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(sFragment, 1, &fragmentSource, NULL);
     glCompileShader(sFragment);
     checkCompileErrors(sFragment, "FRAGMENT");
-    // if geometry shader source code is given, also compile geometry shader
+    
+    // Compile the geometry shader if the source code is given
     if (geometrySource != nullptr)
     {
         gShader = glCreateShader(GL_GEOMETRY_SHADER);
@@ -37,15 +43,17 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource, const
         glCompileShader(gShader);
         checkCompileErrors(gShader, "GEOMETRY");
     }
-    // shader program
-    this->ID = glCreateProgram();
-    glAttachShader(this->ID, sVertex);
-    glAttachShader(this->ID, sFragment);
+    
+    // Shader program
+    this->Program = glCreateProgram();
+    glAttachShader(this->Program, sVertex);
+    glAttachShader(this->Program, sFragment);
     if (geometrySource != nullptr)
-        glAttachShader(this->ID, gShader);
-    glLinkProgram(this->ID);
-    checkCompileErrors(this->ID, "PROGRAM");
-    // delete the shaders as they're linked into our program now and no longer necessary
+        glAttachShader(this->Program, gShader);
+    glLinkProgram(this->Program);
+    checkCompileErrors(this->Program, "PROGRAM");
+    
+    // Delete the shaders as they're linked into our program now and no longer necessary
     glDeleteShader(sVertex);
     glDeleteShader(sFragment);
     if (geometrySource != nullptr)
@@ -54,57 +62,48 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource, const
 
 void Shader::SetFloat(const char* name, float value, bool useShader)
 {
-    if (useShader)
-        this->Use();
-    glUniform1f(glGetUniformLocation(this->ID, name), value);
+    if (useShader) Use();
+    glUniform1f(glGetUniformLocation(this->Program, name), value);
 }
 void Shader::SetInteger(const char* name, int value, bool useShader)
 {
-    if (useShader)
-        this->Use();
-    glUniform1i(glGetUniformLocation(this->ID, name), value);
+    if (useShader) Use();
+    glUniform1i(glGetUniformLocation(this->Program, name), value);
 }
 void Shader::SetVector2f(const char* name, float x, float y, bool useShader)
 {
-    if (useShader)
-        this->Use();
-    glUniform2f(glGetUniformLocation(this->ID, name), x, y);
+    if (useShader) Use();
+    glUniform2f(glGetUniformLocation(this->Program, name), x, y);
 }
 void Shader::SetVector2f(const char* name, const glm::vec2& value, bool useShader)
 {
-    if (useShader)
-        this->Use();
-    glUniform2f(glGetUniformLocation(this->ID, name), value.x, value.y);
+    if (useShader) Use();
+    glUniform2f(glGetUniformLocation(this->Program, name), value.x, value.y);
 }
 void Shader::SetVector3f(const char* name, float x, float y, float z, bool useShader)
 {
-    if (useShader)
-        this->Use();
-    glUniform3f(glGetUniformLocation(this->ID, name), x, y, z);
+    if (useShader) Use();
+    glUniform3f(glGetUniformLocation(this->Program, name), x, y, z);
 }
 void Shader::SetVector3f(const char* name, const glm::vec3& value, bool useShader)
 {
-    if (useShader)
-        this->Use();
-    glUniform3f(glGetUniformLocation(this->ID, name), value.x, value.y, value.z);
+    if (useShader) Use();
+    glUniform3f(glGetUniformLocation(this->Program, name), value.x, value.y, value.z);
 }
 void Shader::SetVector4f(const char* name, float x, float y, float z, float w, bool useShader)
 {
-    if (useShader)
-        this->Use();
-    glUniform4f(glGetUniformLocation(this->ID, name), x, y, z, w);
+    if (useShader) Use();
+    glUniform4f(glGetUniformLocation(this->Program, name), x, y, z, w);
 }
 void Shader::SetVector4f(const char* name, const glm::vec4& value, bool useShader)
 {
-    if (useShader)
-        this->Use();
-    glUniform4f(glGetUniformLocation(this->ID, name), value.x, value.y, value.z, value.w);
+    if (useShader) Use();
+    glUniform4f(glGetUniformLocation(this->Program, name), value.x, value.y, value.z, value.w);
 }
 void Shader::SetMatrix4(const char* name, const glm::mat4& matrix, bool useShader)
 {
-    if (useShader)
-        this->Use();
-    glUniformMatrix4fv(glGetUniformLocation(this->ID, name), 1, false, glm::value_ptr(matrix));
+    if (useShader) Use();
+    glUniformMatrix4fv(glGetUniformLocation(this->Program, name), 1, false, glm::value_ptr(matrix));
 }
 
 
