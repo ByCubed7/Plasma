@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "Settings.h"
 
 GameObject::GameObject()
 {
@@ -34,5 +35,14 @@ GameObject::GameObject(glm::vec2 position, float rotation, glm::vec2 scale, glm:
 
 void GameObject::Draw(SpriteRenderer& renderer)
 {
-    renderer.DrawSprite(this->sprite, this->position, this->scale, this->rotation, this->color);
+    int PPU(Settings::PPU);
+    glm::vec2 drawScale(this->scale.x * PPU, this->scale.y * PPU);
+
+    renderer.DrawSprite(
+        this->sprite, 
+        this->position, 
+        { this->scale.x * PPU, this->scale.y * PPU },
+        this->rotation, 
+        this->color
+    );
 }

@@ -1,13 +1,17 @@
 #include "glad.h"
 #include "Settings.h"
+#include "Input.h"
+#include <list>
+#include "GameObject.h"
 //#include <GLFW/glfw3.h>
 
-// Represents the current state of the game
+/*/ Represents the current state of the game
 enum GameState {
 	GAME_ACTIVE,
 	GAME_MENU,
 	GAME_WIN
 };
+//*/
 
 // Game holds all game-related state and functionality.
 // Combines all game-related data into a single class for
@@ -15,18 +19,24 @@ enum GameState {
 class Game
 {
 public:
-	//enum State { GAME_ACTIVE, GAME_MENU, GAME_WIN };
+	enum class State { ACTIVE, MENU, CLOSING };
 
-	// Game state
-	GameState State;
-	bool Keys[1024];
-	unsigned int Width, Height;
+	// The game state
+	State state;
+
+	Input input;
 	
+	unsigned int width, height;
+
+	std::list<GameObject> gameObjects;
+
 	// Constructor
 	Game(const Settings& setting);
 	
 	// Destructor
 	~Game();
+
+	void AddGameObject(GameObject gameObject);
 
 	// Initialize game state 
 	// load all shaders, textures and levels
@@ -34,7 +44,7 @@ public:
 
 	// Game loop
 
-	void ProcessInput(float dt);
-	void Update(float dt);
+	void ProcessInput(double delta);
+	void Update(double delta);
 	void Render();
 };
