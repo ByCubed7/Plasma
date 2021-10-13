@@ -29,6 +29,9 @@ struct Settings
 	// The application name for the window
 	char name[4] = "App";
 
+	// Pixels per unit
+	static const int PPU = 100;
+
 private:
 	std::map<std::string, std::string> mappify(std::ifstream& file);
 };

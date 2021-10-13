@@ -27,7 +27,9 @@ public:
 	// Constructors
 	GameObject();
 	GameObject(glm::vec2 position, float rotation, glm::vec2 scale, glm::vec2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color);
-	// draw sprite
+	
+	// Draw
 	virtual void Draw(SpriteRenderer& renderer);
+
 };
 
