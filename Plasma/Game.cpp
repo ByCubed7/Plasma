@@ -7,6 +7,7 @@
 #include "Texture.h"
 
 #include <glm/fwd.hpp>
+#include <GLFW/glfw3.h>
 
 SpriteRenderer* Renderer;
 
@@ -50,7 +51,7 @@ void Game::Update(float dt)
 
 void Game::ProcessInput(float dt)
 {
-
+    
 }
 
 void Game::Render()
