@@ -1,7 +1,7 @@
 #include "game.h"
+#include "Settings.h"
 
-Game::Game(unsigned int width, unsigned int height)
-    : State(GAME_ACTIVE), Keys(), Width(width), Height(height)
+Game::Game(const Settings& setting) : State(GAME_ACTIVE), Keys(), Width(setting.screenWidth), Height(setting.screenHeight)
 {
 
 }

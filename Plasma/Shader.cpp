@@ -14,7 +14,7 @@ Shader::Shader() {}
 // Tell the renderer that we're using this Shader
 Shader& Shader::Use()
 {
-    // Bound the program as we're intending on rendering this
+    // Bound the program as we intend on rendering
     glUseProgram(this->Program);
     return *this;
 }

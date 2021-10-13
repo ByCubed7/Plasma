@@ -1,14 +1,12 @@
-#ifndef GAME_H
-#define GAME_H
-
 #include "glad.h"
+#include "Settings.h"
 //#include <GLFW/glfw3.h>
 
 // Represents the current state of the game
 enum GameState {
-    GAME_ACTIVE,
-    GAME_MENU,
-    GAME_WIN
+	GAME_ACTIVE,
+	GAME_MENU,
+	GAME_WIN
 };
 
 // Game holds all game-related state and functionality.
@@ -17,19 +15,26 @@ enum GameState {
 class Game
 {
 public:
-    // game state
-    GameState               State;
-    bool                    Keys[1024];
-    unsigned int            Width, Height;
-    // constructor/destructor
-    Game(unsigned int width, unsigned int height);
-    ~Game();
-    // initialize game state (load all shaders/textures/levels)
-    void Init();
-    // game loop
-    void ProcessInput(float dt);
-    void Update(float dt);
-    void Render();
-};
+	//enum State { GAME_ACTIVE, GAME_MENU, GAME_WIN };
 
-#endif
+	// Game state
+	GameState State;
+	bool Keys[1024];
+	unsigned int Width, Height;
+	
+	// Constructor
+	Game(const Settings& setting);
+	
+	// Destructor
+	~Game();
+
+	// Initialize game state 
+	// load all shaders, textures and levels
+	void Init();
+
+	// Game loop
+
+	void ProcessInput(float dt);
+	void Update(float dt);
+	void Render();
+};
