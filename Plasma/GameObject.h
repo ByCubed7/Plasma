@@ -6,6 +6,7 @@
 #include "texture.h"
 #include "SpriteRenderer.h"
 #include "Game.h"
+#include "Library/Vector2.h"
 
 
 // Forward declaration
@@ -14,11 +15,11 @@ class Game;
 class GameObject
 {
 public:
-	glm::vec2 position;
+	Vector2 position;
 	float rotation;
-	glm::vec2 scale;
+	Vector2 scale;
 
-	glm::vec2 velocity;
+	Vector2 velocity;
 	float angularVelocity;
 
 	glm::vec3 color;
@@ -30,7 +31,7 @@ public:
 
 	// Constructors
 	GameObject();
-	GameObject(glm::vec2 position, float rotation, glm::vec2 scale, glm::vec2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color);
+	GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color);
 	
 	// Draw
 	virtual void Draw(SpriteRenderer& renderer);

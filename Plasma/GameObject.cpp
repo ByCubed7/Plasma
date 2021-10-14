@@ -18,7 +18,7 @@ GameObject::GameObject()
     destroyed = false;
 }
 
-GameObject::GameObject(glm::vec2 position, float rotation, glm::vec2 scale, glm::vec2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color)
+GameObject::GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color)
 {
     this->position = position;
     this->rotation = rotation;
@@ -37,12 +37,13 @@ GameObject::GameObject(glm::vec2 position, float rotation, glm::vec2 scale, glm:
 void GameObject::Draw(SpriteRenderer& renderer)
 {
     int PPU(Settings::PPU);
-    glm::vec2 drawScale(this->scale.x * PPU, this->scale.y * PPU);
+    glm::vec2 drawScale = { this->scale.x * PPU, this->scale.y * PPU };
+    glm::vec2 pos = { position.x, position.y };
 
     renderer.DrawSprite(
         this->sprite, 
-        this->position, 
-        { this->scale.x * PPU, this->scale.y * PPU },
+        pos,
+        drawScale,
         this->rotation, 
         this->color
     );
