@@ -55,9 +55,12 @@ void Game::Init()
 
 
 	Player* player = new Player();
-	player->position = glm::vec2(200, 100);
-	player->velocity = glm::vec2(100, 0);
+	player->position = Vector2(200, 100);
 	player->sprite = Resources::GetTexture("Player");
+
+	Player* player = new Player();
+	player->position = Vector2(100, 100);
+	player->sprite = Resources::GetTexture("Ghost");
 
 	AddGameObject(player);
 }
@@ -67,11 +70,11 @@ void Game::Update(double delta)
 	for (std::unique_ptr<GameObject>& gameObject : gameObjects) {
 
 		// Compute physics
-		glm::vec2 deltaVelo = glm::vec2(gameObject->velocity);
+		Vector2 deltaVelo = Vector2(gameObject->velocity);
 		deltaVelo.x *= delta;
 		deltaVelo.y *= delta;
 
-		gameObject->position += deltaVelo;
+		gameObject->position = gameObject->position + deltaVelo;
 		gameObject->rotation += gameObject->angularVelocity * delta;
 
 		std::cout << "Gameobject is at: " << gameObject->position.x << " : " << gameObject->position.y << std::endl;

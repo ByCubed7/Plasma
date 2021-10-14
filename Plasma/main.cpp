@@ -1,4 +1,4 @@
-#include "glad.h"
+#include "Library/glad.h"
 #include <GLFW/glfw3.h>
 
 #include "game.h"
@@ -92,6 +92,7 @@ int main(int argc, char* argv[])
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
 	if (!App.input.KeyExists(key)) return;
+	if (action != GLFW_PRESS && action != GLFW_RELEASE) return;
 
 	App.input.SetKey(key, action == GLFW_PRESS);
 	//if (action == GLFW_PRESS) App.input.Pressed(key);

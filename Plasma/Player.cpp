@@ -5,8 +5,6 @@
 
 void Player::Update(double delta, Game& game)
 {
-
-
 	// Get the input
 	if (game.input.IsKeyDown(Input::Key_D)) velocity.x = 20.0f;
 	else if (game.input.IsKeyDown(Input::Key_A)) velocity.x = -20.0f;
@@ -17,7 +15,9 @@ void Player::Update(double delta, Game& game)
 	else velocity.y = 0;
 
 	// Normilize velo
-
-
-	
+	if (velocity.Magnitude()) 
+	{
+		velocity.Normalize();
+		velocity = velocity * 300;
+	}
 }
