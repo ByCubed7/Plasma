@@ -145,9 +145,12 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="glad.c" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Library\AABB.cpp" />
+    <ClCompile Include="Library\glad.c" />
+    <ClCompile Include="Library\Vector2.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -157,11 +160,14 @@
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="glad.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Library\AABB.h" />
+    <ClInclude Include="Library\glad.h" />
+    <ClInclude Include="Library\khrplatform.h" />
+    <ClInclude Include="Library\stb_image.h" />
+    <ClInclude Include="Library\Vector2.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Settings.h" />
-    <ClInclude Include="stb_image.h" />
-    <ClInclude Include="khrplatform.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SpriteRenderer.h" />

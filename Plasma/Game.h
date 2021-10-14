@@ -1,4 +1,6 @@
-#include "glad.h"
+#pragma once
+
+#include "Library/glad.h"
 #include "Settings.h"
 #include "Input.h"
 #include <list>
@@ -12,6 +14,9 @@ enum GameState {
 	GAME_WIN
 };
 //*/
+
+// Forward declaration
+class GameObject;
 
 // Game holds all game-related state and functionality.
 // Combines all game-related data into a single class for
@@ -28,7 +33,7 @@ public:
 	
 	unsigned int width, height;
 
-	std::list<GameObject> gameObjects;
+	std::vector<std::unique_ptr<GameObject>> gameObjects = {};
 
 	// Constructor
 	Game(const Settings& setting);
@@ -36,7 +41,7 @@ public:
 	// Destructor
 	~Game();
 
-	void AddGameObject(GameObject gameObject);
+	void AddGameObject(GameObject * gameObject);
 
 	// Initialize game state 
 	// load all shaders, textures and levels

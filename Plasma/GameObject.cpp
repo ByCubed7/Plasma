@@ -1,5 +1,6 @@
-#include "GameObject.h"
+﻿#include "GameObject.h"
 #include "Settings.h"
+#include "Game.h"
 
 GameObject::GameObject()
 {
@@ -45,4 +46,9 @@ void GameObject::Draw(SpriteRenderer& renderer)
         this->rotation, 
         this->color
     );
+}
+
+void GameObject::Update(double delta, Game& game)
+{
+    // ¯\_(ツ)_/¯
 }
