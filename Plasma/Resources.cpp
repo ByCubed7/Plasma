@@ -4,7 +4,7 @@
 
 #include "Resources.h"
 
-#include "stb_image.h"
+#include "Library/stb_image.h"
 
 // Cache any resources we load
 std::map<std::string, Texture2D> Resources::Textures;
@@ -35,12 +35,9 @@ Texture2D& Resources::GetTexture(std::string name)
 
 void Resources::Clear()
 {
-    // (properly) delete all shaders	
-    for (auto iter : Shaders)
-        glDeleteProgram(iter.second.Program);
-    // (properly) delete all textures
-    for (auto iter : Textures)
-        glDeleteTextures(1, &iter.second.ID);
+    // Delete all the shaders and textures
+    for (auto iter : Shaders) glDeleteProgram(iter.second.Program);
+    for (auto iter : Textures) glDeleteTextures(1, &iter.second.ID);
 }
 
 Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile)

@@ -1,11 +1,15 @@
 #pragma once
 
-#include "glad.h"
+#include "Library/glad.h"
 #include <glm/glm.hpp>
 
 #include "texture.h"
 #include "SpriteRenderer.h"
+#include "Game.h"
 
+
+// Forward declaration
+class Game;
 
 class GameObject
 {
@@ -30,6 +34,9 @@ public:
 	
 	// Draw
 	virtual void Draw(SpriteRenderer& renderer);
+
+	// Update is called every frame ;)
+	virtual void Update(double delta, Game& game);
 
 };
 

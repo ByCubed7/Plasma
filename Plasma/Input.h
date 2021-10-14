@@ -20,7 +20,13 @@ struct Input
 	bool KeyExists(int key);
 
 	// Keys
+
 	const static int Key_Unknown = -1;
 	const static int Key_Escape = 256;
+	const static int Key_W = 87;
+	const static int Key_A = 65;
+	const static int Key_D = 68;
+	const static int Key_S = 83;
+	// See: https://www.glfw.org/docs/3.3/group__keys.html
 };
 
