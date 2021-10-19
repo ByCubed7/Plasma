@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Ghost.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Library\AABB.cpp" />
     <ClCompile Include="Library\glad.c" />
@@ -160,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Ghost.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Library\AABB.h" />
     <ClInclude Include="Library\glad.h" />

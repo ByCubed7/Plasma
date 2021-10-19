@@ -35,45 +35,44 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 
+	// CALLBACKS
 	glfwSetKeyCallback(window, key_callback);
+	glfwSetCursorPosCallback(window, cursor_position_callback);
+	glfwSetMouseButtonCallback(window, mouse_button_callback);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-	// OpenGL configuration
-	// --------------------
+	// Configure OpenGL
 	glViewport(0, 0, config.screenWidth, config.screenHeight);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	// initialize game
-	// ---------------
+	// Init App
 	App.Init();
 
-	// deltaTime variables
-	// -------------------
+	// deltaTime
 	double deltaTime = 0.0f;
 	double lastFrame = 0.0f;
 
 	while (!glfwWindowShouldClose(window))
 	{
-		// calculate delta time
-		// --------------------
+		// Calculate delta time
 		double currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 		glfwPollEvents();
 
-		// manage user input
-		// -----------------
+		// - Update App
+		
+		// Process the User Input
 		App.ProcessInput(deltaTime);
 
-		// update game state
-		// -----------------
+		// Update game state
 		App.Update(deltaTime);
 
+		// Check the App state to see whether to close
 		if(App.state == Game::State::CLOSING) glfwSetWindowShouldClose(window, true);
 
-		// render
-		// ------
+		// Render
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		App.Render();
@@ -89,6 +88,13 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
+// - INPUT CALLBACKS - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	App.input.SetMousePosition(xpos, ypos);
+}
+
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
 	if (!App.input.KeyExists(key)) return;
@@ -98,6 +104,16 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	//if (action == GLFW_PRESS) App.input.Pressed(key);
 	//else if (action == GLFW_RELEASE) App.input.Released(key);
 }
+
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+	if (action != GLFW_PRESS && action != GLFW_RELEASE) return;
+	
+	//if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
+	App.input.SetMouseButton(button, action == GLFW_PRESS);
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {

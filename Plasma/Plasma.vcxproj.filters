@@ -72,6 +72,9 @@
     <ClCompile Include="Library\AABB.cpp">
       <Filter>Library</Filter>
     </ClCompile>
+    <ClCompile Include="Ghost.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Texture.h">
@@ -115,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="Library\AABB.h">
       <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghost.h">
+      <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

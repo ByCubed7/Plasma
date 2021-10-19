@@ -1,5 +1,8 @@
 #include "Input.h"
 
+
+// - - Keyboard - -
+
 void Input::SetKey(int key, bool isDown)
 {
 	if (isDown) Pressed(key);
@@ -8,17 +11,17 @@ void Input::SetKey(int key, bool isDown)
 
 void Input::Pressed(int key) 
 {
-	state[key] = true;
+	state_keyboard[key] = true;
 }
 
 void Input::Released(int key)
 {
-	state[key] = false;
+	state_keyboard[key] = false;
 }
 
-bool Input::IsKey(int key) { return state[key]; }
-bool Input::IsKeyDown(int key) { return state[key]; }
-bool Input::IsKeyUp(int key) { return state[key]; }
+bool Input::IsKey(int key) { return state_keyboard[key]; }
+bool Input::IsKeyDown(int key) { return state_keyboard[key]; }
+bool Input::IsKeyUp(int key) { return state_keyboard[key]; }
 
 bool Input::AnyKey() { return false; }
 bool Input::AnyKeyDown() { return false; }
@@ -27,4 +30,23 @@ bool Input::AnyKeyUp() { return false; }
 bool Input::KeyExists(int key) 
 {
 	return key >= 0 && key < 1024;
+}
+
+
+// - - Mouse - -
+
+void Input::SetMouseButton(int button, bool isDown)
+{
+	state_mouse[button] = isDown;
+}
+
+void Input::SetMousePosition(double xpos, double ypos)
+{
+	mousePositionX = xpos;
+	mousePositionY = ypos;
+}
+
+bool Input::IsMouseDown(int button)
+{
+	return state_mouse[button];
 }

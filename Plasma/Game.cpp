@@ -54,15 +54,17 @@ void Game::Init()
 	// Load levels
 
 
-	Player* player = new Player();
-	player->position = Vector2(200, 100);
-	player->sprite = Resources::GetTexture("Player");
+	//Player* player = new Player();
+	//player->position = Vector2(200, 100);
+	//player->sprite = Resources::GetTexture("Player");
 
+	// Create the Player
 	Player* player = new Player();
 	player->position = Vector2(100, 100);
-	player->sprite = Resources::GetTexture("Ghost");
-
+	player->sprite = Resources::GetTexture("Player");
 	AddGameObject(player);
+
+
 }
 
 void Game::Update(double delta)
