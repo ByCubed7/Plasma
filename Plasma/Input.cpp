@@ -1,4 +1,5 @@
 #include "Input.h"
+#include "Library/Vector2.h"
 
 
 // - - Keyboard - -
@@ -42,11 +43,15 @@ void Input::SetMouseButton(int button, bool isDown)
 
 void Input::SetMousePosition(double xpos, double ypos)
 {
-	mousePositionX = xpos;
-	mousePositionY = ypos;
+	mousePosition = { (float)xpos, (float)ypos };
 }
 
 bool Input::IsMouseDown(int button)
 {
 	return state_mouse[button];
+}
+
+Vector2 Input::GetMousePosition()
+{
+	return mousePosition;
 }

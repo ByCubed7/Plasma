@@ -79,7 +79,8 @@ void Game::Update(double delta)
 		gameObject->position = gameObject->position + deltaVelo;
 		gameObject->rotation += gameObject->angularVelocity * delta;
 
-		std::cout << "Gameobject is at: " << gameObject->position.x << " : " << gameObject->position.y << std::endl;
+		//std::cout << "Gameobject is at: " << gameObject->position.x << " : " << gameObject->position.y << std::endl;
+		std::cout << "Input: " << input.GetMousePosition().ToString() << std::endl;
 
 		// Collision detection?
 

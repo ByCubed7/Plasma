@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Library/Vector2.h"
+
 // The current state of the keyboard and mouse
 struct Input
 {
@@ -23,13 +25,13 @@ struct Input
 
 	// Mouse
 	bool state_mouse[7];
-	double mousePositionX = 0;
-	double mousePositionY = 0;
+	Vector2 mousePosition = {0, 0};
 
 	void SetMouseButton(int button, bool isDown);
 	void SetMousePosition(double xpos, double ypos);
 
 	bool IsMouseDown(int button);
+	Vector2 GetMousePosition();
 
 
 	// Keyboard consts
@@ -39,6 +41,7 @@ struct Input
 	const static int Key_A = 65;
 	const static int Key_D = 68;
 	const static int Key_S = 83;
+	const static int Key_P = 80;
 	// See: https://www.glfw.org/docs/3.3/group__keys.html
 
 

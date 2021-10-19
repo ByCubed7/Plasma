@@ -26,6 +26,8 @@ class Game
 public:
 	enum class State { ACTIVE, MENU, CLOSING };
 
+	float timeStep = 1.0f;
+
 	// The game state
 	State state;
 
