@@ -75,6 +75,9 @@
     <ClCompile Include="Ghost.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Texture.h">
@@ -121,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="Ghost.h">
       <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
