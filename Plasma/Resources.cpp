@@ -33,6 +33,10 @@ Texture2D& Resources::GetTexture(std::string name)
     return Textures[name];
 }
 
+
+
+//
+
 void Resources::Clear()
 {
     // Delete all the shaders and textures

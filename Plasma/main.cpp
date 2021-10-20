@@ -11,9 +11,12 @@
 #include <ft2build.h>]
 #include FT_FREETYPE_H
 
-FT_Library library;
-FT_Face face; // handle to face object
-
+struct Character {
+	unsigned int TextureID;  // ID handle of the glyph texture
+	glm::ivec2   Size;       // Size of glyph
+	glm::ivec2   Bearing;    // Offset from baseline to left/top of glyph
+	unsigned int Advance;    // Offset to advance to next glyph
+};
 
 //void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 //void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
@@ -53,44 +56,35 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-
-
-
-
-// MAIN
-
-int main(int argc, char* argv[])
+int Freefont()
 {
+	FT_Library library;
+	FT_Face face; // handle to face object
+
 
 	// Load Freefonts
-	FT_Error error = FT_Init_FreeType(&library);
-	if (error) {}
-
-	error = FT_New_Face(library, "/usr/share/fonts/truetype/arial.ttf", 0, &face);
-	if (error == FT_Err_Unknown_File_Format)
+	FT_Error error;
+	if (FT_Init_FreeType(&library))
 	{
-		// The font file could be openedand read, but it appears
-		// that its font format is unsupported
+		std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
+		return -1;
 	}
-	else if (error)
+
+	if (FT_New_Face(library, "assets/fonts/arial.ttf", 0, &face))
 	{
-		// Another error code means that the font file could not
-		// be opened or read, or that it is broken
+		// The font file could be opened and read, but it appears
+		// that its font format is unsupported
+		std::cout << "ERROR::FREETYTPE: The font file could not be opened or read" << std::endl;
 	}
 
 	FT_Set_Pixel_Sizes(face, 0, 48);
 
-	struct Character {
-		unsigned int TextureID;  // ID handle of the glyph texture
-		glm::ivec2   Size;       // Size of glyph
-		glm::ivec2   Bearing;    // Offset from baseline to left/top of glyph
-		unsigned int Advance;    // Offset to advance to next glyph
-	};
-
 	std::map<char, Character> Characters;
 
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // disable byte-alignment restriction
-	
+	// disable byte-alignment restriction
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); 
+
+	//*
 	for (unsigned char c = 0; c < 128; c++)
 	{
 		// load character glyph 
@@ -128,7 +122,18 @@ int main(int argc, char* argv[])
 		};
 		Characters.insert(std::pair<char, Character>(c, character));
 	}
+	//*/
 
+	FT_Done_Face(face);
+	FT_Done_FreeType(library);
+}
+
+
+
+// MAIN
+
+int main(int argc, char* argv[])
+{
 	//
 
 	glfwInit();
@@ -158,6 +163,10 @@ int main(int argc, char* argv[])
 	glViewport(0, 0, config.screenWidth, config.screenHeight);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+
+	Freefont();
+
 
 	// Init App
 	App.Init();
