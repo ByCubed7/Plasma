@@ -3,13 +3,23 @@
 #include <fstream>
 
 #include "Resources.h"
+#include "Font.h"
 
 #include "Library/stb_image.h"
+
+#include <map>
+#include <iostream>
+
+#include <ft2build.h>
+#include FT_FREETYPE_H  
 
 // Cache any resources we load
 std::map<std::string, Texture2D> Resources::Textures;
 std::map<std::string, Shader> Resources::Shaders;
+std::map<std::string, Font> Resources::Fonts;
 
+
+// Shader
 
 Shader Resources::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name)
 {
@@ -21,6 +31,9 @@ Shader& Resources::GetShader(std::string name)
 {
     return Shaders[name];
 }
+
+
+// Texture
 
 Texture2D Resources::LoadTexture(const char* file, bool alpha, std::string name)
 {
@@ -34,6 +47,19 @@ Texture2D& Resources::GetTexture(std::string name)
 }
 
 
+// Font
+
+Font Resources::LoadFont(const char* file, std::string name)
+{
+    Fonts[name] = LoadFontFromFile(file);
+    return Fonts[name];
+}
+
+Font& Resources::GetFont(std::string name) 
+{
+    return Fonts[name];
+}
+
 
 //
 
@@ -43,6 +69,8 @@ void Resources::Clear()
     for (auto iter : Shaders) glDeleteProgram(iter.second.Program);
     for (auto iter : Textures) glDeleteTextures(1, &iter.second.ID);
 }
+
+//
 
 Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile)
 {
@@ -115,4 +143,68 @@ Texture2D Resources::LoadTextureFromFile(const char* file, bool alpha)
     // and finally free image data
     stbi_image_free(data);
     return texture;
+}
+
+
+Font Resources::LoadFontFromFile(const char* file) 
+{
+    FT_Library ft;
+    if (FT_Init_FreeType(&ft))
+    {
+        std::cout << "ERROR: Could not init FreeType Library" << std::endl;
+        return; //-1;
+    }
+
+    FT_Face face;
+    if (FT_New_Face(ft, "fonts/arial.ttf", 0, &face))
+    {
+        std::cout << "ERROR: Failed to load font" << std::endl;
+        return; //-1;
+    }
+
+    Font newFont = Font();
+
+    FT_Set_Pixel_Sizes(face, 0, 48);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // disable byte-alignment restriction
+    for (unsigned char c = 0; c < 128; c++)
+    {
+        // load character glyph 
+        if (FT_Load_Char(face, c, FT_LOAD_RENDER))
+        {
+            std::cout << "ERROR: Failed to load Glyph" << std::endl;
+            continue;
+        }
+        // generate texture
+        unsigned int texture;
+        glGenTextures(1, &texture);
+        glBindTexture(GL_TEXTURE_2D, texture);
+        glTexImage2D(
+            GL_TEXTURE_2D,
+            0,
+            GL_RED,
+            face->glyph->bitmap.width,
+            face->glyph->bitmap.rows,
+            0,
+            GL_RED,
+            GL_UNSIGNED_BYTE,
+            face->glyph->bitmap.buffer
+        );
+
+        // Set texture options
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        // Store character for later use
+        Character character = {
+            texture,
+            glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
+            glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
+            face->glyph->advance.x
+        };
+        newFont.AddCharacter(c, character);
+    }
+
+    return newFont;
 }

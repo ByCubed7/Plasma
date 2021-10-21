@@ -5,6 +5,7 @@
 
 #include "texture.h"
 #include "shader.h"
+#include "Font.h"
 
 
 // A singleton that deals with Textures and Shaders. 
@@ -42,13 +43,13 @@ public:
 	// █▀  █▄█ █ ▀█  █ 
 
 	// All the fonts we have cached
-	static std::map<std::string, Texture2D> Textures;
+	static std::map<std::string, Font> Fonts;
 	
 	// Loads a font
-	static void LoadFont(const char* file, std::string name);
+	static Font LoadFont(const char* file, std::string name);
 	
 	// Retrieves a cached font
-	static void GetFont(std::string name);
+	static Font& GetFont(std::string name);
 
 	// - - - - - - - - - - - - - - - - - - - - - - - -
 	// - - - - - - - - - - - - - - - - - - - - - - - -
@@ -69,12 +70,5 @@ private:
 	static Texture2D LoadTextureFromFile(const char* file, bool alpha);
 
 	// Loads a font from a file
-	static void LoadTextureFromFile(const char* file);
-};
-
-struct Character {
-	unsigned int TextureID;  // ID handle of the glyph texture
-	glm::ivec2   Size;       // Size of glyph
-	glm::ivec2   Bearing;    // Offset from baseline to left/top of glyph
-	unsigned int Advance;    // Offset to advance to next glyph
+	static Font LoadFontFromFile(const char* file);
 };

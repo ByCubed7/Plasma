@@ -76,7 +76,7 @@
       <Filter>Game Files</Filter>
     </ClCompile>
     <ClCompile Include="Font.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Engine\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +126,7 @@
       <Filter>Game Files</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
-      <Filter>Header Files</Filter>
+      <Filter>Engine\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
