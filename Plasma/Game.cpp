@@ -2,7 +2,6 @@
 #include "Settings.h"
 #include "Resources.h"
 #include "SpriteRenderer.h"
-#include "TextRenderer.h" 
 #include "Player.h"
 
 #include "Shader.h"
@@ -11,10 +10,11 @@
 #include <glm/fwd.hpp>
 #include "Library/glad.h"
 #include <GLFW/glfw3.h>
+#include "TextRenderer.h"
 
 
 SpriteRenderer* Renderer;
-TextRenderer* TRenderer;
+TextRenderer* Text;
 
 Game::Game(const Settings& setting)
 {
@@ -39,7 +39,7 @@ void Game::Init()
 {
 	// - Load shaders
 	Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");
-	Resources::LoadShader("assets/shaders/font.vs", "assets/shaders/font.frag", nullptr, "font");
+	Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
 
 	// - Configure shaders
 	Resources::GetShader("sprite").Use().SetInteger("image", 0);
@@ -51,30 +51,32 @@ void Game::Init()
 	// set render-specific controls
 	Renderer = new SpriteRenderer(Resources::GetShader("sprite"));
 
-	// load textures
+	// Load Fonts
+	Text = new TextRenderer(this->width, this->height);
+	Text->Load("assets/fonts/arial.ttf", 24);
+
+	// Load textures
 	Resources::LoadTexture("assets/textures/Player.png", true, "player");
-	Resources::LoadFont("assets/fonts/arial.ttf", "arial");
+	//Resources::LoadTexture("assets/textures/Ghost.png", true, "ghost");
 
 	// Load levels
-
-
-	//Player* player = new Player();
-	//player->position = Vector2(200, 100);
-	//player->sprite = Resources::GetTexture("Player");
 
 	// Create the Player
 	Player* player = new Player();
 	player->position = Vector2(100, 100);
 	player->sprite = Resources::GetTexture("player");
 	AddGameObject(player);
+
+	/* Create the Ghost
+	Player* ghost = new Player();
+	ghost->position = Vector2(100, 300);
+	ghost->sprite = Resources::GetTexture("ghost");
+	AddGameObject(ghost);
+	//*/
 }
 
 void Game::Update(double delta)
 {
-
-	TRenderer->RenderText("ahhhh", 100, 100, 10, {255, 255, 255} );
-
-
 	for (std::unique_ptr<GameObject>& gameObject : gameObjects) {
 
 		// Compute physics
@@ -86,7 +88,7 @@ void Game::Update(double delta)
 		gameObject->rotation += gameObject->angularVelocity * delta;
 
 		//std::cout << "Gameobject is at: " << gameObject->position.x << " : " << gameObject->position.y << std::endl;
-		std::cout << "Input: " << input.GetMousePosition().ToString() << std::endl;
+		//std::cout << "Input: " << input.GetMousePosition().ToString() << std::endl;
 
 		// Collision detection?
 
@@ -114,6 +116,10 @@ void Game::Render()
 	//    glm::vec2(300.0f, 300.0f), glm::vec2(400.0f, 400.0f), 75.0f, glm::vec3(0.5f, 0.5f, 0.0f));
 
 	//*
+	
+	//Renderer->DrawText("ahhhh", { 50, 100 }, 1, { 1, 1, 1 });
+	Text->RenderText("REEEEEEEEEEE", 5.0f, 5.0f, 1.0f);
+
 	for (std::unique_ptr<GameObject>& gameObject : gameObjects)
 	{
 		gameObject->Draw(*Renderer);

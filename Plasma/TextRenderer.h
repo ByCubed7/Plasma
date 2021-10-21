@@ -1,33 +1,40 @@
-#pragma once
+#ifndef TEXT_RENDERER_H
+#define TEXT_RENDERER_H
+
+#include <map>
 
 #include "Library/glad.h"
 #include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 
 #include "texture.h"
 #include "shader.h"
+#include "font.h"
 
 
+// A renderer class for rendering text displayed by a font loaded using the 
+// FreeType library. A single font is loaded, processed into a list of Character
+// items for later rendering.
 class TextRenderer
 {
 public:
-    // Constructor (inits shaders/shapes)
-    TextRenderer(Shader& shader);
-
-    // Destructor
-    ~TextRenderer();
-
-    // Renders a defined quad textured with given sprite
-    void RenderText(std::string text, float x, float y, float scale, glm::vec3 color);
+    // Holds a list of pre-compiled Characters
+    std::map<char, Character> Characters;
+    
+    // Shader used for text rendering
+    Shader TextShader;
+    
+    // Constructor
+    TextRenderer(unsigned int width, unsigned int height);
+    
+    // Pre-compiles a list of characters from the given font
+    void Load(std::string font, unsigned int fontSize);
+    
+    // Renders a string of text using the precompiled list of characters
+    void RenderText(std::string text, float x, float y, float scale, glm::vec3 color = glm::vec3(1.0f));
 
 private:
-    // Render state
-    Shader shader;
-    Font font;
-
-    unsigned int quadVAO;
-
-    // Initializes and configures the quad's buffer and vertex attributes
-    void initRenderData();
+    // render state
+    unsigned int VAO, VBO;
 };
 
+#endif 

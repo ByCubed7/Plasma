@@ -1,5 +1,7 @@
 #include "SpriteRenderer.h"
 #include "Shader.h"
+#include "Font.h"
+#include "Resources.h"
 
 SpriteRenderer::SpriteRenderer(Shader& shader)
 {
@@ -14,8 +16,9 @@ SpriteRenderer::~SpriteRenderer()
 
 void SpriteRenderer::DrawSprite(Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
 {
-    // prepare transformations
+    // Prepare transformations
     this->shader.Use();
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(position, 0.0f));  // first translate (transformations are: scale happens first, then rotation, and then final translation happens; reversed order)
 
