@@ -5,15 +5,6 @@
 #include "Input.h"
 #include <list>
 #include "GameObject.h"
-//#include <GLFW/glfw3.h>
-
-/*/ Represents the current state of the game
-enum GameState {
-	GAME_ACTIVE,
-	GAME_MENU,
-	GAME_WIN
-};
-//*/
 
 // Forward declaration
 class GameObject;

@@ -78,6 +78,9 @@
     <ClCompile Include="Font.cpp">
       <Filter>Engine\Source</Filter>
     </ClCompile>
+    <ClCompile Include="TextRenderer.cpp">
+      <Filter>Engine\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Texture.h">
@@ -126,6 +129,9 @@
       <Filter>Game Files</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
+      <Filter>Engine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextRenderer.h">
       <Filter>Engine\Headers</Filter>
     </ClInclude>
   </ItemGroup>

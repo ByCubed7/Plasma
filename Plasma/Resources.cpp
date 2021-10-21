@@ -7,6 +7,9 @@
 
 #include "Library/stb_image.h"
 
+#include "Library/glad.h"
+#include <GLFW/glfw3.h>
+
 #include <map>
 #include <iostream>
 
@@ -135,12 +138,14 @@ Texture2D Resources::LoadTextureFromFile(const char* file, bool alpha)
         texture.Image_Format = GL_RGBA;
     }
 
-    // load image
+    // Load
     int width, height, nrChannels;
     unsigned char* data = stbi_load(file, &width, &height, &nrChannels, 0);
-    // now generate texture
+
+    // Generate texture
     texture.Generate(width, height, data);
-    // and finally free image data
+    
+    // Free image data
     stbi_image_free(data);
     return texture;
 }
@@ -152,29 +157,32 @@ Font Resources::LoadFontFromFile(const char* file)
     if (FT_Init_FreeType(&ft))
     {
         std::cout << "ERROR: Could not init FreeType Library" << std::endl;
-        return; //-1;
+        //return -1;
     }
 
     FT_Face face;
-    if (FT_New_Face(ft, "fonts/arial.ttf", 0, &face))
+    if (FT_New_Face(ft, file, 0, &face))
     {
         std::cout << "ERROR: Failed to load font" << std::endl;
-        return; //-1;
+        //return -1;
     }
 
-    Font newFont = Font();
 
     FT_Set_Pixel_Sizes(face, 0, 48);
+    
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // disable byte-alignment restriction
-    for (unsigned char c = 0; c < 128; c++)
+
+    Font newFont = Font();
+    for (unsigned char c = 0; c < 128; c++) // Only do 128 characters~
     {
-        // load character glyph 
+        // Load glyph 
         if (FT_Load_Char(face, c, FT_LOAD_RENDER))
         {
             std::cout << "ERROR: Failed to load Glyph" << std::endl;
             continue;
         }
-        // generate texture
+
+        // Generate texture
         unsigned int texture;
         glGenTextures(1, &texture);
         glBindTexture(GL_TEXTURE_2D, texture);
@@ -196,15 +204,20 @@ Font Resources::LoadFontFromFile(const char* file)
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-        // Store character for later use
+        // Create Character
         Character character = {
             texture,
             glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
             glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
             face->glyph->advance.x
         };
+
+        // Store character
         newFont.AddCharacter(c, character);
     }
+    // Clear FreeType's resources
+    FT_Done_Face(face);
+    FT_Done_FreeType(ft);
 
     return newFont;
 }
