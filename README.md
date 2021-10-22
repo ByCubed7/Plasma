@@ -1,6 +1,6 @@
 # Project Plasma
 
-An object orienntated and component oriented game engine focused on 2D games.
+An object and component oriented game engine focused on 2D games.
 Deals with rendering sprites and text, physics, controller inputs, shader compiling and window control.
 
 ## TODO
