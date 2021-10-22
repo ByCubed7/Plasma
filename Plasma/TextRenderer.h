@@ -1,5 +1,4 @@
-#ifndef TEXT_RENDERER_H
-#define TEXT_RENDERER_H
+#pragma once
 
 #include <map>
 
@@ -30,11 +29,9 @@ public:
     void Load(std::string font, unsigned int fontSize);
     
     // Renders a string of text using the precompiled list of characters
-    void RenderText(std::string text, float x, float y, float scale, glm::vec3 color = glm::vec3(1.0f));
+    void RenderText(std::string text, float x, float y, float scale, glm::vec2 pivot = {0.5f, 0.5f}, glm::vec3 color = glm::vec3(1.0f));
 
 private:
     // render state
     unsigned int VAO, VBO;
-};
-
-#endif 
+}; 

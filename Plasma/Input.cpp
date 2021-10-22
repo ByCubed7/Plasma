@@ -1,6 +1,11 @@
 #include "Input.h"
 #include "Library/Vector2.h"
+#include <unordered_set>
 
+void Input::Tick() 
+{
+	state_keyboard_frame.clear();
+}
 
 // - - Keyboard - -
 
@@ -13,16 +18,31 @@ void Input::SetKey(int key, bool isDown)
 void Input::Pressed(int key) 
 {
 	state_keyboard[key] = true;
+	state_keyboard_frame.insert(key);
 }
 
 void Input::Released(int key)
 {
 	state_keyboard[key] = false;
+	state_keyboard_frame.insert(key);
 }
 
+//
+
+// Is the given key pressed?
 bool Input::IsKey(int key) { return state_keyboard[key]; }
-bool Input::IsKeyDown(int key) { return state_keyboard[key]; }
-bool Input::IsKeyUp(int key) { return state_keyboard[key]; }
+
+// Was the given key pressed on this frame?
+bool Input::IsKeyDown(int key) { 
+	bool keyUpdated = state_keyboard_frame.find(key) != state_keyboard_frame.end();
+	return state_keyboard[key] && keyUpdated;
+}
+
+// Was the given key unpressed on this frame?
+bool Input::IsKeyUp(int key) { 
+	bool keyUpdated = state_keyboard_frame.find(key) != state_keyboard_frame.end();
+	return !state_keyboard[key] && keyUpdated;
+}
 
 bool Input::AnyKey() { return false; }
 bool Input::AnyKeyDown() { return false; }

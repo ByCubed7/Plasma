@@ -77,6 +77,16 @@ void Game::Init()
 
 void Game::Update(double delta)
 {
+	// Process Game State
+	if (state == State::PAUSED) timeStep = 0;
+	else timeStep = 1.0f;
+
+	//std::cout << timeStep << std::endl;
+	
+
+	// - IF PAUSED, DO NOTHING!
+	if (state != State::ACTIVE) return;
+
 	for (std::unique_ptr<GameObject>& gameObject : gameObjects) {
 
 		// Compute physics
@@ -106,8 +116,14 @@ void Game::ProcessInput(double dt)
 {
 	// If the escape key is pressed, set the game to closing
 	if (input.IsKey(input.Key_Escape))
-		state = Game::State::CLOSING;
+		state = State::CLOSING;
+	
+	if (input.IsKeyDown(input.Key_P))
+		state = state == State::ACTIVE ? State::PAUSED : State::ACTIVE;
 
+	//std::cout << input.IsKeyDown(input.Key_P);
+
+	input.Tick();
 }
 
 void Game::Render()
@@ -117,12 +133,13 @@ void Game::Render()
 
 	//*
 	
-	//Renderer->DrawText("ahhhh", { 50, 100 }, 1, { 1, 1, 1 });
-	Text->RenderText("REEEEEEEEEEE", 5.0f, 5.0f, 1.0f);
-
 	for (std::unique_ptr<GameObject>& gameObject : gameObjects)
 	{
 		gameObject->Draw(*Renderer);
 	}
 	//*/
+
+	//Renderer->DrawText("ahhhh", { 50, 100 }, 1, { 1, 1, 1 });
+	if (state == State::PAUSED) Text->RenderText("PAUSED", width / 2, height / 2, 1.0f, { 0.5f, 0.5f }, { 0.2f, 0.8, 0.2f });
+
 }

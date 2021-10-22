@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Library/Vector2.h"
+#include <unordered_set>
 
 // The current state of the keyboard and mouse
 struct Input
@@ -8,6 +9,9 @@ struct Input
 
 	// Keyboard
 	bool state_keyboard[1024];
+	std::unordered_set<int> state_keyboard_frame;
+
+	void Tick();
 
 	void SetKey(int key, bool isDown);
 	void Pressed(int key);
