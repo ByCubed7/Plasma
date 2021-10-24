@@ -1,5 +1,16 @@
 #include "AABB.h"
 
+AABB::AABB(Vector2 lower, Vector2 upper)
+{
+    //lowerBound = Vector2::Min(lower, upper);
+    //upperBound = Vector2::Max(lower, upper);
+
+    lowerBound = lower;
+    upperBound = upper;
+}
+
+AABB::AABB() {}
+
 // Returns the center of the box
 Vector2 AABB::Center()
 {

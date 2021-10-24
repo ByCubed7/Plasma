@@ -2,7 +2,6 @@
 #include "Settings.h"
 #include "Resources.h"
 #include "SpriteRenderer.h"
-#include "Player.h"
 
 #include "Shader.h"
 #include "Texture.h"
@@ -12,6 +11,8 @@
 #include <GLFW/glfw3.h>
 #include "TextRenderer.h"
 
+#include "Player.h"
+#include "Ghost.h"
 
 SpriteRenderer* Renderer;
 TextRenderer* Text;
@@ -57,21 +58,30 @@ void Game::Init()
 
 	// Load textures
 	Resources::LoadTexture("assets/textures/Player.png", true, "player");
-	//Resources::LoadTexture("assets/textures/Ghost.png", true, "ghost");
+	Resources::LoadTexture("assets/textures/Ghost.png", true, "ghost");
+	Resources::LoadTexture("assets/textures/Pip.png", true, "pip");
 
 	// Load levels
 
-	// Create the Player
+	//* Create the Player
 	Player* player = new Player();
 	player->position = Vector2(100, 100);
-	player->sprite = Resources::GetTexture("player");
+	player->SetSprite(Resources::GetTexture("player"));
 	AddGameObject(player);
+	//*/
 
-	/* Create the Ghost
-	Player* ghost = new Player();
-	ghost->position = Vector2(100, 300);
-	ghost->sprite = Resources::GetTexture("ghost");
+	//* Create the Ghost
+	Ghost* ghost = new Ghost();
+	ghost->position = Vector2(100, 100);
+	ghost->SetSprite(Resources::GetTexture("ghost"));
 	AddGameObject(ghost);
+	//*/
+
+	/* Create a Pip
+	Pip* pip = new Pip();
+	pip->position = Vector2(100, 300);
+	pip->sprite = Resources::GetTexture("pip");
+	AddGameObject(pip);
 	//*/
 }
 
@@ -83,6 +93,14 @@ void Game::Update(double delta)
 
 	//std::cout << timeStep << std::endl;
 	
+	if (gameObjects[0]->GetBounds().Overlaps(gameObjects[1]->GetBounds()))
+	{
+		AABB go1 = gameObjects[0]->GetBounds();
+		AABB go2 = gameObjects[1]->GetBounds();
+		std::cout << 
+			go1.lowerBound.ToString() << ":" << go1.upperBound.ToString() << " with " << 
+			go2.lowerBound.ToString() << ":" << go2.upperBound.ToString() << std::endl;
+	}
 
 	// - IF PAUSED, DO NOTHING!
 	if (state != State::ACTIVE) return;

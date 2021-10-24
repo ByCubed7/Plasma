@@ -1,11 +1,15 @@
 #pragma once
-#include <list>
 
+#include <list>
 #include "Vector2.h"
 
 // An axis aligned bounding box.
 struct AABB
 {
+	// Constructor
+	AABB();
+	AABB(Vector2 lower, Vector2 upper);
+
 	// Functions
 
 	Vector2 Center();
@@ -27,9 +31,9 @@ struct AABB
 	Vector2 upperBound;
 
 	// Static Functions
-	std::list<AABB> SortAndSweep(std::list<AABB> aabbs);
+	//std::list<AABB> SortAndSweep(std::list<AABB> aabbs);
 
 
 
-} AxisAlignedBoundingBox;
+};// AxisAlignedBoundingBox;
 

@@ -2,7 +2,7 @@
 #include "Settings.h"
 #include "Game.h"
 
-GameObject::GameObject()
+GameObject::GameObject() //: bounds()
 {
     position = { 0.0f, 0.0f };
     rotation = 0.0f;
@@ -32,6 +32,29 @@ GameObject::GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 
 
     this->isSolid = false;
     this->destroyed = false;
+
+    CalcBounds();
+}
+
+// Set Get Sprite
+void GameObject::SetSprite(Texture2D sprite) 
+{ 
+    this->sprite = sprite; 
+    CalcBounds();
+}
+Texture2D GameObject::GetSprite() { return this->sprite; }
+
+AABB GameObject::GetBounds()
+{
+    return { position + bounds.lowerBound, position + bounds.upperBound };
+}
+
+void GameObject::CalcBounds() 
+{
+    // Update bounds
+    Vector2 upperBound = { Settings::PPU, Settings::PPU };
+    Vector2 lowerBound = { -Settings::PPU, -Settings::PPU };
+    this->bounds = AABB(lowerBound, upperBound);
 }
 
 void GameObject::Draw(SpriteRenderer& renderer)

@@ -1,13 +1,14 @@
 #pragma once
 
 #include "Library/glad.h"
+#include "Library/Vector2.h"
+#include "Library/AABB.h"
+
 #include <glm/glm.hpp>
 
 #include "texture.h"
 #include "SpriteRenderer.h"
 #include "Game.h"
-#include "Library/Vector2.h"
-
 
 // Forward declaration
 class Game;
@@ -26,8 +27,15 @@ public:
 	bool isSolid;
 	bool destroyed;
 
-	// render state
+	// Render state
 	Texture2D sprite;
+	void SetSprite(Texture2D sprite);
+	Texture2D GetSprite();
+
+	// Bounds
+	AABB bounds;
+	AABB GetBounds();
+	void CalcBounds();
 
 	// Constructors
 	GameObject();
