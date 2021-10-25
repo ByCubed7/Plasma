@@ -156,8 +156,24 @@ Vector2 Vector2::Min(Vector2 vectorA, Vector2 vectorB)
 // █▀█ █▀█ █▀▀ █▀█ ▄▀█ ▀█▀ █▀█ █▀█ █▀
 // █▄█ █▀▀ ██▄ █▀▄ █▀█ ░█░ █▄█ █▀▄ ▄█
 
+// - Vector
+
 // Adding to another vector
-Vector2 Vector2::operator+(const Vector2& otherVector)
+Vector2 Vector2::operator+(const Vector2& otherVector) { return { x + otherVector.x, y + otherVector.y }; }
+
+// Subtracting to another vector
+Vector2 Vector2::operator-(const Vector2& otherVector) { return { x - otherVector.x, y - otherVector.y }; }
+
+// Multipling by another vector
+Vector2 Vector2::operator*(const Vector2& otherVector) { return { x * otherVector.x, y * otherVector.y }; }
+
+// Dividing by another vector
+// NOTE: Is this dividing by the right way?
+Vector2 Vector2::operator/(const Vector2& otherVector) { return { x / otherVector.x, y / otherVector.y }; }
+
+
+// Adding to another vector
+Vector2 Vector2::operator+=(const Vector2& otherVector)
 {
 	x += otherVector.x;
 	y += otherVector.y;
@@ -165,7 +181,7 @@ Vector2 Vector2::operator+(const Vector2& otherVector)
 }
 
 // Subtracting to another vector
-Vector2 Vector2::operator-(const Vector2& otherVector)
+Vector2 Vector2::operator-=(const Vector2& otherVector)
 {
 	x -= otherVector.x;
 	y -= otherVector.y;
@@ -173,16 +189,38 @@ Vector2 Vector2::operator-(const Vector2& otherVector)
 }
 
 // Multipling by another vector
-Vector2 Vector2::operator*(const Vector2& otherVector)
+Vector2 Vector2::operator*=(const Vector2& otherVector)
 {
 	x *= otherVector.x;
 	y *= otherVector.y;
 	return *this;
 }
 
+// Dividing by another vector
+Vector2 Vector2::operator/=(const Vector2& otherVector)
+{
+	x /= otherVector.x;
+	y /= otherVector.y;
+	return *this;
+}
+
+
+// - Floats
 
 // Adding to float
-Vector2 Vector2::operator+(const float& amount)
+Vector2 Vector2::operator+(const float& amount) { return{ x + amount, y + amount }; }
+
+// Subtracting by float
+Vector2 Vector2::operator-(const float& amount) { return{ x - amount, y - amount }; }
+
+// Multipling by float
+Vector2 Vector2::operator*(const float& amount) { return{ x * amount, y * amount }; }
+
+// Dividing by float
+Vector2 Vector2::operator/(const float& amount) { return {x / amount, y / amount}; }
+
+// Adding to float
+Vector2 Vector2::operator+=(const float& amount)
 {
 	x += amount;
 	y += amount;
@@ -190,7 +228,7 @@ Vector2 Vector2::operator+(const float& amount)
 }
 
 // Subtracting by float
-Vector2 Vector2::operator-(const float& amount)
+Vector2 Vector2::operator-=(const float& amount)
 {
 	x -= amount;
 	y -= amount;
@@ -198,10 +236,18 @@ Vector2 Vector2::operator-(const float& amount)
 }
 
 // Multipling by float
-Vector2 Vector2::operator*(const float& amount)
+Vector2 Vector2::operator*=(const float& amount)
 {
 	x *= amount;
 	y *= amount;
+	return *this;
+}
+
+// Dividing by float
+Vector2 Vector2::operator/=(const float& amount)
+{
+	x /= amount;
+	y /= amount;
 	return *this;
 }
 
