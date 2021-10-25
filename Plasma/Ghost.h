@@ -1,5 +1,7 @@
 #pragma once
-#include "GameObject.h"
+
+#include "Engine/GameObject.h"
+
 class Ghost : public GameObject
 {
 };

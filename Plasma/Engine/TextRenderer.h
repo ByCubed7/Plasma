@@ -2,7 +2,7 @@
 
 #include <map>
 
-#include "Library/glad.h"
+#include "../Library/glad.h"
 #include <glm/glm.hpp>
 
 #include "texture.h"

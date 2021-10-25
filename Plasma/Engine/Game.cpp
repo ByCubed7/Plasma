@@ -1,0 +1,121 @@
+#include "game.h"
+#include "Settings.h"
+#include "Resources.h"
+#include "SpriteRenderer.h"
+#include "TextRenderer.h"
+#include "Shader.h"
+#include "Texture.h"
+
+#include <glm/fwd.hpp>
+#include "../Library/glad.h"
+#include <GLFW/glfw3.h>
+
+#include "../Player.h"
+#include "../Ghost.h"
+
+Game::Game(const Settings& setting)
+{
+	state = Game::State::ACTIVE;
+	input = Input();
+	width = setting.screenWidth;
+	height = setting.screenHeight;
+}
+
+Game::~Game()
+{
+	delete renderer;
+	delete text;
+	//delete gameObjects;
+}
+
+void Game::AddGameObject(GameObject* gameObject)
+{
+	gameObjects.emplace_back(std::unique_ptr<GameObject>(gameObject));
+}
+
+void Game::GInit()
+{
+	// - Load shaders
+
+	// Sprite
+	Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");
+	Resources::GetShader("sprite").Use().SetInteger("image", 0); // - Configure shaders
+	// As this is 2D we don't have to worry about perspective, use orthographic projection
+	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->width), static_cast<float>(this->height), 0.0f, -1.0f, 1.0f);
+
+	Resources::GetShader("sprite").SetMatrix4("projection", projection);
+
+	// Text
+	Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
+
+	// - Renderer
+	renderer = new SpriteRenderer(Resources::GetShader("sprite"));
+
+	// Load Fonts
+	text = new TextRenderer(this->width, this->height);
+}
+
+void Game::ProcessInput(double dt)
+{
+	// If the escape key is pressed, set the game to closing
+	if (input.IsKey(input.Key_Escape))
+		state = State::CLOSING;
+	
+	if (input.IsKeyDown(input.Key_P))
+		state = state == State::ACTIVE ? State::PAUSED : State::ACTIVE;
+
+	//std::cout << input.IsKeyDown(input.Key_P);
+
+	input.Tick();
+}
+
+void Game::GUpdate(double delta) 
+{
+	// - IF PAUSED, DO NOTHING!
+	if (state != State::ACTIVE) return;
+
+	for (std::unique_ptr<GameObject>& gameObject : gameObjects) {
+
+		// Compute physics
+		Vector2 deltaVelo = Vector2(gameObject->velocity);
+		deltaVelo.x *= delta;
+		deltaVelo.y *= delta;
+
+		gameObject->position = gameObject->position + deltaVelo;
+		gameObject->rotation += gameObject->angularVelocity * delta;
+
+		//std::cout << "Gameobject is at: " << gameObject->position.x << " : " << gameObject->position.y << std::endl;
+		//std::cout << "Input: " << input.GetMousePosition().ToString() << std::endl;
+
+		// Collision detection?
+
+	}
+
+	//*
+	for (std::unique_ptr<GameObject>& gameObject : gameObjects)
+	{
+		gameObject->Update(delta, *this);
+	}
+	//*/
+}
+
+void Game::GRender()
+{
+	//Renderer->DrawSprite(Resources::GetTexture("Player"),
+	//    glm::vec2(300.0f, 300.0f), glm::vec2(400.0f, 400.0f), 75.0f, glm::vec3(0.5f, 0.5f, 0.0f));
+
+	//*
+	for (std::unique_ptr<GameObject>& gameObject : gameObjects)
+	{
+		gameObject->Draw(*renderer);
+	}
+	//*/
+
+}
+
+
+// -- To be overloaded --
+
+void Game::Init() {}
+void Game::Update(double delta) {}
+void Game::Render() {}

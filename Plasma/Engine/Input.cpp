@@ -1,5 +1,6 @@
 #include "Input.h"
-#include "Library/Vector2.h"
+#include "Vector2.h"
+
 #include <unordered_set>
 
 void Input::Tick() 

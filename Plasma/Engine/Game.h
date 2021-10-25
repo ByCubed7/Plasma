@@ -1,10 +1,13 @@
 #pragma once
 
-#include "Library/glad.h"
+#include "../Library/glad.h"
+
 #include "Settings.h"
 #include "Input.h"
+#include "SpriteRenderer.h"
+#include "TextRenderer.h"
+
 #include <list>
-#include "GameObject.h"
 
 // Forward declaration
 class GameObject;
@@ -26,6 +29,9 @@ public:
 	
 	unsigned int width, height;
 
+	SpriteRenderer* renderer;
+	TextRenderer* text;
+
 	std::vector<std::unique_ptr<GameObject>> gameObjects = {};
 
 	// Constructor
@@ -38,11 +44,17 @@ public:
 
 	// Initialize game state 
 	// load all shaders, textures and levels
-	void Init();
+	virtual void Init();
 
 	// Game loop
 
 	void ProcessInput(double delta);
-	void Update(double delta);
-	void Render();
+
+	void GInit();
+	void GUpdate(double delta);
+	void GRender();
+
+	virtual void Update(double delta);
+	virtual void Render();
+
 };

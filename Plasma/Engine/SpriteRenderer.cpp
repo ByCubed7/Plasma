@@ -1,3 +1,5 @@
+#pragma once
+
 #include "SpriteRenderer.h"
 #include "Shader.h"
 #include "Font.h"

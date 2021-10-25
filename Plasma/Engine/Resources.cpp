@@ -5,9 +5,9 @@
 #include "Resources.h"
 #include "Font.h"
 
-#include "Library/stb_image.h"
+#include "../Library/stb_image.h"
 
-#include "Library/glad.h"
+#include "../Library/glad.h"
 #include <GLFW/glfw3.h>
 
 #include <map>

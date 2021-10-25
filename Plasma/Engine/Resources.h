@@ -1,7 +1,9 @@
-﻿#include <map>
+﻿#pragma once
+
+#include <map>
 #include <string>
 
-#include "Library/glad.h"
+#include "../Library/glad.h"
 
 #include "texture.h"
 #include "shader.h"

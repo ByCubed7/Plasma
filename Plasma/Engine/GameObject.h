@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Library/glad.h"
-#include "Library/Vector2.h"
-#include "Library/AABB.h"
+#include "../Library/glad.h"
+#include "Vector2.h"
+#include "AABB.h"
 
 #include <glm/glm.hpp>
 
