@@ -13,9 +13,9 @@ App * App::instance = nullptr;
 
 App::App(Settings config, Game* game)
 {
+	instance = this;
 	settings = config;
 	this->game = game;
-	instance = this;
 }
 
 int App::Run() 

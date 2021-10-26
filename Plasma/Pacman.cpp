@@ -24,8 +24,6 @@ Pacman::~Pacman()
 
 void Pacman::Init() 
 {
-	// Load Fonts
-	text->Load("assets/fonts/arial.ttf", 24);
 
 	// Load textures
 	Resources::LoadTexture("assets/textures/Player.png", true, "player");

@@ -2,13 +2,13 @@
 #include <sstream>
 #include <fstream>
 
+#include "../Library/stb_image.h"
+#include "../Library/glad.h"
+
+#include <GLFW/glfw3.h>
+
 #include "Resources.h"
 #include "Font.h"
-
-#include "../Library/stb_image.h"
-
-#include "../Library/glad.h"
-#include <GLFW/glfw3.h>
 
 #include <map>
 #include <iostream>
@@ -20,7 +20,6 @@
 std::map<std::string, Texture2D> Resources::Textures;
 std::map<std::string, Shader> Resources::Shaders;
 std::map<std::string, Font> Resources::Fonts;
-
 
 // Shader
 
