@@ -70,6 +70,11 @@ void Shader::SetInteger(const char* name, int value, bool useShader)
     if (useShader) Use();
     glUniform1i(glGetUniformLocation(this->Program, name), value);
 }
+void Shader::SetVector2(const char* name, int x, int y, bool useShader)
+{
+    if (useShader) Use();
+    glUniform2i(glGetUniformLocation(this->Program, name), x, y);
+}
 void Shader::SetVector2f(const char* name, float x, float y, bool useShader)
 {
     if (useShader) Use();

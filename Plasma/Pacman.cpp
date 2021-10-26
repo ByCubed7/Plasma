@@ -64,7 +64,7 @@ void Pacman::Update(double delta)
 
 	//std::cout << timeStep << std::endl;
 
-	if (gameObjects[0]->GetBounds().Overlaps(gameObjects[1]->GetBounds()))
+	if (0)//gameObjects[0]->GetBounds().Overlaps(gameObjects[1]->GetBounds()))
 	{
 		AABB go1 = gameObjects[0]->GetBounds();
 		AABB go2 = gameObjects[1]->GetBounds();

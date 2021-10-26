@@ -5,12 +5,21 @@ out vec4 color;
 
 uniform sampler2D image;
 uniform vec3 spriteColor;
-uniform int offsetX;
 
-uniform vec2 coords = vec2(1, 1);
+uniform ivec2 spriteSize = ivec2(1024);
+
+uniform ivec2 offset = ivec2(0);
 
 void main()
 {
-    coords = vec2(TexCoords.x + offsetX, TexCoords.y);
+    ivec2 textureSize = textureSize(image, 0);
+    
+    // Here we assume the width and height have the same density
+    ivec2 spriteDensity = textureSize / spriteSize;
+    
+
+    vec2 coords;
+    coords = TexCoords / spriteDensity + offset;
+    
     color = vec4(spriteColor, 1.0) * texture(image, coords);
 }
