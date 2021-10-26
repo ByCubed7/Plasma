@@ -8,7 +8,7 @@ uniform vec3 spriteColor;
 
 uniform ivec2 spriteSize = ivec2(1024);
 
-uniform ivec2 offset = ivec2(0);
+uniform vec2 offset = vec2(0);
 
 void main()
 {
