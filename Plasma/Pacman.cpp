@@ -17,8 +17,8 @@ Pacman::Pacman(const Settings& setting) : Game(setting)
 
 Pacman::~Pacman() 
 {
-	delete renderer;
-	delete text;
+	//delete renderer;
+	//delete text;
 	//delete gameObjects;
 }
 
