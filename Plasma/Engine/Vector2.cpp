@@ -57,6 +57,14 @@ float Vector2::Magnitude()
 void Vector2::Normalize()
 {
 	float length = Magnitude();
+
+	if (length == 0)
+	{
+		x = 0;
+		y = 0;
+		return;
+	}
+
 	x = x / length;
 	y = y / length;
 }
