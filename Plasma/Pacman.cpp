@@ -69,8 +69,8 @@ void Pacman::Update(double delta)
 		AABB go1 = gameObjects[0]->GetBounds();
 		AABB go2 = gameObjects[1]->GetBounds();
 		std::cout <<
-			go1.lowerBound.ToString() << ":" << go1.upperBound.ToString() << " with " <<
-			go2.lowerBound.ToString() << ":" << go2.upperBound.ToString() << std::endl;
+			go1.lowerBound.ToString() << ":" << go2.upperBound.ToString() << " with " <<
+			go2.lowerBound.ToString() << ":" << go1.upperBound.ToString() << std::endl;
 	}
 
 }

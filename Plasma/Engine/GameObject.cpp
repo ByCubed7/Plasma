@@ -52,8 +52,8 @@ AABB GameObject::GetBounds()
 void GameObject::CalcBounds() 
 {
     // Update bounds
-    Vector2 upperBound = { Settings::PPU, Settings::PPU };
-    Vector2 lowerBound = { -Settings::PPU, -Settings::PPU };
+    Vector2 upperBound = Vector2(Settings::PPU, Settings::PPU) / 2;
+    Vector2 lowerBound = Vector2(-Settings::PPU, -Settings::PPU) / 2;
     this->bounds = AABB(lowerBound, upperBound);
 }
 
