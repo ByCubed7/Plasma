@@ -48,7 +48,7 @@ void Game::GInit()
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->width), static_cast<float>(this->height), 0.0f, -1.0f, 1.0f);
 
 	ShaderSprite.SetMatrix4("projection", projection);
-
+	//ShaderSprite.SetInteger("offsetX", 1);
 	// Text
 	Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
 
