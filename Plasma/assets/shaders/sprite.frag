@@ -8,18 +8,18 @@ uniform vec3 spriteColor;
 
 uniform ivec2 spriteSize = ivec2(1024);
 
-uniform vec2 offset = vec2(0);
+uniform vec2 offset = vec2(1);
 
 void main()
 {
-    ivec2 textureSize = textureSize(image, 0);
-    
-    // Here we assume the width and height have the same density
-    ivec2 spriteDensity = textureSize / spriteSize;
-    
+    ivec2 totalTextureSize = textureSize(image, 0); // (2048, 1024) 
 
-    vec2 coords;
-    coords = TexCoords / spriteDensity + offset;
+    vec2 spriteDensity = totalTextureSize / spriteSize; // (2048, 1024) / (1024, 1024) = (2, 1)
     
-    color = vec4(spriteColor, 1.0) * texture(image, coords);
+    vec2 texOffset = vec2(0);
+    if (offset.x != 0 || offset.y != 0) {
+        texOffset = spriteDensity / offset; // (2, 1) / (0, 0)
+    }
+    
+    color = vec4(spriteColor, 1.0) * texture(image, texOffset + TexCoords);
 }
