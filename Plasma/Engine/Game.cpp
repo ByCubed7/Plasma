@@ -49,14 +49,16 @@ void Game::GInit()
 	Shader ShaderText = Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
 	ShaderText.Use().SetInteger("text", 0);
 	ShaderText.SetMatrix4("projection", projection);
-
-	// - Fonts
+	
 
 	// - Load Renderer(s)
+
 	renderer = new SpriteRenderer(Resources::GetShader("sprite"));
 	text = new TextRenderer(Resources::GetShader("text"));
 
-	std::cout << "Loading Font";
+
+	// - Load Text Fonts
+	
 	Resources::LoadFont("assets/fonts/arial.ttf", "arial");
 
 	//text->Load("assets/fonts/arial.ttf", 24);
