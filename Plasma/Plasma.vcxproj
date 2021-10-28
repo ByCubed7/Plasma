@@ -149,6 +149,7 @@
     <ClCompile Include="Engine\Game.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Engine\Input.cpp" />
+    <ClCompile Include="Engine\Renderer.cpp" />
     <ClCompile Include="Engine\Resources.cpp" />
     <ClCompile Include="Engine\Settings.cpp" />
     <ClCompile Include="Engine\Shader.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="Engine\Game.h" />
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\Input.h" />
+    <ClInclude Include="Engine\Renderer.h" />
     <ClInclude Include="Engine\Resources.h" />
     <ClInclude Include="Engine\Settings.h" />
     <ClInclude Include="Engine\Shader.h" />

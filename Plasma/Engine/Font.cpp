@@ -2,7 +2,7 @@
 
 void Font::AddCharacter(char c, Character character)
 {
-    Characters.insert(std::pair<char, Character>(c, character));
+    Characters[c] = character;
 }
 
 Character Font::GetCharacter(char c) 

@@ -34,31 +34,34 @@ void Game::AddGameObject(GameObject* gameObject)
 
 void Game::GInit()
 {
-
-	//std::cout << (std::string)ExePath();
-
-	// - Load shaders
-
-	// Sprite
-
-	Shader ShaderSprite = Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");
-	ShaderSprite.Use().SetInteger("image", 0); // - Configure shaders
-
 	// As this is 2D we don't have to worry about perspective, use orthographic projection
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->width), static_cast<float>(this->height), 0.0f, -1.0f, 1.0f);
 
+	// - Load and Config shaders
+
+	// Sprite
+	Shader ShaderSprite = Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");
+	ShaderSprite.Use().SetInteger("image", 0);
 	ShaderSprite.SetMatrix4("projection", projection);
 	ShaderSprite.SetVector2("offset", 0, 0);
+	
 	// Text
-	Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
+	Shader ShaderText = Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
+	ShaderText.Use().SetInteger("text", 0);
+	ShaderText.SetMatrix4("projection", projection);
 
-	// - Renderer
+	// - Fonts
+
+	// - Load Renderer(s)
 	renderer = new SpriteRenderer(Resources::GetShader("sprite"));
+	text = new TextRenderer(Resources::GetShader("text"));
 
-	// Load Fonts
-	text = new TextRenderer(this->width, this->height);
+	std::cout << "Loading Font";
+	Resources::LoadFont("assets/fonts/arial.ttf", "arial");
 
-	text->Load("assets/fonts/arial.ttf", 24);
+	//text->Load("assets/fonts/arial.ttf", 24);
+
+
 }
 
 void Game::ProcessInput(double dt)

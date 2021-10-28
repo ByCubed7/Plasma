@@ -72,5 +72,7 @@ private:
 	static Texture2D LoadTextureFromFile(const char* file, bool alpha);
 
 	// Loads a font from a file
-	static Font LoadFontFromFile(const char* file);
+	static Font LoadFontFromFile(const char* file, unsigned int fontSize);
+
+	static unsigned int defaultFontSize;
 };
