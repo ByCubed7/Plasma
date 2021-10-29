@@ -16,7 +16,7 @@ SpriteRenderer::~SpriteRenderer()
     glDeleteVertexArrays(1, &this->quadVAO);
 }
 
-void SpriteRenderer::DrawSprite(Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
+void SpriteRenderer::DrawSprite(Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, int frame, glm::vec3 color)
 {
     // Prepare transformations
     this->shader.Use();
@@ -34,6 +34,9 @@ void SpriteRenderer::DrawSprite(Texture2D& texture, glm::vec2 position, glm::vec
 
     // render textured quad
     this->shader.SetVector3f("spriteColor", color);
+
+    // Texture Frame
+    this->shader.SetInteger("index", frame);
 
     glActiveTexture(GL_TEXTURE0);
     texture.Bind();

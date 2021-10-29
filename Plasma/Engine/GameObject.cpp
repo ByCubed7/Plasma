@@ -16,6 +16,9 @@ GameObject::GameObject() //: bounds()
 
     isSolid = false;
     destroyed = false;
+
+    spriteFrame = 0;
+    spriteSize = 1024;
 }
 
 GameObject::GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color)
@@ -68,6 +71,7 @@ void GameObject::Draw(SpriteRenderer& renderer)
         pos,
         drawScale,
         this->rotation, 
+        spriteFrame,
         this->color
     );
 }

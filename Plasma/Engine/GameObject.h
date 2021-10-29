@@ -32,6 +32,9 @@ public:
 	void SetSprite(Texture2D sprite);
 	Texture2D GetSprite();
 
+	int spriteFrame;
+	int spriteSize;
+
 	// Bounds
 	AABB bounds;
 	AABB GetBounds();

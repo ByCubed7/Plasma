@@ -28,4 +28,12 @@ void Player::Update(double delta, Game& game)
 		velocity.Normalize();
 		velocity = velocity * 300;
 	}
+
+	// - Frame
+
+	frameCount += delta;
+	spriteFrame = (int)frameCount;
+
+	std::cout << frameCount << std::endl;
+    std::cout << spriteFrame << std::endl;
 }

@@ -43,7 +43,8 @@ void Game::GInit()
 	Shader ShaderSprite = Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");
 	ShaderSprite.Use().SetInteger("image", 0);
 	ShaderSprite.SetMatrix4("projection", projection);
-	ShaderSprite.SetVector2("offset", 0, 0);
+	//ShaderSprite.SetVector2("index", 1, 0);
+	ShaderSprite.SetInteger("index", 1);
 	
 	// Text
 	Shader ShaderText = Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
