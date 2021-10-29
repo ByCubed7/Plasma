@@ -53,7 +53,7 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource, const
     glLinkProgram(this->Program);
     checkCompileErrors(this->Program, "PROGRAM");
     
-    // Delete the shaders as they're linked into our program now and no longer necessary
+    // Delete the shaders
     glDeleteShader(sVertex);
     glDeleteShader(sFragment);
     if (geometrySource != nullptr)
