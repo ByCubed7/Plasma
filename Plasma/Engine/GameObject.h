@@ -1,19 +1,19 @@
 #pragma once
 
 #include "../Library/glad.h"
-#include "Vector2.h"
-#include "AABB.h"
-
 #include <glm/glm.hpp>
 
-#include "texture.h"
+#include "Object.h"
+#include "Vector2.h"
+#include "AABB.h"
+#include "Texture.h"
 #include "SpriteRenderer.h"
 #include "Game.h"
 
 // Forward declaration
 class Game;
 
-class GameObject
+class GameObject : Object
 {
 public:
 	Vector2 position;
@@ -50,5 +50,6 @@ public:
 	// Update is called every frame ;)
 	virtual void Update(double delta, Game& game);
 
+	//virtual string ToString() override;
 };
 

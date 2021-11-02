@@ -2,7 +2,8 @@
 #include "Settings.h"
 #include "Game.h"
 
-GameObject::GameObject() //: bounds()
+GameObject::GameObject()
+    : Object("GameObject")
 {
     position = { 0.0f, 0.0f };
     rotation = 0.0f;
@@ -22,6 +23,7 @@ GameObject::GameObject() //: bounds()
 }
 
 GameObject::GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color)
+    : Object("GameObject")
 {
     this->position = position;
     this->rotation = rotation;

@@ -145,10 +145,12 @@
   <ItemGroup>
     <ClCompile Include="Engine\AABB.cpp" />
     <ClCompile Include="Engine\App.cpp" />
+    <ClCompile Include="Engine\Component.cpp" />
     <ClCompile Include="Engine\Font.cpp" />
     <ClCompile Include="Engine\Game.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Engine\Input.cpp" />
+    <ClCompile Include="Engine\Object.cpp" />
     <ClCompile Include="Engine\Renderer.cpp" />
     <ClCompile Include="Engine\Resources.cpp" />
     <ClCompile Include="Engine\Settings.cpp" />
@@ -166,10 +168,12 @@
   <ItemGroup>
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
+    <ClInclude Include="Engine\Component.h" />
     <ClInclude Include="Engine\Font.h" />
     <ClInclude Include="Engine\Game.h" />
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\Input.h" />
+    <ClInclude Include="Engine\Object.h" />
     <ClInclude Include="Engine\Renderer.h" />
     <ClInclude Include="Engine\Resources.h" />
     <ClInclude Include="Engine\Settings.h" />
