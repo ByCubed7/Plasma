@@ -6,6 +6,7 @@
 #include "Input.h"
 #include "SpriteRenderer.h"
 #include "TextRenderer.h"
+#include "Renderer.h"
 
 #include <list>
 
@@ -29,8 +30,9 @@ public:
 	
 	unsigned int width, height;
 
-	SpriteRenderer* renderer;
-	TextRenderer* text;
+	//SpriteRenderer* spriteRenderer;
+	//TextRenderer* text;
+	Renderer* renderer;
 
 	std::vector<std::unique_ptr<GameObject>> gameObjects = {};
 

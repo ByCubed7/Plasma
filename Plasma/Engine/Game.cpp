@@ -23,7 +23,6 @@ Game::Game(const Settings& setting)
 Game::~Game()
 {
 	delete renderer;
-	delete text;
 	//delete gameObjects;
 }
 
@@ -54,8 +53,9 @@ void Game::GInit()
 
 	// - Load Renderer(s)
 
-	renderer = new SpriteRenderer(Resources::GetShader("sprite"));
-	text = new TextRenderer(Resources::GetShader("text"));
+	renderer = new Renderer(Resources::GetShader("sprite"), Resources::GetShader("text"));
+	//renderer = new SpriteRenderer(Resources::GetShader("sprite"));
+	//text = new TextRenderer(Resources::GetShader("text"));
 
 
 	// - Load Text Fonts

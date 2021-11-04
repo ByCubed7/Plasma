@@ -36,10 +36,17 @@ Vector2::Vector2(float coordX, float coordY)
 }
 
 // Copy Constructor
-Vector2::Vector2(const Vector2 &oldVector2)
+Vector2::Vector2(const Vector2& oldVector2)
 {
 	x = oldVector2.x;
 	y = oldVector2.y;
+}
+
+// Single Int Constructor
+Vector2::Vector2(const int coord)
+{
+	x = coord;
+	y = coord;
 }
 
 
@@ -73,7 +80,7 @@ void Vector2::Normalize()
 // Just multiply by -1
 void Vector2::Negate()
 {
-	*this * -1;
+	*this *= -1;
 }
 
 // Set the x and y of the vector
@@ -225,7 +232,7 @@ Vector2 Vector2::operator-(const float& amount) { return{ x - amount, y - amount
 Vector2 Vector2::operator*(const float& amount) { return{ x * amount, y * amount }; }
 
 // Dividing by float
-Vector2 Vector2::operator/(const float& amount) { return {x / amount, y / amount}; }
+Vector2 Vector2::operator/(const float& amount) { return { x / amount, y / amount }; }
 
 // Adding to float
 Vector2 Vector2::operator+=(const float& amount)
@@ -253,6 +260,53 @@ Vector2 Vector2::operator*=(const float& amount)
 
 // Dividing by float
 Vector2 Vector2::operator/=(const float& amount)
+{
+	x /= amount;
+	y /= amount;
+	return *this;
+}
+
+
+// - Ints
+
+// Adding to int
+Vector2 Vector2::operator+(const int& amount) { return{ x + amount, y + amount }; }
+
+// Subtracting by int
+Vector2 Vector2::operator-(const int& amount) { return{ x - amount, y - amount }; }
+
+// Multipling by int
+Vector2 Vector2::operator*(const int& amount) { return{ x * amount, y * amount }; }
+
+// Dividing by int
+Vector2 Vector2::operator/(const int& amount) { return { x / amount, y / amount }; }
+
+// Adding to int
+Vector2 Vector2::operator+=(const int& amount)
+{
+	x += amount;
+	y += amount;
+	return *this;
+}
+
+// Subtracting by float
+Vector2 Vector2::operator-=(const int& amount)
+{
+	x -= amount;
+	y -= amount;
+	return *this;
+}
+
+// Multipling by float
+Vector2 Vector2::operator*=(const int& amount)
+{
+	x *= amount;
+	y *= amount;
+	return *this;
+}
+
+// Dividing by float
+Vector2 Vector2::operator/=(const int& amount)
 {
 	x /= amount;
 	y /= amount;

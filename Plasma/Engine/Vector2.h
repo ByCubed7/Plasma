@@ -31,6 +31,7 @@ struct Vector2
     Vector2();
     Vector2(float coordX, float coordY);
     Vector2(const Vector2& oldVector2);
+    Vector2(const int coord);
     //~Vector2();
 
     // - Methods
@@ -54,6 +55,8 @@ struct Vector2
 
     // - Operators
 
+    // Vector
+
     Vector2 operator+(const Vector2& otherVector);
     Vector2 operator-(const Vector2& otherVector);
     Vector2 operator*(const Vector2& otherVector);
@@ -63,6 +66,8 @@ struct Vector2
     Vector2 operator*=(const Vector2& otherVector);
     Vector2 operator/=(const Vector2& otherVector);
 
+    // Float
+
     Vector2 operator+(const float& otherVector);
     Vector2 operator-(const float& otherVector);
     Vector2 operator*(const float& otherVector);
@@ -71,5 +76,16 @@ struct Vector2
     Vector2 operator-=(const float& otherVector);
     Vector2 operator*=(const float& otherVector);
     Vector2 operator/=(const float& otherVector);
+
+    // Float
+
+    Vector2 operator+(const int& otherVector);
+    Vector2 operator-(const int& otherVector);
+    Vector2 operator*(const int& otherVector);
+    Vector2 operator/(const int& otherVector);
+    Vector2 operator+=(const int& otherVector);
+    Vector2 operator-=(const int& otherVector);
+    Vector2 operator*=(const int& otherVector);
+    Vector2 operator/=(const int& otherVector);
 
 };
