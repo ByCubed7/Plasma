@@ -1,6 +1,9 @@
 ﻿#include "GameObject.h"
 #include "Settings.h"
 #include "Game.h"
+#include "Component.h"
+
+#include <typeinfo>
 
 GameObject::GameObject()
     : Object("GameObject")
@@ -41,6 +44,19 @@ GameObject::GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 
     CalcBounds();
 }
 
+void GameObject::AddComponent(Component* component) { components.push_back(component); }
+void GameObject::RemoveComponent(Component* component) { components.remove(component); }
+
+template<typename T> Component* GameObject::GetComponent() 
+{
+    for (Component* componentIn : components) {
+        if (typeid(componentIn) == typeid(T))
+            return componentIn;
+    }
+
+    return nullptr;
+}
+
 // Set Get Sprite
 void GameObject::SetSprite(Texture2D sprite) 
 { 
@@ -64,6 +80,9 @@ void GameObject::CalcBounds()
 
 void GameObject::Draw(Renderer& renderer)
 {
+    // Draw all of the components
+    //for (Component* component : components) component->Draw(renderer);
+
     int PPU(Settings::PPU);
     glm::vec2 drawScale = { this->scale.x * PPU, this->scale.y * PPU };
     glm::vec2 pos = { position.x, position.y };

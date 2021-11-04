@@ -155,6 +155,7 @@
     <ClCompile Include="Engine\Resources.cpp" />
     <ClCompile Include="Engine\Settings.cpp" />
     <ClCompile Include="Engine\Shader.cpp" />
+    <ClCompile Include="Engine\SpriteComponent.cpp" />
     <ClCompile Include="Engine\SpriteRenderer.cpp" />
     <ClCompile Include="Engine\TextRenderer.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="Engine\Resources.h" />
     <ClInclude Include="Engine\Settings.h" />
     <ClInclude Include="Engine\Shader.h" />
+    <ClInclude Include="Engine\SpriteComponent.h" />
     <ClInclude Include="Engine\SpriteRenderer.h" />
     <ClInclude Include="Engine\TextRenderer.h" />
     <ClInclude Include="Engine\Texture.h" />

@@ -93,6 +93,9 @@
     <ClCompile Include="Engine\Component.cpp">
       <Filter>Engine\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\SpriteComponent.cpp">
+      <Filter>Engine\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -159,6 +162,9 @@
       <Filter>Engine\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Component.h">
+      <Filter>Engine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SpriteComponent.h">
       <Filter>Engine\Headers</Filter>
     </ClInclude>
   </ItemGroup>
