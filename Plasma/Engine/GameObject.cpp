@@ -62,7 +62,7 @@ void GameObject::CalcBounds()
     this->bounds = AABB(lowerBound, upperBound);
 }
 
-void GameObject::Draw(SpriteRenderer& renderer)
+void GameObject::Draw(Renderer& renderer)
 {
     int PPU(Settings::PPU);
     glm::vec2 drawScale = { this->scale.x * PPU, this->scale.y * PPU };

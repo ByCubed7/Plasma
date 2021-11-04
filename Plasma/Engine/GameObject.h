@@ -45,7 +45,7 @@ public:
 	GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color);
 	
 	// Draw
-	virtual void Draw(SpriteRenderer& renderer);
+	virtual void Draw(Renderer& renderer);
 
 	// Update is called every frame ;)
 	virtual void Update(double delta, Game& game);
