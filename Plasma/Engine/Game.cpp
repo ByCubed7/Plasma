@@ -12,6 +12,8 @@
 #include "../Library/glad.h"
 #include <GLFW/glfw3.h>
 
+#include <typeinfo>
+
 Game::Game(const Settings& setting)
 {
 	state = Game::State::ACTIVE;
@@ -116,9 +118,10 @@ void Game::GUpdate(double delta)
 	}
 	//*/
 
-	for (Component& component : components)
+	std::list<Component*>::iterator it;
+	for (it = components.begin(); it != components.end(); ++it)
 	{
-		component->Update(delta, *this);
+		(*it)->Update(delta, *this);
 	}
 	//*/
 }
@@ -135,9 +138,11 @@ void Game::GRender()
 	}
 	//*/
 
-	for (std::unique_ptr<Component>& component : components)
+	for (const auto& component : components)
 	{
 		component->Draw(*renderer);
+		
+		//cout << "Game::GRender.Renderer:" << renderer << " Object:" << typeid(*component).name() << endl;
 	}
 
 }

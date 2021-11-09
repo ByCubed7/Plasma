@@ -1,5 +1,12 @@
 #include "CharacterControllerComponent.h"
 
+
+CharacterControllerComponent::CharacterControllerComponent(GameObject* gameObject, std::string name)
+	: Component(gameObject, name)
+{
+
+}
+
 void CharacterControllerComponent::Update(double delta, Game& game)
 {
 	// - Input

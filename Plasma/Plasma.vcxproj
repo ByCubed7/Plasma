@@ -143,9 +143,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CharacterControllerComponent.cpp" />
     <ClCompile Include="Engine\AABB.cpp" />
     <ClCompile Include="Engine\App.cpp" />
+    <ClCompile Include="Engine\CharacterControllerComponent.cpp" />
     <ClCompile Include="Engine\Component.cpp" />
     <ClCompile Include="Engine\Font.cpp" />
     <ClCompile Include="Engine\Game.cpp" />
@@ -168,9 +168,9 @@
     <ClCompile Include="Pacman.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CharacterControllerComponent.h" />
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
+    <ClInclude Include="Engine\CharacterControllerComponent.h" />
     <ClInclude Include="Engine\Component.h" />
     <ClInclude Include="Engine\Font.h" />
     <ClInclude Include="Engine\Game.h" />

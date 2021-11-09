@@ -16,5 +16,5 @@ public:
 	GameObject * gameObject;
 
 	virtual void Update(double delta, Game& game);
-	virtual void Draw(Renderer renderer);
+	virtual void Draw(Renderer& renderer);
 };

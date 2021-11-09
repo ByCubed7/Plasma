@@ -5,16 +5,16 @@
 SpriteComponent::SpriteComponent(GameObject* gameObject, std::string name)
     : Component(gameObject, name)
 {
-    color = { 0,0,0 };
+    color = { 1, 1, 1 };
 
 	sprite = Texture2D();
 	spriteFrame = 0;
-	spriteSize = 0;
+	spriteSize = 1024;
 
     bounds = AABB();
 }
 
-void SpriteComponent::Draw(Renderer renderer)
+void SpriteComponent::Draw(Renderer& renderer)
 {
     int PPU(Settings::PPU);
     glm::vec2 drawScale = { gameObject->scale.x * PPU, gameObject->scale.y * PPU };
@@ -28,6 +28,10 @@ void SpriteComponent::Draw(Renderer renderer)
         spriteFrame,
         color
     );
+
+    //cout << "SpriteComponent::Draw.Renderer:" << &renderer << endl;
+    cout << "this->sprite:" << &this->sprite << endl;
+
 }
 
 AABB SpriteComponent::GetBounds() { return bounds; }
@@ -40,6 +44,6 @@ void SpriteComponent::CalcBounds()
     this->bounds = AABB(lowerBound, upperBound);
 }
 
-void SpriteComponent::Set(Texture2D sprite) { this->sprite = sprite; }
+SpriteComponent* SpriteComponent::Set(Texture2D sprite) { this->sprite = sprite; return this; }
 Texture2D SpriteComponent::Get() { return this->sprite; }
 

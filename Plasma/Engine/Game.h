@@ -36,8 +36,8 @@ public:
 	//TextRenderer* text;
 	Renderer* renderer;
 
-	std::vector<GameObject*> gameObjects = {};
-	std::vector<Component*> components = {};
+	std::list<GameObject*> gameObjects = {};
+	std::list<Component*> components = {};
 
 	// Constructor
 	Game(const Settings& setting);

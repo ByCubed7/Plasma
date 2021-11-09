@@ -4,6 +4,7 @@
 #include "Engine/TextRenderer.h"
 #include "Engine/Settings.h"
 #include "Engine/SpriteComponent.h"
+#include "Engine/CharacterControllerComponent.h"
 #include "Engine/Component.h"
 
 #include "Ghost.h"
@@ -38,13 +39,17 @@ void Pacman::Init()
 	//* Create the Player
 	GameObject* player = new GameObject();
 	player->position = Vector2(100, 100);
+	AddGameObject(player);
 
-	SpriteComponent* playerSprite = new SpriteComponent(player);
-	playerSprite->Set(Resources::GetTexture("player"));
+	SpriteComponent* playerSprite = (new SpriteComponent(player))->Set(Resources::GetTexture("player"));
 	player->AddComponent(playerSprite);
 	AddComponent(playerSprite);
 
-	AddGameObject(player);
+	CharacterControllerComponent* playerController = new CharacterControllerComponent(player);
+	player->AddComponent(playerController);
+	AddComponent(playerController);
+
+	
 	//*/
 
 

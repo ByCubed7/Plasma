@@ -28,6 +28,9 @@
     <Filter Include="Game Files">
       <UniqueIdentifier>{b345736a-c0c7-43c8-8300-967b1ec8e60d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Components">
+      <UniqueIdentifier>{562b4972-8c1f-4756-b484-24cf312640fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -87,17 +90,17 @@
     <ClCompile Include="Engine\Object.cpp">
       <Filter>Engine\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Component.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\SpriteComponent.cpp">
-      <Filter>Engine\Source</Filter>
+      <Filter>Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="Engine\RigidbodyComponent.cpp">
-      <Filter>Engine\Source</Filter>
+      <Filter>Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterControllerComponent.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Engine\Component.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\CharacterControllerComponent.cpp">
+      <Filter>Engine\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,17 +164,17 @@
     <ClInclude Include="Engine\Object.h">
       <Filter>Engine\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Component.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\SpriteComponent.h">
-      <Filter>Engine\Headers</Filter>
+      <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="Engine\RigidbodyComponent.h">
-      <Filter>Engine\Headers</Filter>
+      <Filter>Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterControllerComponent.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Engine\Component.h">
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\CharacterControllerComponent.h">
+      <Filter>Engine\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
