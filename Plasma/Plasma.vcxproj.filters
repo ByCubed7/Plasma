@@ -33,9 +33,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
     <ClCompile Include="Library\glad.c">
       <Filter>Library</Filter>
     </ClCompile>
@@ -96,11 +93,14 @@
     <ClCompile Include="Engine\SpriteComponent.cpp">
       <Filter>Engine\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\RigidbodyComponent.cpp">
+      <Filter>Engine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterControllerComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
     <ClInclude Include="Library\glad.h">
       <Filter>Library</Filter>
     </ClInclude>
@@ -166,6 +166,12 @@
     </ClInclude>
     <ClInclude Include="Engine\SpriteComponent.h">
       <Filter>Engine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\RigidbodyComponent.h">
+      <Filter>Engine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterControllerComponent.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -143,6 +143,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CharacterControllerComponent.cpp" />
     <ClCompile Include="Engine\AABB.cpp" />
     <ClCompile Include="Engine\App.cpp" />
     <ClCompile Include="Engine\Component.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="Engine\Object.cpp" />
     <ClCompile Include="Engine\Renderer.cpp" />
     <ClCompile Include="Engine\Resources.cpp" />
+    <ClCompile Include="Engine\RigidbodyComponent.cpp" />
     <ClCompile Include="Engine\Settings.cpp" />
     <ClCompile Include="Engine\Shader.cpp" />
     <ClCompile Include="Engine\SpriteComponent.cpp" />
@@ -164,9 +166,9 @@
     <ClCompile Include="Library\glad.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pacman.cpp" />
-    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CharacterControllerComponent.h" />
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
     <ClInclude Include="Engine\Component.h" />
@@ -177,6 +179,7 @@
     <ClInclude Include="Engine\Object.h" />
     <ClInclude Include="Engine\Renderer.h" />
     <ClInclude Include="Engine\Resources.h" />
+    <ClInclude Include="Engine\RigidbodyComponent.h" />
     <ClInclude Include="Engine\Settings.h" />
     <ClInclude Include="Engine\Shader.h" />
     <ClInclude Include="Engine\SpriteComponent.h" />
@@ -189,7 +192,6 @@
     <ClInclude Include="Library\khrplatform.h" />
     <ClInclude Include="Library\stb_image.h" />
     <ClInclude Include="Pacman.h" />
-    <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

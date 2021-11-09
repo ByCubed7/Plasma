@@ -3,8 +3,9 @@
 #include "Engine/Resources.h"
 #include "Engine/TextRenderer.h"
 #include "Engine/Settings.h"
+#include "Engine/SpriteComponent.h"
+#include "Engine/Component.h"
 
-#include "Player.h"
 #include "Ghost.h"
 
 Pacman::Pacman(const Settings& setting) : Game(setting)
@@ -35,17 +36,28 @@ void Pacman::Init()
 	// Move this to start? \/
 
 	//* Create the Player
-	Player* player = new Player();
+	GameObject* player = new GameObject();
 	player->position = Vector2(100, 100);
-	player->SetSprite(Resources::GetTexture("player"));
+
+	SpriteComponent* playerSprite = new SpriteComponent(player);
+	playerSprite->Set(Resources::GetTexture("player"));
+	player->AddComponent(playerSprite);
+	AddComponent(playerSprite);
+
 	AddGameObject(player);
 	//*/
 
+
 	//* Create the Ghost
-	Ghost* ghost = new Ghost();
+	/*GameObject* ghost = new GameObject();
 	ghost->position = Vector2(100, 100);
-	ghost->SetSprite(Resources::GetTexture("ghost"));
-	AddGameObject(ghost);
+
+	SpriteComponent* ghostSprite = new SpriteComponent(ghost);
+	ghostSprite->Set(Resources::GetTexture("ghost"));
+	ghost->AddComponent(ghostSprite);
+	AddComponent(ghostSprite);
+
+	AddGameObject(ghost);*/
 	//*/
 
 	/* Create a Pip
@@ -64,14 +76,14 @@ void Pacman::Update(double delta)
 
 	//std::cout << timeStep << std::endl;
 
-	if (0)//gameObjects[0]->GetBounds().Overlaps(gameObjects[1]->GetBounds()))
-	{
-		AABB go1 = gameObjects[0]->GetBounds();
-		AABB go2 = gameObjects[1]->GetBounds();
-		std::cout <<
-			go1.lowerBound.ToString() << ":" << go2.upperBound.ToString() << " with " <<
-			go2.lowerBound.ToString() << ":" << go1.upperBound.ToString() << std::endl;
-	}
+	//if (0)//gameObjects[0]->GetBounds().Overlaps(gameObjects[1]->GetBounds()))
+	//{
+	//	AABB go1 = gameObjects[0]->GetBounds();
+	//	AABB go2 = gameObjects[1]->GetBounds();
+	//	std::cout <<
+	//		go1.lowerBound.ToString() << ":" << go2.upperBound.ToString() << " with " <<
+	//		go2.lowerBound.ToString() << ":" << go1.upperBound.ToString() << std::endl;
+	//}
 
 }
 

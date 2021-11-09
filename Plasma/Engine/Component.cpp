@@ -1,4 +1,5 @@
 #include "Component.h"
+#include "Object.h"
 
 Component::Component(GameObject* gameObject, std::string name)
     : Object(name)

@@ -77,7 +77,7 @@ struct Vector2
     Vector2 operator*=(const float& otherVector);
     Vector2 operator/=(const float& otherVector);
 
-    // Float
+    // Int
 
     Vector2 operator+(const int& otherVector);
     Vector2 operator-(const int& otherVector);
@@ -87,5 +87,16 @@ struct Vector2
     Vector2 operator-=(const int& otherVector);
     Vector2 operator*=(const int& otherVector);
     Vector2 operator/=(const int& otherVector);
+
+    // Double
+
+    Vector2 operator+(const double& otherVector);
+    Vector2 operator-(const double& otherVector);
+    Vector2 operator*(const double& otherVector);
+    Vector2 operator/(const double& otherVector);
+    Vector2 operator+=(const double& otherVector);
+    Vector2 operator-=(const double& otherVector);
+    Vector2 operator*=(const double& otherVector);
+    Vector2 operator/=(const double& otherVector);
 
 };

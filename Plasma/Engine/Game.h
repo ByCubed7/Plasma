@@ -4,6 +4,7 @@
 
 #include "Settings.h"
 #include "Input.h"
+#include "Component.h"
 #include "SpriteRenderer.h"
 #include "TextRenderer.h"
 #include "Renderer.h"
@@ -12,6 +13,7 @@
 
 // Forward declaration
 class GameObject;
+class Component;
 
 // Game holds all game-related state and functionality.
 // Combines all game-related data into a single class for
@@ -34,7 +36,8 @@ public:
 	//TextRenderer* text;
 	Renderer* renderer;
 
-	std::vector<std::unique_ptr<GameObject>> gameObjects = {};
+	std::vector<GameObject*> gameObjects = {};
+	std::vector<Component*> components = {};
 
 	// Constructor
 	Game(const Settings& setting);
@@ -42,7 +45,8 @@ public:
 	// Destructor
 	~Game();
 
-	void AddGameObject(GameObject * gameObject);
+	void AddGameObject(GameObject* gameObject);
+	void AddComponent(Component* component);
 
 	// Initialize game state 
 	// load all shaders, textures and levels

@@ -289,7 +289,7 @@ Vector2 Vector2::operator+=(const int& amount)
 	return *this;
 }
 
-// Subtracting by float
+// Subtracting by int
 Vector2 Vector2::operator-=(const int& amount)
 {
 	x -= amount;
@@ -297,7 +297,7 @@ Vector2 Vector2::operator-=(const int& amount)
 	return *this;
 }
 
-// Multipling by float
+// Multipling by int
 Vector2 Vector2::operator*=(const int& amount)
 {
 	x *= amount;
@@ -305,8 +305,55 @@ Vector2 Vector2::operator*=(const int& amount)
 	return *this;
 }
 
-// Dividing by float
+// Dividing by int
 Vector2 Vector2::operator/=(const int& amount)
+{
+	x /= amount;
+	y /= amount;
+	return *this;
+}
+
+
+// - Doubles
+
+// Adding to double
+Vector2 Vector2::operator+(const double& amount) { return{ x + (float)amount, y + (float)amount }; }
+
+// Subtracting by double
+Vector2 Vector2::operator-(const double& amount) { return{ x - (float)amount, y - (float)amount }; }
+
+// Multipling by double
+Vector2 Vector2::operator*(const double& amount) { return{ x * (float)amount, y * (float)amount }; }
+
+// Dividing by double
+Vector2 Vector2::operator/(const double& amount) { return { x / (float)amount, y / (float)amount }; }
+
+// Adding to double
+Vector2 Vector2::operator+=(const double& amount)
+{
+	x += amount;
+	y += amount;
+	return *this;
+}
+
+// Subtracting by double
+Vector2 Vector2::operator-=(const double& amount)
+{
+	x -= amount;
+	y -= amount;
+	return *this;
+}
+
+// Multipling by double
+Vector2 Vector2::operator*=(const double& amount)
+{
+	x *= amount;
+	y *= amount;
+	return *this;
+}
+
+// Dividing by double
+Vector2 Vector2::operator/=(const double& amount)
 {
 	x /= amount;
 	y /= amount;

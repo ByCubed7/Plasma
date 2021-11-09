@@ -5,6 +5,8 @@
 SpriteComponent::SpriteComponent(GameObject* gameObject, std::string name)
     : Component(gameObject, name)
 {
+    color = { 0,0,0 };
+
 	sprite = Texture2D();
 	spriteFrame = 0;
 	spriteSize = 0;
@@ -24,7 +26,7 @@ void SpriteComponent::Draw(Renderer renderer)
         drawScale,
         gameObject->rotation,
         spriteFrame,
-        gameObject->color
+        color
     );
 }
 

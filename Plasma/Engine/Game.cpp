@@ -28,7 +28,12 @@ Game::~Game()
 
 void Game::AddGameObject(GameObject* gameObject)
 {
-	gameObjects.emplace_back(std::unique_ptr<GameObject>(gameObject));
+	gameObjects.emplace_back(gameObject);
+}
+
+void Game::AddComponent(Component* component)
+{
+	components.emplace_back(component);
 }
 
 void Game::GInit()
@@ -86,6 +91,7 @@ void Game::GUpdate(double delta)
 	// - IF PAUSED, DO NOTHING!
 	if (state != State::ACTIVE) return;
 
+	/*
 	for (std::unique_ptr<GameObject>& gameObject : gameObjects) {
 
 		// Compute physics
@@ -101,12 +107,18 @@ void Game::GUpdate(double delta)
 
 		// Collision detection?
 
-	}
+	}*/
 
-	//*
+	/*
 	for (std::unique_ptr<GameObject>& gameObject : gameObjects)
 	{
 		gameObject->Update(delta, *this);
+	}
+	//*/
+
+	for (Component& component : components)
+	{
+		component->Update(delta, *this);
 	}
 	//*/
 }
@@ -116,12 +128,17 @@ void Game::GRender()
 	//Renderer->DrawSprite(Resources::GetTexture("Player"),
 	//    glm::vec2(300.0f, 300.0f), glm::vec2(400.0f, 400.0f), 75.0f, glm::vec3(0.5f, 0.5f, 0.0f));
 
-	//*
+	/*
 	for (std::unique_ptr<GameObject>& gameObject : gameObjects)
 	{
 		gameObject->Draw(*renderer);
 	}
 	//*/
+
+	for (std::unique_ptr<Component>& component : components)
+	{
+		component->Draw(*renderer);
+	}
 
 }
 
