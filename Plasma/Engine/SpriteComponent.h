@@ -32,10 +32,10 @@ public:
 
 	// Set the animation speed
 	// Returns self for method chaining
-	SpriteComponent* Speed(double speed);
+	SpriteComponent* AnimationSpeed(double speed);
 
 	// Get the Animation speed
-	int GetSpeed();
+	int GetAnimationSpeed();
 
 	// Bounds
 	AABB bounds;

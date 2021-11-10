@@ -52,6 +52,6 @@ void SpriteComponent::CalcBounds()
 SpriteComponent* SpriteComponent::Set(Texture2D sprite) { this->sprite = sprite; return this; }
 Texture2D SpriteComponent::Get() { return this->sprite; }
 
-SpriteComponent* SpriteComponent::Speed(double speed) { this->animationSpeed = speed; return this; }
-int SpriteComponent::GetSpeed() { return this->animationSpeed; }
+SpriteComponent* SpriteComponent::AnimationSpeed(double speed) { this->animationSpeed = speed; return this; }
+int SpriteComponent::GetAnimationSpeed() { return this->animationSpeed; }
 

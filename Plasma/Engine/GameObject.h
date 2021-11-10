@@ -30,8 +30,7 @@ public:
 	void AddComponent(Component *component);
 	void RemoveComponent(Component *component);
 
-	template<typename T>
-	Component* GetComponent();
+	Component* GetComponent(string name);
 	//*/
 
 	bool isSolid;

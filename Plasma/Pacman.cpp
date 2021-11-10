@@ -42,13 +42,19 @@ void Pacman::Init()
 	AddGameObject(player);
 
 	SpriteComponent* playerSprite = new SpriteComponent(player);
-	playerSprite->Set(Resources::GetTexture("player"))->Speed(2);
-	player->AddComponent(playerSprite);
+	
+	playerSprite
+		->Set(Resources::GetTexture("player"))
+		->AnimationSpeed(4);
+
 	AddComponent(playerSprite);
 
 	CharacterControllerComponent* playerController = new CharacterControllerComponent(player);
-	player->AddComponent(playerController);
 	AddComponent(playerController);
+
+	// Yikes
+	//player->GetComponent("SpriteComponent")
+	//cout << "Sprite Component === " << player->GetComponent("SpriteComponent");
 
 	
 	//*/

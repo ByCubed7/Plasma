@@ -30,11 +30,12 @@ GameObject::GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 
 void GameObject::AddComponent(Component* component) { components.push_back(component); }
 void GameObject::RemoveComponent(Component* component) { components.remove(component); }
 
-template<typename T> Component* GameObject::GetComponent() 
+Component* GameObject::GetComponent(string name)
 {
-    for (Component* componentIn : components) {
-        if (typeid(componentIn) == typeid(T))
-            return componentIn;
+    for (const auto& component : components)
+    {
+        if (component->ToString() == name)
+            return component;
     }
 
     return nullptr;

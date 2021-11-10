@@ -8,7 +8,7 @@
 class GameObject;
 class Game;
 
-class Component : Object
+class Component : public Object
 {
 public:
 	Component(GameObject* gameObject, std::string name = "Component");
