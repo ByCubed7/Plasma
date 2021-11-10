@@ -29,7 +29,7 @@ void CharacterControllerComponent::Update(double delta, Game& game)
 		velocity = velocity * 300;
 	}
 
-	gameObject->position += velocity;
+	gameObject->position += velocity * delta;
 
 	// Rotation
 	if (game.input.IsKey(Input::Key_W)) gameObject->rotation = 270;

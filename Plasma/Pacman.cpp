@@ -41,7 +41,8 @@ void Pacman::Init()
 	player->position = Vector2(100, 100);
 	AddGameObject(player);
 
-	SpriteComponent* playerSprite = (new SpriteComponent(player))->Set(Resources::GetTexture("player"));
+	SpriteComponent* playerSprite = new SpriteComponent(player);
+	playerSprite->Set(Resources::GetTexture("player"))->Speed(2);
 	player->AddComponent(playerSprite);
 	AddComponent(playerSprite);
 

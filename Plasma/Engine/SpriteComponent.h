@@ -12,16 +12,30 @@ public:
 	SpriteComponent(GameObject* gameObject, std::string name = "SpriteComponent");
 
 	void Draw(Renderer& renderer) override;
+	void Update(double delta, Game& game);
 
 	glm::vec3 color;
+
+	double animationPoint;
+	int animationSpeed;
 
 	Texture2D sprite;
 	int spriteFrame;
 	int spriteSize;
 
-	// Method chaining
+	// Set the texture
+	// Returns self for method chaining
 	SpriteComponent* Set(Texture2D sprite);
+
+	// Get the texture
 	Texture2D Get();
+
+	// Set the animation speed
+	// Returns self for method chaining
+	SpriteComponent* Speed(double speed);
+
+	// Get the Animation speed
+	int GetSpeed();
 
 	// Bounds
 	AABB bounds;

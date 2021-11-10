@@ -7,6 +7,9 @@ SpriteComponent::SpriteComponent(GameObject* gameObject, std::string name)
 {
     color = { 1, 1, 1 };
 
+    animationPoint = 0;
+    animationSpeed = 0;
+
 	sprite = Texture2D();
 	spriteFrame = 0;
 	spriteSize = 1024;
@@ -28,10 +31,12 @@ void SpriteComponent::Draw(Renderer& renderer)
         spriteFrame,
         color
     );
+}
 
-    //cout << "SpriteComponent::Draw.Renderer:" << &renderer << endl;
-    cout << "this->sprite:" << &this->sprite << endl;
-
+void SpriteComponent::Update(double delta, Game& game) 
+{
+    animationPoint += delta;
+    spriteFrame = animationPoint * animationSpeed;
 }
 
 AABB SpriteComponent::GetBounds() { return bounds; }
@@ -46,4 +51,7 @@ void SpriteComponent::CalcBounds()
 
 SpriteComponent* SpriteComponent::Set(Texture2D sprite) { this->sprite = sprite; return this; }
 Texture2D SpriteComponent::Get() { return this->sprite; }
+
+SpriteComponent* SpriteComponent::Speed(double speed) { this->animationSpeed = speed; return this; }
+int SpriteComponent::GetSpeed() { return this->animationSpeed; }
 

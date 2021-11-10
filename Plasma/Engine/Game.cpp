@@ -118,12 +118,10 @@ void Game::GUpdate(double delta)
 	}
 	//*/
 
-	std::list<Component*>::iterator it;
-	for (it = components.begin(); it != components.end(); ++it)
+	for (const auto& component : components)
 	{
-		(*it)->Update(delta, *this);
+		component->Update(delta, *this);
 	}
-	//*/
 }
 
 void Game::GRender()
