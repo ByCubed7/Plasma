@@ -7,7 +7,7 @@
 #include "Engine/CharacterControllerComponent.h"
 #include "Engine/Component.h"
 
-#include "Ghost.h"
+#include "WarpComponent.h"
 
 Pacman::Pacman(const Settings& setting) : Game(setting)
 {
@@ -26,7 +26,6 @@ Pacman::~Pacman()
 
 void Pacman::Init() 
 {
-
 	// Load textures
 	Resources::LoadTexture("assets/textures/Player.png", true, "player");
 	Resources::LoadTexture("assets/textures/Ghost.png", true, "ghost");
@@ -52,15 +51,42 @@ void Pacman::Init()
 	CharacterControllerComponent* playerController = new CharacterControllerComponent(player);
 	AddComponent(playerController);
 
+	WarpComponent* playerWarp = new WarpComponent(player);
+	AddComponent(playerWarp);
+
 	// Yikes
 	//player->GetComponent("SpriteComponent")
 	//cout << "Sprite Component === " << player->GetComponent("SpriteComponent");
 
-	
-	//*/
-
-
 	//* Create the Ghost
+	GameObject* ghost = new GameObject();
+	ghost->position = Vector2(100, 100);
+	AddGameObject(ghost);
+
+	SpriteComponent* ghostSprite = new SpriteComponent(ghost);
+
+	ghostSprite
+		->Set(Resources::GetTexture("ghost"))
+		->AnimationSpeed(2);
+
+	AddComponent(ghostSprite);
+
+
+	//* Create the Pip
+	GameObject* pip = new GameObject();
+	pip->position = Vector2(300, 300);
+	AddGameObject(pip);
+
+	SpriteComponent* pipSprite = new SpriteComponent(pip);
+
+	pipSprite
+		->Set(Resources::GetTexture("pip"))
+		->AnimationSpeed(2);
+
+	AddComponent(pipSprite);
+
+
+	
 	/*GameObject* ghost = new GameObject();
 	ghost->position = Vector2(100, 100);
 
@@ -71,6 +97,8 @@ void Pacman::Init()
 
 	AddGameObject(ghost);*/
 	//*/
+
+
 
 	/* Create a Pip
 	Pip* pip = new Pip();

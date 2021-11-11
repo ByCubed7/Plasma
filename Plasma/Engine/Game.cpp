@@ -20,6 +20,8 @@ Game::Game(const Settings& setting)
 	input = Input();
 	width = setting.screenWidth;
 	height = setting.screenHeight;
+
+	this->settings = settings;
 }
 
 Game::~Game()

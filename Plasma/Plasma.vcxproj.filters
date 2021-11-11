@@ -39,9 +39,6 @@
     <ClCompile Include="Library\glad.c">
       <Filter>Library</Filter>
     </ClCompile>
-    <ClCompile Include="Ghost.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\AABB.cpp">
       <Filter>Engine\Source</Filter>
     </ClCompile>
@@ -102,6 +99,9 @@
     <ClCompile Include="Engine\CharacterControllerComponent.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
+    <ClCompile Include="WarpComponent.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -112,9 +112,6 @@
     </ClInclude>
     <ClInclude Include="Library\stb_image.h">
       <Filter>Library</Filter>
-    </ClInclude>
-    <ClInclude Include="Ghost.h">
-      <Filter>Game Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\AABB.h">
       <Filter>Engine\Headers</Filter>
@@ -175,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="Engine\CharacterControllerComponent.h">
       <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="WarpComponent.h">
+      <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

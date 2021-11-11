@@ -12,7 +12,7 @@ public:
 	SpriteComponent(GameObject* gameObject, std::string name = "SpriteComponent");
 
 	void Draw(Renderer& renderer) override;
-	void Update(double delta, Game& game);
+	void Update(double delta, Game& game) override;
 
 	glm::vec3 color;
 

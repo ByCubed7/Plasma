@@ -162,10 +162,10 @@
     <ClCompile Include="Engine\TextRenderer.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Vector2.cpp" />
-    <ClCompile Include="Ghost.cpp" />
     <ClCompile Include="Library\glad.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pacman.cpp" />
+    <ClCompile Include="WarpComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\AABB.h" />
@@ -187,11 +187,11 @@
     <ClInclude Include="Engine\TextRenderer.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Vector2.h" />
-    <ClInclude Include="Ghost.h" />
     <ClInclude Include="Library\glad.h" />
     <ClInclude Include="Library\khrplatform.h" />
     <ClInclude Include="Library\stb_image.h" />
     <ClInclude Include="Pacman.h" />
+    <ClInclude Include="WarpComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

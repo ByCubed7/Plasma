@@ -29,6 +29,7 @@ public:
 	State state;
 
 	Input input;
+	Settings* settings;
 	
 	unsigned int width, height;
 
