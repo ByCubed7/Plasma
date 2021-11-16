@@ -32,6 +32,7 @@ struct Vector2
     Vector2(float coordX, float coordY);
     Vector2(const Vector2& oldVector2);
     Vector2(const int coord);
+    Vector2(const float coord);
     //~Vector2();
 
     // - Methods

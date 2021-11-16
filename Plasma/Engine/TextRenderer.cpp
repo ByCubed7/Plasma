@@ -32,9 +32,6 @@ TextRenderer::~TextRenderer()
 
 void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec2 pivot, glm::vec3 color)
 {
-
-    std::cout << "Rendering Text \n";
-
     // Get Font from resources
     Font font = Resources::GetFont("arial");
 

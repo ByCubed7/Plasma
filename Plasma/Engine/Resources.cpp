@@ -148,8 +148,6 @@ Texture2D Resources::LoadTextureFromFile(const char* file, bool alpha)
 
 Font Resources::LoadFontFromFile(const char* file, unsigned int size) 
 {
-    cout << "loading font from file \n";
-
     FT_Library ft;
     if (FT_Init_FreeType(&ft))
     {

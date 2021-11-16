@@ -49,6 +49,13 @@ Vector2::Vector2(const int coord)
 	y = coord;
 }
 
+// Single Float Constructor
+Vector2::Vector2(const float coord)
+{
+	x = coord;
+	y = coord;
+}
+
 
 // █▀▄▀█ █▀▀ ▀█▀ █░█ █▀█ █▀▄ █▀
 // █░▀░█ ██▄ ░█░ █▀█ █▄█ █▄▀ ▄█

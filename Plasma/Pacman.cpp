@@ -30,6 +30,7 @@ void Pacman::Init()
 	Resources::LoadTexture("assets/textures/Player.png", true, "player");
 	Resources::LoadTexture("assets/textures/Ghost.png", true, "ghost");
 	Resources::LoadTexture("assets/textures/Pip.png", true, "pip");
+	Resources::LoadTexture("assets/textures/Cherry.png", true, "cherry");
 
 	// Load levels
 
@@ -75,6 +76,7 @@ void Pacman::Init()
 	//* Create the Pip
 	GameObject* pip = new GameObject();
 	pip->position = Vector2(300, 300);
+	//pip->scale = 1;
 	AddGameObject(pip);
 
 	SpriteComponent* pipSprite = new SpriteComponent(pip);
@@ -84,6 +86,20 @@ void Pacman::Init()
 		->AnimationSpeed(2);
 
 	AddComponent(pipSprite);
+
+
+	//* Create the Cherry
+	GameObject* cherry = new GameObject();
+	cherry->position = Vector2(400, 300);
+	AddGameObject(cherry);
+
+	SpriteComponent* cherrySprite = new SpriteComponent(cherry);
+
+	cherrySprite
+		->Set(Resources::GetTexture("cherry"))
+		->AnimationSpeed(2);
+
+	AddComponent(cherrySprite);
 
 
 	
