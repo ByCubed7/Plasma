@@ -21,7 +21,7 @@ BoxColliderComponent* BoxColliderComponent::SetSize(Vector2 size)
 
 AABB BoxColliderComponent::GetBounds()
 {
-	AABB value = bounds;
+	AABB value = AABB(bounds);
 	value.lowerBound += gameObject->position;
 	value.upperBound += gameObject->position;
 	return value;
