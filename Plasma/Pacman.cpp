@@ -64,6 +64,8 @@ void Pacman::Init()
 	//player->GetComponent("SpriteComponent")
 	//cout << "Sprite Component === " << player->GetComponent("SpriteComponent");
 
+
+
 	//* Create the Ghost
 	GameObject* ghost = new GameObject();
 	ghost->position = Vector2(100, 100);
@@ -76,6 +78,17 @@ void Pacman::Init()
 		->AnimationSpeed(2);
 
 	AddComponent(ghostSprite);
+
+
+	BoxColliderComponent* ghostCollider = new BoxColliderComponent(ghost);
+
+	ghostCollider
+		->Bind(*this)
+		->SetSize(200);
+
+	AddComponent(ghostCollider);
+
+
 
 
 	//* Create the Pip
@@ -91,6 +104,8 @@ void Pacman::Init()
 		->AnimationSpeed(2);
 
 	AddComponent(pipSprite);
+
+
 
 
 	//* Create the Cherry

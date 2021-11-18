@@ -128,7 +128,8 @@ void Game::GUpdate(double delta)
 
 	sort(axis.begin(), axis.end(), [](auto a, auto b) { return get<0>(a) > get<0>(b); });
 
-	list<tuple<BoxColliderComponent*, BoxColliderComponent*>> collidersToCheck = {};
+	map<BoxColliderComponent*, BoxColliderComponent*> collidersToCheck = {};
+	
 	list<BoxColliderComponent*> inRange = {};
 	for (const auto& axi : axis)
 	{
@@ -140,18 +141,45 @@ void Game::GUpdate(double delta)
 		{
 			// Check if any are colliding
 			for (const auto& colliderInRange : inRange)
-			{
-				bool colliding = colliderInRange->bounds.Overlaps(currentCollider->bounds);
-
-				if (colliding)
-					;
-			} 
+				collidersToCheck[currentCollider] = colliderInRange;
 
 			inRange.push_back(currentCollider);
 		}
 		else inRange.remove(currentCollider);
 	}
 	//*/
+
+	for (auto const& current : collidersToCheck)
+	{
+		BoxColliderComponent* currentCollider = current.first;
+		BoxColliderComponent* collidingCollider = current.second;
+
+		bool colliding = currentCollider->GetBounds().Overlaps(collidingCollider->GetBounds());
+
+		// Calculate whether the the collider was already colliding from the frame before
+		auto it = collidersColliding.find(currentCollider);
+		bool isAlreadyColliding = it != collidersColliding.end() && it->second == collidingCollider;
+
+		if (colliding)
+		{
+			if (isAlreadyColliding)
+				currentCollider->OnCollisionStay();
+			else {
+				currentCollider->OnCollisionEnter();
+				collidersColliding[currentCollider] = collidingCollider;
+			}
+		}
+		else
+		{
+			if (isAlreadyColliding)
+			{
+				currentCollider->OnCollisionExit();
+				collidersColliding.erase(currentCollider);
+			}
+		}
+	}
+
+
 }
 
 void Game::GRender()

@@ -9,7 +9,10 @@ public:
 
 	AABB bounds;
 
-	void Bind(Game& game);
+	BoxColliderComponent* Bind(Game& game);
+	BoxColliderComponent* SetSize(Vector2 size);
+
+	AABB GetBounds();
 
 	void OnCollisionEnter();
 	void OnCollisionStay();

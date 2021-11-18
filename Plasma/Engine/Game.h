@@ -39,11 +39,12 @@ public:
 	//TextRenderer* text;
 	Renderer* renderer;
 
-	list<GameObject*> gameObjects = {};
-	list<Component*> components = {};
+	list<GameObject*> gameObjects;
+	list<Component*> components;
 
 	// Collision
-	list<BoxColliderComponent*> colliders = {};
+	list<BoxColliderComponent*> colliders;
+	map<BoxColliderComponent*, BoxColliderComponent*> collidersColliding;
 
 
 	// Constructor
