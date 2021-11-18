@@ -58,6 +58,25 @@ void Pacman::Init()
 
 	BoxColliderComponent* playerCollider = new BoxColliderComponent(player);
 	playerCollider->Bind(*this);
+
+	playerCollider->OnCollisionEnterEvent.subscribe(
+		BoxColliderComponentEventType::TEST_EVENT,
+		[](const Event<BoxColliderComponentEventType>& e)
+		{ cout << "OnCollisionEnterEvent" << endl; }
+	);
+
+	playerCollider->OnCollisionStayEvent.subscribe(
+		BoxColliderComponentEventType::TEST_EVENT,
+		[](const Event<BoxColliderComponentEventType>& e)
+		{ cout << "OnCollisionStayEvent" << endl; }
+	);
+
+	playerCollider->OnCollisionExitEvent.subscribe(
+		BoxColliderComponentEventType::TEST_EVENT,
+		[](const Event<BoxColliderComponentEventType>& e)
+		{ cout << "OnCollisionExitEvent" << endl; }
+	);
+
 	AddComponent(playerCollider);
 
 	// Yikes

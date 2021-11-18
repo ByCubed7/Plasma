@@ -168,6 +168,7 @@
     <ClCompile Include="WarpComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dispatcher.h" />
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
     <ClInclude Include="Engine\CharacterControllerComponent.h" />
@@ -187,6 +188,8 @@
     <ClInclude Include="Engine\TextRenderer.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Vector2.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="DemoEvent.h" />
     <ClInclude Include="Library\glad.h" />
     <ClInclude Include="Library\khrplatform.h" />
     <ClInclude Include="Library\stb_image.h" />

@@ -31,6 +31,9 @@
     <Filter Include="Engine\Components">
       <UniqueIdentifier>{562b4972-8c1f-4756-b484-24cf312640fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Events">
+      <UniqueIdentifier>{70c63dcb-7142-45dd-abf6-bd2192a20921}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -175,6 +178,15 @@
     </ClInclude>
     <ClInclude Include="WarpComponent.h">
       <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Engine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Dispatcher.h">
+      <Filter>Engine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoEvent.h">
+      <Filter>Engine\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
