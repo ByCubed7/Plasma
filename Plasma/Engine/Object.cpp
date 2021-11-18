@@ -8,3 +8,7 @@ Object::Object(string name)
 
 // Returns the object type
 string Object::ToString() { return name; }
+
+// Operators
+
+Object::operator string() { return ToString(); }

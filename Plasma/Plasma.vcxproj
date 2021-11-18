@@ -154,7 +154,7 @@
     <ClCompile Include="Engine\Object.cpp" />
     <ClCompile Include="Engine\Renderer.cpp" />
     <ClCompile Include="Engine\Resources.cpp" />
-    <ClCompile Include="Engine\RigidbodyComponent.cpp" />
+    <ClCompile Include="Engine\BoxColliderComponent.cpp" />
     <ClCompile Include="Engine\Settings.cpp" />
     <ClCompile Include="Engine\Shader.cpp" />
     <ClCompile Include="Engine\SpriteComponent.cpp" />
@@ -179,7 +179,7 @@
     <ClInclude Include="Engine\Object.h" />
     <ClInclude Include="Engine\Renderer.h" />
     <ClInclude Include="Engine\Resources.h" />
-    <ClInclude Include="Engine\RigidbodyComponent.h" />
+    <ClInclude Include="Engine\BoxColliderComponent.h" />
     <ClInclude Include="Engine\Settings.h" />
     <ClInclude Include="Engine\Shader.h" />
     <ClInclude Include="Engine\SpriteComponent.h" />

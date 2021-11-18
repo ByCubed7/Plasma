@@ -40,3 +40,5 @@ Component* GameObject::GetComponent(string name)
 
     return nullptr;
 }
+
+GameObject::operator bool() { return !destroyed; }

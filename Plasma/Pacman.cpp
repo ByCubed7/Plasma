@@ -8,6 +8,7 @@
 #include "Engine/Component.h"
 
 #include "WarpComponent.h"
+#include "Engine/BoxColliderComponent.h"
 
 Pacman::Pacman(const Settings& setting) : Game(setting)
 {
@@ -54,6 +55,10 @@ void Pacman::Init()
 
 	WarpComponent* playerWarp = new WarpComponent(player);
 	AddComponent(playerWarp);
+
+	BoxColliderComponent* playerCollider = new BoxColliderComponent(player);
+	playerCollider->Bind(*this);
+	AddComponent(playerCollider);
 
 	// Yikes
 	//player->GetComponent("SpriteComponent")

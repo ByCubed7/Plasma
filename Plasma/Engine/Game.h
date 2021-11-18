@@ -4,16 +4,18 @@
 
 #include "Settings.h"
 #include "Input.h"
-#include "Component.h"
 #include "SpriteRenderer.h"
 #include "TextRenderer.h"
 #include "Renderer.h"
 
 #include <list>
 
+using namespace std;
+
 // Forward declaration
 class GameObject;
 class Component;
+class BoxColliderComponent;
 
 // Game holds all game-related state and functionality.
 // Combines all game-related data into a single class for
@@ -37,8 +39,12 @@ public:
 	//TextRenderer* text;
 	Renderer* renderer;
 
-	std::list<GameObject*> gameObjects = {};
-	std::list<Component*> components = {};
+	list<GameObject*> gameObjects = {};
+	list<Component*> components = {};
+
+	// Collision
+	list<BoxColliderComponent*> colliders = {};
+
 
 	// Constructor
 	Game(const Settings& setting);
@@ -63,5 +69,6 @@ public:
 
 	virtual void Update(double delta);
 	virtual void Render();
+
 
 };

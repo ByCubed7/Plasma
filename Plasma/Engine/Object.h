@@ -11,7 +11,9 @@ struct Object
 	// Returns the object type
 	virtual string ToString();
 
-private:
+	operator string();
+
+protected:
 	// The name of the object
 	string name;
 };

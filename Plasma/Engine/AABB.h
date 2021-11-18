@@ -9,6 +9,8 @@ struct AABB
 	// Constructor
 	AABB();
 	AABB(Vector2 lower, Vector2 upper);
+	AABB(Vector2 bounds);
+	AABB(float length);
 
 	// Functions
 

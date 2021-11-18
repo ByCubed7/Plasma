@@ -90,7 +90,7 @@
     <ClCompile Include="Engine\SpriteComponent.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\RigidbodyComponent.cpp">
+    <ClCompile Include="Engine\BoxColliderComponent.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Component.cpp">
@@ -164,7 +164,7 @@
     <ClInclude Include="Engine\SpriteComponent.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\RigidbodyComponent.h">
+    <ClInclude Include="Engine\BoxColliderComponent.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Component.h">
