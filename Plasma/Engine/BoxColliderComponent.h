@@ -11,17 +11,13 @@ enum class BoxColliderComponentEventType {
 	TEST_EVENT3
 };
 
-class BoxColliderComponentEvent : public Event<BoxColliderComponentEventType>
-{
-public:
-	BoxColliderComponentEvent() : Event<BoxColliderComponentEventType>(BoxColliderComponentEventType::TEST_EVENT, "BoxColliderComponentEvent") {};
-	virtual ~BoxColliderComponentEvent() = default;
-};
-
-
 class BoxColliderComponent : public Component
 {
 public:
+	struct OnEnterEventParams;
+	struct OnStayEventParams;
+	struct OnExitEventParams;
+
 	BoxColliderComponent(GameObject* gameObject, std::string name = "BoxColliderComponent");
 
 	AABB bounds;
@@ -36,7 +32,32 @@ public:
 	void OnCollisionExit();
 
 	// Event Dispatchers
-	Dispatcher<BoxColliderComponentEventType> OnCollisionEnterEvent;
-	Dispatcher<BoxColliderComponentEventType> OnCollisionStayEvent;
-	Dispatcher<BoxColliderComponentEventType> OnCollisionExitEvent;
+	Dispatcher<OnEnterEventParams> OnCollisionEnterEvent;
+	Dispatcher<OnStayEventParams> OnCollisionStayEvent;
+	Dispatcher<OnExitEventParams> OnCollisionExitEvent;
+};
+
+
+struct BoxColliderComponent::OnEnterEventParams
+{
+	OnEnterEventParams(BoxColliderComponent* collider);
+	BoxColliderComponent* collider;
+
+	operator int() const { return collider->bounds.upperBound.x; }
+};
+
+struct BoxColliderComponent::OnStayEventParams
+{
+	OnStayEventParams(BoxColliderComponent* collider);
+	BoxColliderComponent* collider;
+
+	operator int() const { return collider->bounds.upperBound.x; }
+};
+
+struct BoxColliderComponent::OnExitEventParams
+{
+	OnExitEventParams(BoxColliderComponent* collider);
+	BoxColliderComponent* collider;
+
+	operator int() const { return collider->bounds.upperBound.x; }
 };

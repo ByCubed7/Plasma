@@ -29,21 +29,31 @@ AABB BoxColliderComponent::GetBounds()
 
 void BoxColliderComponent::OnCollisionEnter()
 {
-	BoxColliderComponentEvent e;
+	Event<BoxColliderComponent::OnEnterEventParams> e(this);
 	OnCollisionEnterEvent.post(e);
-	cout << gameObject->position.ToString() << " OnCollisionEnter" << endl;
 }
 
 void BoxColliderComponent::OnCollisionStay()
 {
-	BoxColliderComponentEvent e;
+	Event<BoxColliderComponent::OnStayEventParams> e(this);
 	OnCollisionStayEvent.post(e);
-	cout << gameObject->position.ToString() << " OnCollisionStay" << endl;
 }
 
 void BoxColliderComponent::OnCollisionExit()
 {
-	BoxColliderComponentEvent e;
+	Event<BoxColliderComponent::OnExitEventParams> e(this);
 	OnCollisionExitEvent.post(e);
-	cout << gameObject->position.ToString() << " OnCollisionExit" << endl;
 }
+
+
+
+BoxColliderComponent::OnEnterEventParams::OnEnterEventParams(BoxColliderComponent* collider)
+{ this->collider = collider; };
+
+BoxColliderComponent::OnStayEventParams::OnStayEventParams(BoxColliderComponent* collider)
+{ this->collider = collider; };
+
+BoxColliderComponent::OnExitEventParams::OnExitEventParams(BoxColliderComponent* collider)
+{ this->collider = collider; };
+
+

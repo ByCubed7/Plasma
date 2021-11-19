@@ -12,7 +12,7 @@ public:
 	PlayerCollisionEventManager* UnBind();
 
 private:
-	void OnEnter(const Event<BoxColliderComponentEventType>& e);
-	void OnStay(const Event<BoxColliderComponentEventType>& e);
-	void OnExit(const Event<BoxColliderComponentEventType>& e);
+	void OnEnter(const Event<BoxColliderComponent::OnEnterEventParams>& e);
+	void OnStay(const Event<BoxColliderComponent::OnStayEventParams>& e);
+	void OnExit(const Event<BoxColliderComponent::OnExitEventParams>& e);
 };

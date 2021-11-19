@@ -11,20 +11,20 @@ PlayerCollisionEventManager::PlayerCollisionEventManager(GameObject* gameObject,
 PlayerCollisionEventManager* PlayerCollisionEventManager::Bind(BoxColliderComponent* boxColliderComponent)
 {
 	boxColliderComponent->OnCollisionEnterEvent.subscribe(
-		BoxColliderComponentEventType::TEST_EVENT,
-		[this] (const Event<BoxColliderComponentEventType>& e) mutable
+		{ boxColliderComponent },
+		[this] (const Event<BoxColliderComponent::OnEnterEventParams>& e)
 		{ OnEnter(e); }
 	);
 
 	boxColliderComponent->OnCollisionStayEvent.subscribe(
-		BoxColliderComponentEventType::TEST_EVENT,
-		[this] (const Event<BoxColliderComponentEventType>& e) mutable
+		{ boxColliderComponent },
+		[this] (const Event<BoxColliderComponent::OnStayEventParams>& e)
 		{ OnStay(e); }
 	);
 	
 	boxColliderComponent->OnCollisionExitEvent.subscribe(
-		BoxColliderComponentEventType::TEST_EVENT,
-		[this] (const Event<BoxColliderComponentEventType>& e) mutable
+		{ boxColliderComponent },
+		[this] (const Event<BoxColliderComponent::OnExitEventParams>& e)
 		{ OnExit(e); }
 	);
 	
@@ -36,17 +36,17 @@ PlayerCollisionEventManager* PlayerCollisionEventManager::UnBind()
 	return this;
 }
 
-void PlayerCollisionEventManager::OnEnter(const Event<BoxColliderComponentEventType>& e)
+void PlayerCollisionEventManager::OnEnter(const Event<BoxColliderComponent::OnEnterEventParams>& e)
 {
 	cout << "PlayerCollisionEventManager :: OnEnter" << endl;
 }
 
-void PlayerCollisionEventManager::OnStay(const Event<BoxColliderComponentEventType>& e)
+void PlayerCollisionEventManager::OnStay(const Event<BoxColliderComponent::OnStayEventParams>& e)
 {
 	cout << "PlayerCollisionEventManager :: OnStay" << endl;
 }
 
-void PlayerCollisionEventManager::OnExit(const Event<BoxColliderComponentEventType>& e)
+void PlayerCollisionEventManager::OnExit(const Event<BoxColliderComponent::OnExitEventParams>& e)
 {
 	cout << "PlayerCollisionEventManager :: OnExit" << endl;
 }

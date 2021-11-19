@@ -2,20 +2,22 @@
 
 #include <string>
 
+using namespace std;
+
 template <typename T>
 class Event 
 {
 public:
 	// Constructors
 	Event() = default;
-	Event(T type, const std::string& name = "") : _type(type), _name(name) {};
+	Event(T type, const string& name = "") : _type(type), _name(name) {};
 	
 	inline const T type() const { return _type; };
-	inline const std::string& getName() const { return _name; };
+	inline const string& getName() const { return _name; };
 	virtual bool isHandled() { return _handled; };
 
 protected:
 	T _type;
-	std::string _name;
+	string _name;
 	bool _handled = false;
 };
