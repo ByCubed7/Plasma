@@ -165,14 +165,16 @@
     <ClCompile Include="Library\glad.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pacman.cpp" />
+    <ClCompile Include="PlayerCollisionEventManager.cpp" />
     <ClCompile Include="WarpComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Dispatcher.h" />
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
     <ClInclude Include="Engine\CharacterControllerComponent.h" />
     <ClInclude Include="Engine\Component.h" />
+    <ClInclude Include="Engine\Dispatcher.h" />
+    <ClInclude Include="Engine\Event.h" />
     <ClInclude Include="Engine\Font.h" />
     <ClInclude Include="Engine\Game.h" />
     <ClInclude Include="Engine\GameObject.h" />
@@ -188,12 +190,11 @@
     <ClInclude Include="Engine\TextRenderer.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Vector2.h" />
-    <ClInclude Include="Event.h" />
-    <ClInclude Include="DemoEvent.h" />
     <ClInclude Include="Library\glad.h" />
     <ClInclude Include="Library\khrplatform.h" />
     <ClInclude Include="Library\stb_image.h" />
     <ClInclude Include="Pacman.h" />
+    <ClInclude Include="PlayerCollisionEventManager.h" />
     <ClInclude Include="WarpComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

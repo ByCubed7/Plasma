@@ -105,6 +105,9 @@
     <ClCompile Include="WarpComponent.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerCollisionEventManager.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -179,14 +182,14 @@
     <ClInclude Include="WarpComponent.h">
       <Filter>Game Files</Filter>
     </ClInclude>
-    <ClInclude Include="Event.h">
+    <ClInclude Include="Engine\Dispatcher.h">
       <Filter>Engine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="Dispatcher.h">
+    <ClInclude Include="Engine\Event.h">
       <Filter>Engine\Events</Filter>
     </ClInclude>
-    <ClInclude Include="DemoEvent.h">
-      <Filter>Engine\Events</Filter>
+    <ClInclude Include="PlayerCollisionEventManager.h">
+      <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

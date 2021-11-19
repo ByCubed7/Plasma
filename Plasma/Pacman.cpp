@@ -9,6 +9,7 @@
 
 #include "WarpComponent.h"
 #include "Engine/BoxColliderComponent.h"
+#include "PlayerCollisionEventManager.h"
 
 Pacman::Pacman(const Settings& setting) : Game(setting)
 {
@@ -58,26 +59,14 @@ void Pacman::Init()
 
 	BoxColliderComponent* playerCollider = new BoxColliderComponent(player);
 	playerCollider->Bind(*this);
-
-	playerCollider->OnCollisionEnterEvent.subscribe(
-		BoxColliderComponentEventType::TEST_EVENT,
-		[](const Event<BoxColliderComponentEventType>& e)
-		{ cout << "OnCollisionEnterEvent" << endl; }
-	);
-
-	playerCollider->OnCollisionStayEvent.subscribe(
-		BoxColliderComponentEventType::TEST_EVENT,
-		[](const Event<BoxColliderComponentEventType>& e)
-		{ cout << "OnCollisionStayEvent" << endl; }
-	);
-
-	playerCollider->OnCollisionExitEvent.subscribe(
-		BoxColliderComponentEventType::TEST_EVENT,
-		[](const Event<BoxColliderComponentEventType>& e)
-		{ cout << "OnCollisionExitEvent" << endl; }
-	);
-
 	AddComponent(playerCollider);
+
+	PlayerCollisionEventManager* playerColliderEventMng = new PlayerCollisionEventManager(player);
+	playerColliderEventMng->Bind(playerCollider);
+	AddComponent(playerColliderEventMng);
+
+
+
 
 	// Yikes
 	//player->GetComponent("SpriteComponent")

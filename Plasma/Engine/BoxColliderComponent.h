@@ -2,8 +2,8 @@
 
 #include "Component.h"
 
-#include "../Event.h"
-#include "../Dispatcher.h"
+#include "Event.h"
+#include "Dispatcher.h"
 
 enum class BoxColliderComponentEventType {
 	TEST_EVENT,
