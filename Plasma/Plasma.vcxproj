@@ -154,7 +154,7 @@
     <ClCompile Include="Engine\Object.cpp" />
     <ClCompile Include="Engine\Renderer.cpp" />
     <ClCompile Include="Engine\Resources.cpp" />
-    <ClCompile Include="Engine\RigidbodyComponent.cpp" />
+    <ClCompile Include="Engine\BoxColliderComponent.cpp" />
     <ClCompile Include="Engine\Settings.cpp" />
     <ClCompile Include="Engine\Shader.cpp" />
     <ClCompile Include="Engine\SpriteComponent.cpp" />
@@ -165,6 +165,7 @@
     <ClCompile Include="Library\glad.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pacman.cpp" />
+    <ClCompile Include="PlayerCollisionEventManager.cpp" />
     <ClCompile Include="WarpComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +173,8 @@
     <ClInclude Include="Engine\App.h" />
     <ClInclude Include="Engine\CharacterControllerComponent.h" />
     <ClInclude Include="Engine\Component.h" />
+    <ClInclude Include="Engine\Dispatcher.h" />
+    <ClInclude Include="Engine\Event.h" />
     <ClInclude Include="Engine\Font.h" />
     <ClInclude Include="Engine\Game.h" />
     <ClInclude Include="Engine\GameObject.h" />
@@ -179,7 +182,7 @@
     <ClInclude Include="Engine\Object.h" />
     <ClInclude Include="Engine\Renderer.h" />
     <ClInclude Include="Engine\Resources.h" />
-    <ClInclude Include="Engine\RigidbodyComponent.h" />
+    <ClInclude Include="Engine\BoxColliderComponent.h" />
     <ClInclude Include="Engine\Settings.h" />
     <ClInclude Include="Engine\Shader.h" />
     <ClInclude Include="Engine\SpriteComponent.h" />
@@ -191,6 +194,7 @@
     <ClInclude Include="Library\khrplatform.h" />
     <ClInclude Include="Library\stb_image.h" />
     <ClInclude Include="Pacman.h" />
+    <ClInclude Include="PlayerCollisionEventManager.h" />
     <ClInclude Include="WarpComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

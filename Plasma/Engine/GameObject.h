@@ -28,9 +28,9 @@ public:
 	std::list<Component*> components;
 
 	void AddComponent(Component *component);
+	Component* GetComponent(string name);
 	void RemoveComponent(Component *component);
 
-	Component* GetComponent(string name);
 	//*/
 
 	bool isSolid;
@@ -39,5 +39,8 @@ public:
 	// Constructors
 	GameObject();
 	GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color);
+
+	// Operator Overrides
+	operator bool();
 };
 

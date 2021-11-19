@@ -8,6 +8,8 @@
 #include "Engine/Component.h"
 
 #include "WarpComponent.h"
+#include "Engine/BoxColliderComponent.h"
+#include "PlayerCollisionEventManager.h"
 
 Pacman::Pacman(const Settings& setting) : Game(setting)
 {
@@ -55,9 +57,22 @@ void Pacman::Init()
 	WarpComponent* playerWarp = new WarpComponent(player);
 	AddComponent(playerWarp);
 
+	BoxColliderComponent* playerCollider = new BoxColliderComponent(player);
+	playerCollider->Bind(*this);
+	AddComponent(playerCollider);
+
+	PlayerCollisionEventManager* playerColliderEventMng = new PlayerCollisionEventManager(player);
+	playerColliderEventMng->Bind(playerCollider);
+	AddComponent(playerColliderEventMng);
+
+
+
+
 	// Yikes
 	//player->GetComponent("SpriteComponent")
 	//cout << "Sprite Component === " << player->GetComponent("SpriteComponent");
+
+
 
 	//* Create the Ghost
 	GameObject* ghost = new GameObject();
@@ -73,6 +88,17 @@ void Pacman::Init()
 	AddComponent(ghostSprite);
 
 
+	BoxColliderComponent* ghostCollider = new BoxColliderComponent(ghost);
+
+	ghostCollider
+		->Bind(*this)
+		->SetSize(200);
+
+	AddComponent(ghostCollider);
+
+
+
+
 	//* Create the Pip
 	GameObject* pip = new GameObject();
 	pip->position = Vector2(300, 300);
@@ -86,6 +112,8 @@ void Pacman::Init()
 		->AnimationSpeed(2);
 
 	AddComponent(pipSprite);
+
+
 
 
 	//* Create the Cherry

@@ -1,9 +1,12 @@
 #pragma once
 
 #include "Object.h"
-#include "GameObject.h"
-#include "Renderer.h"
+
 #include "Game.h"
+#include "GameObject.h"
+
+#include "Renderer.h"
+#include "AABB.h"
 
 class GameObject;
 class Game;
