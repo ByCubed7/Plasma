@@ -108,6 +108,12 @@
     <ClCompile Include="PlayerCollisionEventManager.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Tilemap.cpp">
+      <Filter>Engine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\TilemapRenderer.cpp">
+      <Filter>Engine\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -190,6 +196,12 @@
     </ClInclude>
     <ClInclude Include="PlayerCollisionEventManager.h">
       <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemap.h">
+      <Filter>Engine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\TilemapRenderer.h">
+      <Filter>Engine\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

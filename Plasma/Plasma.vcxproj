@@ -161,6 +161,8 @@
     <ClCompile Include="Engine\SpriteRenderer.cpp" />
     <ClCompile Include="Engine\TextRenderer.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
+    <ClCompile Include="Engine\Tilemap.cpp" />
+    <ClCompile Include="Engine\TilemapRenderer.cpp" />
     <ClCompile Include="Engine\Vector2.cpp" />
     <ClCompile Include="Library\glad.c" />
     <ClCompile Include="main.cpp" />
@@ -189,6 +191,8 @@
     <ClInclude Include="Engine\SpriteRenderer.h" />
     <ClInclude Include="Engine\TextRenderer.h" />
     <ClInclude Include="Engine\Texture.h" />
+    <ClInclude Include="Engine\Tilemap.h" />
+    <ClInclude Include="Engine\TilemapRenderer.h" />
     <ClInclude Include="Engine\Vector2.h" />
     <ClInclude Include="Library\glad.h" />
     <ClInclude Include="Library\khrplatform.h" />
