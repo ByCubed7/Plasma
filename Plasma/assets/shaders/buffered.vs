@@ -1,13 +1,12 @@
 #version 330 core
-layout (location = 0) in vec4 vertex;
+layout (location = 0) in vec2 aPos;
+layout (location = 1) in vec3 aColor;
+layout (location = 2) in vec2 aOffset;
 
-out vec2 TexCoords;
-
-uniform mat4 model;
-uniform mat4 projection;
+out vec3 fColor;
 
 void main()
 {
-    TexCoords = vertex.zw;
-    gl_Position = projection * model * vec4(vertex.xy, 0.0, 1.0);
-}
+    gl_Position = vec4(aPos + aOffset, 0.0, 1.0);
+    fColor = aColor;
+}  
