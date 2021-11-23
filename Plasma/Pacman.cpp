@@ -61,6 +61,14 @@ void Pacman::Init()
 	AddComponent(tilemapTilemap);
 
 
+	SpriteComponent* tilemapSprite = new SpriteComponent(tilemap);
+
+	tilemapSprite
+		->Set(Resources::GetTexture("pip"));
+
+	AddComponent(tilemapSprite);
+
+
 
 	//* Create the Player
 	GameObject* player = new GameObject();
