@@ -3,12 +3,14 @@
 #include "Engine/Resources.h"
 #include "Engine/TextRenderer.h"
 #include "Engine/Settings.h"
+
+#include "Engine/Component.h"
 #include "Engine/SpriteComponent.h"
 #include "Engine/CharacterControllerComponent.h"
-#include "Engine/Component.h"
+#include "Engine/TilemapComponent.h"
+#include "Engine/BoxColliderComponent.h"
 
 #include "WarpComponent.h"
-#include "Engine/BoxColliderComponent.h"
 #include "PlayerCollisionEventManager.h"
 
 Pacman::Pacman(const Settings& setting) : Game(setting)
@@ -26,17 +28,39 @@ Pacman::~Pacman()
 	//delete gameObjects;
 }
 
-void Pacman::Init() 
+void Pacman::Init()
 {
 	// Load textures
 	Resources::LoadTexture("assets/textures/Player.png", true, "player");
 	Resources::LoadTexture("assets/textures/Ghost.png", true, "ghost");
 	Resources::LoadTexture("assets/textures/Pip.png", true, "pip");
 	Resources::LoadTexture("assets/textures/Cherry.png", true, "cherry");
+	Resources::LoadTexture("assets/textures/Tilesheet.png", true, "tilesheet");
 
 	// Load levels
 
 	// Move this to start? \/
+
+	//* Create the tilemap
+	GameObject* tilemap = new GameObject();
+	tilemap->position = Vector2(200, 200);
+	AddGameObject(tilemap);
+
+	TilemapComponent* tilemapTilemap = new TilemapComponent(tilemap);
+
+	tilemapTilemap->tilemap.AddTile({ 0, 0 }, 0);
+	tilemapTilemap->tilemap.AddTile({ 1, 0 }, 0);
+	tilemapTilemap->tilemap.AddTile({ 0, 1 }, 0);
+	tilemapTilemap->tilemap.AddTile({ 1, 1 }, 0);
+
+	tilemapTilemap
+		->Set(Resources::GetTexture("tilesheet"))
+		->SetTileSize({ 16, 16 })
+		->Bind(renderer);
+
+	AddComponent(tilemapTilemap);
+
+
 
 	//* Create the Player
 	GameObject* player = new GameObject();
@@ -66,7 +90,7 @@ void Pacman::Init()
 	AddComponent(playerColliderEventMng);
 
 
-
+	return;
 
 	// Yikes
 	//player->GetComponent("SpriteComponent")

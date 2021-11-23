@@ -64,9 +64,9 @@ void Game::GInit()
 	ShaderText.SetMatrix4("projection", projection);
 
 	// Tilemap
-	Shader ShaderTilemap = Resources::LoadShader("assets/shaders/tilemap.vs", "assets/shaders/tilemap.frag", "assets/shaders/tilemap.geom", "tilemap");
-	ShaderTilemap.Use();
-	ShaderTilemap.SetMatrix4("projection", projection);
+	Shader ShaderBuffered = Resources::LoadShader("assets/shaders/buffered.vs", "assets/shaders/buffered.frag", nullptr, "buffered");
+	ShaderBuffered.Use().SetInteger("image", 0);
+	ShaderBuffered.SetMatrix4("projection", projection);
 	
 
 	// - Load Renderer(s)

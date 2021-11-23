@@ -38,15 +38,15 @@ PlayerCollisionEventManager* PlayerCollisionEventManager::UnBind()
 
 void PlayerCollisionEventManager::OnEnter(const Event<BoxColliderComponent::OnEnterEventParams>& e)
 {
-	cout << "PlayerCollisionEventManager :: OnEnter" << endl;
+	//cout << "PlayerCollisionEventManager :: OnEnter" << endl;
 }
 
 void PlayerCollisionEventManager::OnStay(const Event<BoxColliderComponent::OnStayEventParams>& e)
 {
-	cout << "PlayerCollisionEventManager :: OnStay" << endl;
+	//cout << "PlayerCollisionEventManager :: OnStay" << endl;
 }
 
 void PlayerCollisionEventManager::OnExit(const Event<BoxColliderComponent::OnExitEventParams>& e)
 {
-	cout << "PlayerCollisionEventManager :: OnExit" << endl;
+	//cout << "PlayerCollisionEventManager :: OnExit" << endl;
 }

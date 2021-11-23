@@ -14,4 +14,8 @@ public:
 
 	void Update(double delta, Game& game) override;
 	void Draw(Renderer& renderer) override;
+
+	TilemapComponent* Bind(Renderer* renderer);
+	TilemapComponent* Set(Texture2D texture);
+	TilemapComponent* SetTileSize(tuple<int, int> size);
 };

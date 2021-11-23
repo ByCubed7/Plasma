@@ -1,4 +1,5 @@
 #version 330 core
+
 in vec2 TexCoords;
 
 out vec4 color;
@@ -12,7 +13,7 @@ uniform int index;
 void main()
 {
     ivec2 totalTextureSize = textureSize(image, 0);
-        
+
     float w = totalTextureSize.x;
     float h = totalTextureSize.y;
 

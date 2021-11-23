@@ -14,21 +14,8 @@ void TilemapComponent::Draw(Renderer& renderer)
         { gameObject->scale.x * PPU, gameObject->scale.y * PPU },
         gameObject->rotation,
         0,
-        { 1,1,1 }
+        { 255, 255, 255 }
     );
-    /*
-    glm::vec2 drawScale = { gameObject->scale.x * PPU, gameObject->scale.y * PPU };
-    glm::vec2 pos = { gameObject->position.x, gameObject->position.y };
-
-    renderer.sprite.DrawSprite(
-        this->sprite,
-        pos,
-        drawScale,
-        gameObject->rotation,
-        spriteFrame,
-        color
-    );
-    */
 }
 
 void TilemapComponent::Update(double delta, Game& game)
@@ -38,3 +25,12 @@ void TilemapComponent::Update(double delta, Game& game)
     spriteFrame = animationPoint * animationSpeed;
     */
 }
+
+TilemapComponent* TilemapComponent::Bind(Renderer* renderer)
+{
+    renderer->tilemap.Bind(&tilemap);
+    return this;
+}
+
+TilemapComponent* TilemapComponent::Set(Texture2D tileSheet) { this->tilemap.tileSheet = tileSheet; return this; }
+TilemapComponent* TilemapComponent::SetTileSize(tuple<int, int> size) { this->tilemap.tileSize = size; return this; }
