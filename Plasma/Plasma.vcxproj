@@ -162,6 +162,7 @@
     <ClCompile Include="Engine\TextRenderer.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Tilemap.cpp" />
+    <ClCompile Include="Engine\TilemapComponent.cpp" />
     <ClCompile Include="Engine\TilemapRenderer.cpp" />
     <ClCompile Include="Engine\Vector2.cpp" />
     <ClCompile Include="Library\glad.c" />
@@ -192,6 +193,7 @@
     <ClInclude Include="Engine\TextRenderer.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Tilemap.h" />
+    <ClInclude Include="Engine\TilemapComponent.h" />
     <ClInclude Include="Engine\TilemapRenderer.h" />
     <ClInclude Include="Engine\Vector2.h" />
     <ClInclude Include="Library\glad.h" />

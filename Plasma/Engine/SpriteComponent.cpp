@@ -23,7 +23,7 @@ void SpriteComponent::Draw(Renderer& renderer)
     glm::vec2 drawScale = { gameObject->scale.x * PPU, gameObject->scale.y * PPU };
     glm::vec2 pos = { gameObject->position.x, gameObject->position.y };
 
-    renderer.DrawSprite(
+    renderer.sprite.DrawSprite(
         this->sprite,
         pos,
         drawScale,

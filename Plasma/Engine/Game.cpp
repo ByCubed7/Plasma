@@ -32,7 +32,6 @@ Game::Game(const Settings& setting)
 Game::~Game()
 {
 	delete renderer;
-	//delete gameObjects;
 }
 
 void Game::AddGameObject(GameObject* gameObject)
@@ -58,26 +57,29 @@ void Game::GInit()
 	ShaderSprite.SetMatrix4("projection", projection);
 	//ShaderSprite.SetVector2("index", 1, 0);
 	ShaderSprite.SetInteger("index", 1);
-	
+
 	// Text
 	Shader ShaderText = Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
 	ShaderText.Use().SetInteger("text", 0);
 	ShaderText.SetMatrix4("projection", projection);
+
+	// Tilemap
+	Shader ShaderTilemap = Resources::LoadShader("assets/shaders/tilemap.vs", "assets/shaders/tilemap.frag", "assets/shaders/tilemap.geom", "tilemap");
+	ShaderTilemap.Use();
+	ShaderTilemap.SetMatrix4("projection", projection);
 	
 
 	// - Load Renderer(s)
 
-	renderer = new Renderer(Resources::GetShader("sprite"), Resources::GetShader("text"));
-	//renderer = new SpriteRenderer(Resources::GetShader("sprite"));
-	//text = new TextRenderer(Resources::GetShader("text"));
+	renderer = new Renderer(
+		Resources::GetShader("sprite"), 
+		Resources::GetShader("text"), 
+		Resources::GetShader("tilemap")
+	);
 
 
 	// - Load Text Fonts
-	
 	Resources::LoadFont("assets/fonts/arial.ttf", "arial");
-
-	//text->Load("assets/fonts/arial.ttf", 24);
-
 
 }
 

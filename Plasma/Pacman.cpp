@@ -174,5 +174,5 @@ void Pacman::Update(double delta)
 void Pacman::Render() 
 {
 	//Renderer->DrawText("ahhhh", { 50, 100 }, 1, { 1, 1, 1 });
-	if (state == State::PAUSED) renderer->RenderText("PAUSED", width / 2, height / 2, 1.0f, { 0.5f, 0.5f }, { 0.2f, 0.8, 0.2f });
+	if (state == State::PAUSED) renderer->text.RenderText("PAUSED", width / 2, height / 2, 1.0f, { 0.5f, 0.5f }, { 0.2f, 0.8, 0.2f });
 }

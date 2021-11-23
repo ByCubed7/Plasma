@@ -18,7 +18,7 @@ struct Renderer
 	TextRenderer text;
 	TilemapRenderer tilemap;
 
-	Renderer(Shader& spriteShader, Shader& textShader);
+	Renderer(Shader& spriteShader, Shader& textShader, Shader& tilemapShader);
 	~Renderer();
 };
 
