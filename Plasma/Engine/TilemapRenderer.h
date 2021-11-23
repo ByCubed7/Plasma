@@ -4,26 +4,30 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "texture.h"
+#include "Tilemap.h"
 #include "shader.h"
 
 
-class SpriteRenderer
+class TilemapRenderer
 {
 public:
     // Constructor (inits shaders/shapes)
-    SpriteRenderer(Shader& shader);
+    TilemapRenderer(Shader& shader);
 
     // Destructor
-    ~SpriteRenderer();
+    ~TilemapRenderer();
 
     // Renders a defined quad textured with given sprite
-    void DrawSprite(Texture2D& texture, glm::vec2 position, glm::vec2 size = glm::vec2(10.0f, 10.0f), float rotate = 0.0f, int frame = 0, glm::vec3 color = glm::vec3(1.0f));
+    void DrawTilemap(glm::vec2 position, glm::vec2 size = glm::vec2(10.0f, 10.0f), float rotate = 0.0f, int frame = 0, glm::vec3 color = glm::vec3(1.0f));
+    
+    void Bind(Tilemap* tilemap);
     
 private:
     // Render state
     Shader shader;
     unsigned int quadVAO;
+
+    Tilemap* tilemap;
 
     // Initializes and configures the quad's buffer and vertex attributes
     void initRenderData();

@@ -1,30 +1,32 @@
 #pragma once
 
-#include "../Library/glad.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+#include "Texture.h"
+#include "AABB.h"
 
-#include "texture.h"
-#include "shader.h"
+#include <map>
+#include <string>
+#include <vector>
+
+using namespace std;
 
 
-class SpriteRenderer
+class Tilemap
 {
 public:
-    // Constructor (inits shaders/shapes)
-    SpriteRenderer(Shader& shader);
 
-    // Destructor
-    ~SpriteRenderer();
+    map<tuple<int, int>, int> tiles;
+    Texture2D tileSheet;
 
-    // Renders a defined quad textured with given sprite
-    void DrawSprite(Texture2D& texture, glm::vec2 position, glm::vec2 size = glm::vec2(10.0f, 10.0f), float rotate = 0.0f, int frame = 0, glm::vec3 color = glm::vec3(1.0f));
+    int width, height;
     
-private:
-    // Render state
-    Shader shader;
-    unsigned int quadVAO;
+    tuple<int, int> tileSize;
 
-    // Initializes and configures the quad's buffer and vertex attributes
-    void initRenderData();
+    // Constructor (inits shaders/shapes)
+    Tilemap();
+
+    void AddTile(tuple<int, int> position, int id);
+    int Count();
+    tuple<int, int> TextureSize();
+
+    void Bind();
 };
