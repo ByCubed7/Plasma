@@ -11,8 +11,8 @@ class SpriteComponent : public Component
 public:
 	SpriteComponent(GameObject* gameObject, std::string name = "SpriteComponent");
 
-	void Draw(Renderer& renderer) override;
 	void Update(double delta, Game& game) override;
+	void Draw(Renderer& renderer) override;
 
 	glm::vec3 color;
 
@@ -24,14 +24,12 @@ public:
 	int spriteSize;
 
 	// Set the texture
-	// Returns self for method chaining
 	SpriteComponent* Set(Texture2D sprite);
 
 	// Get the texture
 	Texture2D Get();
 
 	// Set the animation speed
-	// Returns self for method chaining
 	SpriteComponent* AnimationSpeed(double speed);
 
 	// Get the Animation speed

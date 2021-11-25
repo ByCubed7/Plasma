@@ -4,8 +4,8 @@
 
 #include "SpriteRenderer.h"
 #include "TextRenderer.h"
-#include "Resources.h"
 #include "TilemapRenderer.h"
+#include "Resources.h"
 
 #include "../Library/glad.h"
 #include <glm/glm.hpp>

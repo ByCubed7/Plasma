@@ -94,6 +94,13 @@ int App::Run()
 		game->Render();
 
 		glfwSwapBuffers(window);
+
+		// Print any errors
+		GLenum err;
+		while ((err = glGetError()) != GL_NO_ERROR)
+		{
+			cout << err << endl;
+		}
 	}
 
 	// Clear all of the loaded resources 

@@ -63,18 +63,20 @@ void Game::GInit()
 	ShaderText.Use().SetInteger("text", 0);
 	ShaderText.SetMatrix4("projection", projection);
 
-	// Tilemap
-	Shader ShaderBuffered = Resources::LoadShader("assets/shaders/buffered.vs", "assets/shaders/buffered.frag", nullptr, "buffered");
-	ShaderBuffered.Use().SetInteger("image", 0);
-	ShaderBuffered.SetMatrix4("projection", projection);
-	
+	//* Tilemap
+	Shader ShaderTile = Resources::LoadShader("assets/shaders/tile.vs", "assets/shaders/tile.frag", nullptr, "tile");
+	ShaderTile.Use().SetInteger("image", 0);
+	ShaderTile.SetMatrix4("projection", projection);
+	ShaderTile.SetInteger("index", 1);
+	//*/
+
 
 	// - Load Renderer(s)
 
 	renderer = new Renderer(
 		ShaderSprite,
 		ShaderText,
-		ShaderBuffered
+		ShaderTile
 	);
 
 
@@ -199,7 +201,7 @@ void Game::GRender()
 	for (const auto& component : components)
 	{
 		component->Draw(*renderer);
-		
+		//cout << "Drawing: " << component->ToString() << endl;
 		//cout << "Game::GRender.Renderer:" << renderer << " Object:" << typeid(*component).name() << endl;
 	}
 

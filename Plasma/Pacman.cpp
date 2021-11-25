@@ -38,38 +38,7 @@ void Pacman::Init()
 	Resources::LoadTexture("assets/textures/Tilesheet.png", true, "tilesheet");
 
 	// Load levels
-
 	// Move this to start? \/
-
-	//* Create the tilemap
-	GameObject* tilemap = new GameObject();
-	tilemap->position = Vector2(0, 0);
-	AddGameObject(tilemap);
-
-	TilemapComponent* tilemapTilemap = new TilemapComponent(tilemap);
-
-	tilemapTilemap->tilemap.AddTile({ 0, 0 }, 0);
-	tilemapTilemap->tilemap.AddTile({ 1, 0 }, 0);
-	tilemapTilemap->tilemap.AddTile({ 0, 1 }, 0);
-	tilemapTilemap->tilemap.AddTile({ 1, 1 }, 0);
-
-	tilemapTilemap
-		->Set(Resources::GetTexture("tilesheet"))
-		->SetTileSize({ 16, 16 })
-		->Bind(renderer);
-
-	AddComponent(tilemapTilemap);
-	//*/
-
-	/*
-	SpriteComponent* tilemapSprite = new SpriteComponent(tilemap);
-
-	tilemapSprite
-		->Set(Resources::GetTexture("pip"));
-
-	AddComponent(tilemapSprite);
-	*/
-
 
 	//* Create the Player
 	GameObject* player = new GameObject();
@@ -98,6 +67,26 @@ void Pacman::Init()
 	playerColliderEventMng->Bind(playerCollider);
 	AddComponent(playerColliderEventMng);
 
+
+	//* Create the tilemap
+	GameObject* tilemap = new GameObject();
+	tilemap->position = Vector2(100, 100);
+	AddGameObject(tilemap);
+
+	TilemapComponent* tilemapTilemap = new TilemapComponent(tilemap);
+
+	tilemapTilemap
+		->Set(Resources::GetTexture("tilesheet"));
+	AddComponent(tilemapTilemap);
+
+	/*
+	SpriteComponent* tilemapSprite = new SpriteComponent(tilemap);
+
+	tilemapSprite
+		->Set(Resources::GetTexture("pip"));
+
+	AddComponent(tilemapSprite);
+	//*/
 
 	return;
 
