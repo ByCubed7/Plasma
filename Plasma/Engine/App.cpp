@@ -57,6 +57,7 @@ int App::Run()
 	// Configure OpenGL
 	glViewport(0, 0, settings.screenWidth, settings.screenHeight);
 	glEnable(GL_BLEND);
+	//glEnable(GL_DEPTH_TEST);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 

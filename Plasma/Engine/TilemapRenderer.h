@@ -25,7 +25,9 @@ public:
 private:
     // Render state
     Shader shader;
-    unsigned int quadVAO;
+    unsigned int quadVAO, quadVBO;
+    unsigned int instanceVBO;
+    glm::vec2 translations[100];
 
     Tilemap* tilemap;
 

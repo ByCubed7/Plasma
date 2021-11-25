@@ -43,7 +43,7 @@ void Pacman::Init()
 
 	//* Create the tilemap
 	GameObject* tilemap = new GameObject();
-	tilemap->position = Vector2(200, 200);
+	tilemap->position = Vector2(0, 0);
 	AddGameObject(tilemap);
 
 	TilemapComponent* tilemapTilemap = new TilemapComponent(tilemap);
@@ -59,15 +59,16 @@ void Pacman::Init()
 		->Bind(renderer);
 
 	AddComponent(tilemapTilemap);
+	//*/
 
-
+	/*
 	SpriteComponent* tilemapSprite = new SpriteComponent(tilemap);
 
 	tilemapSprite
 		->Set(Resources::GetTexture("pip"));
 
 	AddComponent(tilemapSprite);
-
+	*/
 
 
 	//* Create the Player

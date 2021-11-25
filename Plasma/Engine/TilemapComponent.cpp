@@ -14,7 +14,7 @@ void TilemapComponent::Draw(Renderer& renderer)
         { gameObject->scale.x * PPU, gameObject->scale.y * PPU },
         gameObject->rotation,
         0,
-        { 255, 255, 255 }
+        { 1, 1, 1 }
     );
 }
 

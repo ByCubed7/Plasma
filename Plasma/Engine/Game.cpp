@@ -72,9 +72,9 @@ void Game::GInit()
 	// - Load Renderer(s)
 
 	renderer = new Renderer(
-		Resources::GetShader("sprite"), 
-		Resources::GetShader("text"), 
-		Resources::GetShader("tilemap")
+		ShaderSprite,
+		ShaderText,
+		ShaderBuffered
 	);
 
 
