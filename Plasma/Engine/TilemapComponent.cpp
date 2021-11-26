@@ -12,7 +12,7 @@ TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
 void TilemapComponent::Draw(Renderer& renderer)
 {
     int PPU(Settings::PPU);
-    /*
+
     renderer.tilemap.DrawTilemap(
         tilemap.tileSheet,
         { gameObject->position.x, gameObject->position.y },
@@ -21,16 +21,6 @@ void TilemapComponent::Draw(Renderer& renderer)
         0,
         {10,10,10}
     );
-    /*///*
-    renderer.sprite.DrawSprite(
-        tilemap.tileSheet,
-        { gameObject->position.x, gameObject->position.y },
-        { gameObject->scale.x * PPU, gameObject->scale.y * PPU },
-        gameObject->rotation,
-        0,
-        {10,10,10}
-    );
-    //*/
 }
 
 void TilemapComponent::Update(double delta, Game& game)

@@ -3,6 +3,6 @@
 #include "Renderer.h"
 
 Renderer::Renderer(Shader& spriteShader, Shader& textShader, Shader& tilemapShader)
-	: sprite(spriteShader), text(textShader), tilemap(textShader) {}
+	: sprite(spriteShader), text(textShader), tilemap(tilemapShader) {}
 
 Renderer::~Renderer() {}
