@@ -1,3 +1,5 @@
+// By @ByCubed7 on Twitter
+
 #include "TilemapComponent.h"
 
 TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
@@ -10,7 +12,7 @@ TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
 void TilemapComponent::Draw(Renderer& renderer)
 {
     int PPU(Settings::PPU);
-    //*
+    /*
     renderer.tilemap.DrawTilemap(
         tilemap.tileSheet,
         { gameObject->position.x, gameObject->position.y },

@@ -1,3 +1,5 @@
+// By @ByCubed7 on Twitter
+
 #include "BoxColliderComponent.h"
 
 BoxColliderComponent::BoxColliderComponent(GameObject* gameObject, std::string name)

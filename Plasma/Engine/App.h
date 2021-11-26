@@ -1,3 +1,5 @@
+// By @ByCubed7 on Twitter
+
 #pragma once
 
 #include "../Library/glad.h"
@@ -27,5 +29,6 @@ private:
 	void CallbackMouseButton(GLFWwindow* window, int button, int action, int mods);
 	void CallbackCursorPosition(GLFWwindow* window, double xpos, double ypos);
 	void CallbackFramebuffer(GLFWwindow* window, int width, int height);
+	void CallbackException(GLenum source, GLenum type, unsigned int id, GLenum severity, GLsizei length, const char* message, const void* userParam);
 };
 

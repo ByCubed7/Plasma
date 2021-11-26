@@ -1,3 +1,5 @@
+// By @ByCubed7 on Twitter
+
 #include "Font.h"
 
 void Font::AddCharacter(char c, Character character)

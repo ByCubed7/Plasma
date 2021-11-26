@@ -1,3 +1,5 @@
+// By @ByCubed7 on Twitter
+
 #include "Library/glad.h"
 #include <GLFW/glfw3.h>
 

@@ -1,3 +1,5 @@
+// By @ByCubed7 on Twitter
+
 #include <fstream>
 #include <string>
 #include <map>

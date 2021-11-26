@@ -1,4 +1,6 @@
-﻿#pragma once
+﻿// By @ByCubed7 on Twitter
+
+#pragma once
 
 #include <map>
 #include <string>

@@ -1,3 +1,5 @@
+// By @ByCubed7 on Twitter
+
 #include "AABB.h"
 
 AABB::AABB(Vector2 lower, Vector2 upper)

@@ -1,3 +1,5 @@
+// By @ByCubed7 on Twitter
+
 #include "SpriteComponent.h"
 
 #include "Component.h"

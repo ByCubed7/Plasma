@@ -1,4 +1,6 @@
-/*/ See: 
+// By @ByCubed7 on Twitter
+
+/*/ See:
 //  https://www.khronos.org/opengl/wiki/Shader
 //  https://www.khronos.org/opengl/wiki/Shader_Compilation
 //  https://www.khronos.org/opengl/wiki/GLSL_Object#Program_objects

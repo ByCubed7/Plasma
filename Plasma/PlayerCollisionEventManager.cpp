@@ -1,3 +1,5 @@
+// By @ByCubed7 on Twitter
+
 #include "PlayerCollisionEventManager.h"
 
 #include "Engine/BoxColliderComponent.h"

@@ -1,3 +1,5 @@
+// By @ByCubed7 on Twitter
+
 #include "Input.h"
 #include "Vector2.h"
 

@@ -1,3 +1,5 @@
+// By @ByCubed7 on Twitter
+
 #include "Pacman.h"
 
 #include "Engine/Resources.h"
@@ -66,7 +68,7 @@ void Pacman::Init()
 	PlayerCollisionEventManager* playerColliderEventMng = new PlayerCollisionEventManager(player);
 	playerColliderEventMng->Bind(playerCollider);
 	AddComponent(playerColliderEventMng);
-
+	//*/
 
 	//* Create the tilemap
 	GameObject* tilemap = new GameObject();

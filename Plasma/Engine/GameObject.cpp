@@ -1,4 +1,6 @@
-﻿#include "GameObject.h"
+﻿// By @ByCubed7 on Twitter
+
+#include "GameObject.h"
 #include "Settings.h"
 #include "Game.h"
 #include "Component.h"
