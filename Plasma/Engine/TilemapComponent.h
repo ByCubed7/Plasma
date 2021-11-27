@@ -17,7 +17,11 @@ public:
 
 	glm::vec3 color;
 
+	float animationPoint;
+	float animationSpeed;
+	int spriteFrame;
+
 	TilemapComponent* Bind(Renderer* renderer);
 	TilemapComponent* Set(Texture2D texture);
-	TilemapComponent* SetTileSize(tuple<int, int> size);
+	TilemapComponent* SetTileSize(pair<int, int> size);
 };

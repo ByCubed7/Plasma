@@ -2,7 +2,7 @@
 
 in vec2 TexCoords;
 
-out vec4 color;
+out vec4 colour;
 
 uniform sampler2D image;
 uniform vec3 spriteColor;
@@ -31,5 +31,5 @@ void main()
     // Finally to UV texture coordinates
     vec2 uv = vec2(dx * TexCoords.x + col * dx, 1.0 - dy - row * dy + dy * TexCoords.y);
 
-    color = vec4(spriteColor, 1.0) * texture(image, uv);
+    colour = vec4(spriteColor, 1.0) * texture(image, uv);
 }

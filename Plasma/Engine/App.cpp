@@ -112,12 +112,12 @@ int App::Run()
 
 		glfwSwapBuffers(window);
 
-		// Print any errors
+		//* Print any errors
 		GLenum err;
 		while ((err = glGetError()) != GL_NO_ERROR)
 		{
-			cout << err << endl;
-		}
+			cout << "ERROR:" << err << endl;
+		}//*/
 	}
 
 	// Clear all of the loaded resources 

@@ -4,16 +4,21 @@
 
 #include "Tilemap.h"
 
+#include <glm/fwd.hpp>
+
+#include <map>
+#include <string>
+#include <vector>
+
 Tilemap::Tilemap()
 {
 	width = 1;
 	height = 1;
 }
 
-void Tilemap::AddTile(tuple<int, int> position, int id)
+void Tilemap::AddTile(pair<int, int> position, int id)
 {
-	// We assume both elements |of position are positive
-	
+	// We assume both elements of position are positive
 	tiles[position] = id;
 
 	// If the position is bigger than the total size, set the total size
@@ -24,11 +29,17 @@ void Tilemap::AddTile(tuple<int, int> position, int id)
 // Gets
 
 int Tilemap::Count() { return tiles.size(); }
-tuple<int, int> Tilemap::TextureSize() { return tileSize; }
+pair<int, int> Tilemap::TextureSize() { return tileSize; }
 
-
-// Binds the textures as the current active GL_TEXTURE_2D texture object
-void Tilemap::Bind()
+// Returns the Tilemaps render data
+Tilemap::RenderData Tilemap::GetRenderData()
 {
-	tileSheet.Bind();
+	RenderData renderData = RenderData();
+
+	for (auto& tile : tiles) {
+		renderData.tilePosition.push_back(tile.first);
+		renderData.tileId.push_back(tile.second);
+	}
+
+	return renderData;
 }
