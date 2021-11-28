@@ -8,11 +8,10 @@ TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
     //cout << "2 TilemapComponent::TilemapComponent" << endl;
     tilemap = Tilemap();
     //tilemap.AddTile({ 0, 0 }, 0);
-    tilemap.AddTile({ 0, 0 }, 0);
-    tilemap.AddTile({ 0, 0 }, 1);
-    tilemap.AddTile({ -1, 0 }, 2);
-    tilemap.AddTile({ 0, 1 }, 2);
-    tilemap.AddTile({ 1, -1 }, 0);
+    tilemap.AddTile(1, { 0, 0 }, 0, { 1, 1 });
+    tilemap.AddTile(2, { -1, 0 });
+    tilemap.AddTile(2, { 0, 1 });
+    tilemap.AddTile(0, { 1, -1 });
 
     color = { 1, 1, 1 };
     animationSpeed = 2;
@@ -22,7 +21,12 @@ void TilemapComponent::Draw(Renderer& renderer)
 {
     int PPU(Settings::PPU);
 
-    renderer.tilemap.Update(tilemap.GetRenderData());
+    /*for (auto& tile : tilemap.tiles) {
+        tile.rotation += 1;
+        cout << tile.rotation << endl;
+    //}*/
+
+    renderer.tilemap.Update(tilemap.GetRender());
 
     renderer.tilemap.DrawTilemap(
         tilemap.tileSheet,
@@ -49,7 +53,7 @@ TilemapComponent* TilemapComponent::Bind(Renderer* renderer)
     
 
     // Bad Cubie, use cacheing here
-    renderer->tilemap.Update(tilemap.GetRenderData());
+    renderer->tilemap.Update(tilemap.GetRender());
 
     return this;
 }

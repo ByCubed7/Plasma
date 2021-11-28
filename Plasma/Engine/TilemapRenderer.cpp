@@ -14,9 +14,9 @@ TilemapRenderer::TilemapRenderer(Shader& shader)
 
     tileVAO = 0;
     verticesVBO = 0;
-    instanceVBO = 0;
-    tileIdInstanceVBO = 0;
-    tilePositionInstanceVBO = 0;
+    idInstanceVBO = 0;
+    positionInstanceVBO = 0;
+    rotscaInstanceVBO = 0;
 
     initRenderData();
 }
@@ -84,8 +84,14 @@ void TilemapRenderer::initRenderData()
     glBindVertexArray(tileVAO);
 
     glGenBuffers(1, &verticesVBO);
-    glGenBuffers(1, &tilePositionInstanceVBO);
-    glGenBuffers(1, &tileIdInstanceVBO);
+    glGenBuffers(1, &idInstanceVBO);
+    glGenBuffers(1, &positionInstanceVBO);
+    glGenBuffers(1, &rotscaInstanceVBO);
+
+    glGenBuffers(1, &rotscaRow1InstanceVBO);
+    glGenBuffers(1, &rotscaRow2InstanceVBO);
+    glGenBuffers(1, &rotscaRow3InstanceVBO);
+    glGenBuffers(1, &rotscaRow4InstanceVBO);
 
     glBindBuffer(GL_ARRAY_BUFFER, verticesVBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -102,59 +108,92 @@ void TilemapRenderer::initRenderData()
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void TilemapRenderer::Update(Tilemap::RenderData tilemapRenderData)
+void TilemapRenderer::Update(Tilemap::Render render)
 {
-    if (tilemapRenderData.Count() == 0) return;
+    if (render.Count() == 0) return;
 
-    vector<float> tilemapRenderDataTileIds = tilemapRenderData.GetTileIds();
+    vector<float> tilemapRenderDataTileIds = render.Ids();
 
-    if (tileIds != tilemapRenderDataTileIds) {
-        tilePositions = tilemapRenderData.GetTilePositions();
-        tileIds = tilemapRenderDataTileIds;
+    //if (tileIds == tilemapRenderDataTileIds) return;
+
+    tileIds = render.Ids();
+    tilePositions = render.Positions();
+
+    tileRotScasRow1 = vector<glm::vec4>();
+    tileRotScasRow2 = vector<glm::vec4>();
+    tileRotScasRow3 = vector<glm::vec4>();
+    tileRotScasRow4 = vector<glm::vec4>();
+
+    vector<glm::mat4> tileRotScas = render.RotScas(); 
+    for (auto& mat4 : tileRotScas) {
+        tileRotScasRow1.push_back(mat4[0]);
+        tileRotScasRow2.push_back(mat4[1]);
+        tileRotScasRow3.push_back(mat4[2]);
+        tileRotScasRow4.push_back(mat4[3]);
     }
-    else return;
-
     //renderData = tilemapRenderData;
 
-    cout << "[TilemapRenderer::Update] Start" << endl;
+    //cout << "[TilemapRenderer::Update] Start" << endl;
 
     glBindVertexArray(tileVAO);
 
-    // 2 : vec2 - Tile Position
+    // 2 : float - Tile Id
     glEnableVertexAttribArray(2);
-    glBindBuffer(GL_ARRAY_BUFFER, tilePositionInstanceVBO);
-    glBufferData(GL_ARRAY_BUFFER, tilePositions.size() * sizeof(tilePositions), &tilePositions[0], GL_STATIC_DRAW);
+        glBindBuffer(GL_ARRAY_BUFFER, idInstanceVBO);
+        glBufferData(GL_ARRAY_BUFFER, tileIds.size() * sizeof(tileIds), &tileIds[0], GL_STATIC_DRAW);
 
-    cout << "[TilemapRenderer::Update]" 
-        << " Size: " << tilePositions.size()
-        << " Mem: " << tilePositions.size() * sizeof(tilePositions)
-        << " At: " << &tilePositions[0] << endl;
+        glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, sizeof(tileIds[0]), (void*)0);
+        glVertexAttribDivisor(2, 1);
 
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(tilePositions[0]), (void*)0);
-    glVertexAttribDivisor(2, 1);
-
-    // 3 : float - Tile Id
+    // 3 : vec2 - Tile Position
     glEnableVertexAttribArray(3);
-    glBindBuffer(GL_ARRAY_BUFFER, tileIdInstanceVBO);
-    glBufferData(GL_ARRAY_BUFFER, tileIds.size() * sizeof(tileIds), &tileIds[0], GL_STATIC_DRAW);
+        glBindBuffer(GL_ARRAY_BUFFER, positionInstanceVBO);
+        glBufferData(GL_ARRAY_BUFFER, tilePositions.size() * sizeof(tilePositions), &tilePositions[0], GL_STATIC_DRAW);
 
-    glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, sizeof(tileIds[0]), (void*)0);
-    glVertexAttribDivisor(3, 1);
+        glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(tilePositions[0]), (void*)0);
+        glVertexAttribDivisor(3, 1);
+
+    //* 4-8 : mat4 - Tile Rotation and Scale
+    // TODO: Split into 4 seperate vec4s 
+    glEnableVertexAttribArray(4);
+        glBindBuffer(GL_ARRAY_BUFFER, rotscaRow1InstanceVBO);
+        glBufferData(GL_ARRAY_BUFFER, tileRotScasRow1.size() * sizeof(tileRotScasRow1), &tileRotScasRow1[0], GL_STATIC_DRAW);
+        glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(tileRotScasRow1[0]), (void*)0);
+        glVertexAttribDivisor(4, 1);
+    
+    glEnableVertexAttribArray(5);
+        glBindBuffer(GL_ARRAY_BUFFER, rotscaRow2InstanceVBO);
+        glBufferData(GL_ARRAY_BUFFER, tileRotScasRow2.size() * sizeof(tileRotScasRow2), &tileRotScasRow2[0], GL_STATIC_DRAW);
+        glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(tileRotScasRow2[0]), (void*)0);
+        glVertexAttribDivisor(5, 1);
+
+    glEnableVertexAttribArray(6);
+        glBindBuffer(GL_ARRAY_BUFFER, rotscaRow3InstanceVBO);
+        glBufferData(GL_ARRAY_BUFFER, tileRotScasRow3.size() * sizeof(tileRotScasRow3), &tileRotScasRow3[0], GL_STATIC_DRAW);
+        glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(tileRotScasRow3[0]), (void*)0);
+        glVertexAttribDivisor(6, 1);
+
+    glEnableVertexAttribArray(7);
+        glBindBuffer(GL_ARRAY_BUFFER, rotscaRow4InstanceVBO);
+        glBufferData(GL_ARRAY_BUFFER, tileRotScasRow4.size() * sizeof(tileRotScasRow4), &tileRotScasRow4[0], GL_STATIC_DRAW);
+        glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, sizeof(tileRotScasRow4[0]), (void*)0);
+        glVertexAttribDivisor(7, 1);
+    //*/
 
     // Clear the bound buffer
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-    for (int i = 0; i < tileIds.size(); ++i)
-        cout << "Tile: " << tileIds[i]+1 << " at " << tilePositions[i].x << ", " << tilePositions[i].y << endl;
+    //for (int i = 0; i < tileIds.size(); ++i)
+    //    cout << "Tile: " << tileIds[i]+1 << " at " << tilePositions[i].x << ", " << tilePositions[i].y << endl;
     
 
-    //* Print any errors
+    /* Print any errors
     GLenum err;
     while ((err = glGetError()) != GL_NO_ERROR)
     {
         cout << "[TilemapRenderer::Update] ERROR:" << err << endl;
     }//*/
 
-    cout << "[TilemapRenderer::Update] End" << endl;
+    //cout << "[TilemapRenderer::Update] End" << endl;
 }

@@ -5,7 +5,10 @@
 #include "Texture.h"
 #include "AABB.h"
 
-#include <glm/vec2.hpp>
+#include "../Library/glad.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/string_cast.hpp>
 
 #include <map>
 #include <string>
@@ -13,46 +16,59 @@
 
 using namespace std;
 
+
 class Tilemap
 {
 public:
-    struct RenderData
+
+    struct Tile
     {
-        vector<int> tileId;
-        vector<pair<int, int>> tilePosition;
-        // Change pair to glm::vec2
-        int Count() { return tileId.size(); }
+        Tile();
+        Tile(int id, glm::vec2 position);
+        Tile(int id, glm::vec2 position, float rotation);
+        Tile(int id, glm::vec2 position, float rotation, glm::vec2 scale);
 
-        vector<float> GetTileIds()
-        {
-            vector<float> tileData;
-            for (auto& tile : tileId)
-                tileData.push_back(tile);
-            return tileData;
-        }
-
-        vector<glm::vec2> GetTilePositions()
-        {
-            vector<glm::vec2> tileData;
-            for (auto& tile : tilePosition)
-                tileData.push_back(glm::vec2(tile.first, tile.second));
-            return tileData;
-        }
+        int id;
+        glm::vec2 position;
+        float rotation;
+        glm::vec2 scale;
     };
 
-    map<pair<int, int>, int> tiles;
+    struct Render
+    {
+        vector<int> ids;
+        vector<glm::vec2> positions;
+        vector<glm::mat4> rotscas;
+
+        void Add(Tile tile);
+
+        vector<float> Ids();
+        vector<glm::vec2> Positions();
+        vector<glm::mat4> RotScas();
+
+        int Count();
+    };
+
+    vector<Tile> tiles;
     Texture2D tileSheet;
 
-    int width, height;
+    //int width, height;
     
     pair<int, int> tileSize;
 
-    // Constructor (inits shaders/shapes)
     Tilemap();
 
-    void AddTile(pair<int, int> position, int id);
+    void AddTile(Tile tile);
+    void AddTile(int id, glm::vec2 position);
+    void AddTile(int id, glm::vec2 position, float rotation);
+    void AddTile(int id, glm::vec2 position, float rotation, glm::vec2 scale);
+    Render GetRender();
+
+    // - Attribute Gets
+
+    int GetTileAt(glm::vec2 position);
+    int GetTileAt(pair<int, int> position);
+
     int Count();
     pair<int, int> TextureSize();
-
-    RenderData GetRenderData();
 };
