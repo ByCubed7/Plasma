@@ -54,6 +54,10 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 int main(int argc, char* argv[])
 {
 	Settings config;
+
+	config.screenHeight = 31*32;
+	config.screenWidth = 28*32;
+
 	Pacman pacman(config);
 
 	App app(config, &pacman);

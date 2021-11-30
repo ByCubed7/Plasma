@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Library\TiledLibrary\RapidXML\manual.html" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -161,11 +162,19 @@
     <ClCompile Include="Engine\SpriteRenderer.cpp" />
     <ClCompile Include="Engine\TextRenderer.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
-    <ClCompile Include="Engine\Tilemap.cpp" />
     <ClCompile Include="Engine\TilemapComponent.cpp" />
     <ClCompile Include="Engine\TilemapRenderer.cpp" />
+    <ClCompile Include="Engine\Tilemaps\Render.cpp" />
+    <ClCompile Include="Engine\Tilemaps\Tile.cpp" />
+    <ClCompile Include="Engine\Tilemaps\TileLayer.cpp" />
+    <ClCompile Include="Engine\Tilemaps\Tilemap.cpp" />
     <ClCompile Include="Engine\Vector2.cpp" />
     <ClCompile Include="Library\glad.c" />
+    <ClCompile Include="Library\TiledLibrary\TiledLayer.cpp" />
+    <ClCompile Include="Library\TiledLibrary\TiledLoader.cpp" />
+    <ClCompile Include="Library\TiledLibrary\TiledMap.cpp" />
+    <ClCompile Include="Library\TiledLibrary\TiledSet.cpp" />
+    <ClCompile Include="Library\TiledLibrary\TiledTile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pacman.cpp" />
     <ClCompile Include="PlayerCollisionEventManager.cpp" />
@@ -192,13 +201,25 @@
     <ClInclude Include="Engine\SpriteRenderer.h" />
     <ClInclude Include="Engine\TextRenderer.h" />
     <ClInclude Include="Engine\Texture.h" />
-    <ClInclude Include="Engine\Tilemap.h" />
     <ClInclude Include="Engine\TilemapComponent.h" />
     <ClInclude Include="Engine\TilemapRenderer.h" />
+    <ClInclude Include="Engine\Tilemaps\Render.h" />
+    <ClInclude Include="Engine\Tilemaps\Tile.h" />
+    <ClInclude Include="Engine\Tilemaps\TileLayer.h" />
+    <ClInclude Include="Engine\Tilemaps\Tilemap.h" />
     <ClInclude Include="Engine\Vector2.h" />
     <ClInclude Include="Library\glad.h" />
     <ClInclude Include="Library\khrplatform.h" />
     <ClInclude Include="Library\stb_image.h" />
+    <ClInclude Include="Library\TiledLibrary\TiledLayer.h" />
+    <ClInclude Include="Library\TiledLibrary\TiledLoader.h" />
+    <ClInclude Include="Library\TiledLibrary\TiledMap.h" />
+    <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml.hpp" />
+    <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml_iterators.hpp" />
+    <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml_print.hpp" />
+    <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml_utils.hpp" />
+    <ClInclude Include="Library\TiledLibrary\TiledSet.h" />
+    <ClInclude Include="Library\TiledLibrary\TiledTile.h" />
     <ClInclude Include="Pacman.h" />
     <ClInclude Include="PlayerCollisionEventManager.h" />
     <ClInclude Include="WarpComponent.h" />

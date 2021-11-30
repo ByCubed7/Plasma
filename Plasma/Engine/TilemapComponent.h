@@ -3,7 +3,7 @@
 #pragma once
 
 #include "Component.h"
-#include "Tilemap.h"
+#include "Tilemaps/Tilemap.h"
 
 class TilemapComponent : public Component
 {
@@ -13,7 +13,7 @@ public:
 	void Update(double delta, Game& game) override;
 	void Draw(Renderer& renderer) override;
 
-	Tilemap tilemap;
+	Tilemaps::Tilemap tilemap;
 
 	glm::vec3 color;
 

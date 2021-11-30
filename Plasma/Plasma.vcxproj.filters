@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Library">
       <UniqueIdentifier>{86ba6649-9131-4e66-8849-1b8e0d915cef}</UniqueIdentifier>
     </Filter>
@@ -14,16 +10,8 @@
     <Filter Include="Engine\Headers">
       <UniqueIdentifier>{f27f1f28-9b11-4d67-bcda-3dca97d55e5c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Engine\Source">
       <UniqueIdentifier>{07b1df4d-291c-499c-ad70-99b336d0af5a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Game Files">
       <UniqueIdentifier>{b345736a-c0c7-43c8-8300-967b1ec8e60d}</UniqueIdentifier>
@@ -33,6 +21,12 @@
     </Filter>
     <Filter Include="Engine\Events">
       <UniqueIdentifier>{70c63dcb-7142-45dd-abf6-bd2192a20921}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\TiledLibrary">
+      <UniqueIdentifier>{363597ac-3b52-4c69-9913-fc21754ef5ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Tilemaps">
+      <UniqueIdentifier>{de37f00b-ddb1-4968-9ca0-f10614cfea00}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,14 +102,38 @@
     <ClCompile Include="PlayerCollisionEventManager.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Tilemap.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\TilemapRenderer.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\TilemapComponent.cpp">
       <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TiledLibrary\TiledLayer.cpp">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TiledLibrary\TiledLoader.cpp">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TiledLibrary\TiledMap.cpp">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TiledLibrary\TiledSet.cpp">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\TiledLibrary\TiledTile.cpp">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\TilemapRenderer.cpp">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Tilemaps\Render.cpp">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Tilemaps\Tile.cpp">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Tilemaps\TileLayer.cpp">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Tilemaps\Tilemap.cpp">
+      <Filter>Engine\Tilemaps</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -200,19 +218,58 @@
     <ClInclude Include="PlayerCollisionEventManager.h">
       <Filter>Game Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Tilemap.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\TilemapRenderer.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\TilemapComponent.h">
       <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml.hpp">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml_iterators.hpp">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml_print.hpp">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml_utils.hpp">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TiledLibrary\TiledLayer.h">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TiledLibrary\TiledLoader.h">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TiledLibrary\TiledMap.h">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TiledLibrary\TiledSet.h">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\TiledLibrary\TiledTile.h">
+      <Filter>Library\TiledLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\TilemapRenderer.h">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\Render.h">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\Tile.h">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\TileLayer.h">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\Tilemap.h">
+      <Filter>Engine\Tilemaps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
       <Filter>Game Files</Filter>
+    </None>
+    <None Include="Library\TiledLibrary\RapidXML\manual.html">
+      <Filter>Library\TiledLibrary</Filter>
     </None>
   </ItemGroup>
 </Project>
