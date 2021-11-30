@@ -17,6 +17,11 @@
 using namespace std;
 
 namespace Tiled {
+
+    const unsigned FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
+    const unsigned FLIPPED_VERTICALLY_FLAG = 0x40000000;
+    const unsigned FLIPPED_DIAGONALLY_FLAG = 0x20000000;
+
     class Loader
     {
     public:

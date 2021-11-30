@@ -4,6 +4,30 @@
 
 using namespace std;
 
+// trim from end (in place)
+static inline void rtrim(std::string& s) {
+	s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
+		return !std::isspace(ch);
+		}).base(), s.end());
+}
+
+// for string delimiter
+static inline vector<string> split(string s, string delimiter) {
+	size_t pos_start = 0, pos_end, delim_len = delimiter.length();
+	string token;
+	vector<string> res;
+
+	while ((pos_end = s.find(delimiter, pos_start)) != string::npos) {
+		token = s.substr(pos_start, pos_end - pos_start);
+		pos_start = pos_end + delim_len;
+		res.push_back(token);
+	}
+
+	res.push_back(s.substr(pos_start));
+	return res;
+}
+
+
 namespace Tiled {
 	Loader::Loader() : maps() {}
 
@@ -64,6 +88,7 @@ namespace Tiled {
 		data.push_back(to_string(colour / 0x10000));
 
 		unordered_map<string, string> properties;
+ 
 
 		LoadProperties(properties, parentNode);
 
@@ -80,7 +105,64 @@ namespace Tiled {
 
 	void Loader::LoadLayers(unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode)
 	{
-		return;
+		//return;
+
+		rapidxml::xml_node<>* currentNode = parentNode->first_node("layer");
+
+		while (currentNode) {
+
+
+			// Get all of the properties of the layer element
+			unordered_map<string, string> properties;
+			for (const rapidxml::xml_attribute<>* a = currentNode->first_attribute(); a; a = a->next_attribute())
+				properties[a->name()] = a->value();
+			
+			string name = properties.at((string)"name");
+			unsigned int width = stoi(properties.at((string)"width"));
+			unsigned int height = stoi(properties.at((string)"height"));
+
+			// Load all of the tiles
+			//cout << "Loading all of the tiles" << endl;
+			vector<vector<unsigned int>> tiles(height, vector<unsigned int>(width));
+			currentNode = currentNode->first_node("data");
+
+			//cout << currentNode->value() << endl;
+
+			// Grab the data, convert it to a list of ints
+			//vector<unsigned int> data;
+
+			string dataString = currentNode->value();
+			string delimiter = ",";
+
+			vector<string> data = split(dataString, delimiter);
+
+
+			for (auto i : data) cout << "::" << i << endl;
+
+			//data.push_back((int)stoll(token));
+			
+
+			int index = 0;
+			for (int x = 0; x < width; x++) 
+			{
+				for (int y = 0; y < height; y++) 
+				{
+					tiles[y][x] = (unsigned int)stoll(data[index]);
+					index++;
+				}
+			}
+
+			currentNode = currentNode->parent();
+
+			// Add on to the layers on to the map
+			map->AddLayer(Layer(name.c_str(), width, height, properties, tiles));
+
+			//if (currentNode != currentNode.last_node())
+
+			currentNode = currentNode->next_sibling("layer");
+
+		}
+
 	}
 
 	void Loader::LoadProperties(unordered_map<string, string>& properties, rapidxml::xml_node<>* parentNode)

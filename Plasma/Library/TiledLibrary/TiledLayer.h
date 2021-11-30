@@ -11,10 +11,10 @@ namespace Tiled {
     public:
         // Constructor
         Layer(
-            string const& name,
-            unsigned width, unsigned height,
-            unordered_map<string, string> const& properties,
-            vector<vector<unsigned>> const& tiles
+            const string& name,
+            unsigned int width, unsigned int height,
+            const unordered_map<string, string>& properties,
+            const vector<vector<unsigned int>>& tiles
         );
 
         // - Gets

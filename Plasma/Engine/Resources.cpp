@@ -68,16 +68,59 @@ Tilemaps::Tilemap Resources::LoadTilemap(const std::string file, std::string nam
 
     // What happens when we can't find the file?
     // Invalid format? ect.
-    cout << "Loading Map" << endl;
     tiled.LoadMap(name, file);
     cout << "Loaded Map" << endl;
 
     Tiled::Map* tiledMap = tiled.GetMap(name);
-    cout << "Geted Map" << endl;
+    cout << "Got Map" << endl;
 
     // Convert the loaded map into a tilemap
     vector<Tiled::Layer> layers = tiledMap->Layers();
 
+    cout << layers[0].Tiles().size() << endl;
+
+    int j = 0;
+    auto tiles = layers[j].Tiles();
+    map.AddLayer();
+
+    //*
+    for (int y = 0; y < tiledMap->Height(); ++y) {
+        for (int x = 0; x < tiledMap->Width(); ++x) {
+            cout << "x:" << x << " y:" << y << endl;
+            unsigned id = tiles[y][x];
+
+            // Read out the flags
+            bool flipped_horizontally = (id & Tiled::FLIPPED_HORIZONTALLY_FLAG);
+            bool flipped_vertically = (id & Tiled::FLIPPED_VERTICALLY_FLAG);
+            bool flipped_diagonally = (id & Tiled::FLIPPED_DIAGONALLY_FLAG);
+
+            // Clear the flags
+            id &= ~(
+                Tiled::FLIPPED_HORIZONTALLY_FLAG    |
+                Tiled::FLIPPED_VERTICALLY_FLAG      |
+                Tiled::FLIPPED_DIAGONALLY_FLAG
+            );
+
+            glm::vec2 scale = glm::vec2(
+                flipped_vertically      ? 1 : 0,
+                flipped_horizontally    ? 1 : 0
+            );
+
+
+            map.AddTile(j, id, glm::vec2(x, y));
+            /* Resolve the tile
+            for (int i = tileset_count - 1; i >= 0; --i) {
+                Tileset* tileset = tilesets[i];
+
+                if (tileset->first_gid() <= global_tile_id) {
+                    tiles[y][x] = tileset->tileAt(global_tile_id - tileset->first_gid());
+                    break;
+                }
+            }//*///*
+        }
+    }//*/
+
+    /*
     for (int i = 0; i < layers.size(); i++ )
     {
         map.AddLayer();
@@ -91,7 +134,7 @@ Tilemaps::Tilemap Resources::LoadTilemap(const std::string file, std::string nam
                 map.AddTile(i, row[x], glm::vec2(x, y));
             }
         }
-    }
+    }*/
 
     tilemaps[name] = map;
 
