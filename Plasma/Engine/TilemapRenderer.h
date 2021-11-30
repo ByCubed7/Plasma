@@ -30,6 +30,10 @@ public:
     void Update(Tilemaps::Render render);
 
 private:
+
+    void UpdateRender(Tilemaps::Render render);
+    void UpdateRenderBuffer();
+
     // Render state
     Shader shader;
     unsigned int tileVAO;

@@ -137,7 +137,7 @@ namespace Tiled {
 			vector<string> data = split(dataString, delimiter);
 
 
-			for (auto i : data) cout << "::" << i << endl;
+			//for (auto i : data) cout << "::" << i << endl;
 
 			//data.push_back((int)stoll(token));
 			

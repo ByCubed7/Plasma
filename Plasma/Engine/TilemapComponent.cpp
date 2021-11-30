@@ -11,11 +11,12 @@ TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
     //tilemap = Tilemaps::Tilemap();
     //tilemap.AddLayer(Tilemaps::TileLayer());
     //tilemap.AddTile({ 0, 0 }, 0);
+    /*
     tilemap.AddTile(0, 1, { 0, 0 }, 0, { 1, 1 });
     tilemap.AddTile(0, 2, { -1, 0 });
     tilemap.AddTile(0, 2, { 0, 1 });
     tilemap.AddTile(0, 0, { 1, -1 });
-
+    //*/
     color = { 1, 1, 1 };
     animationSpeed = 2;
 }
@@ -29,9 +30,8 @@ void TilemapComponent::Draw(Renderer& renderer)
         cout << tile.rotation << endl;
     //}*/
 
-    Tilemaps::TileLayer& layer = tilemap.layers[0];
-
-    renderer.tilemap.Update(layer.GetRender());
+    //Tilemaps::TileLayer& layer = tilemap.layers[0];
+    //renderer.tilemap.Update(layer.GetRender());
 
     renderer.tilemap.DrawTileLayer(
         tilemap.tileSheet,

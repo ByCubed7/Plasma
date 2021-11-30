@@ -86,7 +86,6 @@ Tilemaps::Tilemap Resources::LoadTilemap(const std::string file, std::string nam
     //*
     for (int y = 0; y < tiledMap->Height(); ++y) {
         for (int x = 0; x < tiledMap->Width(); ++x) {
-            cout << "x:" << x << " y:" << y << endl;
             unsigned id = tiles[y][x];
 
             // Read out the flags
@@ -102,8 +101,8 @@ Tilemaps::Tilemap Resources::LoadTilemap(const std::string file, std::string nam
             );
 
             glm::vec2 scale = glm::vec2(
-                flipped_vertically      ? 1 : 0,
-                flipped_horizontally    ? 1 : 0
+                flipped_vertically      ? 1 : -1,
+                flipped_horizontally    ? 1 : -1
             );
 
 
