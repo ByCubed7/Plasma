@@ -26,7 +26,7 @@ TilemapRenderer::~TilemapRenderer()
     glDeleteVertexArrays(1, &tileVAO);
 }
 
-void TilemapRenderer::DrawTilemap(Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, int frame, glm::vec3 color)
+void TilemapRenderer::DrawTileLayer(Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, int frame, glm::vec3 color)
 {
     /*
     cout << "[TilemapRenderer::DrawTilemap]" << endl;
@@ -108,7 +108,7 @@ void TilemapRenderer::initRenderData()
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void TilemapRenderer::Update(Tilemap::Render render)
+void TilemapRenderer::Update(Tilemaps::Render render)
 {
     if (render.Count() == 0) return;
 

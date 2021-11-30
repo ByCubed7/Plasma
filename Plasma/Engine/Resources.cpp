@@ -1,19 +1,16 @@
 // By @ByCubed7 on Twitter
 
+#include "Resources.h"
+
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <iostream>
 
 #include "../Library/stb_image.h"
 #include "../Library/glad.h"
 
 #include <GLFW/glfw3.h>
-
-#include "Resources.h"
-#include "Font.h"
-
-#include <map>
-#include <iostream>
 
 #include <ft2build.h>
 #include FT_FREETYPE_H  
@@ -25,6 +22,7 @@ using namespace std;
 std::map<std::string, Texture2D> Resources::Textures;
 std::map<std::string, Shader> Resources::Shaders;
 std::map<std::string, Font> Resources::Fonts;
+std::map<std::string, Tilemaps::Tilemap> Resources::tilemaps;
 
 unsigned int Resources::defaultFontSize = 24;
 
@@ -60,6 +58,44 @@ Font Resources::LoadFont(const char* file, std::string name)
 
 Font& Resources::GetFont(std::string name) { return Fonts[name]; }
 
+// Tilemaps
+
+Tiled::Loader Resources::tiled = Tiled::Loader();
+
+Tilemaps::Tilemap Resources::LoadTilemaps(const char* file, std::string name)
+{
+    Tilemaps::Tilemap map;
+
+    // What happens when we can't find the file?
+    // Invalid format? ect.
+    tiled.LoadMap(file, name);
+    Tiled::Map* tiledMap = tiled.GetMap(name);
+
+    // Convert the loaded map into a tilemap
+    vector<Tiled::Layer> layers = tiledMap->Layers();
+
+    for (int i = 0; i < layers.size(); i++ )
+    {
+        auto layer = layers[i];
+        for (int y = 0; y < layer.Tiles().size(); y++)
+        {
+            auto row = layer.Tiles()[y];
+            for (int x = 0; x < row.size(); x++)
+            {
+                map.AddTile(i, row[x], glm::vec2(x, y), 0);
+            }
+        }
+    }
+
+    tilemaps[name] = map;
+
+    return map;
+}
+
+Tilemaps::Tilemap& Resources::GetTilemap(std::string name)
+{
+    return tilemaps[name];
+}
 
 //
 

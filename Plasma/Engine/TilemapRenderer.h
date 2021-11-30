@@ -8,7 +8,8 @@
 
 #include "texture.h"
 #include "shader.h"
-#include "Tilemap.h"
+#include "Tilemaps/Tilemap.h"
+#include "Tilemaps/Render.h"
 
 #include <vector>
 
@@ -23,10 +24,10 @@ public:
     ~TilemapRenderer();
 
     // Renders a defined quad textured with given sprite
-    void DrawTilemap(Texture2D& texture, glm::vec2 position, glm::vec2 size = glm::vec2(1.0f, 1.0f), float rotate = 0.0f, int frame = 0, glm::vec3 color = glm::vec3(1.0f));
+    void DrawTileLayer(Texture2D& texture, glm::vec2 position, glm::vec2 size = glm::vec2(1.0f, 1.0f), float rotate = 0.0f, int frame = 0, glm::vec3 color = glm::vec3(1.0f));
 
     // Updates the tilemaps render data
-    void Update(Tilemap::Render render);
+    void Update(Tilemaps::Render render);
 
 private:
     // Render state

@@ -6,10 +6,14 @@
 #include <string>
 
 #include "../Library/glad.h"
+#include "../Library/TiledLibrary/TiledLoader.h"
 
+#include "Font.h"
+#include "Tilemaps/Tilemap.h"
 #include "texture.h"
 #include "shader.h"
-#include "Font.h"
+
+using namespace std;
 
 
 // A singleton that deals with Textures and Shaders. 
@@ -20,40 +24,53 @@ public:
 	// ▄█ █▀█ █▀█ █▄▀ ██▄ █▀▄
 
 	// All the shaders we have cached
-	static std::map<std::string, Shader> Shaders;
+	static map<string, Shader> Shaders;
 
 	// Loads a shader from file loading vertex, fragment shader's source code. 
 	// If gShaderFile is not nullptr, it also loads a geometry shader
-	static Shader LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name);
+	static Shader LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, string name);
 	
 	// Retrieves a cached shader
-	static Shader& GetShader(std::string name);
+	static Shader& GetShader(string name);
 	
 
 	//▀█▀ █▀▀ ▀▄▀ ▀█▀ █ █ █▀█ █▀▀
 	// █  ██▄ █ █  █  █▄█ █▀▄ ██▄
 
 	// All the textures we have cached
-	static std::map<std::string, Texture2D> Textures;
+	static map<string, Texture2D> Textures;
 
 	// Loads a texture
-	static Texture2D LoadTexture(const char* file, bool alpha, std::string name);
+	static Texture2D LoadTexture(const char* file, bool alpha, string name);
 	
 	// Retrieves a cached texture
-	static Texture2D& GetTexture(std::string name);
+	static Texture2D& GetTexture(string name);
 	
 
 	// █▀▀ █▀█ █▄ █ ▀█▀
 	// █▀  █▄█ █ ▀█  █ 
 
 	// All the fonts we have cached
-	static std::map<std::string, Font> Fonts;
+	static map<string, Font> Fonts;
 	
 	// Loads a font
-	static Font LoadFont(const char* file, std::string name);
+	static Font LoadFont(const char* file, string name);
 	
 	// Retrieves a cached font
-	static Font& GetFont(std::string name);
+	static Font& GetFont(string name);
+
+
+	// ▀█▀ █ █   █▀▀ █▀▄▀█ ▄▀█ █▀█
+	//  █  █ █▄▄ ██▄ █ ▀ █ █▀█ █▀▀
+
+	// All the fonts we have cached
+	static map<string, Tilemaps::Tilemap> tilemaps;
+
+	// Loads a font
+	static Tilemaps::Tilemap LoadTilemaps(const char* file, string name);
+
+	// Retrieves a cached tilemap
+	static Tilemaps::Tilemap& GetTilemap(string name);
 
 	// - - - - - - - - - - - - - - - - - - - - - - - -
 	// - - - - - - - - - - - - - - - - - - - - - - - -
@@ -65,7 +82,7 @@ public:
 
 private:
 	// Private constructor
-	Resources() { }
+	Resources() {}
 
 	// Loads a shader from a file
 	static Shader LoadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile = nullptr);
@@ -77,4 +94,7 @@ private:
 	static Font LoadFontFromFile(const char* file, unsigned int fontSize);
 
 	static unsigned int defaultFontSize;
+
+	// Deals with TMX file tilesheet loading
+	static Tiled::Loader tiled;
 };
