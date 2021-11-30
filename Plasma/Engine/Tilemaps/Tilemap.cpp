@@ -16,10 +16,12 @@ namespace Tilemaps {
 		//height = 1;
 	}
 
-	void Tilemap::AddLayer(TileLayer layer) 
+
+	void Tilemap::AddLayer(TileLayer layer)
 	{
 		layers.push_back(layer);
 	}
+	void Tilemap::AddLayer() { AddLayer(TileLayer()); }
 
 	void Tilemap::AddTile(int layer, Tile tile)
 	{

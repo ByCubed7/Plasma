@@ -5,9 +5,11 @@
 TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
     : Component(gameObject, name)
 {
+    tilemap = Resources::GetTilemap("tilesheet");
+
     //cout << "2 TilemapComponent::TilemapComponent" << endl;
-    tilemap = Tilemaps::Tilemap();
-    tilemap.AddLayer(Tilemaps::TileLayer());
+    //tilemap = Tilemaps::Tilemap();
+    //tilemap.AddLayer(Tilemaps::TileLayer());
     //tilemap.AddTile({ 0, 0 }, 0);
     tilemap.AddTile(0, 1, { 0, 0 }, 0, { 1, 1 });
     tilemap.AddTile(0, 2, { -1, 0 });

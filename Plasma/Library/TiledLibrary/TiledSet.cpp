@@ -18,8 +18,8 @@ namespace Tiled {
 		this->properties = properties;
 		this->tiles = tiles;
 
-		firstGID = atoi(data.at("firstgid").c_str());
-		lastGID = tiles.back().Id();
+		firstGID = 0;
+		lastGID = tiles.size();
 
 		imageWidth = atoi(data.at("width").c_str());
 		imageHeight = atoi(data.at("height").c_str());
@@ -27,20 +27,21 @@ namespace Tiled {
 		tileWidth = atoi(data.at("tilewidth").c_str());
 		tileHeight = atoi(data.at("tileheight").c_str());
 
-		offsetX = atoi(data.at("tileoffsetX").c_str());
-		offsetY = atoi(data.at("tileoffsetY").c_str());
+		offsetX = 0;
+		offsetY = 0;
 
-		spacing = atoi(data.at("spacing").c_str());
-		margin = atoi(data.at("margin").c_str());
+		spacing = 0;
+		margin = 0;
 
-		count = atoi(data.at("tilecount").c_str());
+		count = tiles.size();
 
+		/*
 		transparentColour = {
 			(unsigned)atoi(data.at("red").c_str()),
 			(unsigned)atoi(data.at("green").c_str()),
 			(unsigned)atoi(data.at("blue").c_str())
 		};
-
+		*/
 	}
 
 	unsigned int Set::FirstGID() const noexcept { return firstGID; }

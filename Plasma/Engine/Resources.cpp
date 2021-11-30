@@ -39,7 +39,7 @@ Shader& Resources::GetShader(std::string name) { return Shaders[name]; }
 
 // Texture
 
-Texture2D Resources::LoadTexture(const char* file, bool alpha, std::string name)
+Texture2D Resources::LoadTexture(const std::string file, bool alpha, std::string name)
 {
     Textures[name] = LoadTextureFromFile(file, alpha);
     return Textures[name];
@@ -50,7 +50,7 @@ Texture2D& Resources::GetTexture(std::string name) { return Textures[name]; }
 
 // Font
 
-Font Resources::LoadFont(const char* file, std::string name)
+Font Resources::LoadFont(const std::string file, std::string name)
 {
     Fonts[name] = LoadFontFromFile(file, defaultFontSize);
     return Fonts[name];
@@ -62,27 +62,33 @@ Font& Resources::GetFont(std::string name) { return Fonts[name]; }
 
 Tiled::Loader Resources::tiled = Tiled::Loader();
 
-Tilemaps::Tilemap Resources::LoadTilemaps(const char* file, std::string name)
+Tilemaps::Tilemap Resources::LoadTilemap(const std::string file, std::string name)
 {
     Tilemaps::Tilemap map;
 
     // What happens when we can't find the file?
     // Invalid format? ect.
-    tiled.LoadMap(file, name);
+    cout << "Loading Map" << endl;
+    tiled.LoadMap(name, file);
+    cout << "Loaded Map" << endl;
+
     Tiled::Map* tiledMap = tiled.GetMap(name);
+    cout << "Geted Map" << endl;
 
     // Convert the loaded map into a tilemap
     vector<Tiled::Layer> layers = tiledMap->Layers();
 
     for (int i = 0; i < layers.size(); i++ )
     {
+        map.AddLayer();
+
         auto layer = layers[i];
         for (int y = 0; y < layer.Tiles().size(); y++)
         {
             auto row = layer.Tiles()[y];
             for (int x = 0; x < row.size(); x++)
             {
-                map.AddTile(i, row[x], glm::vec2(x, y), 0);
+                map.AddTile(i, row[x], glm::vec2(x, y));
             }
         }
     }
@@ -160,7 +166,7 @@ Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShade
     return shader;
 }
 
-Texture2D Resources::LoadTextureFromFile(const char* file, bool alpha)
+Texture2D Resources::LoadTextureFromFile(const std::string file, bool alpha)
 {
     // Create texture object
     Texture2D texture;
@@ -173,7 +179,7 @@ Texture2D Resources::LoadTextureFromFile(const char* file, bool alpha)
 
     // Load
     int width, height, nrChannels;
-    unsigned char* data = stbi_load(file, &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load(file.c_str(), &width, &height, &nrChannels, 0);
 
     // Generate texture
     texture.Generate(width, height, data);
@@ -184,7 +190,7 @@ Texture2D Resources::LoadTextureFromFile(const char* file, bool alpha)
 }
 
 
-Font Resources::LoadFontFromFile(const char* file, unsigned int size) 
+Font Resources::LoadFontFromFile(const std::string file, unsigned int size)
 {
     FT_Library ft;
     if (FT_Init_FreeType(&ft))
@@ -194,7 +200,7 @@ Font Resources::LoadFontFromFile(const char* file, unsigned int size)
     }
 
     FT_Face face;
-    if (FT_New_Face(ft, file, 0, &face))
+    if (FT_New_Face(ft, file.c_str(), 0, &face))
     {
         std::cout << "ERROR: Failed to load font" << std::endl;
         //return -1;

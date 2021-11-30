@@ -41,7 +41,7 @@ public:
 	static map<string, Texture2D> Textures;
 
 	// Loads a texture
-	static Texture2D LoadTexture(const char* file, bool alpha, string name);
+	static Texture2D LoadTexture(const std::string file, bool alpha, string name);
 	
 	// Retrieves a cached texture
 	static Texture2D& GetTexture(string name);
@@ -54,7 +54,7 @@ public:
 	static map<string, Font> Fonts;
 	
 	// Loads a font
-	static Font LoadFont(const char* file, string name);
+	static Font LoadFont(const std::string file, string name);
 	
 	// Retrieves a cached font
 	static Font& GetFont(string name);
@@ -67,7 +67,7 @@ public:
 	static map<string, Tilemaps::Tilemap> tilemaps;
 
 	// Loads a font
-	static Tilemaps::Tilemap LoadTilemaps(const char* file, string name);
+	static Tilemaps::Tilemap LoadTilemap(const std::string file, string name);
 
 	// Retrieves a cached tilemap
 	static Tilemaps::Tilemap& GetTilemap(string name);
@@ -88,10 +88,10 @@ private:
 	static Shader LoadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile = nullptr);
 
 	// Loads a texture from a file
-	static Texture2D LoadTextureFromFile(const char* file, bool alpha);
+	static Texture2D LoadTextureFromFile(const std::string file, bool alpha);
 
 	// Loads a font from a file
-	static Font LoadFontFromFile(const char* file, unsigned int fontSize);
+	static Font LoadFontFromFile(const std::string file, unsigned int fontSize);
 
 	static unsigned int defaultFontSize;
 

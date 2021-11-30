@@ -3,16 +3,16 @@
 namespace Tiled {
     void Map::Settings(vector<string> const& data, unordered_map<string, string> const& props) noexcept
     {
-        version = stoi(data[0]);
+        version = stoi(data[1]);
 
-        orientation = data[1];
-        renderOrder = data[2];
+        orientation = data[2];
+        renderOrder = data[3];
 
-        width = stoi(data[3]);
-        height = stoi(data[4]);
+        width = stoi(data[4]);
+        height = stoi(data[5]);
 
-        tileWidth = stoi(data[5]);
-        tileHeight = stoi(data[6]);
+        tileWidth = stoi(data[6]);
+        tileHeight = stoi(data[7]);
 
         backgroundColour[0] = stoi(data[8]);
         backgroundColour[1] = stoi(data[8]);

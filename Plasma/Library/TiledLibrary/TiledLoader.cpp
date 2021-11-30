@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+using namespace std;
+
 namespace Tiled {
 	Loader::Loader() : maps() {}
 
@@ -26,8 +28,8 @@ namespace Tiled {
 			LoadTileSets(maps[name], parentNode);
 			LoadLayers(maps[name], parentNode);
 
-			delete currentMap;
-			delete parentNode;
+			//delete currentMap;
+			//delete parentNode;
 		}
 		else
 		{
@@ -38,7 +40,7 @@ namespace Tiled {
 	Map* Loader::GetMap(string name)
 	{
 		auto it = maps.find(name);
-		if (it != maps.end())return it->second.get();
+		if (it != maps.end()) return it->second.get();
 
 		cout << "[Tiled] map '" << name << "' not found." << endl;
 		return nullptr;
@@ -70,135 +72,15 @@ namespace Tiled {
 
 	void Loader::LoadTileSets(unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode)
 	{
-		rapidxml::xml_node<>* currentNode = parentNode;
+		return;
+		// TODO: Load from seperate TSX file, rather than relying on TMX files
+		//map->AddTileset(Set(tileSetData, properties, tiles));
 
-		if (currentNode->first_node("tileset") != nullptr)
-		{
-			currentNode = currentNode->first_node("tileset");
-
-			unordered_map<string, string> tileSetData;
-			unordered_map<string, string> properties;
-			vector<Tile> tiles;
-			unordered_map<string, string> tileProperties;
-
-			while (currentNode != nullptr)
-			{
-				for (rapidxml::xml_attribute<char>* attr = currentNode->first_attribute(); attr; attr = attr->next_attribute())
-					tileSetData[attr->name()] = attr->value();
-
-
-				rapidxml::xml_node<>* offsetNode = currentNode;
-				if (offsetNode->first_node("tileoffset") != nullptr)
-				{
-					offsetNode = offsetNode->first_node("tileoffset");
-
-					tileSetData["tileoffsetX"] = offsetNode->first_attribute()->value();
-					tileSetData["tileoffsetY"] = offsetNode->first_attribute()->next_attribute()->value();
-				}
-
-				properties.clear();
-				LoadProperties(properties, currentNode);
-
-				currentNode = currentNode->first_node("image");
-				for (rapidxml::xml_attribute<char>* attr = currentNode->first_attribute(); attr; attr = attr->next_attribute())
-				{
-					if (strcmp(attr->name(), "trans") == 0)
-					{
-						unsigned int colour = stoi(attr->value(), 0, 16);
-
-						tileSetData["red"] = to_string(colour / 0x10000);
-						tileSetData["green"] = to_string((colour / 0x100) % 0x100);
-						tileSetData["blue"] = to_string(colour / 0x10000);
-					}
-					else
-					{
-						tileSetData[attr->name()] = attr->value();
-					}
-				}
-
-				tiles.clear();
-				rapidxml::xml_node<>* tileNode = currentNode->parent()->first_node("tile");
-				while (tileNode != nullptr)
-				{
-					unsigned int tileID = atoi(tileNode->first_attribute()->value());
-					LoadProperties(tileProperties, tileNode);
-					tiles.push_back(Tile(tileID, tileProperties));
-
-					tileProperties.clear();
-
-					if (tileNode->next_sibling("tile") == nullptr) break;
-					tileNode = tileNode->next_sibling("tile");
-				}
-
-				map->AddTileset(Set(tileSetData, properties, tiles));
-
-				if (currentNode->parent()->next_sibling("tileset") == nullptr) break;
-
-				tileSetData.clear();
-				currentNode = currentNode->parent()->next_sibling("tileset");
-
-			}
-		}
 	}
 
 	void Loader::LoadLayers(unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode)
 	{
-		rapidxml::xml_node<>* currentNode = parentNode;
-
-		currentNode = currentNode->first_node("layer");
-
-		vector<char*> layerVector;
-
-		char* layerName = nullptr;
-		unsigned int layerWidth = 0;
-		unsigned int layerHeight = 0;
-		unordered_map<string, string> layerProperties;
-
-		while (currentNode != nullptr)
-		{
-			layerProperties.clear();
-			layerVector.clear();
-
-			for (rapidxml::xml_attribute<char>* attr = currentNode->first_attribute(); attr; attr = attr->next_attribute())
-				layerVector.push_back(attr->value());
-
-			layerName = layerVector[0];
-			layerWidth = atoi(layerVector[1]);
-			layerHeight = atoi(layerVector[2]);
-
-			LoadProperties(layerProperties, currentNode);
-
-			currentNode = currentNode->first_node("data");
-			currentNode = currentNode->first_node("tile");
-
-			vector<vector<unsigned int>> tiles(layerHeight, vector<unsigned int>(layerWidth));
-
-			unsigned int currentTile = 0;
-			unsigned int currentRow = 0;
-
-			while (currentNode != nullptr)
-			{
-				if (currentTile < layerWidth)
-				{
-					tiles[currentRow][currentTile] = (unsigned int)stoul(currentNode->first_attribute()->value());
-
-					currentTile++;
-
-					if (currentNode->next_sibling("tile") == nullptr) break;
-					currentNode = currentNode->next_sibling("tile");
-				}
-				else
-				{
-					currentTile = 0;
-					currentRow++;
-				}
-
-			}
-
-			map->AddLayer(Layer(layerName, layerWidth, layerHeight, layerProperties, tiles));
-
-			currentNode = currentNode->parent()->parent()->next_sibling("layer");
-		}
+		return;
 	}
 
 	void Loader::LoadProperties(unordered_map<string, string>& properties, rapidxml::xml_node<>* parentNode)

@@ -30,6 +30,7 @@ namespace Tilemaps {
 
         Tilemap();
 
+        void AddLayer();
         void AddLayer(TileLayer layer);
 
         void AddTile(int layer, Tile tile);

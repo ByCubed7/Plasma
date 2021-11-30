@@ -39,7 +39,10 @@ void Pacman::Init()
 	Resources::LoadTexture("assets/textures/Cherry.png", true, "cherry");
 	Resources::LoadTexture("assets/textures/Tilesheet.png", true, "tilesheet");
 
+
 	// Load levels
+	Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
+
 	// Move this to start? \/
 
 	//* Create the tilemap
