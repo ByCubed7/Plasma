@@ -28,6 +28,9 @@
     <Filter Include="Engine\Tilemaps">
       <UniqueIdentifier>{de37f00b-ddb1-4968-9ca0-f10614cfea00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Renderers">
+      <UniqueIdentifier>{531c5ad7-d668-4903-beb0-3d9e40d4f885}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -60,12 +63,6 @@
     <ClCompile Include="Engine\Shader.cpp">
       <Filter>Engine\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\SpriteRenderer.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\TextRenderer.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Texture.cpp">
       <Filter>Engine\Source</Filter>
     </ClCompile>
@@ -77,9 +74,6 @@
     </ClCompile>
     <ClCompile Include="Pacman.cpp">
       <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Renderer.cpp">
-      <Filter>Engine\Source</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Object.cpp">
       <Filter>Engine\Source</Filter>
@@ -120,9 +114,6 @@
     <ClCompile Include="Library\TiledLibrary\TiledTile.cpp">
       <Filter>Library\TiledLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\TilemapRenderer.cpp">
-      <Filter>Engine\Tilemaps</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Tilemaps\Render.cpp">
       <Filter>Engine\Tilemaps</Filter>
     </ClCompile>
@@ -134,6 +125,21 @@
     </ClCompile>
     <ClCompile Include="Engine\Tilemaps\Tilemap.cpp">
       <Filter>Engine\Tilemaps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\TilemapRenderer.cpp">
+      <Filter>Engine\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\TextRenderer.cpp">
+      <Filter>Engine\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SpriteRenderer.cpp">
+      <Filter>Engine\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Renderers.cpp">
+      <Filter>Engine\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Renderer.cpp">
+      <Filter>Engine\Renderers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,12 +176,6 @@
     <ClInclude Include="Engine\Shader.h">
       <Filter>Engine\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\SpriteRenderer.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\TextRenderer.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Texture.h">
       <Filter>Engine\Headers</Filter>
     </ClInclude>
@@ -186,9 +186,6 @@
       <Filter>Game Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\App.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Renderer.h">
       <Filter>Engine\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Object.h">
@@ -248,9 +245,6 @@
     <ClInclude Include="Library\TiledLibrary\TiledTile.h">
       <Filter>Library\TiledLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\TilemapRenderer.h">
-      <Filter>Engine\Tilemaps</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Tilemaps\Render.h">
       <Filter>Engine\Tilemaps</Filter>
     </ClInclude>
@@ -262,6 +256,21 @@
     </ClInclude>
     <ClInclude Include="Engine\Tilemaps\Tilemap.h">
       <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\TextRenderer.h">
+      <Filter>Engine\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SpriteRenderer.h">
+      <Filter>Engine\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\TilemapRenderer.h">
+      <Filter>Engine\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Renderers.h">
+      <Filter>Engine\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Renderer.h">
+      <Filter>Engine\Renderers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

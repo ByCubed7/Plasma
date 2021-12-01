@@ -3,7 +3,7 @@
 #pragma once
 
 #include "Object.h"
-#include "Renderer.h"
+#include "Renderers.h"
 #include "GameObject.h"
 #include "Game.h"
 #include "Component.h"
@@ -14,7 +14,7 @@ public:
 	SpriteComponent(GameObject* gameObject, std::string name = "SpriteComponent");
 
 	void Update(double delta, Game& game) override;
-	void Draw(Renderer& renderer) override;
+	void Draw(Renderers& renderer) override;
 
 	glm::vec3 color;
 

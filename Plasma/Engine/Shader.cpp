@@ -1,23 +1,18 @@
 // By @ByCubed7 on Twitter
 
-/*/ See:
-//  https://www.khronos.org/opengl/wiki/Shader
-//  https://www.khronos.org/opengl/wiki/Shader_Compilation
-//  https://www.khronos.org/opengl/wiki/GLSL_Object#Program_objects
-//*/
+#include "shader.h"
 
 #include <iostream>
 
-#include "shader.h"
+Shader::Shader()
+{
+    program = 0;
+}
 
-// Default Constructor
-Shader::Shader() {}
-
-// Tell the renderer that we're using this Shader
 Shader& Shader::Use()
 {
     // Bound the program as we intend on rendering
-    glUseProgram(this->Program);
+    glUseProgram(program);
     return *this;
 }
 
@@ -37,7 +32,7 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource, const
     glCompileShader(sFragment);
     checkCompileErrors(sFragment, "FRAGMENT");
     
-    // Compile the geometry shader if the source code is given
+    // Geometry shader (if the source code is given)
     if (geometrySource != nullptr)
     {
         gShader = glCreateShader(GL_GEOMETRY_SHADER);
@@ -47,13 +42,13 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource, const
     }
     
     // Shader program
-    this->Program = glCreateProgram();
-    glAttachShader(this->Program, sVertex);
-    glAttachShader(this->Program, sFragment);
+    program = glCreateProgram();
+    glAttachShader(program, sVertex);
+    glAttachShader(program, sFragment);
     if (geometrySource != nullptr)
-        glAttachShader(this->Program, gShader);
-    glLinkProgram(this->Program);
-    checkCompileErrors(this->Program, "PROGRAM");
+        glAttachShader(program, gShader);
+    glLinkProgram(program);
+    checkCompileErrors(program, "PROGRAM");
     
     // Delete the shaders
     glDeleteShader(sVertex);
@@ -65,52 +60,52 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource, const
 void Shader::SetFloat(const char* name, float value, bool useShader)
 {
     if (useShader) Use();
-    glUniform1f(glGetUniformLocation(this->Program, name), value);
+    glUniform1f(glGetUniformLocation(program, name), value);
 }
 void Shader::SetInteger(const char* name, int value, bool useShader)
 {
     if (useShader) Use();
-    glUniform1i(glGetUniformLocation(this->Program, name), value);
+    glUniform1i(glGetUniformLocation(program, name), value);
 }
 void Shader::SetVector2(const char* name, int x, int y, bool useShader)
 {
     if (useShader) Use();
-    glUniform2i(glGetUniformLocation(this->Program, name), x, y);
+    glUniform2i(glGetUniformLocation(program, name), x, y);
 }
 void Shader::SetVector2f(const char* name, float x, float y, bool useShader)
 {
     if (useShader) Use();
-    glUniform2f(glGetUniformLocation(this->Program, name), x, y);
+    glUniform2f(glGetUniformLocation(program, name), x, y);
 }
 void Shader::SetVector2f(const char* name, const glm::vec2& value, bool useShader)
 {
     if (useShader) Use();
-    glUniform2f(glGetUniformLocation(this->Program, name), value.x, value.y);
+    glUniform2f(glGetUniformLocation(program, name), value.x, value.y);
 }
 void Shader::SetVector3f(const char* name, float x, float y, float z, bool useShader)
 {
     if (useShader) Use();
-    glUniform3f(glGetUniformLocation(this->Program, name), x, y, z);
+    glUniform3f(glGetUniformLocation(program, name), x, y, z);
 }
 void Shader::SetVector3f(const char* name, const glm::vec3& value, bool useShader)
 {
     if (useShader) Use();
-    glUniform3f(glGetUniformLocation(this->Program, name), value.x, value.y, value.z);
+    glUniform3f(glGetUniformLocation(program, name), value.x, value.y, value.z);
 }
 void Shader::SetVector4f(const char* name, float x, float y, float z, float w, bool useShader)
 {
     if (useShader) Use();
-    glUniform4f(glGetUniformLocation(this->Program, name), x, y, z, w);
+    glUniform4f(glGetUniformLocation(program, name), x, y, z, w);
 }
 void Shader::SetVector4f(const char* name, const glm::vec4& value, bool useShader)
 {
     if (useShader) Use();
-    glUniform4f(glGetUniformLocation(this->Program, name), value.x, value.y, value.z, value.w);
+    glUniform4f(glGetUniformLocation(program, name), value.x, value.y, value.z, value.w);
 }
 void Shader::SetMatrix4(const char* name, const glm::mat4& matrix, bool useShader)
 {
     if (useShader) Use();
-    glUniformMatrix4fv(glGetUniformLocation(this->Program, name), 1, false, glm::value_ptr(matrix));
+    glUniformMatrix4fv(glGetUniformLocation(program, name), 1, false, glm::value_ptr(matrix));
 }
 
 

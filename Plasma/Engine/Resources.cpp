@@ -150,7 +150,7 @@ Tilemaps::Tilemap& Resources::GetTilemap(std::string name)
 void Resources::Clear()
 {
     // Delete all the shaders and textures
-    for (auto iter : Shaders) glDeleteProgram(iter.second.Program);
+    for (auto iter : Shaders) glDeleteProgram(iter.second.program);
     for (auto iter : Textures) glDeleteTextures(1, &iter.second.ID);
 }
 

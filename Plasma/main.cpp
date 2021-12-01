@@ -55,8 +55,8 @@ int main(int argc, char* argv[])
 {
 	Settings config;
 
-	config.screenHeight = 31*32;
-	config.screenWidth = 28*32;
+	config.screenHeight = (31 + 4) * 32;
+	config.screenWidth = (28 + 4)*32;
 
 	Pacman pacman(config);
 

@@ -5,7 +5,7 @@
 TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
     : Component(gameObject, name)
 {
-    tilemap = Resources::GetTilemap("tilesheet");
+    //tilemap = Resources::GetTilemap("tilesheet");
 
     //cout << "2 TilemapComponent::TilemapComponent" << endl;
     //tilemap = Tilemaps::Tilemap();
@@ -21,7 +21,7 @@ TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
     animationSpeed = 2;
 }
 
-void TilemapComponent::Draw(Renderer& renderer)
+void TilemapComponent::Draw(Renderers& renderer)
 {
     int PPU(Settings::PPU);
 
@@ -30,8 +30,8 @@ void TilemapComponent::Draw(Renderer& renderer)
         cout << tile.rotation << endl;
     //}*/
 
-    //Tilemaps::TileLayer& layer = tilemap.layers[0];
-    //renderer.tilemap.Update(layer.GetRender());
+    Tilemaps::TileLayer& layer = tilemap.layers[0];
+    renderer.tilemap.Update(layer.GetRender());
 
     renderer.tilemap.DrawTileLayer(
         tilemap.tileSheet,
@@ -51,7 +51,7 @@ void TilemapComponent::Update(double delta, Game& game)
     //*/
 }
 
-TilemapComponent* TilemapComponent::Bind(Renderer* renderer)
+TilemapComponent* TilemapComponent::Bind(Renderers* renderer)
 {
     //cout << "3 TilemapComponent::Bind" << endl;
     //cout << "tilemap.Count(): " << tilemap.Count() << endl;
@@ -68,6 +68,12 @@ TilemapComponent* TilemapComponent::Set(Texture2D tileSheet)
 { 
     tilemap.tileSheet = tileSheet; 
     return this; 
+}
+
+TilemapComponent* TilemapComponent::SetTilemap(const Tilemaps::Tilemap& newTilemap)
+{
+    tilemap = newTilemap;
+    return this;
 }
 
 TilemapComponent* TilemapComponent::SetTileSize(pair<int, int> size) { this->tilemap.tileSize = size; return this; }

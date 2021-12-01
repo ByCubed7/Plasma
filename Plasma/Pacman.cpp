@@ -39,7 +39,6 @@ void Pacman::Init()
 	Resources::LoadTexture("assets/textures/Cherry.png", true, "cherry");
 	Resources::LoadTexture("assets/textures/Tilesheet.png", true, "tilesheet");
 
-
 	// Load levels
 	Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
 
@@ -54,6 +53,7 @@ void Pacman::Init()
 	TilemapComponent* tilemapTilemap = new TilemapComponent(tilemap);
 
 	tilemapTilemap
+		->SetTilemap(Resources::GetTilemap("tilesheet"))
 		->Set(Resources::GetTexture("tilesheet"))
 		->Bind(renderer);
 	AddComponent(tilemapTilemap);

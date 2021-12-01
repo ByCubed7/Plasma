@@ -9,27 +9,27 @@
 #include "TextRenderer.h"
 #include "Resources.h"
 
+TextRenderer::TextRenderer(Shader& shader) 
+    : Renderer(shader)
+{    
+    // Configure VBO for texture quads
+    glBindVertexArray(vertexArrayObject);
 
-TextRenderer::TextRenderer(Shader& shader)
-{
-    // Load and configure shader
-    this->TextShader = shader;// Resources::GetShader("text");
-    
-    // Configure VAO/VBO for texture quads
-    glGenVertexArrays(1, &this->VAO);
-    glGenBuffers(1, &this->VBO);
-    glBindVertexArray(this->VAO);
-    glBindBuffer(GL_ARRAY_BUFFER, this->VBO);
+    glGenBuffers(1, &verticeVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, verticeVBO);
+
     glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 6 * 4, NULL, GL_DYNAMIC_DRAW);
+
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
+    
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 }
 
 TextRenderer::~TextRenderer()
 {
-    glDeleteVertexArrays(1, &this->VAO);
+    glDeleteVertexArrays(1, &vertexArrayObject);
 }
 
 void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec2 pivot, glm::vec3 color)
@@ -38,12 +38,12 @@ void TextRenderer::RenderText(std::string text, float x, float y, float scale, g
     Font font = Resources::GetFont("arial");
 
     // Activate corresponding render state	
-    this->TextShader.Use();
-    this->TextShader.SetVector3f("textColor", color);
+    this->shader.Use();
+    this->shader.SetVector3f("textColor", color);
     glActiveTexture(GL_TEXTURE0);
-    glBindVertexArray(this->VAO);
+    glBindVertexArray(vertexArrayObject);
 
-    this->TextShader.SetInteger("text", 0);
+    this->shader.SetInteger("text", 0);
 
     // Calcualte total texture size for pivoting
     float width = 0;
@@ -88,7 +88,7 @@ void TextRenderer::RenderText(std::string text, float x, float y, float scale, g
         
         // Render glyph texture over quad
         glBindTexture(GL_TEXTURE_2D, ch.TextureID);
-        glBindBuffer(GL_ARRAY_BUFFER, this->VBO); // Update VBO memory content
+        glBindBuffer(GL_ARRAY_BUFFER, verticeVBO); // Update VBO memory content
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices); // Use glBufferSubData and not glBufferData
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glDrawArrays(GL_TRIANGLES, 0, 6); // Render quad

@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "Renderer.h"
+
 #include "../Library/glad.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -14,7 +16,7 @@
 #include <vector>
 
 
-class TilemapRenderer
+class TilemapRenderer : Renderer
 {
 public:
     // Constructor (inits shaders/shapes)
@@ -34,17 +36,13 @@ private:
     void UpdateRender(Tilemaps::Render render);
     void UpdateRenderBuffer();
 
-    // Render state
-    Shader shader;
-    unsigned int tileVAO;
+    // Rendering VBOs
     unsigned int verticesVBO, idInstanceVBO, positionInstanceVBO, rotscaInstanceVBO;
     unsigned int rotscaRow1InstanceVBO, rotscaRow2InstanceVBO, rotscaRow3InstanceVBO, rotscaRow4InstanceVBO;
 
+    // Rendering States
     vector<float> tileIds;
     vector<glm::vec2> tilePositions;
     vector<glm::vec4> tileRotScasRow1, tileRotScasRow2, tileRotScasRow3, tileRotScasRow4;
-
-    // Initializes and configures the quad's buffer and vertex attributes
-    void initRenderData();
 };
 

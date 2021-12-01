@@ -8,7 +8,7 @@
 #include "Input.h"
 #include "SpriteRenderer.h"
 #include "TextRenderer.h"
-#include "Renderer.h"
+#include "Renderers.h"
 
 #include <list>
 
@@ -39,7 +39,7 @@ public:
 
 	//SpriteRenderer* spriteRenderer;
 	//TextRenderer* text;
-	Renderer* renderer;
+	Renderers* renderer;
 
 	list<GameObject*> gameObjects;
 	list<Component*> components;

@@ -7,7 +7,7 @@
 #include "Game.h"
 #include "GameObject.h"
 
-#include "Renderer.h"
+#include "Renderers.h"
 #include "AABB.h"
 
 class GameObject;
@@ -21,5 +21,5 @@ public:
 	GameObject * gameObject;
 
 	virtual void Update(double delta, Game& game);
-	virtual void Draw(Renderer& renderer);
+	virtual void Draw(Renderers& renderer);
 };

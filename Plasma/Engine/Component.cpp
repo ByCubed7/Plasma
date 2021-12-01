@@ -13,4 +13,4 @@ Component::Component(GameObject* gameObject, std::string name)
 }
 
 void Component::Update(double delta, Game& game) {}
-void Component::Draw(Renderer& renderer) {}
+void Component::Draw(Renderers& renderer) {}

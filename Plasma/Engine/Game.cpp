@@ -75,7 +75,7 @@ void Game::GInit()
 
 	// - Load Renderer(s)
 
-	renderer = new Renderer(
+	renderer = new Renderers(
 		ShaderSprite,
 		ShaderText,
 		ShaderTile

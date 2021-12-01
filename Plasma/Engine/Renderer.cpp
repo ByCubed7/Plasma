@@ -2,7 +2,16 @@
 
 #include "Renderer.h"
 
-Renderer::Renderer(Shader& spriteShader, Shader& textShader, Shader& tilemapShader)
-	: sprite(spriteShader), text(textShader), tilemap(tilemapShader) {}
+Renderer::Renderer(Shader& shader)
+{
+    this->shader = shader;
 
-Renderer::~Renderer() {}
+    // Generate a VAO for vertexArrayObject
+    glGenVertexArrays(1, &vertexArrayObject);
+}
+
+Renderer::~Renderer()
+{
+    // Tell OpenGL to free up the memory used by the VAO.
+    glDeleteVertexArrays(1, &vertexArrayObject);
+}
