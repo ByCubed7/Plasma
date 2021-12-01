@@ -170,29 +170,29 @@ void TilemapRenderer::UpdateRenderBuffer()
 
     // 2 : float - Tile Id
     glBindBuffer(GL_ARRAY_BUFFER, idInstanceVBO);
-    glBufferData(GL_ARRAY_BUFFER, tileIds.size() * sizeof(tileIds), tileIds.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, tileIds.size() * sizeof(tileIds[0]), tileIds.data(), GL_STATIC_DRAW);
     glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, sizeof(float), 0);
 
     // 3 : vec2 - Tile Position
     glBindBuffer(GL_ARRAY_BUFFER, positionInstanceVBO);
-    glBufferData(GL_ARRAY_BUFFER, tilePositions.size() * sizeof(tilePositions), tilePositions.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, tilePositions.size() * sizeof(tilePositions[0]), tilePositions.data(), GL_STATIC_DRAW);
     glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(glm::vec2), 0);
 
     //* 4-8 : mat4 - Tile Rotation and Scale
     glBindBuffer(GL_ARRAY_BUFFER, rotscaRow1InstanceVBO);
-    glBufferData(GL_ARRAY_BUFFER, tileRotScasRow1.size() * sizeof(tileRotScasRow1), tileRotScasRow1.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, tileRotScasRow1.size() * sizeof(tileRotScasRow1[0]), tileRotScasRow1.data(), GL_STATIC_DRAW);
     glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), 0);
     
     glBindBuffer(GL_ARRAY_BUFFER, rotscaRow2InstanceVBO);
-    glBufferData(GL_ARRAY_BUFFER, tileRotScasRow2.size() * sizeof(tileRotScasRow2), tileRotScasRow2.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, tileRotScasRow2.size() * sizeof(tileRotScasRow2[0]), tileRotScasRow2.data(), GL_STATIC_DRAW);
     glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), 0);
 
     glBindBuffer(GL_ARRAY_BUFFER, rotscaRow3InstanceVBO);
-    glBufferData(GL_ARRAY_BUFFER, tileRotScasRow3.size() * sizeof(tileRotScasRow3), tileRotScasRow3.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, tileRotScasRow3.size() * sizeof(tileRotScasRow3[0]), tileRotScasRow3.data(), GL_STATIC_DRAW);
     glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), 0);
 
     glBindBuffer(GL_ARRAY_BUFFER, rotscaRow4InstanceVBO);
-    glBufferData(GL_ARRAY_BUFFER, tileRotScasRow4.size() * sizeof(tileRotScasRow4), tileRotScasRow4.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, tileRotScasRow4.size() * sizeof(tileRotScasRow4[0]), tileRotScasRow4.data(), GL_STATIC_DRAW);
     glVertexAttribPointer(7, 4, GL_FLOAT, GL_FALSE, sizeof(glm::vec4), 0);
     //*/
 
