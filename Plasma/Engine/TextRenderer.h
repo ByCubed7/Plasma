@@ -13,23 +13,23 @@
 #include "shader.h"
 #include "font.h"
 
-
-/// <summary>
-/// A renderer class for rendering text displayed by a font loaded using the 
-/// FreeType library. A single font is loaded, processed into a list of Character
-/// items for later rendering.
-/// </summary>
-class TextRenderer : Renderer
+namespace Render
 {
-public:    
-    // Constructor
-    TextRenderer(Shader& shader);
+    /// <summary>
+    /// A renderer class for rendering text displayed by a font loaded using the 
+    /// FreeType library. A single font is loaded, processed into a list of Character
+    /// items for later rendering.
+    /// </summary>
+    class TextRenderer : Renderer
+    {
+    public:
+        // Constructor
+        TextRenderer(Shader& shader);
 
-    ~TextRenderer();
-        
-    // Renders a string of text using the precompiled list of characters
-    void RenderText(std::string text, float x, float y, float scale, glm::vec2 pivot = {0.5f, 0.5f}, glm::vec3 color = glm::vec3(1.0f));
+        // Renders a string of text using the precompiled list of characters
+        void RenderText(std::string text, float x, float y, float scale, glm::vec2 pivot = { 0.5f, 0.5f }, glm::vec3 color = glm::vec3(1.0f));
 
-private:
-    unsigned int verticeVBO;
-}; 
+    private:
+        unsigned int verticeVBO;
+    };
+}

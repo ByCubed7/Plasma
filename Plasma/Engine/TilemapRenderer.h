@@ -15,34 +15,32 @@
 
 #include <vector>
 
-
-class TilemapRenderer : Renderer
+namespace Render 
 {
-public:
-    // Constructor (inits shaders/shapes)
-    TilemapRenderer(Shader& shader);
+    class TilemapRenderer : Renderer
+    {
+    public:
+        // Constructor (inits shaders/shapes)
+        TilemapRenderer(Shader& shader);
 
-    // Destructor
-    ~TilemapRenderer();
+        // Renders a defined quad textured with given sprite
+        void DrawTileLayer(Texture2D& texture, glm::vec2 position, glm::vec2 size = glm::vec2(1.0f, 1.0f), float rotate = 0.0f, int frame = 0, glm::vec3 color = glm::vec3(1.0f));
 
-    // Renders a defined quad textured with given sprite
-    void DrawTileLayer(Texture2D& texture, glm::vec2 position, glm::vec2 size = glm::vec2(1.0f, 1.0f), float rotate = 0.0f, int frame = 0, glm::vec3 color = glm::vec3(1.0f));
+        // Updates the tilemaps render data
+        void Update(Tilemaps::TileRender render);
 
-    // Updates the tilemaps render data
-    void Update(Tilemaps::TileRender render);
+    private:
 
-private:
+        void UpdateRender(Tilemaps::TileRender render);
+        void UpdateRenderBuffer();
 
-    void UpdateRender(Tilemaps::TileRender render);
-    void UpdateRenderBuffer();
+        // Rendering VBOs
+        unsigned int verticesVBO, idInstanceVBO, positionInstanceVBO, rotscaInstanceVBO;
+        unsigned int rotscaRow1InstanceVBO, rotscaRow2InstanceVBO, rotscaRow3InstanceVBO, rotscaRow4InstanceVBO;
 
-    // Rendering VBOs
-    unsigned int verticesVBO, idInstanceVBO, positionInstanceVBO, rotscaInstanceVBO;
-    unsigned int rotscaRow1InstanceVBO, rotscaRow2InstanceVBO, rotscaRow3InstanceVBO, rotscaRow4InstanceVBO;
-
-    // Rendering States
-    vector<float> tileIds;
-    vector<glm::vec2> tilePositions;
-    vector<glm::vec4> tileRotScasRow1, tileRotScasRow2, tileRotScasRow3, tileRotScasRow4;
-};
-
+        // Rendering States
+        vector<float> tileIds;
+        vector<glm::vec2> tilePositions;
+        vector<glm::vec4> tileRotScasRow1, tileRotScasRow2, tileRotScasRow3, tileRotScasRow4;
+    };
+}

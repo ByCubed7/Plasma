@@ -7,12 +7,6 @@
     <Filter Include="Engine">
       <UniqueIdentifier>{13704bb7-ffa1-4cfe-a7ed-b0bf251b553a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Headers">
-      <UniqueIdentifier>{f27f1f28-9b11-4d67-bcda-3dca97d55e5c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Source">
-      <UniqueIdentifier>{07b1df4d-291c-499c-ad70-99b336d0af5a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game Files">
       <UniqueIdentifier>{b345736a-c0c7-43c8-8300-967b1ec8e60d}</UniqueIdentifier>
     </Filter>
@@ -28,7 +22,10 @@
     <Filter Include="Engine\Tilemaps">
       <UniqueIdentifier>{de37f00b-ddb1-4968-9ca0-f10614cfea00}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Renderers">
+    <Filter Include="Engine\Resources">
+      <UniqueIdentifier>{df8e30af-e7ac-45e6-8c6c-8d3483e856ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Render">
       <UniqueIdentifier>{531c5ad7-d668-4903-beb0-3d9e40d4f885}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -39,44 +36,8 @@
     <ClCompile Include="Library\glad.c">
       <Filter>Library</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\AABB.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Font.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Game.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\GameObject.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Input.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Resources.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Settings.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Shader.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Texture.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Vector2.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\App.cpp">
-      <Filter>Engine\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Pacman.cpp">
       <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Object.cpp">
-      <Filter>Engine\Source</Filter>
     </ClCompile>
     <ClCompile Include="Engine\SpriteComponent.cpp">
       <Filter>Engine\Components</Filter>
@@ -127,22 +88,58 @@
       <Filter>Engine\Tilemaps</Filter>
     </ClCompile>
     <ClCompile Include="Engine\TilemapRenderer.cpp">
-      <Filter>Engine\Renderers</Filter>
+      <Filter>Engine\Render</Filter>
     </ClCompile>
     <ClCompile Include="Engine\TextRenderer.cpp">
-      <Filter>Engine\Renderers</Filter>
+      <Filter>Engine\Render</Filter>
     </ClCompile>
     <ClCompile Include="Engine\SpriteRenderer.cpp">
-      <Filter>Engine\Renderers</Filter>
+      <Filter>Engine\Render</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Renderers.cpp">
-      <Filter>Engine\Renderers</Filter>
+      <Filter>Engine\Render</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Renderer.cpp">
-      <Filter>Engine\Renderers</Filter>
+      <Filter>Engine\Render</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Tilemaps\Tileset.cpp">
       <Filter>Engine\Tilemaps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Vector2.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\AABB.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\App.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Game.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GameObject.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Input.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Object.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Settings.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Resources.cpp">
+      <Filter>Engine\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Shader.cpp">
+      <Filter>Engine\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Texture.cpp">
+      <Filter>Engine\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Font.cpp">
+      <Filter>Engine\Resources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,44 +152,8 @@
     <ClInclude Include="Library\stb_image.h">
       <Filter>Library</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\AABB.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Font.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Game.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\GameObject.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Input.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Resources.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Settings.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Shader.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Texture.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Vector2.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Pacman.h">
       <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\App.h">
-      <Filter>Engine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Object.h">
-      <Filter>Engine\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Engine\SpriteComponent.h">
       <Filter>Engine\Components</Filter>
@@ -261,22 +222,58 @@
       <Filter>Engine\Tilemaps</Filter>
     </ClInclude>
     <ClInclude Include="Engine\TextRenderer.h">
-      <Filter>Engine\Renderers</Filter>
+      <Filter>Engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="Engine\SpriteRenderer.h">
-      <Filter>Engine\Renderers</Filter>
+      <Filter>Engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="Engine\TilemapRenderer.h">
-      <Filter>Engine\Renderers</Filter>
+      <Filter>Engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Renderers.h">
-      <Filter>Engine\Renderers</Filter>
+      <Filter>Engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Renderer.h">
-      <Filter>Engine\Renderers</Filter>
+      <Filter>Engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Tilemaps\Tileset.h">
       <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\AABB.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\App.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Game.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GameObject.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Input.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Object.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Settings.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vector2.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Resources.h">
+      <Filter>Engine\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Shader.h">
+      <Filter>Engine\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Texture.h">
+      <Filter>Engine\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Font.h">
+      <Filter>Engine\Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

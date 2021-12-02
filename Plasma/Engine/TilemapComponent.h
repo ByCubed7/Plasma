@@ -11,7 +11,7 @@ public:
 	TilemapComponent(GameObject* gameObject, std::string name = "TilemapComponent");
 
 	void Update(double delta, Game& game) override;
-	void Draw(Renderers& renderer) override;
+	void Draw(Render::Renderers& renderer) override;
 
 	Tilemaps::Tilemap tilemap;
 
@@ -21,7 +21,7 @@ public:
 	float animationSpeed;
 	int spriteFrame;
 
-	TilemapComponent* Bind(Renderers* renderer);
+	TilemapComponent* Bind(Render::Renderers* renderer);
 	TilemapComponent* Set(Texture2D texture);
 	TilemapComponent* SetTilemap(const Tilemaps::Tilemap& tilemap);
 	TilemapComponent* SetTileSize(pair<int, int> size);

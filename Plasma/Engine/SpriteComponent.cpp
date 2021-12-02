@@ -19,7 +19,7 @@ SpriteComponent::SpriteComponent(GameObject* gameObject, std::string name)
     bounds = AABB();
 }
 
-void SpriteComponent::Draw(Renderers& renderer)
+void SpriteComponent::Draw(Render::Renderers& renderer)
 {
     int PPU(Settings::PPU);
     glm::vec2 drawScale = { gameObject->scale.x * PPU, gameObject->scale.y * PPU };

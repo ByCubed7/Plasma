@@ -39,7 +39,7 @@ public:
 
 	//SpriteRenderer* spriteRenderer;
 	//TextRenderer* text;
-	Renderers* renderer;
+	Render::Renderers* renderer;
 
 	list<GameObject*> gameObjects;
 	list<Component*> components;

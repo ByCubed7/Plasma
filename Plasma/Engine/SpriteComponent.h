@@ -14,7 +14,7 @@ public:
 	SpriteComponent(GameObject* gameObject, std::string name = "SpriteComponent");
 
 	void Update(double delta, Game& game) override;
-	void Draw(Renderers& renderer) override;
+	void Draw(Render::Renderers& renderer) override;
 
 	glm::vec3 color;
 

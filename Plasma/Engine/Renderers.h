@@ -14,13 +14,15 @@
 
 using namespace std;
 
-struct Renderers
+namespace Render
 {
-	SpriteRenderer sprite;
-	TextRenderer text;
-	TilemapRenderer tilemap;
+	struct Renderers
+	{
+		SpriteRenderer sprite;
+		TextRenderer text;
+		TilemapRenderer tilemap;
 
-	Renderers(Shader& spriteShader, Shader& textShader, Shader& tilemapShader);
-	~Renderers();
-};
-
+		Renderers(Shader& spriteShader, Shader& textShader, Shader& tilemapShader);
+		~Renderers();
+	};
+}

@@ -21,7 +21,7 @@ TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
     animationSpeed = 2;
 }
 
-void TilemapComponent::Draw(Renderers& renderer)
+void TilemapComponent::Draw(Render::Renderers& renderer)
 {
     int PPU(Settings::PPU);
 
@@ -51,7 +51,7 @@ void TilemapComponent::Update(double delta, Game& game)
     //*/
 }
 
-TilemapComponent* TilemapComponent::Bind(Renderers* renderer)
+TilemapComponent* TilemapComponent::Bind(Render::Renderers* renderer)
 {
     //cout << "3 TilemapComponent::Bind" << endl;
     //cout << "tilemap.Count(): " << tilemap.Count() << endl;

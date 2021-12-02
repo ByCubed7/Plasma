@@ -21,5 +21,5 @@ public:
 	GameObject * gameObject;
 
 	virtual void Update(double delta, Game& game);
-	virtual void Draw(Renderers& renderer);
+	virtual void Draw(Render::Renderers& renderer);
 };
