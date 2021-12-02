@@ -102,6 +102,7 @@ Tilemaps::Tilemap Resources::LoadTilemap(const std::string file, std::string nam
                 );
 
                 // Converts the boolean mirror matrix to a rotation float and scale vector
+                // NOTE: This took me 5 hours and I found it by accedent at like 4am
                 glm::vec2 scale = glm::vec2(
                    flipH ^ flipD ? -1 : 1,
                    flipV ? -1 : 1
