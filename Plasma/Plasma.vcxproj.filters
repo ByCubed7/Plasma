@@ -114,7 +114,7 @@
     <ClCompile Include="Library\TiledLibrary\TiledTile.cpp">
       <Filter>Library\TiledLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Tilemaps\Render.cpp">
+    <ClCompile Include="Engine\Tilemaps\TileRender.cpp">
       <Filter>Engine\Tilemaps</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Tilemaps\Tile.cpp">
@@ -248,7 +248,7 @@
     <ClInclude Include="Library\TiledLibrary\TiledTile.h">
       <Filter>Library\TiledLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Tilemaps\Render.h">
+    <ClInclude Include="Engine\Tilemaps\TileRender.h">
       <Filter>Engine\Tilemaps</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Tilemaps\Tile.h">

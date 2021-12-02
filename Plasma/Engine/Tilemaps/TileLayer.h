@@ -3,7 +3,7 @@
 #pragma once
 
 #include "Tile.h"
-#include "Render.h"
+#include "TileRender.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -28,13 +28,13 @@ namespace Tilemaps {
         void AddTile(int id, glm::vec2 position, float rotation);
         void AddTile(int id, glm::vec2 position, float rotation, glm::vec2 scale);
         
-        Render GetRender();
+        TileRender GetRender();
 
         // - Attribute Gets
 
         int GetTileAt(glm::vec2 position);
         int GetTileAt(pair<int, int> position);
 
-        int Count();
+        size_t Count();
     };
 }

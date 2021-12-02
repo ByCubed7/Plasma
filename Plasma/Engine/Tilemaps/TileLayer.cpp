@@ -3,7 +3,6 @@
 #pragma once
 
 #include "TileLayer.h"
-#include "Render.h"
 
 #include <map>
 #include <string>
@@ -38,9 +37,9 @@ namespace Tilemaps {
 
 
 	// Generates and Returns a TileLayers render data
-	Render TileLayer::GetRender()
+	TileRender TileLayer::GetRender()
 	{
-		Render renderData = Render();
+		TileRender renderData = TileRender();
 
 		for (auto& tile : tiles)
 			renderData.Add(tile);
@@ -50,6 +49,6 @@ namespace Tilemaps {
 
 	// - Gets
 
-	int TileLayer::Count() { return tiles.size(); }
+	size_t TileLayer::Count() { return tiles.size(); }
 
 }

@@ -16,7 +16,7 @@
 using namespace std;
 
 namespace Tilemaps {
-    struct Render
+    struct TileRender
     {
         vector<int> ids;
         vector<glm::vec2> positions;
@@ -28,6 +28,6 @@ namespace Tilemaps {
         vector<glm::vec2> Positions();
         vector<glm::mat4> RotScas();
 
-        int Count();
+        size_t Count();
     };
 }

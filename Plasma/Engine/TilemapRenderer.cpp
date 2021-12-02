@@ -95,13 +95,13 @@ void TilemapRenderer::DrawTileLayer(Texture2D& texture, glm::vec2 position, glm:
     glBindVertexArray(0);
 }
 
-void TilemapRenderer::Update(Tilemaps::Render render)
+void TilemapRenderer::Update(Tilemaps::TileRender render)
 {
     UpdateRender(render);
     UpdateRenderBuffer();
 }
 
-void TilemapRenderer::UpdateRender(Tilemaps::Render render)
+void TilemapRenderer::UpdateRender(Tilemaps::TileRender render)
 {
     if (render.Count() == 0) return;
     //if (tileIds == render.Ids()) return;
@@ -110,7 +110,7 @@ void TilemapRenderer::UpdateRender(Tilemaps::Render render)
     tilePositions = render.Positions();
     vector<glm::mat4> tileRotScas = render.RotScas();
 
-    int len = tileIds.size();
+    size_t len = tileIds.size();
     tileRotScasRow1.resize(len);
     tileRotScasRow2.resize(len);
     tileRotScasRow3.resize(len);

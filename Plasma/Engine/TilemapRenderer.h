@@ -11,7 +11,7 @@
 #include "texture.h"
 #include "shader.h"
 #include "Tilemaps/Tilemap.h"
-#include "Tilemaps/Render.h"
+#include "Tilemaps/TileRender.h"
 
 #include <vector>
 
@@ -29,11 +29,11 @@ public:
     void DrawTileLayer(Texture2D& texture, glm::vec2 position, glm::vec2 size = glm::vec2(1.0f, 1.0f), float rotate = 0.0f, int frame = 0, glm::vec3 color = glm::vec3(1.0f));
 
     // Updates the tilemaps render data
-    void Update(Tilemaps::Render render);
+    void Update(Tilemaps::TileRender render);
 
 private:
 
-    void UpdateRender(Tilemaps::Render render);
+    void UpdateRender(Tilemaps::TileRender render);
     void UpdateRenderBuffer();
 
     // Rendering VBOs

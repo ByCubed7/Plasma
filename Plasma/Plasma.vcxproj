@@ -166,7 +166,7 @@
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\TilemapComponent.cpp" />
     <ClCompile Include="Engine\TilemapRenderer.cpp" />
-    <ClCompile Include="Engine\Tilemaps\Render.cpp" />
+    <ClCompile Include="Engine\Tilemaps\TileRender.cpp" />
     <ClCompile Include="Engine\Tilemaps\Tile.cpp" />
     <ClCompile Include="Engine\Tilemaps\TileLayer.cpp" />
     <ClCompile Include="Engine\Tilemaps\Tilemap.cpp" />
@@ -207,7 +207,7 @@
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\TilemapComponent.h" />
     <ClInclude Include="Engine\TilemapRenderer.h" />
-    <ClInclude Include="Engine\Tilemaps\Render.h" />
+    <ClInclude Include="Engine\Tilemaps\TileRender.h" />
     <ClInclude Include="Engine\Tilemaps\Tile.h" />
     <ClInclude Include="Engine\Tilemaps\TileLayer.h" />
     <ClInclude Include="Engine\Tilemaps\Tilemap.h" />

@@ -2,13 +2,13 @@
 
 #pragma once
 
-#include "Render.h"
+#include "TileRender.h"
 #include "Tile.h"
 
 
 namespace Tilemaps {
 
-	void Render::Add(Tile tile)
+	void TileRender::Add(Tile tile)
 	{
 		ids.push_back(tile.id);
 		positions.push_back(tile.position);
@@ -29,15 +29,15 @@ namespace Tilemaps {
 		rotscas.push_back(transform);
 	}
 
-	vector<float> Render::Ids()
+	vector<float> TileRender::Ids()
 	{
 		vector<float> data;
-		for (auto& tile : ids)
-			data.push_back(tile);
+		for (int& tile : ids)
+			data.push_back((float)tile);
 		return data;
 	}
 
-	vector<glm::vec2> Render::Positions()
+	vector<glm::vec2> TileRender::Positions()
 	{
 		return positions;
 		/*
@@ -48,12 +48,12 @@ namespace Tilemaps {
 		//*/
 	}
 
-	vector<glm::mat4> Render::RotScas()
+	vector<glm::mat4> TileRender::RotScas()
 	{
 		return rotscas;
 	}
 
-	int Render::Count()
+	size_t TileRender::Count()
 	{
 		return ids.size();
 	}
