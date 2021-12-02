@@ -77,45 +77,55 @@ Tilemaps::Tilemap Resources::LoadTilemap(const std::string file, std::string nam
     // Convert the loaded map into a tilemap
     vector<Tiled::Layer> layers = tiledMap->Layers();
 
-    cout << layers[0].Tiles().size() << endl;
+    for (int j = 0; j < layers.size(); j++)
+    {
+        cout << layers[j].Tiles().size() << endl;
 
-    int j = 0;
-    auto tiles = layers[j].Tiles();
-    map.AddLayer();
+        auto tiles = layers[j].Tiles();
+        map.AddLayer();
 
-    //*
-    for (int y = 0; y < tiledMap->Height(); ++y) {
-        for (int x = 0; x < tiledMap->Width(); ++x) {
-            unsigned id = tiles[y][x];
+        //*
+        for (int y = 0; y < tiledMap->Height(); ++y) {
+            for (int x = 0; x < tiledMap->Width(); ++x) {
+                unsigned id = tiles[y][x];
 
-            // Read out the flags
-            bool flipped_horizontally = (id & Tiled::FLIPPED_HORIZONTALLY_FLAG);
-            bool flipped_vertically = (id & Tiled::FLIPPED_VERTICALLY_FLAG);
-            bool flipped_diagonally = (id & Tiled::FLIPPED_DIAGONALLY_FLAG);
+                // Read the flags
+                bool flipH = (id & Tiled::FLIPPED_HORIZONTALLY_FLAG);
+                bool flipV = (id & Tiled::FLIPPED_VERTICALLY_FLAG);
+                bool flipD = (id & Tiled::FLIPPED_DIAGONALLY_FLAG);
 
-            // Clear the flags
-            id &= ~(
-                Tiled::FLIPPED_HORIZONTALLY_FLAG    |
-                Tiled::FLIPPED_VERTICALLY_FLAG      |
-                Tiled::FLIPPED_DIAGONALLY_FLAG
-            );
+                // Clear the flags
+                id &= ~(
+                    Tiled::FLIPPED_HORIZONTALLY_FLAG    |
+                    Tiled::FLIPPED_VERTICALLY_FLAG      |
+                    Tiled::FLIPPED_DIAGONALLY_FLAG
+                );
 
-            glm::vec2 scale = glm::vec2(
-                flipped_vertically      ? 1 : -1,
-                flipped_horizontally    ? 1 : -1
-            );
+                // Converts the boolean mirror matrix to a rotation float and scale vector
+                glm::vec2 scale = glm::vec2(
+                   flipH ^ flipD ? -1 : 1,
+                   flipV ? -1 : 1
+                );
 
-
-            map.AddTile(j, id, glm::vec2(x, y));
-            /* Resolve the tile
-            for (int i = tileset_count - 1; i >= 0; --i) {
-                Tileset* tileset = tilesets[i];
-
-                if (tileset->first_gid() <= global_tile_id) {
-                    tiles[y][x] = tileset->tileAt(global_tile_id - tileset->first_gid());
-                    break;
+                if (flipD) {
+                    int temp = scale.x;
+                    scale.x = scale.y;
+                    scale.y = temp;
                 }
-            }//*///*
+
+                int rotat = flipD ? 90 : 0;
+                
+                // Add the tile
+                if (id != 0) 
+                {
+                    map.AddTile(
+                        j, 
+                        map.tileset.GetIndexFromId(id), 
+                        glm::vec2(x, y), 
+                        rotat, scale
+                    );
+                }
+            }
         }
     }//*/
 

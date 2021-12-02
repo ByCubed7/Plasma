@@ -141,6 +141,9 @@
     <ClCompile Include="Engine\Renderer.cpp">
       <Filter>Engine\Renderers</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Tilemaps\Tileset.cpp">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -271,6 +274,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Renderer.h">
       <Filter>Engine\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\Tileset.h">
+      <Filter>Engine\Tilemaps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -32,7 +32,7 @@ struct Settings
 	char name[4] = "App";
 
 	// Pixels per unit
-	static const int PPU = 50;
+	static const int PPU = 25;
 
 private:
 	std::map<std::string, std::string> mappify(std::ifstream& file);

@@ -4,6 +4,7 @@
 
 #include "../Texture.h"
 #include "TileLayer.h"
+#include "Tileset.h"
 #include "Tile.h"
 
 #include <glm/glm.hpp>
@@ -27,11 +28,13 @@ namespace Tilemaps {
         //int width, height;
     
         pair<int, int> tileSize;
+        Tileset tileset;
 
         Tilemap();
 
         void AddLayer();
         void AddLayer(TileLayer layer);
+
 
         void AddTile(int layer, Tile tile);
         void AddTile(int layer, int id, glm::vec2 position);
@@ -42,5 +45,7 @@ namespace Tilemaps {
 
         int GetTileAt(int layer, glm::vec2 position);
         int GetTileAt(int layer, pair<int, int> position);
+
+    private:
     };
 }

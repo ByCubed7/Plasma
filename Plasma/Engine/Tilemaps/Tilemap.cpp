@@ -21,12 +21,9 @@ namespace Tilemaps {
 	{
 		layers.push_back(layer);
 	}
-	void Tilemap::AddLayer() { AddLayer(TileLayer()); }
 
-	void Tilemap::AddTile(int layer, Tile tile)
-	{
-		layers[layer].AddTile(tile);
-	}
+	void Tilemap::AddLayer() { AddLayer(TileLayer()); }
+	void Tilemap::AddTile(int layer, Tile tile) { layers[layer].AddTile(tile); }
 
 	// Not the best way to do it?
 	void Tilemap::AddTile(int layer, int id, glm::vec2 position) {

@@ -170,6 +170,7 @@
     <ClCompile Include="Engine\Tilemaps\Tile.cpp" />
     <ClCompile Include="Engine\Tilemaps\TileLayer.cpp" />
     <ClCompile Include="Engine\Tilemaps\Tilemap.cpp" />
+    <ClCompile Include="Engine\Tilemaps\Tileset.cpp" />
     <ClCompile Include="Engine\Vector2.cpp" />
     <ClCompile Include="Library\glad.c" />
     <ClCompile Include="Library\TiledLibrary\TiledLayer.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="Engine\Tilemaps\Tile.h" />
     <ClInclude Include="Engine\Tilemaps\TileLayer.h" />
     <ClInclude Include="Engine\Tilemaps\Tilemap.h" />
+    <ClInclude Include="Engine\Tilemaps\Tileset.h" />
     <ClInclude Include="Engine\Vector2.h" />
     <ClInclude Include="Library\glad.h" />
     <ClInclude Include="Library\khrplatform.h" />
