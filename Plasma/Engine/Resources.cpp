@@ -19,50 +19,50 @@ using namespace std;
 
 
 // Cache any resources we load
-std::map<std::string, Texture2D> Resources::Textures;
-std::map<std::string, Shader> Resources::Shaders;
-std::map<std::string, Font> Resources::Fonts;
-std::map<std::string, Tilemaps::Tilemap> Resources::tilemaps;
+map<string, Texture2D> Resources::Textures;
+map<string, Shader> Resources::Shaders;
+map<string, Font> Resources::Fonts;
+map<string, Tilemaps::Tilemap> Resources::tilemaps;
 
 unsigned int Resources::defaultFontSize = 24;
 
 // Shader
 
-Shader Resources::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name)
+Shader Resources::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, string name)
 {
     Shaders[name] = LoadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
     return Shaders[name];
 }
 
-Shader& Resources::GetShader(std::string name) { return Shaders[name]; }
+Shader& Resources::GetShader(string name) { return Shaders[name]; }
 
 
 // Texture
 
-Texture2D Resources::LoadTexture(const std::string file, bool alpha, std::string name)
+Texture2D Resources::LoadTexture(const string file, bool alpha, string name)
 {
     Textures[name] = LoadTextureFromFile(file, alpha);
     return Textures[name];
 }
 
-Texture2D& Resources::GetTexture(std::string name) { return Textures[name]; }
+Texture2D& Resources::GetTexture(string name) { return Textures[name]; }
 
 
 // Font
 
-Font Resources::LoadFont(const std::string file, std::string name)
+Font Resources::LoadFont(const string file, string name)
 {
     Fonts[name] = LoadFontFromFile(file, defaultFontSize);
     return Fonts[name];
 }
 
-Font& Resources::GetFont(std::string name) { return Fonts[name]; }
+Font& Resources::GetFont(string name) { return Fonts[name]; }
 
 // Tilemaps
 
 Tiled::Loader Resources::tiled = Tiled::Loader();
 
-Tilemaps::Tilemap Resources::LoadTilemap(const std::string file, std::string name)
+Tilemaps::Tilemap Resources::LoadTilemap(const string file, string name)
 {
     Tilemaps::Tilemap map;
 
@@ -151,7 +151,7 @@ Tilemaps::Tilemap Resources::LoadTilemap(const std::string file, std::string nam
     return map;
 }
 
-Tilemaps::Tilemap& Resources::GetTilemap(std::string name)
+Tilemaps::Tilemap& Resources::GetTilemap(string name)
 {
     return tilemaps[name];
 }
@@ -170,16 +170,16 @@ void Resources::Clear()
 Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile)
 {
     // Retrieve the vertex/fragment source code from filePath
-    std::string vertexCode;
-    std::string fragmentCode;
-    std::string geometryCode;
+    string vertexCode;
+    string fragmentCode;
+    string geometryCode;
 
     try
     {
         // Open files
-        std::ifstream vertexShaderFile(vShaderFile);
-        std::ifstream fragmentShaderFile(fShaderFile);
-        std::stringstream vShaderStream, fShaderStream;
+        ifstream vertexShaderFile(vShaderFile);
+        ifstream fragmentShaderFile(fShaderFile);
+        stringstream vShaderStream, fShaderStream;
 
         // Read file's buffer contents into streams
         vShaderStream << vertexShaderFile.rdbuf();
@@ -196,17 +196,17 @@ Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShade
         // If geometry shader path is present, also load a geometry shader
         if (gShaderFile != nullptr)
         {
-            std::ifstream geometryShaderFile(gShaderFile);
-            std::stringstream gShaderStream;
+            ifstream geometryShaderFile(gShaderFile);
+            stringstream gShaderStream;
             gShaderStream << geometryShaderFile.rdbuf();
             geometryShaderFile.close();
             geometryCode = gShaderStream.str();
         }
     }
-    catch (std::exception e)
+    catch (exception e)
     {
         // Raise error
-        std::cout << "ERROR::SHADER: Failed to read shader files" << std::endl;
+        cout << "ERROR::SHADER: Failed to read shader files" << endl;
     }
     const char* vShaderCode = vertexCode.c_str();
     const char* fShaderCode = fragmentCode.c_str();
@@ -219,7 +219,7 @@ Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShade
     return shader;
 }
 
-Texture2D Resources::LoadTextureFromFile(const std::string file, bool alpha)
+Texture2D Resources::LoadTextureFromFile(const string file, bool alpha)
 {
     // Create texture object
     Texture2D texture;
@@ -243,19 +243,19 @@ Texture2D Resources::LoadTextureFromFile(const std::string file, bool alpha)
 }
 
 
-Font Resources::LoadFontFromFile(const std::string file, unsigned int size)
+Font Resources::LoadFontFromFile(const string file, unsigned int size)
 {
     FT_Library ft;
     if (FT_Init_FreeType(&ft))
     {
-        std::cout << "ERROR: Could not init FreeType Library" << std::endl;
+        cout << "ERROR: Could not init FreeType Library" << endl;
         //return -1;
     }
 
     FT_Face face;
     if (FT_New_Face(ft, file.c_str(), 0, &face))
     {
-        std::cout << "ERROR: Failed to load font" << std::endl;
+        cout << "ERROR: Failed to load font" << endl;
         //return -1;
     }
 
@@ -271,7 +271,7 @@ Font Resources::LoadFontFromFile(const std::string file, unsigned int size)
         // Load glyph 
         if (FT_Load_Char(face, c, FT_LOAD_RENDER))
         {
-            std::cout << "ERROR: Failed to load Glyph" << std::endl;
+            cout << "ERROR: Failed to load Glyph" << endl;
             continue;
         }
 

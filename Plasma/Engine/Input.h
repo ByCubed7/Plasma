@@ -8,7 +8,6 @@
 // The current state of the keyboard and mouse
 struct Input
 {
-
 	// Keyboard
 	bool state_keyboard[1024];
 	std::unordered_set<int> state_keyboard_frame;

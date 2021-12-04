@@ -46,7 +46,7 @@ void Pacman::Init()
 
 	//* Create the tilemap
 	GameObject* tilemap = new GameObject();
-	tilemap->position = Vector2(100, 100);
+	tilemap->position = Vector2(64*2, 64*2);
 	//tilemap->scale = Vector2(0.5f);
 	AddGameObject(tilemap);
 

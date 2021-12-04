@@ -5,6 +5,9 @@
 TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
     : Component(gameObject, name)
 {
+    animationPoint = 0;
+    spriteFrame = 0;
+
     //tilemap = Resources::GetTilemap("tilesheet");
 
     //cout << "2 TilemapComponent::TilemapComponent" << endl;
@@ -30,8 +33,20 @@ void TilemapComponent::Draw(Render::Renderers& renderer)
         cout << tile.rotation << endl;
     //}*/
 
-    Tilemaps::TileLayer& layer = tilemap.layers[0];
-    renderer.tilemap.Update(layer.GetRender());
+    renderer.tilemap.Update(tilemap.layers[0].GetRender());
+
+    renderer.tilemap.DrawTileLayer(
+        tilemap.tileSheet,
+        { gameObject->position.x, gameObject->position.y },
+        { gameObject->scale.x * PPU, gameObject->scale.y * PPU },
+        gameObject->rotation,
+        spriteFrame,
+        { 1, 1, 1 }
+    );
+
+    return;
+
+    renderer.tilemap.Update(tilemap.layers[1].GetRender());
 
     renderer.tilemap.DrawTileLayer(
         tilemap.tileSheet,
