@@ -5,15 +5,15 @@
 #include "Object.h"
 #include "Renderers.h"
 #include "GameObject.h"
-#include "Game.h"
+#include "Scene.h"
 #include "Component.h"
 
 class SpriteComponent : public Component
 {
 public:
-	SpriteComponent(GameObject* gameObject, std::string name = "SpriteComponent");
+	SpriteComponent(std::string name = "SpriteComponent");
 
-	void Update(double delta, Game& game) override;
+	void Update(double delta, Scene& game) override;
 	void Draw(Render::Renderers& renderer) override;
 
 	glm::vec3 color;

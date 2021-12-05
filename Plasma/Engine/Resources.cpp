@@ -210,7 +210,7 @@ Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShade
     }
     const char* vShaderCode = vertexCode.c_str();
     const char* fShaderCode = fragmentCode.c_str();
-    const char* gShaderCode = geometryCode.c_str();
+    const char* gShaderCode = geometryCode.c_str(); // <-- Could raise a bug in the future
     
     // Create shader object from source code
     Shader shader;

@@ -3,26 +3,26 @@
 #include "WarpComponent.h"
 
 
-WarpComponent::WarpComponent(GameObject* gameObject, std::string name)
-    : Component(gameObject, name)
+WarpComponent::WarpComponent(std::string name)
+    : Component(name)
 {
     warpX = true;
     warpY = true;
 }
 
 
-void WarpComponent::Update(double delta, Game& game)
+void WarpComponent::Update(double delta, Scene& game)
 {
     if (warpX) {
 
-        int maxLeftSide = game.width - gameObject->scale.x * game.settings->PPU;
+        int maxLeftSide = game.width - gameObject->scale.x * game.settings.PPU;
         
         if (gameObject->position.x < 0) gameObject->position.x = maxLeftSide;
         if (gameObject->position.x > maxLeftSide) gameObject->position.x = 0;
     }
 
     if (warpY) {
-        int maxTopSide = game.height - gameObject->scale.y * game.settings->PPU;
+        int maxTopSide = game.height - gameObject->scale.y * game.settings.PPU;
 
         if (gameObject->position.y < 0) gameObject->position.y = maxTopSide;
         if (gameObject->position.y > maxTopSide) gameObject->position.y = 0;

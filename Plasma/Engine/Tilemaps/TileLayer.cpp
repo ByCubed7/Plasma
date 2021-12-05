@@ -49,6 +49,17 @@ namespace Tilemaps {
 
 	// - Gets
 
+	int TileLayer::GetTileAt(glm::vec2 position)
+	{
+		for (auto& currentTile : tiles)
+			if (currentTile.position == position)
+				return currentTile.id;
+		return -1;
+	}
+
+	int TileLayer::GetTileAt(pair<int, int> position)
+	{ return GetTileAt(glm::vec2(position.first, position.second)); }
+
 	size_t TileLayer::Count() { return tiles.size(); }
 
 }

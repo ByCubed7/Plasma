@@ -5,23 +5,25 @@
 #include "../Library/glad.h"
 #include <glm/glm.hpp>
 
+#include "Scene.h"
 #include "Object.h"
 #include "Vector2.h"
 #include "AABB.h"
 #include "Texture.h"
 #include "SpriteRenderer.h"
-#include "Game.h"
 #include "Component.h"
 
 #include <list>
 
 // Forward declaration
-class Game;
+class Scene;
 class Component;
 
 class GameObject : public Object
 {
 public:
+	Scene* scene;
+
 	Vector2 position;
 	float rotation;
 	Vector2 scale;
@@ -29,7 +31,9 @@ public:
 	//*
 	std::list<Component*> components;
 
-	void AddComponent(Component *component);
+
+	Component* AddComponent(Component* component);
+
 	Component* GetComponent(string name);
 	void RemoveComponent(Component *component);
 
@@ -39,8 +43,8 @@ public:
 	bool destroyed;
 
 	// Constructors
-	GameObject();
-	GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color);
+	GameObject(Scene* scene);
+	//GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color);
 
 	// Operator Overrides
 	operator bool();

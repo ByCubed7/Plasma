@@ -5,12 +5,14 @@
 #include "Component.h"
 #include "Tilemaps/Tilemap.h"
 
+#include <vector>
+
 class TilemapComponent : public Component
 {
 public:
-	TilemapComponent(GameObject* gameObject, std::string name = "TilemapComponent");
+	TilemapComponent(std::string name = "TilemapComponent");
 
-	void Update(double delta, Game& game) override;
+	void Update(double delta, Scene& game) override;
 	void Draw(Render::Renderers& renderer) override;
 
 	Tilemaps::Tilemap tilemap;
@@ -25,4 +27,21 @@ public:
 	TilemapComponent* Set(Texture2D texture);
 	TilemapComponent* SetTilemap(const Tilemaps::Tilemap& tilemap);
 	TilemapComponent* SetTileSize(pair<int, int> size);
+
+	Vector2 GetTilePositionAtScenePosition(Vector2 pos);
+	Vector2 GetTilePositionAtScenePosition(float x, float y);
+
+	Vector2 SPosAtTPos(Vector2 pos);
+	Vector2 SPosAtTPos(int x, int y);
+
+	Vector2 GetTileDensity();
+
+
+	// Getting tiles
+
+	int GetTileAtScenePosition(Vector2 pos);
+	int GetTileAtScenePosition(float x, float y);
+
+	int GetTileAt(Vector2 pos);
+	int GetTileAt(int x, int y);
 };

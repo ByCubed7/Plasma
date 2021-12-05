@@ -9,6 +9,12 @@ Shader::Shader()
     program = 0;
 }
 
+Shader::~Shader()
+{
+    //glDeleteProgram(program);
+    //program = 0;
+}
+
 Shader& Shader::Use()
 {
     // Bound the program as we intend on rendering

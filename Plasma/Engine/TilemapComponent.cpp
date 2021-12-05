@@ -2,8 +2,8 @@
 
 #include "TilemapComponent.h"
 
-TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
-    : Component(gameObject, name)
+TilemapComponent::TilemapComponent(std::string name)
+    : Component(name)
 {
     animationPoint = 0;
     spriteFrame = 0;
@@ -26,39 +26,40 @@ TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
 
 void TilemapComponent::Draw(Render::Renderers& renderer)
 {
-    int PPU(Settings::PPU);
+    int ppu(gameObject->scene->settings.PPU);
 
     /*for (auto& tile : tilemap.tiles) {
         tile.rotation += 1;
         cout << tile.rotation << endl;
     //}*/
 
-    renderer.tilemap.Update(tilemap.layers[0].GetRender());
+    //renderer.tilemap.Update(tilemap.layers[0].GetRender());
 
     renderer.tilemap.DrawTileLayer(
         tilemap.tileSheet,
         { gameObject->position.x, gameObject->position.y },
-        { gameObject->scale.x * PPU, gameObject->scale.y * PPU },
+        { gameObject->scale.x * ppu, gameObject->scale.y * ppu },
         gameObject->rotation,
         spriteFrame,
         { 1, 1, 1 }
     );
 
     return;
-
+    /*
     renderer.tilemap.Update(tilemap.layers[1].GetRender());
 
     renderer.tilemap.DrawTileLayer(
         tilemap.tileSheet,
         { gameObject->position.x, gameObject->position.y },
-        { gameObject->scale.x * PPU, gameObject->scale.y * PPU },
+        { gameObject->scale.x * ppu, gameObject->scale.y * ppu },
         gameObject->rotation,
         spriteFrame,
         { 1, 1, 1 }
     );
+    */
 }
 
-void TilemapComponent::Update(double delta, Game& game)
+void TilemapComponent::Update(double delta, Scene& game)
 {
     //*
     animationPoint += delta;
@@ -73,8 +74,7 @@ TilemapComponent* TilemapComponent::Bind(Render::Renderers* renderer)
     
 
     // Bad Cubie, use cacheing here
-    Tilemaps::TileLayer& layer = tilemap.layers[0];
-    renderer->tilemap.Update(layer.GetRender());
+    renderer->tilemap.Update(tilemap.layers[0].GetRender());
 
     return this;
 }
@@ -92,3 +92,46 @@ TilemapComponent* TilemapComponent::SetTilemap(const Tilemaps::Tilemap& newTilem
 }
 
 TilemapComponent* TilemapComponent::SetTileSize(pair<int, int> size) { this->tilemap.tileSize = size; return this; }
+
+Vector2 TilemapComponent::GetTilePositionAtScenePosition(Vector2 pos)
+{
+    // Transform position to gameobject
+    pos += gameObject->position;
+    pos /= GetTileDensity();
+
+    return pos;
+}
+Vector2 TilemapComponent::GetTilePositionAtScenePosition(float x, float y) { return GetTilePositionAtScenePosition(Vector2(x, y)); }
+
+
+Vector2 TilemapComponent::SPosAtTPos(Vector2 pos)
+{
+    // Transform position to gameobject
+    pos *= GetTileDensity();
+    pos -= gameObject->position;
+
+    return pos;
+}
+Vector2 TilemapComponent::SPosAtTPos(int x, int y) { return SPosAtTPos(Vector2(x, y)); }
+
+
+Vector2 TilemapComponent::GetTileDensity()
+{
+    // Scale position from PPU
+    // Note: Also scale by gameobject scale
+    return Vector2(gameObject->scene->settings.PPU);
+}
+
+int TilemapComponent::GetTileAtScenePosition(Vector2 pos)
+{
+    pos = GetTilePositionAtScenePosition(pos);
+    return GetTileAt(pos);
+}
+int TilemapComponent::GetTileAtScenePosition(float x, float y) { return GetTileAtScenePosition({ x,y }); }
+
+
+int TilemapComponent::GetTileAt(int x, int y)
+{
+    return tilemap.GetTileAt(0, std::pair<int, int>(x, y));
+}
+int TilemapComponent::GetTileAt(Vector2 pos) { return GetTileAt(pos.x, pos.y); }

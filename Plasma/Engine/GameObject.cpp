@@ -1,15 +1,12 @@
 ﻿// By @ByCubed7 on Twitter
 
 #include "GameObject.h"
-#include "Settings.h"
-#include "Game.h"
-#include "Component.h"
 
-#include <typeinfo>
-
-GameObject::GameObject()
+GameObject::GameObject(Scene* scene)
     : Object("GameObject")
 {
+    this->scene = scene;
+
     position = { 0.0f, 0.0f };
     rotation = 0.0f;
     scale = { 1.0f, 1.0f };
@@ -17,7 +14,7 @@ GameObject::GameObject()
     isSolid = false;
     destroyed = false;
 }
-
+/*
 GameObject::GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color)
     : Object("GameObject")
 {
@@ -28,8 +25,17 @@ GameObject::GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 
     this->isSolid = false;
     this->destroyed = false;
 }
+*/
+Component* GameObject::AddComponent(Component* component)
+{ 
+    components.push_back(component);
+    
+    component->gameObject = this;
+    scene->AddComponent(component); 
+    
+    return component;
+}
 
-void GameObject::AddComponent(Component* component) { components.push_back(component); }
 void GameObject::RemoveComponent(Component* component) { components.remove(component); }
 
 Component* GameObject::GetComponent(string name)

@@ -3,9 +3,10 @@
 #include "SpriteComponent.h"
 
 #include "Component.h"
+#include "Settings.h"
 
-SpriteComponent::SpriteComponent(GameObject* gameObject, std::string name)
-    : Component(gameObject, name)
+SpriteComponent::SpriteComponent(std::string name)
+    : Component(name)
 {
     color = { 1, 1, 1 };
 
@@ -21,21 +22,19 @@ SpriteComponent::SpriteComponent(GameObject* gameObject, std::string name)
 
 void SpriteComponent::Draw(Render::Renderers& renderer)
 {
-    int PPU(Settings::PPU);
-    glm::vec2 drawScale = { gameObject->scale.x * PPU, gameObject->scale.y * PPU };
-    glm::vec2 pos = { gameObject->position.x, gameObject->position.y };
+    int ppu = gameObject->scene->settings.PPU;
 
     renderer.sprite.DrawSprite(
         this->sprite,
-        pos,
-        drawScale,
+        { gameObject->position.x, gameObject->position.y },
+        { gameObject->scale.x * ppu, gameObject->scale.y * ppu },
         gameObject->rotation,
         spriteFrame,
         color
     );
 }
 
-void SpriteComponent::Update(double delta, Game& game) 
+void SpriteComponent::Update(double delta, Scene& game) 
 {
     animationPoint += delta;
     spriteFrame = animationPoint * animationSpeed;
@@ -46,8 +45,9 @@ AABB SpriteComponent::GetBounds() { return bounds; }
 // Update bounds
 void SpriteComponent::CalcBounds() 
 {
-    Vector2 upperBound = Vector2(Settings::PPU, Settings::PPU) / 2;
-    Vector2 lowerBound = Vector2(-Settings::PPU, -Settings::PPU) / 2;
+    int ppu = gameObject->scene->settings.PPU;
+    Vector2 upperBound = Vector2(ppu) / 2;
+    Vector2 lowerBound = Vector2(-ppu) / 2;
     this->bounds = AABB(lowerBound, upperBound);
 }
 

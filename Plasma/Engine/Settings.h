@@ -9,10 +9,10 @@
 #include <iostream>
 #include <vector>
 
-struct Settings
+struct GameConfig
 {
 	// - Constructors
-	Settings();
+	GameConfig();
 
 	// Loads default settings
 	void LoadDefault();
@@ -32,7 +32,7 @@ struct Settings
 	char name[4] = "App";
 
 	// Pixels per unit
-	static const int PPU = 32;
+	int PPU = 32;
 
 private:
 	std::map<std::string, std::string> mappify(std::ifstream& file);
