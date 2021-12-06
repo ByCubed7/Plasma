@@ -63,14 +63,6 @@ int main(int argc, char* argv[])
 
 	tilemap->AddComponent(tilemapTilemap);
 
-	//*
-	SpriteComponent* tilemapSprite = new SpriteComponent();
-
-	tilemapSprite
-		->Set(Resources::GetTexture("pip"));
-
-	tilemap->AddComponent(tilemapSprite);
-	//*/
 
 	// - Create player
 	GameObject* player = scene->CreateGameObject();
@@ -93,6 +85,7 @@ int main(int argc, char* argv[])
 	player->AddComponent(playerController);
 
 	WarpComponent* playerWarp = new WarpComponent();
+	playerWarp->SetOffset(player->scale * gameConfig.PPU);
 	player->AddComponent(playerWarp);
 
 	BoxColliderComponent* playerCollider = new BoxColliderComponent();

@@ -56,7 +56,7 @@ void Scene::AddComponent(Component* component)
 void Scene::Initialize()
 {
 	// As this is 2D we don't have to worry about perspective, use orthographic projection
-	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->width), static_cast<float>(this->height), 0.0f, -1.0f, 1.0f);
+	glm::mat4 projection = glm::ortho(0.0f, (float)this->width, (float)this->height, 0.0f, -1.0f, 1.0f);
 
 	// - Load and Config shaders
 	Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");

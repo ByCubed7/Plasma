@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 
-// A two dimensional vector. Attempted translatation from Unity C#
+// A two dimensional vector. Inspired from Unity
 struct Vector2 
 {
     // (Structs are public by default)

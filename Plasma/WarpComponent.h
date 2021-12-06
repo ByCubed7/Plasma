@@ -10,9 +10,12 @@ public:
 
 	void Update(double delta, Scene& game) override;
 
+	Vector2 offset;
+
 	bool warpX;
 	bool warpY;
 
 	WarpComponent* Set(bool warpX, bool warpY);
+	WarpComponent* SetOffset(Vector2 offset);
 };
 
