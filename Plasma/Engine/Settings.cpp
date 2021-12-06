@@ -11,19 +11,19 @@
 
 using namespace std;
 
-Settings::Settings()
+GameConfig::GameConfig()
 {
 	LoadDefault();
 }
 
-void Settings::LoadDefault()
+void GameConfig::LoadDefault()
 {
 	screenWidth = 800;
 	screenHeight = 600;
 	name[0] = *"App";
 }
 
-void Settings::LoadFromFile()
+void GameConfig::LoadFromFile()
 {
 	map<string, string> contents;
 	ifstream settingFile("config.cfg");
@@ -33,7 +33,7 @@ void Settings::LoadFromFile()
 	// Use contents to set the settings~
 }
 
-map<string, string> Settings::mappify(ifstream &file)
+map<string, string> GameConfig::mappify(ifstream &file)
 {
 	map<string, string> m;
 	string key, val;

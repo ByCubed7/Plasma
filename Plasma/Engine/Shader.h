@@ -18,6 +18,10 @@ public:
     // Default Constructor
     Shader();
 
+    // Default Deconstructor - frees the associated memory for this shader
+    // Genenerally, this deconstructor shouldn't be called.
+    ~Shader();
+
     /// <summary>
     /// Tell OpenGL to use this Shader.
     /// </summary>

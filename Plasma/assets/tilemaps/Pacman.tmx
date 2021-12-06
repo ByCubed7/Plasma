@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="2021.03.23" orientation="orthogonal" renderorder="right-down" width="28" height="31" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="1">
- <tileset firstgid="1" source="Pacman.tsx"/>
- <layer id="1" name="Map" width="28" height="31" locked="1">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="28" height="31" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="1">
+ <tileset firstgid="1" source="../../../../../../../Tiled Maps/Pacman.tsx"/>
+ <layer id="1" name="Map" width="28" height="31">
   <data encoding="csv">
 3758096387,3221225476,3221225476,3221225476,3221225476,3221225476,3221225476,3221225476,3221225476,3221225476,3221225476,3221225476,3221225476,1073741831,3221225479,1073741828,1073741828,1073741828,1073741828,1073741828,1073741828,1073741828,1073741828,1073741828,1073741828,1073741828,1073741828,1610612739,
 3758096388,0,0,0,0,0,0,0,0,0,0,0,0,536870914,2684354562,0,0,0,0,0,0,0,0,0,0,0,0,1610612740,
@@ -36,7 +36,7 @@
 2684354563,2147483652,2147483652,4,4,4,4,4,4,4,4,4,4,4,2147483652,2147483652,2147483652,2147483652,2147483652,2147483652,2147483652,2147483652,2147483652,2147483652,2147483652,4,4,536870915
 </data>
  </layer>
- <layer id="2" name="Objects" width="28" height="31" locked="1">
+ <layer id="2" name="Objects" width="28" height="31" visible="0" locked="1">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,11,11,11,11,11,11,11,11,11,11,11,11,0,0,11,11,11,11,11,11,11,11,11,11,11,11,0,

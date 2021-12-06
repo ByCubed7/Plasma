@@ -150,7 +150,7 @@
     <ClCompile Include="Engine\CharacterControllerComponent.cpp" />
     <ClCompile Include="Engine\Component.cpp" />
     <ClCompile Include="Engine\Font.cpp" />
-    <ClCompile Include="Engine\Game.cpp" />
+    <ClCompile Include="Engine\Scene.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Engine\Input.cpp" />
     <ClCompile Include="Engine\Object.cpp" />
@@ -164,6 +164,7 @@
     <ClCompile Include="Engine\SpriteRenderer.cpp" />
     <ClCompile Include="Engine\TextRenderer.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
+    <ClCompile Include="Engine\TilemapColliderComponent.cpp" />
     <ClCompile Include="Engine\TilemapComponent.cpp" />
     <ClCompile Include="Engine\TilemapRenderer.cpp" />
     <ClCompile Include="Engine\Tilemaps\TileRender.cpp" />
@@ -179,8 +180,8 @@
     <ClCompile Include="Library\TiledLibrary\TiledSet.cpp" />
     <ClCompile Include="Library\TiledLibrary\TiledTile.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Pacman.cpp" />
     <ClCompile Include="PlayerCollisionEventManager.cpp" />
+    <ClCompile Include="TileLockedCharacterController.cpp" />
     <ClCompile Include="WarpComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -191,7 +192,7 @@
     <ClInclude Include="Engine\Dispatcher.h" />
     <ClInclude Include="Engine\Event.h" />
     <ClInclude Include="Engine\Font.h" />
-    <ClInclude Include="Engine\Game.h" />
+    <ClInclude Include="Engine\Scene.h" />
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\Input.h" />
     <ClInclude Include="Engine\Object.h" />
@@ -205,6 +206,7 @@
     <ClInclude Include="Engine\SpriteRenderer.h" />
     <ClInclude Include="Engine\TextRenderer.h" />
     <ClInclude Include="Engine\Texture.h" />
+    <ClInclude Include="Engine\TilemapColliderComponent.h" />
     <ClInclude Include="Engine\TilemapComponent.h" />
     <ClInclude Include="Engine\TilemapRenderer.h" />
     <ClInclude Include="Engine\Tilemaps\TileRender.h" />
@@ -225,8 +227,8 @@
     <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml_utils.hpp" />
     <ClInclude Include="Library\TiledLibrary\TiledSet.h" />
     <ClInclude Include="Library\TiledLibrary\TiledTile.h" />
-    <ClInclude Include="Pacman.h" />
     <ClInclude Include="PlayerCollisionEventManager.h" />
+    <ClInclude Include="TileLockedCharacterController.h" />
     <ClInclude Include="WarpComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

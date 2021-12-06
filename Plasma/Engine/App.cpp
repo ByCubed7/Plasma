@@ -2,28 +2,26 @@
 
 #include "App.h"
 
-#include "../Library/glad.h"
-#include <GLFW/glfw3.h>
+App* App::instance = nullptr;
 
-#include "Game.h"
-#include "Resources.h"
-#include "Settings.h"
-
-#include <iostream>
-
-App * App::instance = nullptr;
-
-class Game;
-
-App::App(Settings config, Game* game)
+App::App()
 {
+	//GameConfig config, Scene* scene
 	instance = this;
-	settings = config;
-	this->game = game;
+	//settings = config;
+	//this->scene = scene;
 }
 
-int App::Run() 
+Scene* App::CreateGame(GameConfig& gameConfig)
 {
+	Scene* newScene = new Scene(gameConfig);
+	return newScene;
+}
+
+int App::Prepare(Scene* setScene)
+{
+	scene = setScene;
+
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -31,7 +29,7 @@ int App::Run()
 
 	glfwWindowHint(GLFW_RESIZABLE, false);
 
-	GLFWwindow* window = glfwCreateWindow(settings.screenWidth, settings.screenHeight, settings.name, nullptr, nullptr);
+	window = glfwCreateWindow(scene->settings.screenWidth, scene->settings.screenHeight, scene->settings.name, nullptr, nullptr);
 	glfwMakeContextCurrent(window);
 
 	// Load OpenGL function pointers
@@ -41,47 +39,51 @@ int App::Run()
 		return -1;
 	}
 
-	// - CALLBACKS
-	// Why do we do it using Lambdas? This is surely bad practice.
 
-	auto callbackKey = [](GLFWwindow* window, int key, int scancode, int action, int mode) { return App::instance->CallbackKey(window, key, scancode, action, mode); };
+	// - CALLBACKS
+	// This could certainly look better--
+
+	auto callbackKey = [](GLFWwindow* window, int key, int scancode, int action, int mode)
+	{ return App::instance->GraphicsCallbackKey(window, key, scancode, action, mode); };
 	glfwSetKeyCallback(window, callbackKey);
 
-	auto callbackCursorPosition = [](GLFWwindow* window, double xpos, double ypos) { return App::instance->CallbackCursorPosition(window, xpos, ypos); };
+	auto callbackCursorPosition = [](GLFWwindow* window, double xpos, double ypos)
+	{ return App::instance->GraphicsCallbackCursorPosition(window, xpos, ypos); };
 	glfwSetCursorPosCallback(window, callbackCursorPosition);
-	
-	auto callbackMouseButton = [](GLFWwindow* window, int button, int action, int mods) { return App::instance->CallbackMouseButton(window, button, action, mods); };
+
+	auto callbackMouseButton = [](GLFWwindow* window, int button, int action, int mods)
+	{ return App::instance->GraphicsCallbackMouseButton(window, button, action, mods); };
 	glfwSetMouseButtonCallback(window, callbackMouseButton);
 
-	auto callbackFramebuffer = [](GLFWwindow* window, int width, int height) { return App::instance->CallbackFramebuffer(window, width, height); };
+	auto callbackFramebuffer = [](GLFWwindow* window, int width, int height)
+	{ return App::instance->GraphicsCallbackFramebuffer(window, width, height); };
 	glfwSetFramebufferSizeCallback(window, callbackFramebuffer);
+
+	auto callbackException = [](GLenum source, GLenum type, unsigned int id, GLenum severity, GLsizei length, const char* message, const void* userParam)
+	{ App::instance->GraphicsCallbackException(source, type, id, severity, length, message, userParam); };
 	//
 
 	// Configure OpenGL
-	glViewport(0, 0, settings.screenWidth, settings.screenHeight);
+	glViewport(0, 0, scene->settings.screenWidth, scene->settings.screenHeight);
 	glEnable(GL_BLEND);
 	//glEnable(GL_DEPTH_TEST);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 
 	// Debugging Callback
 	int flags; glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
 	if (flags & GL_CONTEXT_FLAG_DEBUG_BIT)
 	{
-		auto callbackException = []
-			(GLenum source, GLenum type, unsigned int id, GLenum severity, GLsizei length, const char* message, const void* userParam) 
-			{ App::instance->CallbackException(source, type, id, severity, length, message, userParam); };
-
 		glEnable(GL_DEBUG_OUTPUT);
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 		glDebugMessageCallback(callbackException, nullptr);
 		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
 	}
 
-	// Init App
-	game->GInit();
-	game->Init();
+	return 0;
+}
 
+int App::Run(Scene* setScene)
+{
 	// Delta Time
 	double deltaTime = 0.0f;
 	double lastFrame = 0.0f;
@@ -95,20 +97,20 @@ int App::Run()
 		glfwPollEvents();
 
 		// Process the User Input
-		game->ProcessInput(deltaTime);
+		scene->ProcessInput(deltaTime);
 
 		// Update game state
-		game->GUpdate(deltaTime);
-		game->Update(deltaTime);
+		scene->Update(deltaTime);
 
 		// Check the Game state to see whether to close
-		if (game->state == Game::State::CLOSING) glfwSetWindowShouldClose(window, true);
+		if (scene->state == Scene::State::CLOSING) glfwSetWindowShouldClose(window, true);
 
-		// Render
+		// Clear render
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-		game->GRender();
-		game->Render();
+		
+		// Render
+		scene->Render();
 
 		glfwSwapBuffers(window);
 
@@ -131,37 +133,37 @@ int App::Run()
 
 // -- Callbacks
 
-void App::CallbackKey(GLFWwindow* window, int key, int scancode, int action, int mode)
+void App::GraphicsCallbackKey(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
-	if (!game->input.KeyExists(key)) return;
+	if (!scene->input.KeyExists(key)) return;
 	if (action != GLFW_PRESS && action != GLFW_RELEASE) return;
 
-	game->input.SetKey(key, action == GLFW_PRESS);
+	scene->input.SetKey(key, action == GLFW_PRESS);
 	//if (action == GLFW_PRESS) App.input.Pressed(key);
 	//else if (action == GLFW_RELEASE) App.input.Released(key);
 	
 }
 
-void App::CallbackMouseButton(GLFWwindow* window, int button, int action, int mods)
+void App::GraphicsCallbackMouseButton(GLFWwindow* window, int button, int action, int mods)
 {
 	if (action != GLFW_PRESS && action != GLFW_RELEASE) return;
 
 	//if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
-	game->input.SetMouseButton(button, action == GLFW_PRESS);
+	scene->input.SetMouseButton(button, action == GLFW_PRESS);
 }
 
-void App::CallbackCursorPosition(GLFWwindow* window, double xpos, double ypos)
+void App::GraphicsCallbackCursorPosition(GLFWwindow* window, double xpos, double ypos)
 {
-	game->input.SetMousePosition(xpos, ypos);
+	scene->input.SetMousePosition(xpos, ypos);
 }
 
-void App::CallbackFramebuffer(GLFWwindow* window, int width, int height)
+void App::GraphicsCallbackFramebuffer(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
 }
 
 
-void App::CallbackException(GLenum source,
+void App::GraphicsCallbackException(GLenum source,
 	GLenum type, unsigned int id, GLenum severity, GLsizei length,
 	const char* message, const void* userParam)
 {

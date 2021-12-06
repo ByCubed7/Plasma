@@ -36,9 +36,6 @@
     <ClCompile Include="Library\glad.c">
       <Filter>Library</Filter>
     </ClCompile>
-    <ClCompile Include="Pacman.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\SpriteComponent.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
@@ -114,7 +111,7 @@
     <ClCompile Include="Engine\App.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Game.cpp">
+    <ClCompile Include="Engine\Scene.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="Engine\GameObject.cpp">
@@ -141,6 +138,12 @@
     <ClCompile Include="Engine\Font.cpp">
       <Filter>Engine\Resources</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\TilemapColliderComponent.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TileLockedCharacterController.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -151,9 +154,6 @@
     </ClInclude>
     <ClInclude Include="Library\stb_image.h">
       <Filter>Library</Filter>
-    </ClInclude>
-    <ClInclude Include="Pacman.h">
-      <Filter>Game Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\SpriteComponent.h">
       <Filter>Engine\Components</Filter>
@@ -245,7 +245,7 @@
     <ClInclude Include="Engine\App.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Game.h">
+    <ClInclude Include="Engine\Scene.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Engine\GameObject.h">
@@ -274,6 +274,12 @@
     </ClInclude>
     <ClInclude Include="Engine\Font.h">
       <Filter>Engine\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\TilemapColliderComponent.h">
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TileLockedCharacterController.h">
+      <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

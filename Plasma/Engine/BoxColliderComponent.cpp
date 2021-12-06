@@ -2,15 +2,15 @@
 
 #include "BoxColliderComponent.h"
 
-BoxColliderComponent::BoxColliderComponent(GameObject* gameObject, std::string name)
-    : Component(gameObject, name)
+BoxColliderComponent::BoxColliderComponent(std::string name)
+    : Component(name)
 {
 	bounds = AABB();
 }
 
-BoxColliderComponent* BoxColliderComponent::Bind(Game& game)
+BoxColliderComponent* BoxColliderComponent::Bind(Scene* game)
 {
-	game.colliders.push_back(this);
+	game->colliders.push_back(this);
 	return this;
 }
 

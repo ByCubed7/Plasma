@@ -3,63 +3,222 @@
 #include "Library/glad.h"
 #include <GLFW/glfw3.h>
 
-#include "Engine/Game.h"
+#include "Engine/App.h"
+#include "Engine/Scene.h"
 #include "Engine/Resources.h"
 #include "Engine/Settings.h"
+#include "Engine/Gameobject.h"
+
+#include "Engine/SpriteComponent.h"
+#include "Engine/TilemapComponent.h"
+#include "Engine/CharacterControllerComponent.h"
+
+#include "PlayerCollisionEventManager.h"
+#include "WarpComponent.h"
+#include "TileLockedCharacterController.h"
 
 #include <iostream>
 
-#include "Engine/App.h"
-#include "Pacman.h"
-
-//void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-//void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
-
-
-// - INPUT CALLBACKS - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-/*
-static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
-{
-	App.input.SetMousePosition(xpos, ypos);
-}
-
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
-{
-	if (!App.input.KeyExists(key)) return;
-	if (action != GLFW_PRESS && action != GLFW_RELEASE) return;
-
-	App.input.SetKey(key, action == GLFW_PRESS);
-	//if (action == GLFW_PRESS) App.input.Pressed(key);
-	//else if (action == GLFW_RELEASE) App.input.Released(key);
-}
-
-void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
-{
-	if (action != GLFW_PRESS && action != GLFW_RELEASE) return;
-	
-	//if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
-	App.input.SetMouseButton(button, action == GLFW_PRESS);
-}
-
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
-	glViewport(0, 0, width, height);
-}
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-*/
-
-// MAIN
-
 int main(int argc, char* argv[])
 {
-	Settings config;
+	App app = App();
 
-	config.screenHeight = (31 + 4) * 32;
-	config.screenWidth = (28 + 4)*32;
+	GameConfig gameConfig;
+	gameConfig.PPU = 20;
+	gameConfig.screenHeight = gameConfig.PPU * 31;
+	gameConfig.screenWidth  = gameConfig.PPU * 28;
 
-	Pacman pacman(config);
+	Scene* scene = app.CreateGame(gameConfig);
+	//Scene scene = pacman.scene; // Get the default scene
 
-	App app(config, &pacman);
-	return app.Run();
+	// Prepares an OpenGL context so that we can send API calls
+	app.Prepare(scene);
+
+	scene->Initialize();
+
+	// -- Start
+
+	// - Load texture
+	Resources::LoadTexture("assets/textures/Player.png", true, "player");
+	Resources::LoadTexture("assets/textures/Ghost.png", true, "ghost");
+	Resources::LoadTexture("assets/textures/Pip.png", true, "pip");
+	Resources::LoadTexture("assets/textures/Cherry.png", true, "cherry");
+	Resources::LoadTexture("assets/textures/Tilesheet.png", true, "tilesheet");
+
+	// Load levels
+	Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
+
+	// - Create Tilemap
+
+	//* Create the tilemap
+	GameObject* tilemap = scene->CreateGameObject();
+	tilemap->position = Vector2(gameConfig.PPU/2, gameConfig.PPU/2);
+
+	TilemapComponent* tilemapTilemap = new TilemapComponent();
+
+	tilemapTilemap
+		->SetTilemap(Resources::GetTilemap("tilesheet"))
+		->Set(Resources::GetTexture("tilesheet"))
+		->Bind(scene->renderer);
+
+	tilemap->AddComponent(tilemapTilemap);
+
+	//*
+	SpriteComponent* tilemapSprite = new SpriteComponent();
+
+	tilemapSprite
+		->Set(Resources::GetTexture("pip"));
+
+	tilemap->AddComponent(tilemapSprite);
+	//*/
+
+	// - Create player
+	GameObject* player = scene->CreateGameObject();
+	player->position = { 17,17 };
+	player->scale = { 2,2 };
+	
+	SpriteComponent* playerSprite = new SpriteComponent();
+	
+	playerSprite
+		->Set(Resources::GetTexture("player"))
+		->AnimationSpeed(4);
+
+	player->AddComponent(playerSprite);
+
+	//CharacterControllerComponent* playerController = new CharacterControllerComponent();
+	//player->AddComponent(playerController);
+
+	TileLockedCharacterController* playerController = new TileLockedCharacterController();
+	playerController->SetTilemap(tilemapTilemap);
+	player->AddComponent(playerController);
+
+	WarpComponent* playerWarp = new WarpComponent();
+	player->AddComponent(playerWarp);
+
+	BoxColliderComponent* playerCollider = new BoxColliderComponent();
+	playerCollider->Bind(scene);
+	player->AddComponent(playerCollider);
+
+	PlayerCollisionEventManager* playerColliderEventMng = new PlayerCollisionEventManager();
+	playerColliderEventMng->Bind(playerCollider);
+	player->AddComponent(playerColliderEventMng);
+
+
+
+
+	return app.Run(scene);
+
+	/*
+
+	//* Create the Player
+	GameObject* player = new GameObject();
+	player->position = Vector2(100, 100);
+	AddGameObject(player);
+
+	SpriteComponent* playerSprite = new SpriteComponent(player);
+	
+	playerSprite
+		->Set(Resources::GetTexture("player"))
+		->AnimationSpeed(4);
+
+	AddComponent(playerSprite);
+
+	CharacterControllerComponent* playerController = new CharacterControllerComponent(player);
+	AddComponent(playerController);
+
+	WarpComponent* playerWarp = new WarpComponent(player);
+	AddComponent(playerWarp);
+
+	BoxColliderComponent* playerCollider = new BoxColliderComponent(player);
+	playerCollider->Bind(*this);
+	AddComponent(playerCollider);
+
+	PlayerCollisionEventManager* playerColliderEventMng = new PlayerCollisionEventManager(player);
+	playerColliderEventMng->Bind(playerCollider);
+	AddComponent(playerColliderEventMng);
+
+	return;
+
+	// Yikes
+	//player->GetComponent("SpriteComponent")
+	//cout << "Sprite Component === " << player->GetComponent("SpriteComponent");
+
+
+
+	//* Create the Ghost
+	GameObject* ghost = new GameObject();
+	ghost->position = Vector2(100, 100);
+	AddGameObject(ghost);
+
+	SpriteComponent* ghostSprite = new SpriteComponent(ghost);
+
+	ghostSprite
+		->Set(Resources::GetTexture("ghost"))
+		->AnimationSpeed(2);
+
+	AddComponent(ghostSprite);
+
+
+	BoxColliderComponent* ghostCollider = new BoxColliderComponent(ghost);
+
+	ghostCollider
+		->Bind(*this)
+		->SetSize(200);
+
+	AddComponent(ghostCollider);
+
+
+
+
+	//* Create the Pip
+	GameObject* pip = new GameObject();
+	pip->position = Vector2(300, 300);
+	//pip->scale = 1;
+	AddGameObject(pip);
+
+	SpriteComponent* pipSprite = new SpriteComponent(pip);
+
+	pipSprite
+		->Set(Resources::GetTexture("pip"))
+		->AnimationSpeed(2);
+
+	AddComponent(pipSprite);
+
+
+
+
+	//* Create the Cherry
+	GameObject* cherry = new GameObject();
+	cherry->position = Vector2(400, 300);
+	AddGameObject(cherry);
+
+	SpriteComponent* cherrySprite = new SpriteComponent(cherry);
+
+	cherrySprite
+		->Set(Resources::GetTexture("cherry"))
+		->AnimationSpeed(2);
+
+	AddComponent(cherrySprite);
+
+
+	
+	GameObject* ghost = new GameObject();
+	ghost->position = Vector2(100, 100);
+
+	SpriteComponent* ghostSprite = new SpriteComponent(ghost);
+	ghostSprite->Set(Resources::GetTexture("ghost"));
+	ghost->AddComponent(ghostSprite);
+	AddComponent(ghostSprite);
+
+	AddGameObject(ghost);
+
+
+
+	/* Create a Pip
+	Pip* pip = new Pip();
+	pip->position = Vector2(100, 300);
+	pip->sprite = Resources::GetTexture("pip");
+	AddGameObject(pip);
+	
+	*/
 }

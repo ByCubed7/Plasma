@@ -1,6 +1,6 @@
 // By @ByCubed7 on Twitter
 
-#include "Game.h"
+#include "Scene.h"
 
 #include "Settings.h"
 #include "Resources.h"
@@ -21,73 +21,79 @@
 #include <algorithm>
 
 
-Game::Game(const Settings& setting)
+Scene::Scene(GameConfig& setting)
 {
-	state = Game::State::ACTIVE;
+	state = Scene::State::ACTIVE;
 	input = Input();
 	width = setting.screenWidth;
 	height = setting.screenHeight;
 
-	this->settings = settings;
+	this->settings = setting;
 }
 
-Game::~Game()
+Scene::~Scene()
 {
 	delete renderer;
 }
 
-void Game::AddGameObject(GameObject* gameObject)
+GameObject* Scene::CreateGameObject()
+{
+	GameObject* newGameObject = new GameObject(this);
+	gameObjects.emplace_back(newGameObject);
+	return newGameObject;
+}
+
+void Scene::AddGameObject(GameObject* gameObject)
 {
 	gameObjects.emplace_back(gameObject);
 }
 
-void Game::AddComponent(Component* component)
+void Scene::AddComponent(Component* component)
 {
 	components.emplace_back(component);
 }
 
-void Game::GInit()
+void Scene::Initialize()
 {
 	// As this is 2D we don't have to worry about perspective, use orthographic projection
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->width), static_cast<float>(this->height), 0.0f, -1.0f, 1.0f);
 
 	// - Load and Config shaders
+	Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");
+	Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
+	Resources::LoadShader("assets/shaders/tile.vs", "assets/shaders/tile.frag", nullptr, "tile");
 
 	// Sprite
-	Shader ShaderSprite = Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");
+	Shader ShaderSprite = Resources::GetShader("sprite");
 	ShaderSprite.Use().SetInteger("image", 0);
 	ShaderSprite.SetMatrix4("projection", projection);
-	//ShaderSprite.SetVector2("index", 1, 0);
 	ShaderSprite.SetInteger("index", 1);
 
 	// Text
-	Shader ShaderText = Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
+	Shader ShaderText = Resources::GetShader("text");
 	ShaderText.Use().SetInteger("text", 0);
 	ShaderText.SetMatrix4("projection", projection);
 
 	//* Tilemap
-	Shader ShaderTile = Resources::LoadShader("assets/shaders/tile.vs", "assets/shaders/tile.frag", nullptr, "tile");
+	Shader ShaderTile = Resources::GetShader("tile");
 	ShaderTile.Use().SetInteger("image", 0);
 	ShaderTile.SetMatrix4("projection", projection);
 	ShaderTile.SetInteger("index", 1);
 	//*/
 
 
-	// - Load Renderer(s)
-
+	// Load Renderer
 	renderer = new Render::Renderers(
 		ShaderSprite,
 		ShaderText,
 		ShaderTile
 	);
 
-
 	// - Load Text Fonts
 	Resources::LoadFont("assets/fonts/arial.ttf", "arial");
-
 }
 
-void Game::ProcessInput(double dt)
+void Scene::ProcessInput(double dt)
 {
 	// If the escape key is pressed, set the game to closing
 	if (input.IsKey(input.Key_Escape))
@@ -101,7 +107,7 @@ void Game::ProcessInput(double dt)
 	input.Tick();
 }
 
-void Game::GUpdate(double delta) 
+void Scene::Update(double delta) 
 {
 	// - IF PAUSED, DO NOTHING!
 	if (state != State::ACTIVE) return;
@@ -188,7 +194,7 @@ void Game::GUpdate(double delta)
 
 }
 
-void Game::GRender()
+void Scene::Render()
 {
 	//Renderer->DrawSprite(Resources::GetTexture("Player"),
 	//    glm::vec2(300.0f, 300.0f), glm::vec2(400.0f, 400.0f), 75.0f, glm::vec3(0.5f, 0.5f, 0.0f));
@@ -204,14 +210,8 @@ void Game::GRender()
 	{
 		component->Draw(*renderer);
 		//cout << "Drawing: " << component->ToString() << endl;
+		//cout << "Drawing: " << component->gameObject->position.x << "," << component->gameObject->position.y << endl;
 		//cout << "Game::GRender.Renderer:" << renderer << " Object:" << typeid(*component).name() << endl;
 	}
 
 }
-
-
-// -- To be overloaded --
-
-void Game::Init() {}
-void Game::Update(double delta) {}
-void Game::Render() {}

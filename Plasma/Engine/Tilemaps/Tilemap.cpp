@@ -10,12 +10,7 @@
 
 
 namespace Tilemaps {
-	Tilemap::Tilemap()
-	{
-		//width = 1;
-		//height = 1;
-	}
-
+	Tilemap::Tilemap() {}
 
 	void Tilemap::AddLayer(TileLayer layer)
 	{
@@ -35,5 +30,14 @@ namespace Tilemaps {
 	void Tilemap::AddTile(int layer, int id, glm::vec2 position, float rotation, glm::vec2 scale) {
 		AddTile(layer, Tile(id, position, rotation, scale));
 	}
+
+
+	int Tilemap::GetTileAt(int layer, glm::vec2 position)
+	{
+		return layers[layer].GetTileAt(position);
+	}
+
+	int Tilemap::GetTileAt(int layer, pair<int, int> position) 
+	{ return GetTileAt(layer, glm::vec2(position.first, position.second)); }
 
 }

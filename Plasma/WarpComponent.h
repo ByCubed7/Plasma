@@ -6,9 +6,9 @@
 class WarpComponent : public Component
 {
 public:
-	WarpComponent(GameObject* gameObject, std::string name = "WarpComponent");
+	WarpComponent(std::string name = "WarpComponent");
 
-	void Update(double delta, Game& game) override;
+	void Update(double delta, Scene& game) override;
 
 	bool warpX;
 	bool warpY;

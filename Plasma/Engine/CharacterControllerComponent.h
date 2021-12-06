@@ -8,7 +8,7 @@
 class CharacterControllerComponent : public Component
 {
 public:
-	CharacterControllerComponent(GameObject* gameObject, std::string name = "CharacterControllerComponent");
-	void Update(double delta, Game& game) override;
+	CharacterControllerComponent(std::string name = "CharacterControllerComponent");
+	void Update(double delta, Scene& game) override;
 };
 
