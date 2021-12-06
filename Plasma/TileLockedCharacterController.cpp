@@ -39,10 +39,7 @@ void TileLockedCharacterController::Update(double delta, Scene& game)
 	Vector2 position = gameObject->position + inputDirection * delta;
 	position -= tilemapComp->gameObject->position;
 	position /= tilemapComp->GetTileDensity();
-	position += Vector2(1);
-	cout << position.ToString() << endl;
-	cout << tilemapComp->GetTileAt(position) << endl;
-
+	position += Vector2(1.5f);
 
 	if (tilemapComp->GetTileAt(position) == -1)
 	{
