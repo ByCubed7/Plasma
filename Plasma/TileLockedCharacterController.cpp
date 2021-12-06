@@ -33,23 +33,18 @@ void TileLockedCharacterController::Update(double delta, Scene& game)
 
 	//
 
-
-
-	//bool isNextBlock = false;
-	//cout << isNextBlock << " : ";
-	//isNextBlock = isNextBlock || tilemapComp->GetTileAtScenePosition(gameObject->position + tilemapComp->GetTileDensity() * Vector2(0.01f, 0.01f) + inputDirection * delta) == -1;
-	//cout << isNextBlock << " : ";
-	//isNextBlock = isNextBlock || tilemapComp->GetTileAtScenePosition(gameObject->position + tilemapComp->GetTileDensity() * Vector2(0.99f, 0.01f) + inputDirection * delta) == -1;
-	//cout << isNextBlock << " : ";
-	//isNextBlock = isNextBlock || tilemapComp->GetTileAtScenePosition(gameObject->position + tilemapComp->GetTileDensity() * Vector2(0.01f, 0.99f) + inputDirection * delta) == -1;
-	//cout << isNextBlock << " : ";
-	//isNextBlock = isNextBlock || tilemapComp->GetTileAtScenePosition(gameObject->position + tilemapComp->GetTileDensity() * Vector2(0.99f, 0.99f) + inputDirection * delta) == -1;
-	//cout << isNextBlock << endl;
-
 	Vector2 tilePosition = tilemapComp->GetTilePositionAtScenePosition(gameObject->position);
 	Vector2 tilePositionAtTarget = tilemapComp->GetTilePositionAtScenePosition(gameObject->position + inputDirection * delta);
 
-	if (tilemapComp->GetTileAt(tilePositionAtTarget) == -1)
+	Vector2 position = gameObject->position + inputDirection * delta;
+	position -= tilemapComp->gameObject->position;
+	position /= tilemapComp->GetTileDensity();
+	position += Vector2(1);
+	cout << position.ToString() << endl;
+	cout << tilemapComp->GetTileAt(position) << endl;
+
+
+	if (tilemapComp->GetTileAt(position) == -1)
 	{
 		gameObject->position += inputDirection * delta;
 		currentDirection = inputDirection;
