@@ -10,6 +10,8 @@
 #include "Resources.h"
 
 #include <iostream>
+#include "../Library/OpenAL/AL/alc.h"
+
 
 class Scene;
 
@@ -59,5 +61,8 @@ private:
 	void GraphicsCallbackFramebuffer(GLFWwindow* window, int width, int height);
 
 	void GraphicsCallbackException(GLenum source, GLenum type, unsigned int id, GLenum severity, GLsizei length, const char* message, const void* userParam);
+
+	bool AudioCallbackException(const std::string& filename, const std::uint_fast32_t line, ALCdevice* device);
+
 };
 
