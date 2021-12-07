@@ -79,9 +79,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(SolutionDir)Plasma\Library\OpenAL\include;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(SolutionDir)Plasma\Library\OpenAL\include;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -118,13 +120,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <UseFullPaths>false</UseFullPaths>
-      <AdditionalIncludeDirectories>$(SolutionDir)Plasma\Library\OpenAL\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Plasma\Library\OpenAL\AL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Plasma\Library\OpenAL\include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Plasma\Library\OpenAL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -135,7 +137,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Plasma\Library\OpenAL\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Plasma\Library\OpenAL\AL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,7 +145,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Plasma\Library\OpenAL\include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Plasma\Library\OpenAL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -153,6 +155,7 @@
   <ItemGroup>
     <ClCompile Include="Engine\AABB.cpp" />
     <ClCompile Include="Engine\App.cpp" />
+    <ClCompile Include="Engine\Audio\Audio.cpp" />
     <ClCompile Include="Engine\CharacterControllerComponent.cpp" />
     <ClCompile Include="Engine\Component.cpp" />
     <ClCompile Include="Engine\Font.cpp" />
@@ -193,6 +196,7 @@
   <ItemGroup>
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
+    <ClInclude Include="Engine\Audio\Audio.h" />
     <ClInclude Include="Engine\CharacterControllerComponent.h" />
     <ClInclude Include="Engine\Component.h" />
     <ClInclude Include="Engine\Dispatcher.h" />
@@ -223,6 +227,12 @@
     <ClInclude Include="Engine\Vector2.h" />
     <ClInclude Include="Library\glad.h" />
     <ClInclude Include="Library\khrplatform.h" />
+    <ClInclude Include="Library\OpenAL\AL\al.h" />
+    <ClInclude Include="Library\OpenAL\AL\alc.h" />
+    <ClInclude Include="Library\OpenAL\AL\alext.h" />
+    <ClInclude Include="Library\OpenAL\AL\efx-creative.h" />
+    <ClInclude Include="Library\OpenAL\AL\efx-presets.h" />
+    <ClInclude Include="Library\OpenAL\AL\efx.h" />
     <ClInclude Include="Library\stb_image.h" />
     <ClInclude Include="Library\TiledLibrary\TiledLayer.h" />
     <ClInclude Include="Library\TiledLibrary\TiledLoader.h" />

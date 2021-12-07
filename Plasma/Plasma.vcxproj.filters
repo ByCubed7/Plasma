@@ -28,6 +28,12 @@
     <Filter Include="Engine\Render">
       <UniqueIdentifier>{531c5ad7-d668-4903-beb0-3d9e40d4f885}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Audio">
+      <UniqueIdentifier>{04be00be-2b13-4c4a-b163-7b880cd16f04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\OpenAL">
+      <UniqueIdentifier>{51efa8e5-908e-43b2-99d6-dd5333005898}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -143,6 +149,9 @@
     </ClCompile>
     <ClCompile Include="TileLockedCharacterController.cpp">
       <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\Audio.cpp">
+      <Filter>Engine\Audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -280,6 +289,27 @@
     </ClInclude>
     <ClInclude Include="TileLockedCharacterController.h">
       <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Audio\Audio.h">
+      <Filter>Engine\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\OpenAL\AL\al.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\OpenAL\AL\alc.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\OpenAL\AL\alext.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\OpenAL\AL\efx-creative.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\OpenAL\AL\efx-presets.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\OpenAL\AL\efx.h">
+      <Filter>Library\OpenAL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
