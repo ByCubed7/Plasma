@@ -17,7 +17,7 @@ Deals with rendering sprites and text, physics, controller inputs, shader compil
 
 ## Getting started
 
-### [Download](https://github.com/ByCubed7/Plasma/archive/master.zip)
+#### [Download](https://github.com/ByCubed7/Plasma/archive/master.zip)
 
 ## Documentation 
 \[ Insert wiki here ]
@@ -31,6 +31,8 @@ App app = App();
 
 GameConfig gameConfig;
 Scene* scene = app.CreateGame(gameConfig);
+
+scene->Initialize();
 
 app.Prepare(scene);
 app.Run(scene);
@@ -46,10 +48,47 @@ gameConfig.screenHeight = gameConfig.PPU * 31;
 gameConfig.screenWidth  = gameConfig.PPU * 28;
 
 Scene* scene = app.CreateGame(gameConfig);
+scene->Initialize();
 
 app.Prepare(scene);
 app.Run(scene);
 ```
+
+Creating a GameObject
+```cpp
+GameObject* player = scene->CreateGameObject();
+player->position = { 17,17 };
+player->scale = { 2,2 };
+```
+
+Loading files
+```cpp
+. . .
+
+scene->Initialize();
+
+Resources::LoadTexture("assets/textures/Player.png", true, "player");
+Resources::LoadTexture("assets/textures/Ghost.png", true, "ghost");
+Resources::LoadTexture("assets/textures/Pip.png", true, "pip");
+Resources::LoadTexture("assets/textures/Cherry.png", true, "cherry");
+
+. . .
+```
+
+Adding a Component (+ Getting Resource files)
+```cpp
+SpriteComponent* playerSprite = new SpriteComponent();
+	
+playerSprite
+	->Set(Resources::GetTexture("player"))
+	->AnimationSpeed(4);
+
+player->AddComponent(playerSprite);
+
+CharacterControllerComponent* playerController = new CharacterControllerComponent();
+player->AddComponent(playerController);
+```
+
 
 ## TODO
 - Implement sound with the OpenAL library.
