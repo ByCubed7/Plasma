@@ -11,11 +11,26 @@
 
 struct Audio
 {
+
+	Audio();
+	~Audio();
+
+	std::vector<std::string> devices;
+
+
+	ALCdevice* openALDevice;
 	ALCcontext* openALContext;
+	ALCboolean contextMadeCurrent = false;
+	ALuint buffer;
+	ALenum format;
+	ALuint source;
+	ALint state;
+
+	unsigned int source;
 
 	void Prepare();
 
-	bool Devices(std::vector<std::string>& devicesVec, ALCdevice* device);
+	void Devices(ALCdevice* device);
 
 	void AudioCallbackException(const std::string& filename, const std::uint_fast32_t line, ALCdevice* device);
 }; 

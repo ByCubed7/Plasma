@@ -153,6 +153,9 @@
     <ClCompile Include="Engine\Audio\Audio.cpp">
       <Filter>Engine\Audio</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioSource.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -310,6 +313,9 @@
     </ClInclude>
     <ClInclude Include="Library\OpenAL\AL\efx.h">
       <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Audio\AudioSource.h">
+      <Filter>Engine\Audio</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
