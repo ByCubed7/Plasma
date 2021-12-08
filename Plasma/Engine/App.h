@@ -5,12 +5,13 @@
 #include "../Library/glad.h"
 #include <GLFW/glfw3.h>
 
+#include "Audio/AudioScene.h"
+
 #include "Scene.h"
 #include "Settings.h"
 #include "Resources.h"
 
 #include <iostream>
-#include "../Library/OpenAL/AL/alc.h"
 
 
 class Scene;
@@ -18,6 +19,11 @@ class Scene;
 class App
 {
 public:
+
+	static App* instance;
+
+	Audio::Scene audio;
+
 	App();
 
 	Scene* CreateGame(GameConfig& gameConfig);
@@ -36,8 +42,6 @@ public:
 	/// <param name="scene"></param>
 	/// <returns>The result ID of the opperation, if any.</returns>
 	int Run(Scene* scene);
-
-	static App* instance;
 
 
 private:
@@ -61,8 +65,5 @@ private:
 	void GraphicsCallbackFramebuffer(GLFWwindow* window, int width, int height);
 
 	void GraphicsCallbackException(GLenum source, GLenum type, unsigned int id, GLenum severity, GLsizei length, const char* message, const void* userParam);
-
-	void AudioCallbackException(const std::string& filename, const std::uint_fast32_t line, ALCdevice* device);
-
 };
 

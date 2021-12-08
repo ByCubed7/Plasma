@@ -150,10 +150,13 @@
     <ClCompile Include="TileLockedCharacterController.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Audio\Audio.cpp">
+    <ClCompile Include="Engine\Audio\AudioScene.cpp">
       <Filter>Engine\Audio</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Audio\AudioSource.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioListener.cpp">
       <Filter>Engine\Audio</Filter>
     </ClCompile>
   </ItemGroup>
@@ -293,7 +296,7 @@
     <ClInclude Include="TileLockedCharacterController.h">
       <Filter>Game Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Audio\Audio.h">
+    <ClInclude Include="Engine\Audio\AudioScene.h">
       <Filter>Engine\Audio</Filter>
     </ClInclude>
     <ClInclude Include="Library\OpenAL\AL\al.h">
@@ -315,6 +318,9 @@
       <Filter>Library\OpenAL</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Audio\AudioSource.h">
+      <Filter>Engine\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Audio\AudioListener.h">
       <Filter>Engine\Audio</Filter>
     </ClInclude>
   </ItemGroup>

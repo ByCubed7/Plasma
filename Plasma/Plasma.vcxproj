@@ -155,7 +155,8 @@
   <ItemGroup>
     <ClCompile Include="Engine\AABB.cpp" />
     <ClCompile Include="Engine\App.cpp" />
-    <ClCompile Include="Engine\Audio\Audio.cpp" />
+    <ClCompile Include="Engine\Audio\AudioListener.cpp" />
+    <ClCompile Include="Engine\Audio\AudioScene.cpp" />
     <ClCompile Include="Engine\Audio\AudioSource.cpp" />
     <ClCompile Include="Engine\CharacterControllerComponent.cpp" />
     <ClCompile Include="Engine\Component.cpp" />
@@ -197,7 +198,8 @@
   <ItemGroup>
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
-    <ClInclude Include="Engine\Audio\Audio.h" />
+    <ClInclude Include="Engine\Audio\AudioListener.h" />
+    <ClInclude Include="Engine\Audio\AudioScene.h" />
     <ClInclude Include="Engine\Audio\AudioSource.h" />
     <ClInclude Include="Engine\CharacterControllerComponent.h" />
     <ClInclude Include="Engine\Component.h" />
