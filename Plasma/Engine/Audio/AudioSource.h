@@ -18,7 +18,8 @@ namespace Audio
 	/// </summary>
 	class Source {
 	public:
-		Source();
+
+		Source(ALCdevice* device);
 		~Source();
 
 		/// <summary>
@@ -30,9 +31,19 @@ namespace Audio
 
 		bool IsPlaying();
 
-		ALuint id;
+		void SetPitch(float pitch);
+		void SetGain(float gain);
+		void SetPosition(Vector2 position);
+		void SetVelocity(Vector2 velocity);
+		void SetLoop(bool isLooping);
+
+		ALuint Id() { return id; }
 
 	private:
+
+		ALCdevice* device;
+		ALuint id;
+
 		float pitch, gain;
 		Vector2 position, velocity;
 		bool loop = false;

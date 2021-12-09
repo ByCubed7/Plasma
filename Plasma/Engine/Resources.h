@@ -8,10 +8,13 @@
 #include "../Library/glad.h"
 #include "../Library/TiledLibrary/TiledLoader.h"
 
+#include <al.h>
+
 #include "Font.h"
 #include "Tilemaps/Tilemap.h"
 #include "texture.h"
 #include "shader.h"
+#include "Wav.h"
 
 using namespace std;
 
@@ -72,6 +75,14 @@ public:
 	// Retrieves a cached tilemap
 	static Tilemaps::Tilemap& GetTilemap(string name);
 
+	// Audio
+
+	static map<string, Wav> wavs;
+
+	static Wav LoadWav(const std::string file, string name);
+
+	static Wav GetWav(string name);
+
 	// - - - - - - - - - - - - - - - - - - - - - - - -
 	// - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -97,4 +108,8 @@ private:
 
 	// Deals with TMX file tilesheet loading
 	static Tiled::Loader tiled;
+
+	// 
+	static vector<char> LoadWavFromFile(const std::string file);
+	static bool LoadWavHeader(std::ifstream& file, std::uint8_t& channels, std::int32_t& sampleRate, std::uint8_t& bitsPerSample, ALsizei& size);
 };

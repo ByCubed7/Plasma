@@ -1,20 +1,42 @@
 // By @ByCubed7 on Twitter
 
-#include "AudioScene.h"
+# define VERBOSE
 
+#include "AudioScene.h"
 
 namespace Audio
 {
 	Scene::Scene()
 	{
+		#ifdef VERBOSE
+		std::cout << "[Scene::Ctor] Created Scene" << std::endl;
+		#endif
 		openALContext = 0;
-		openALDevice = 0;
-		source = 0;
+		openALDevice = 0; 
+		
+		#ifdef VERBOSE
+		std::cout << "[Scene::Ctor] Creating Listener" << std::endl;
+		#endif
+		defaultListener = new Listener();
 	}
 
 	Scene::~Scene()
 	{
-		alDeleteSources(1, &source);
+		#ifdef VERBOSE
+		std::cout << "[Audio::Scene::Dtor] Deleting Scene" << std::endl;
+		std::cout << "[Audio::Scene::Dtor] Deleting defaultListener" << std::endl;
+		#endif
+		delete defaultListener;
+		
+		#ifdef VERBOSE
+		std::cout << "[Audio::Scene::Dtor] Deleting " << sources.size() << " sources." << std::endl;
+		#endif
+		for (auto& source : sources) delete source;
+		
+		#ifdef VERBOSE
+		std::cout << "[Audio::Scene::Dtor] Deleting " << buffers.size() << " buffers." << std::endl;
+		#endif
+		for (auto& buffer : buffers) delete buffer;
 
 		alcMakeContextCurrent(nullptr);
 		alcDestroyContext(openALContext);
@@ -24,13 +46,29 @@ namespace Audio
 
 	void Scene::Prepare()
 	{
+		#ifdef VERBOSE
+		std::cout << "[Audio::Scene::Prepare]" << std::endl;
+		std::cout << "\t- Preparing..." << std::endl;
+		#endif
 		/// Specify explicitely which device to open by using its name instead of nullptr.
-		alcOpenDevice(nullptr);
-		//if (!openALDevice) return;
-
+		openALDevice = alcOpenDevice(nullptr);
 		openALContext = alcCreateContext(openALDevice, nullptr);
 
+		#ifdef VERBOSE
+		if (openALContext) std::cout << "\t- Successfully created openALContext!" << std::endl;
+		else  std::cout << "\t- Failed to create openALContext!" << std::endl;
+		#endif
+		
+		
+		#ifdef VERBOSE
+		std::cout << "\t- Making openALContext the current context!" << std::endl;
+		#endif
 		alcMakeContextCurrent(openALContext);
+
+		
+		#ifdef VERBOSE
+		std::cout << std::endl;
+		#endif
 	}
 
 
@@ -51,6 +89,27 @@ namespace Audio
 		return devices;
 	}
 
+	Buffer* Scene::CreateBuffer(ALenum format, const ALvoid* data, ALsizei size, ALsizei freq)
+	{
+		#ifdef VERBOSE
+		std::cout << "[Audio::Scene::CreateBuffer] Creating Buffer" << std::endl;
+		#endif
+		Audio::Buffer* buf = new Buffer(format, data, size, freq);
+		buffers.push_back(buf);
+		return buf;
+	}
+
+	Source* Scene::CreateSource()
+	{
+		#ifdef VERBOSE
+		std::cout << "[Audio::Scene::CreateSource] Creating Source" << std::endl;
+		#endif
+		Source* source = new Source(openALDevice);
+		sources.push_back(source);
+		return source;
+	}
+
+	/*
 	void Scene::AudioCallbackException(const std::string& filename, const std::uint_fast32_t line, ALCdevice* device)
 	{
 		ALCenum error = alcGetError(device);
@@ -73,5 +132,5 @@ namespace Audio
 
 		// ..seb was here
 
-	}
+	}*/
 }

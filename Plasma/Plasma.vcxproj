@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClCompile Include="Engine\AABB.cpp" />
     <ClCompile Include="Engine\App.cpp" />
+    <ClCompile Include="Engine\Audio\AudioBuffer.cpp" />
     <ClCompile Include="Engine\Audio\AudioListener.cpp" />
     <ClCompile Include="Engine\Audio\AudioScene.cpp" />
     <ClCompile Include="Engine\Audio\AudioSource.cpp" />
@@ -198,6 +199,7 @@
   <ItemGroup>
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
+    <ClInclude Include="Engine\Audio\AudioBuffer.h" />
     <ClInclude Include="Engine\Audio\AudioListener.h" />
     <ClInclude Include="Engine\Audio\AudioScene.h" />
     <ClInclude Include="Engine\Audio\AudioSource.h" />
@@ -229,6 +231,7 @@
     <ClInclude Include="Engine\Tilemaps\Tilemap.h" />
     <ClInclude Include="Engine\Tilemaps\Tileset.h" />
     <ClInclude Include="Engine\Vector2.h" />
+    <ClInclude Include="Engine\Wav.h" />
     <ClInclude Include="Library\glad.h" />
     <ClInclude Include="Library\khrplatform.h" />
     <ClInclude Include="Library\OpenAL\AL\al.h" />

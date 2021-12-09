@@ -22,7 +22,7 @@ public:
 
 	static App* instance;
 
-	Audio::Scene audio;
+	Audio::Scene* audio;
 
 	App();
 

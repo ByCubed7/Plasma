@@ -80,6 +80,11 @@ int App::Prepare(Scene* setScene)
 		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
 	}
 
+	// -- Audio
+	audio = new Audio::Scene();
+	audio->Prepare();
+
+
 	return 0;
 }
 
@@ -122,6 +127,8 @@ int App::Run(Scene* setScene)
 			cout << "ERROR:" << err << endl;
 		}//*/
 	}
+
+	delete audio;
 
 	// Clear all of the loaded resources 
 	Resources::Clear();

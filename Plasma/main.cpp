@@ -8,6 +8,8 @@
 #include "Engine/Resources.h"
 #include "Engine/Settings.h"
 #include "Engine/Gameobject.h"
+#include "Engine/Audio/AudioSource.h"
+#include "Engine/Audio/AudioBuffer.h"
 
 #include "Engine/SpriteComponent.h"
 #include "Engine/TilemapComponent.h"
@@ -47,6 +49,17 @@ int main(int argc, char* argv[])
 
 	// Load levels
 	Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
+
+	Wav wavFile = Resources::LoadWav("assets/Venus.wav", "venus");
+
+	Audio::Source* source = app.audio->CreateSource();
+	Audio::Buffer* buf = app.audio->CreateBuffer(wavFile.Format(), wavFile.data.data(), wavFile.data.size(), wavFile.sampleRate);
+
+	source->Bind(buf->id);
+	source->Play();
+
+	//while (source->IsPlaying()) ;
+	//cout << "No longer playing" << endl;
 
 	// - Create Tilemap
 

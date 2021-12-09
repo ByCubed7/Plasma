@@ -2,6 +2,10 @@
 
 #pragma once
 
+#include "AudioBuffer.h"
+#include "AudioSource.h"
+#include "AudioListener.h"
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -14,23 +18,26 @@ namespace Audio
 {
 	struct Scene
 	{
-
 		Scene();
 		~Scene();
 
-		std::vector<std::string> devices;
+		std::vector<Buffer*> buffers;
+		std::vector<Source*> sources;
 
+		std::vector<std::string> devices;
 
 		ALCdevice* openALDevice;
 		ALCcontext* openALContext;
 
-		unsigned int source;
-
+		Listener* defaultListener;
 
 		void Prepare();
 
 		std::vector<std::string> Devices(ALCdevice* device);
 
-		void AudioCallbackException(const std::string& filename, const std::uint_fast32_t line, ALCdevice* device);
+		Buffer* CreateBuffer(ALenum format, const ALvoid* data, ALsizei size, ALsizei freq);
+		Source* CreateSource();
+
+		//void AudioCallbackException(const std::string& filename, const std::uint_fast32_t line, ALCdevice* device);
 	};
 }
