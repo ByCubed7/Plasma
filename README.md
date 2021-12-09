@@ -71,7 +71,7 @@ Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", 
 Resources::LoadTexture("assets/textures/Player.png", true, "player");
 Resources::LoadWav("assets/audio/beginning.wav", "beginning");
 Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilemap");
-Resources::LoadFont("assets/fonts ", true, "cherry");
+Resources::LoadFont("assets/fonts/arial.ttf", "arial");
 
 . . .
 ```
