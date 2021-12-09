@@ -1,6 +1,6 @@
 // By @ByCubed7 on Twitter
 
-# define VERBOSE
+//# define VERBOSE
 
 #include "AudioScene.h"
 
@@ -98,6 +98,7 @@ namespace Audio
 		buffers.push_back(buf);
 		return buf;
 	}
+	Buffer* Scene::CreateBuffer(Wav wavFile) { return CreateBuffer(wavFile.Format(), wavFile.Data(), wavFile.Size(), wavFile.sampleRate); }
 
 	Source* Scene::CreateSource()
 	{

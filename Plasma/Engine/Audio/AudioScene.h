@@ -12,6 +12,7 @@
 
 #include "../../Library/OpenAL/AL/al.h"
 #include "../../Library/OpenAL/AL/alc.h"
+#include "../Wav.h"
 
 
 namespace Audio
@@ -36,6 +37,7 @@ namespace Audio
 		std::vector<std::string> Devices(ALCdevice* device);
 
 		Buffer* CreateBuffer(ALenum format, const ALvoid* data, ALsizei size, ALsizei freq);
+		Buffer* CreateBuffer(Wav wavFile);
 		Source* CreateSource();
 
 		//void AudioCallbackException(const std::string& filename, const std::uint_fast32_t line, ALCdevice* device);

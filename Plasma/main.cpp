@@ -50,10 +50,18 @@ int main(int argc, char* argv[])
 	// Load levels
 	Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
 
-	Wav wavFile = Resources::LoadWav("assets/Venus.wav", "venus");
-
+	Wav wavFile = Resources::LoadWav("assets/audio/Venus by SketchyLogic.wav", "venus");
+	
+	Resources::LoadWav("assets/audio/beginning.wav", "beginning");
+	//Resources::LoadWav("assets/audio/chomp.wav", "chomp");
+	//Resources::LoadWav("assets/audio/death.wav", "death");
+	//Resources::LoadWav("assets/audio/eatfruit.wav", "eatfruit");
+	//Resources::LoadWav("assets/audio/eatghost.wav", "eatghost");
+	//Resources::LoadWav("assets/audio/extrapac.wav", "extrapac");
+	//Resources::LoadWav("assets/audio/intermission.wav", "intermission");
+	
 	Audio::Source* source = app.audio->CreateSource();
-	Audio::Buffer* buf = app.audio->CreateBuffer(wavFile.Format(), wavFile.data.data(), wavFile.data.size(), wavFile.sampleRate);
+	Audio::Buffer* buf = app.audio->CreateBuffer(Resources::GetWav("beginning"));
 
 	source->Bind(buf->id);
 	source->Play();
