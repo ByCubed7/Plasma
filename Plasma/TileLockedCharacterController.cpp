@@ -3,11 +3,9 @@
 #include "TileLockedCharacterController.h"
 
 
-TileLockedCharacterController::TileLockedCharacterController(std::string name)
-	: Component(name)
-{
-
-}
+TileLockedCharacterController::TileLockedCharacterController(GameObject* gameObject, std::string name)
+	: Component(gameObject, name)
+{}
 
 TileLockedCharacterController* TileLockedCharacterController::SetTilemap(TilemapComponent* tilemapComponent)
 {
@@ -15,14 +13,19 @@ TileLockedCharacterController* TileLockedCharacterController::SetTilemap(Tilemap
 	return this;
 }
 
-void TileLockedCharacterController::Update(double delta, Scene& game)
+TileLockedCharacterController* TileLockedCharacterController::SetSpeed(float speed)
+{
+	this->speed = speed;
+	return this;
+}
+
+void TileLockedCharacterController::Update(double delta, Engine::Scene& game)
 {
 	// Velocity
-	if (game.input.IsKey(Input::Key_D)) inputDirection = { 10,0 };
-	else if (game.input.IsKey(Input::Key_A)) inputDirection = { -10,0 };
-
-	if (game.input.IsKey(Input::Key_S)) inputDirection = { 0,10 };
-	else if (game.input.IsKey(Input::Key_W)) inputDirection = { 0,-10 };
+	if		(game.input.IsKey(Input::Key_W)) inputDirection = {   0,-10 };
+	else if (game.input.IsKey(Input::Key_A)) inputDirection = { -10,  0 };
+	else if (game.input.IsKey(Input::Key_S)) inputDirection = {   0, 10 };
+	else if (game.input.IsKey(Input::Key_D)) inputDirection = {  10,  0 };
 
 	// Normilize velo
 	if (inputDirection.Magnitude())
@@ -46,8 +49,6 @@ void TileLockedCharacterController::Update(double delta, Scene& game)
 		gameObject->position += inputDirection * delta;
 		currentDirection = inputDirection;
 	}
-
-
 
 	// Rotation
 	if (game.input.IsKey(Input::Key_W)) gameObject->rotation = 270;

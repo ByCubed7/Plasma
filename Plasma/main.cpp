@@ -12,23 +12,25 @@
 #include "Engine/SpriteComponent.h"
 #include "Engine/TilemapComponent.h"
 #include "Engine/CharacterControllerComponent.h"
+#include "Engine/AudioSourceComponent.h"
 
 #include "PlayerCollisionEventManager.h"
 #include "WarpComponent.h"
 #include "TileLockedCharacterController.h"
 
 #include <iostream>
+#include "Muncher.h"
 
 int main(int argc, char* argv[])
 {
 	App app = App();
 
 	GameConfig gameConfig;
-	gameConfig.PPU = 20;
+	gameConfig.PPU = 16;
 	gameConfig.screenHeight = gameConfig.PPU * 31;
 	gameConfig.screenWidth  = gameConfig.PPU * 28;
 
-	Scene* scene = app.CreateGame(gameConfig);
+	Engine::Scene* scene = app.CreateGame(gameConfig);
 	//Scene scene = pacman.scene; // Get the default scene
 
 	// Prepares an OpenGL context so that we can send API calls
@@ -48,54 +50,72 @@ int main(int argc, char* argv[])
 	// Load levels
 	Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
 
+	Resources::LoadWav("assets/audio/Venus by SketchyLogic.wav", "venus");
+	
+	Resources::LoadWav("assets/audio/beginning.wav", "beginning");
+	//Resources::LoadWav("assets/audio/chomp.wav", "chomp");
+	//Resources::LoadWav("assets/audio/death.wav", "death");
+	//Resources::LoadWav("assets/audio/eatfruit.wav", "eatfruit");
+	//Resources::LoadWav("assets/audio/eatghost.wav", "eatghost");
+	//Resources::LoadWav("assets/audio/extrapac.wav", "extrapac");
+	//Resources::LoadWav("assets/audio/intermission.wav", "intermission");
+
+	// - Create audio
+	GameObject* audi = scene->CreateGameObject();
+
+	AudioSourceComponent* audiComp = new AudioSourceComponent(audi);
+	audiComp->Attach(Resources::GetWav("beginning"));
+
+	audiComp->source->Play();
+
+
+	//while (source->IsPlaying()) ;
+	//cout << "No longer playing" << endl;
+
 	// - Create Tilemap
 
 	//* Create the tilemap
 	GameObject* tilemap = scene->CreateGameObject();
 	tilemap->position = Vector2(gameConfig.PPU/2, gameConfig.PPU/2);
 
-	TilemapComponent* tilemapTilemap = new TilemapComponent();
+	TilemapComponent* tilemapTilemap = new TilemapComponent(tilemap);
 
 	tilemapTilemap
 		->SetTilemap(Resources::GetTilemap("tilesheet"))
 		->Set(Resources::GetTexture("tilesheet"))
 		->Bind(scene->renderer);
 
-	tilemap->AddComponent(tilemapTilemap);
 
 
 	// - Create player
 	GameObject* player = scene->CreateGameObject();
 	player->position = { 17,17 };
 	player->scale = { 2,2 };
-	
-	SpriteComponent* playerSprite = new SpriteComponent();
-	
+
+	SpriteComponent* playerSprite = new SpriteComponent(player);
+
 	playerSprite
 		->Set(Resources::GetTexture("player"))
-		->AnimationSpeed(4);
+		->AnimationSpeed(8);
 
-	player->AddComponent(playerSprite);
+	Muncher* playerMuncher = new Muncher(player);
+	playerMuncher->SetTilemap(tilemapTilemap);
 
 	//CharacterControllerComponent* playerController = new CharacterControllerComponent();
 	//player->AddComponent(playerController);
 
-	TileLockedCharacterController* playerController = new TileLockedCharacterController();
+	TileLockedCharacterController* playerController = new TileLockedCharacterController(player);
+	playerController->SetSpeed(5 * gameConfig.PPU);
 	playerController->SetTilemap(tilemapTilemap);
-	player->AddComponent(playerController);
 
-	WarpComponent* playerWarp = new WarpComponent();
+	WarpComponent* playerWarp = new WarpComponent(player);
 	playerWarp->SetOffset(player->scale * gameConfig.PPU);
-	player->AddComponent(playerWarp);
 
-	BoxColliderComponent* playerCollider = new BoxColliderComponent();
+	BoxColliderComponent* playerCollider = new BoxColliderComponent(player);
 	playerCollider->Bind(scene);
-	player->AddComponent(playerCollider);
 
-	PlayerCollisionEventManager* playerColliderEventMng = new PlayerCollisionEventManager();
+	PlayerCollisionEventManager* playerColliderEventMng = new PlayerCollisionEventManager(player);
 	playerColliderEventMng->Bind(playerCollider);
-	player->AddComponent(playerColliderEventMng);
-
 
 
 

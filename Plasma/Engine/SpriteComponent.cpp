@@ -5,8 +5,8 @@
 #include "Component.h"
 #include "Settings.h"
 
-SpriteComponent::SpriteComponent(std::string name)
-    : Component(name)
+SpriteComponent::SpriteComponent(GameObject* gameObject, std::string name)
+    : Component(gameObject, name)
 {
     color = { 1, 1, 1 };
 
@@ -34,7 +34,7 @@ void SpriteComponent::Draw(Render::Renderers& renderer)
     );
 }
 
-void SpriteComponent::Update(double delta, Scene& game) 
+void SpriteComponent::Update(double delta, Engine::Scene& game)
 {
     animationPoint += delta;
     spriteFrame = animationPoint * animationSpeed;

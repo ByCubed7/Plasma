@@ -3,8 +3,8 @@
 #include "WarpComponent.h"
 
 
-WarpComponent::WarpComponent(std::string name)
-    : Component(name)
+WarpComponent::WarpComponent(GameObject* gameObject, std::string name)
+    : Component(gameObject, name)
 {
     warpX = true;
     warpY = true;
@@ -13,7 +13,7 @@ WarpComponent::WarpComponent(std::string name)
 }
 
 
-void WarpComponent::Update(double delta, Scene& game)
+void WarpComponent::Update(double delta, Engine::Scene& game)
 {
     if (warpX) {
 

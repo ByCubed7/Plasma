@@ -20,11 +20,11 @@ public:
 	struct OnStayEventParams;
 	struct OnExitEventParams;
 
-	BoxColliderComponent(std::string name = "BoxColliderComponent");
+	BoxColliderComponent(GameObject* gameObject, std::string name = "BoxColliderComponent");
 
 	AABB bounds;
 
-	BoxColliderComponent* Bind(Scene* game);
+	BoxColliderComponent* Bind(Engine::Scene* game);
 	BoxColliderComponent* SetSize(Vector2 size);
 
 	AABB GetBounds();

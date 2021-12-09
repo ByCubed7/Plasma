@@ -16,10 +16,10 @@ class Scene;
 class Component : public Object
 {
 public:
-	Component(std::string name = "Component");
+	Component(GameObject* gameObject, std::string name = "Component");
 
 	GameObject * gameObject;
 
-	virtual void Update(double delta, Scene& game);
+	virtual void Update(double delta, Engine::Scene& game);
 	virtual void Draw(Render::Renderers& renderer);
 };

@@ -11,7 +11,7 @@
 class TileLockedCharacterController : public Component
 {
 public:
-	TileLockedCharacterController(std::string name = "TileLockedCharacterController");
+	TileLockedCharacterController(GameObject* gameObject, std::string name = "TileLockedCharacterController");
 
 	TilemapComponent* tilemapComp;
 
@@ -20,7 +20,8 @@ public:
 	float speed = 100;
 
 	TileLockedCharacterController* SetTilemap(TilemapComponent* tilemapComponent);
+	TileLockedCharacterController* SetSpeed(float speed);
 
-	void Update(double delta, Scene& game) override;
+	void Update(double delta, Engine::Scene& game) override;
 };
 

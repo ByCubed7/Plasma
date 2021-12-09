@@ -3,13 +3,13 @@
 #include "CharacterControllerComponent.h"
 
 
-CharacterControllerComponent::CharacterControllerComponent(std::string name)
-	: Component(name)
+CharacterControllerComponent::CharacterControllerComponent(GameObject* gameObject, std::string name)
+	: Component(gameObject, name)
 {
 
 }
 
-void CharacterControllerComponent::Update(double delta, Scene& game)
+void CharacterControllerComponent::Update(double delta, Engine::Scene& game)
 {
 	// - Input
 

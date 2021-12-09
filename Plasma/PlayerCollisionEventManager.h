@@ -8,7 +8,7 @@
 class PlayerCollisionEventManager : public Component
 {
 public:
-	PlayerCollisionEventManager(std::string name = "PlayerCollisionEventManager");
+	PlayerCollisionEventManager(GameObject* gameObject, std::string name = "PlayerCollisionEventManager");
 
 	PlayerCollisionEventManager* Bind(BoxColliderComponent* boxColliderComponent);
 	PlayerCollisionEventManager* UnBind();

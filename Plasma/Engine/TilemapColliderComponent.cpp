@@ -2,8 +2,8 @@
 
 #include "TilemapColliderComponent.h"
 
-TilemapColliderComponent::TilemapColliderComponent(std::string name) 
-	: Component(name)
+TilemapColliderComponent::TilemapColliderComponent(GameObject* gameObject, std::string name)
+	: Component(gameObject, name)
 {
 }
 

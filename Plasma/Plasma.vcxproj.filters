@@ -28,6 +28,12 @@
     <Filter Include="Engine\Render">
       <UniqueIdentifier>{531c5ad7-d668-4903-beb0-3d9e40d4f885}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Audio">
+      <UniqueIdentifier>{04be00be-2b13-4c4a-b163-7b880cd16f04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\OpenAL">
+      <UniqueIdentifier>{51efa8e5-908e-43b2-99d6-dd5333005898}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -142,6 +148,24 @@
       <Filter>Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="TileLockedCharacterController.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioScene.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioSource.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioListener.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioBuffer.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\AudioSourceComponent.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Muncher.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -279,6 +303,45 @@
       <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="TileLockedCharacterController.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Audio\AudioScene.h">
+      <Filter>Engine\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\OpenAL\AL\al.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\OpenAL\AL\alc.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\OpenAL\AL\alext.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\OpenAL\AL\efx-creative.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\OpenAL\AL\efx-presets.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\OpenAL\AL\efx.h">
+      <Filter>Library\OpenAL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Audio\AudioSource.h">
+      <Filter>Engine\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Audio\AudioListener.h">
+      <Filter>Engine\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Audio\AudioBuffer.h">
+      <Filter>Engine\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Wav.h">
+      <Filter>Engine\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\AudioSourceComponent.h">
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Muncher.h">
       <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>

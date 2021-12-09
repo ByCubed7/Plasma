@@ -4,8 +4,8 @@
 
 #include "Engine/BoxColliderComponent.h"
 
-PlayerCollisionEventManager::PlayerCollisionEventManager(std::string name)
-    : Component(name)
+PlayerCollisionEventManager::PlayerCollisionEventManager(GameObject* gameObject, std::string name)
+    : Component(gameObject, name)
 {
 
 }

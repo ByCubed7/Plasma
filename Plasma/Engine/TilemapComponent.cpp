@@ -2,8 +2,8 @@
 
 #include "TilemapComponent.h"
 
-TilemapComponent::TilemapComponent(std::string name)
-    : Component(name)
+TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
+    : Component(gameObject, name)
 {
     animationPoint = 0;
     spriteFrame = 0;
@@ -28,38 +28,26 @@ void TilemapComponent::Draw(Render::Renderers& renderer)
 {
     int ppu(gameObject->scene->settings.PPU);
 
-    /*for (auto& tile : tilemap.tiles) {
-        tile.rotation += 1;
-        cout << tile.rotation << endl;
-    //}*/
+    //for (auto& tile : tilemap.layers[0].tiles)
+    //    tile.rotation += 1;
 
-    //renderer.tilemap.Update(tilemap.layers[0].GetRender());
+    for (auto& layer : tilemap.layers)
+    {
+        renderer.tilemap.Update(layer.GetRender());
 
-    renderer.tilemap.DrawTileLayer(
-        tilemap.tileSheet,
-        { gameObject->position.x, gameObject->position.y },
-        { gameObject->scale.x * ppu, gameObject->scale.y * ppu },
-        gameObject->rotation,
-        spriteFrame,
-        { 1, 1, 1 }
-    );
-
-    return;
-    /*
-    renderer.tilemap.Update(tilemap.layers[1].GetRender());
-
-    renderer.tilemap.DrawTileLayer(
-        tilemap.tileSheet,
-        { gameObject->position.x, gameObject->position.y },
-        { gameObject->scale.x * ppu, gameObject->scale.y * ppu },
-        gameObject->rotation,
-        spriteFrame,
-        { 1, 1, 1 }
-    );
-    */
+        renderer.tilemap.DrawTileLayer(
+            tilemap.tileSheet,
+            { gameObject->position.x, gameObject->position.y },
+            { gameObject->scale.x * ppu, gameObject->scale.y * ppu },
+            gameObject->rotation,
+            spriteFrame,
+            { 1, 1, 1 }
+        );
+    }
+    //*/
 }
 
-void TilemapComponent::Update(double delta, Scene& game)
+void TilemapComponent::Update(double delta, Engine::Scene& game)
 {
     //*
     animationPoint += delta;
