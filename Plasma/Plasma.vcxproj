@@ -193,6 +193,7 @@
     <ClCompile Include="Library\TiledLibrary\TiledSet.cpp" />
     <ClCompile Include="Library\TiledLibrary\TiledTile.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Muncher.cpp" />
     <ClCompile Include="PlayerCollisionEventManager.cpp" />
     <ClCompile Include="TileLockedCharacterController.cpp" />
     <ClCompile Include="WarpComponent.cpp" />
@@ -252,6 +253,7 @@
     <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml_utils.hpp" />
     <ClInclude Include="Library\TiledLibrary\TiledSet.h" />
     <ClInclude Include="Library\TiledLibrary\TiledTile.h" />
+    <ClInclude Include="Muncher.h" />
     <ClInclude Include="PlayerCollisionEventManager.h" />
     <ClInclude Include="TileLockedCharacterController.h" />
     <ClInclude Include="WarpComponent.h" />

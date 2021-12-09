@@ -22,11 +22,10 @@ TileLockedCharacterController* TileLockedCharacterController::SetSpeed(float spe
 void TileLockedCharacterController::Update(double delta, Engine::Scene& game)
 {
 	// Velocity
-	if (game.input.IsKey(Input::Key_D)) inputDirection = { 10,0 };
-	else if (game.input.IsKey(Input::Key_A)) inputDirection = { -10,0 };
-
-	if (game.input.IsKey(Input::Key_S)) inputDirection = { 0,10 };
-	else if (game.input.IsKey(Input::Key_W)) inputDirection = { 0,-10 };
+	if		(game.input.IsKey(Input::Key_W)) inputDirection = {   0,-10 };
+	else if (game.input.IsKey(Input::Key_A)) inputDirection = { -10,  0 };
+	else if (game.input.IsKey(Input::Key_S)) inputDirection = {   0, 10 };
+	else if (game.input.IsKey(Input::Key_D)) inputDirection = {  10,  0 };
 
 	// Normilize velo
 	if (inputDirection.Magnitude())
@@ -50,8 +49,6 @@ void TileLockedCharacterController::Update(double delta, Engine::Scene& game)
 		gameObject->position += inputDirection * delta;
 		currentDirection = inputDirection;
 	}
-
-
 
 	// Rotation
 	if (game.input.IsKey(Input::Key_W)) gameObject->rotation = 270;

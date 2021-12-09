@@ -19,13 +19,14 @@
 #include "TileLockedCharacterController.h"
 
 #include <iostream>
+#include "Muncher.h"
 
 int main(int argc, char* argv[])
 {
 	App app = App();
 
 	GameConfig gameConfig;
-	gameConfig.PPU = 32;
+	gameConfig.PPU = 16;
 	gameConfig.screenHeight = gameConfig.PPU * 31;
 	gameConfig.screenWidth  = gameConfig.PPU * 28;
 
@@ -85,22 +86,26 @@ int main(int argc, char* argv[])
 		->Bind(scene->renderer);
 
 
+
 	// - Create player
 	GameObject* player = scene->CreateGameObject();
 	player->position = { 17,17 };
 	player->scale = { 2,2 };
-	
+
 	SpriteComponent* playerSprite = new SpriteComponent(player);
-	
+
 	playerSprite
 		->Set(Resources::GetTexture("player"))
 		->AnimationSpeed(8);
+
+	Muncher* playerMuncher = new Muncher(player);
+	playerMuncher->SetTilemap(tilemapTilemap);
 
 	//CharacterControllerComponent* playerController = new CharacterControllerComponent();
 	//player->AddComponent(playerController);
 
 	TileLockedCharacterController* playerController = new TileLockedCharacterController(player);
-	playerController->SetSpeed(8 * gameConfig.PPU);
+	playerController->SetSpeed(5 * gameConfig.PPU);
 	playerController->SetTilemap(tilemapTilemap);
 
 	WarpComponent* playerWarp = new WarpComponent(player);
@@ -111,7 +116,6 @@ int main(int argc, char* argv[])
 
 	PlayerCollisionEventManager* playerColliderEventMng = new PlayerCollisionEventManager(player);
 	playerColliderEventMng->Bind(playerCollider);
-
 
 
 
