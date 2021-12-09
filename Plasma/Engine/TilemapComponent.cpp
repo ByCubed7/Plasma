@@ -2,8 +2,8 @@
 
 #include "TilemapComponent.h"
 
-TilemapComponent::TilemapComponent(std::string name)
-    : Component(name)
+TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
+    : Component(gameObject, name)
 {
     animationPoint = 0;
     spriteFrame = 0;

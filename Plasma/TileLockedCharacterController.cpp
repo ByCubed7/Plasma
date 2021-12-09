@@ -3,8 +3,8 @@
 #include "TileLockedCharacterController.h"
 
 
-TileLockedCharacterController::TileLockedCharacterController(std::string name)
-	: Component(name)
+TileLockedCharacterController::TileLockedCharacterController(GameObject* gameObject, std::string name)
+	: Component(gameObject, name)
 {
 
 }

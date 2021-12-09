@@ -2,8 +2,8 @@
 
 #include "BoxColliderComponent.h"
 
-BoxColliderComponent::BoxColliderComponent(std::string name)
-    : Component(name)
+BoxColliderComponent::BoxColliderComponent(GameObject* gameObject, std::string name)
+    : Component(gameObject, name)
 {
 	bounds = AABB();
 }

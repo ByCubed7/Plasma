@@ -11,7 +11,7 @@
 class SpriteComponent : public Component
 {
 public:
-	SpriteComponent(std::string name = "SpriteComponent");
+	SpriteComponent(GameObject* gameObject, std::string name = "SpriteComponent");
 
 	void Update(double delta, Engine::Scene& game) override;
 	void Draw(Render::Renderers& renderer) override;

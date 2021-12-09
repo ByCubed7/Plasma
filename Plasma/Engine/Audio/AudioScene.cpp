@@ -1,6 +1,6 @@
 // By @ByCubed7 on Twitter
 
-//# define VERBOSE
+# define VERBOSE
 
 #include "AudioScene.h"
 

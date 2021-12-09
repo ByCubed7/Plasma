@@ -29,10 +29,8 @@ GameObject::GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 
 Component* GameObject::AddComponent(Component* component)
 { 
     components.push_back(component);
-    
-    component->gameObject = this;
+    //component->gameObject = this;
     scene->AddComponent(component); 
-    
     return component;
 }
 

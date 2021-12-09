@@ -10,7 +10,7 @@
 class TilemapComponent : public Component
 {
 public:
-	TilemapComponent(std::string name = "TilemapComponent");
+	TilemapComponent(GameObject* gameObject, std::string name = "TilemapComponent");
 
 	void Update(double delta, Engine::Scene& game) override;
 	void Draw(Render::Renderers& renderer) override;

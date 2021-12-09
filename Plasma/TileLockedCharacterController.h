@@ -11,7 +11,7 @@
 class TileLockedCharacterController : public Component
 {
 public:
-	TileLockedCharacterController(std::string name = "TileLockedCharacterController");
+	TileLockedCharacterController(GameObject* gameObject, std::string name = "TileLockedCharacterController");
 
 	TilemapComponent* tilemapComp;
 

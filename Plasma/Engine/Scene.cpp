@@ -19,6 +19,8 @@ namespace Engine {
 		height = setting.screenHeight;
 
 		this->settings = setting;
+
+		audio = new Audio::Scene();
 	}
 
 	Scene::~Scene()
@@ -82,6 +84,9 @@ namespace Engine {
 
 		// - Load Text Fonts
 		Resources::LoadFont("assets/fonts/arial.ttf", "arial");
+
+		// - Load Audio
+		audio->Prepare();
 	}
 
 	void Scene::ProcessInput(double dt)

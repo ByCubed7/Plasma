@@ -1,14 +1,30 @@
 // By @ByCubed7 on Twitter
 
+#define VERBOSE
+
 #include "SpriteComponent.h"
 
 #include "Component.h"
 #include "Settings.h"
 #include "AudioSourceComponent.h"
 
-AudioSourceComponent::AudioSourceComponent(Wav wavFile)
+AudioSourceComponent::AudioSourceComponent(GameObject* gameObject, std::string name)
+	: Component(gameObject, name)
 {
-	
-	//Audio::Source* source = audio->CreateSource();
-	//Audio::Buffer* buf = app.audio->CreateBuffer(Resources::GetWav("beginning"));
+	#ifdef VERBOSE
+	cout << "AudioSourceComponent::Ctor" << endl;
+	#endif
+	source = gameObject->scene->audio->CreateSource();
+	buffer = 0;
+}
+
+void AudioSourceComponent::Update(double delta, Engine::Scene& game)
+{
+	//source->SetPosition(gameObject->position);
+}
+
+void AudioSourceComponent::Attach(Wav wavFile)
+{
+	buffer = gameObject->scene->audio->CreateBuffer(wavFile);
+	source->Bind(buffer->id);
 }

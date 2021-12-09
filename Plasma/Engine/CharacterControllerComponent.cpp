@@ -3,8 +3,8 @@
 #include "CharacterControllerComponent.h"
 
 
-CharacterControllerComponent::CharacterControllerComponent(std::string name)
-	: Component(name)
+CharacterControllerComponent::CharacterControllerComponent(GameObject* gameObject, std::string name)
+	: Component(gameObject, name)
 {
 
 }

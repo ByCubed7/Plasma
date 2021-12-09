@@ -11,7 +11,11 @@
 class AudioSourceComponent : public Component
 {
 public:
-	AudioSourceComponent(Wav wavFile);
+	AudioSourceComponent(GameObject* gameObject, std::string name = "AudioSourceComponent");
+
+	void Update(double delta, Engine::Scene& game);
+
+	void Attach(Wav wavFile);
 
 	Audio::Source* source;
 

@@ -14,6 +14,7 @@
 #include "Engine/SpriteComponent.h"
 #include "Engine/TilemapComponent.h"
 #include "Engine/CharacterControllerComponent.h"
+#include "Engine/AudioSourceComponent.h"
 
 #include "PlayerCollisionEventManager.h"
 #include "WarpComponent.h"
@@ -50,7 +51,7 @@ int main(int argc, char* argv[])
 	// Load levels
 	Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
 
-	Wav wavFile = Resources::LoadWav("assets/audio/Venus by SketchyLogic.wav", "venus");
+	Resources::LoadWav("assets/audio/Venus by SketchyLogic.wav", "venus");
 	
 	Resources::LoadWav("assets/audio/beginning.wav", "beginning");
 	//Resources::LoadWav("assets/audio/chomp.wav", "chomp");
@@ -60,11 +61,22 @@ int main(int argc, char* argv[])
 	//Resources::LoadWav("assets/audio/extrapac.wav", "extrapac");
 	//Resources::LoadWav("assets/audio/intermission.wav", "intermission");
 	
+	/*
 	Audio::Source* source = scene->audio->CreateSource();
 	Audio::Buffer* buf = scene->audio->CreateBuffer(Resources::GetWav("beginning"));
 
 	source->Bind(buf->id);
 	source->Play();
+	//*/
+
+	// - Create audio
+	GameObject* audi = scene->CreateGameObject();
+
+	AudioSourceComponent* audiComp = new AudioSourceComponent(audi);
+	audiComp->Attach(Resources::GetWav("beginning"));
+
+	audiComp->source->Play();
+
 
 	//while (source->IsPlaying()) ;
 	//cout << "No longer playing" << endl;
@@ -75,14 +87,12 @@ int main(int argc, char* argv[])
 	GameObject* tilemap = scene->CreateGameObject();
 	tilemap->position = Vector2(gameConfig.PPU/2, gameConfig.PPU/2);
 
-	TilemapComponent* tilemapTilemap = new TilemapComponent();
+	TilemapComponent* tilemapTilemap = new TilemapComponent(tilemap);
 
 	tilemapTilemap
 		->SetTilemap(Resources::GetTilemap("tilesheet"))
 		->Set(Resources::GetTexture("tilesheet"))
 		->Bind(scene->renderer);
-
-	tilemap->AddComponent(tilemapTilemap);
 
 
 	// - Create player
@@ -90,32 +100,26 @@ int main(int argc, char* argv[])
 	player->position = { 17,17 };
 	player->scale = { 2,2 };
 	
-	SpriteComponent* playerSprite = new SpriteComponent();
+	SpriteComponent* playerSprite = new SpriteComponent(player);
 	
 	playerSprite
 		->Set(Resources::GetTexture("player"))
 		->AnimationSpeed(4);
 
-	player->AddComponent(playerSprite);
-
 	//CharacterControllerComponent* playerController = new CharacterControllerComponent();
 	//player->AddComponent(playerController);
 
-	TileLockedCharacterController* playerController = new TileLockedCharacterController();
+	TileLockedCharacterController* playerController = new TileLockedCharacterController(player);
 	playerController->SetTilemap(tilemapTilemap);
-	player->AddComponent(playerController);
 
-	WarpComponent* playerWarp = new WarpComponent();
+	WarpComponent* playerWarp = new WarpComponent(player);
 	playerWarp->SetOffset(player->scale * gameConfig.PPU);
-	player->AddComponent(playerWarp);
 
-	BoxColliderComponent* playerCollider = new BoxColliderComponent();
+	BoxColliderComponent* playerCollider = new BoxColliderComponent(player);
 	playerCollider->Bind(scene);
-	player->AddComponent(playerCollider);
 
-	PlayerCollisionEventManager* playerColliderEventMng = new PlayerCollisionEventManager();
+	PlayerCollisionEventManager* playerColliderEventMng = new PlayerCollisionEventManager(player);
 	playerColliderEventMng->Bind(playerCollider);
-	player->AddComponent(playerColliderEventMng);
 
 
 

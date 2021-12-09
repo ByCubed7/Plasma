@@ -22,7 +22,7 @@ public:
 	struct OnStayEventParams;
 	struct OnExitEventParams;
 
-	TilemapColliderComponent(std::string name = "BoxColliderComponent");
+	TilemapColliderComponent(GameObject* gameObject, std::string name = "BoxColliderComponent");
 
 	Tilemaps::Tilemap tilemap;
 
