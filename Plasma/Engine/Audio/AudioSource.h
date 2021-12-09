@@ -48,5 +48,5 @@ namespace Audio
 		Vector2 position, velocity;
 		bool loop = false;
 	};
-}; 
+};
 

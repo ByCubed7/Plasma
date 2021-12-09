@@ -21,6 +21,6 @@ public:
 
 	TileLockedCharacterController* SetTilemap(TilemapComponent* tilemapComponent);
 
-	void Update(double delta, Scene& game) override;
+	void Update(double delta, Engine::Scene& game) override;
 };
 

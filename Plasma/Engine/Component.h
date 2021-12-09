@@ -20,6 +20,6 @@ public:
 
 	GameObject * gameObject;
 
-	virtual void Update(double delta, Scene& game);
+	virtual void Update(double delta, Engine::Scene& game);
 	virtual void Draw(Render::Renderers& renderer);
 };

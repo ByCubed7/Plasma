@@ -24,7 +24,7 @@ public:
 
 	AABB bounds;
 
-	BoxColliderComponent* Bind(Scene* game);
+	BoxColliderComponent* Bind(Engine::Scene* game);
 	BoxColliderComponent* SetSize(Vector2 size);
 
 	AABB GetBounds();

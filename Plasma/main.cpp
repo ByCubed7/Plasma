@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
 	gameConfig.screenHeight = gameConfig.PPU * 31;
 	gameConfig.screenWidth  = gameConfig.PPU * 28;
 
-	Scene* scene = app.CreateGame(gameConfig);
+	Engine::Scene* scene = app.CreateGame(gameConfig);
 	//Scene scene = pacman.scene; // Get the default scene
 
 	// Prepares an OpenGL context so that we can send API calls
@@ -60,8 +60,8 @@ int main(int argc, char* argv[])
 	//Resources::LoadWav("assets/audio/extrapac.wav", "extrapac");
 	//Resources::LoadWav("assets/audio/intermission.wav", "intermission");
 	
-	Audio::Source* source = app.audio->CreateSource();
-	Audio::Buffer* buf = app.audio->CreateBuffer(Resources::GetWav("beginning"));
+	Audio::Source* source = scene->audio->CreateSource();
+	Audio::Buffer* buf = scene->audio->CreateBuffer(Resources::GetWav("beginning"));
 
 	source->Bind(buf->id);
 	source->Play();

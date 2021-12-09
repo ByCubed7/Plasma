@@ -7,5 +7,5 @@ Component::Component(std::string name)
     : Object(name)
 {}
 
-void Component::Update(double delta, Scene& game) {}
+void Component::Update(double delta, Engine::Scene& game) {}
 void Component::Draw(Render::Renderers& renderer) {}

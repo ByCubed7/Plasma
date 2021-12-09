@@ -22,11 +22,9 @@ public:
 
 	static App* instance;
 
-	Audio::Scene* audio;
-
 	App();
 
-	Scene* CreateGame(GameConfig& gameConfig);
+	Engine::Scene* CreateGame(GameConfig& gameConfig);
 	//Scene* GetScene();
 
 	/// <summary>
@@ -34,19 +32,19 @@ public:
 	/// </summary>
 	/// <param name="scene">- The scene to prepare GLWF with.</param>
 	/// <returns>The result ID of the opperation, if any.</returns>
-	int Prepare(Scene* scene);
+	int Prepare(Engine::Scene* scene);
 
 	/// <summary>
 	/// Runs the Mainloop.
 	/// </summary>
 	/// <param name="scene"></param>
 	/// <returns>The result ID of the opperation, if any.</returns>
-	int Run(Scene* scene);
+	int Run(Engine::Scene* scene);
 
 
 private:
 	GLFWwindow* window;
-	Scene* scene;
+	Engine::Scene* scene;
 
 	/// <summary>
 	/// Notifys when a physical key is pressed, released or repeats.

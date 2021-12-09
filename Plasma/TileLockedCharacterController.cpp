@@ -15,7 +15,7 @@ TileLockedCharacterController* TileLockedCharacterController::SetTilemap(Tilemap
 	return this;
 }
 
-void TileLockedCharacterController::Update(double delta, Scene& game)
+void TileLockedCharacterController::Update(double delta, Engine::Scene& game)
 {
 	// Velocity
 	if (game.input.IsKey(Input::Key_D)) inputDirection = { 10,0 };

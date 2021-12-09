@@ -34,7 +34,7 @@ void SpriteComponent::Draw(Render::Renderers& renderer)
     );
 }
 
-void SpriteComponent::Update(double delta, Scene& game) 
+void SpriteComponent::Update(double delta, Engine::Scene& game)
 {
     animationPoint += delta;
     spriteFrame = animationPoint * animationSpeed;

@@ -59,7 +59,7 @@ void TilemapComponent::Draw(Render::Renderers& renderer)
     */
 }
 
-void TilemapComponent::Update(double delta, Scene& game)
+void TilemapComponent::Update(double delta, Engine::Scene& game)
 {
     //*
     animationPoint += delta;

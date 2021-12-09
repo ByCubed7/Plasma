@@ -13,7 +13,7 @@ WarpComponent::WarpComponent(std::string name)
 }
 
 
-void WarpComponent::Update(double delta, Scene& game)
+void WarpComponent::Update(double delta, Engine::Scene& game)
 {
     if (warpX) {
 

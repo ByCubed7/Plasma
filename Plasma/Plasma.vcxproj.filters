@@ -162,6 +162,9 @@
     <ClCompile Include="Engine\Audio\AudioBuffer.cpp">
       <Filter>Engine\Audio</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\AudioSourceComponent.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -331,6 +334,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Wav.h">
       <Filter>Engine\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\AudioSourceComponent.h">
+      <Filter>Engine\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

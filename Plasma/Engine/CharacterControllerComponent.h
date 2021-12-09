@@ -9,6 +9,6 @@ class CharacterControllerComponent : public Component
 {
 public:
 	CharacterControllerComponent(std::string name = "CharacterControllerComponent");
-	void Update(double delta, Scene& game) override;
+	void Update(double delta, Engine::Scene& game) override;
 };
 

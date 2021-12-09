@@ -12,14 +12,14 @@ App::App()
 	scene = nullptr;
 }
 
-Scene* App::CreateGame(GameConfig& gameConfig)
+Engine::Scene* App::CreateGame(GameConfig& gameConfig)
 {
-	Scene* newScene = new Scene(gameConfig);
+	Engine::Scene* newScene = new Engine::Scene(gameConfig);
 	// Add scene to list
 	return newScene;
 }
 
-int App::Prepare(Scene* setScene)
+int App::Prepare(Engine::Scene* setScene)
 {
 	scene = setScene;
 
@@ -80,15 +80,12 @@ int App::Prepare(Scene* setScene)
 		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
 	}
 
-	// -- Audio
-	audio = new Audio::Scene();
-	audio->Prepare();
 
 
 	return 0;
 }
 
-int App::Run(Scene* setScene)
+int App::Run(Engine::Scene* setScene)
 {
 	// Delta Time
 	double deltaTime = 0.0f;
@@ -109,7 +106,7 @@ int App::Run(Scene* setScene)
 		scene->Update(deltaTime);
 
 		// Check the Game state to see whether to close
-		if (scene->state == Scene::State::CLOSING) glfwSetWindowShouldClose(window, true);
+		if (scene->state == Engine::Scene::State::CLOSING) glfwSetWindowShouldClose(window, true);
 
 		// Clear render
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -128,7 +125,7 @@ int App::Run(Scene* setScene)
 		}//*/
 	}
 
-	delete audio;
+	//delete audio;
 
 	// Clear all of the loaded resources 
 	Resources::Clear();

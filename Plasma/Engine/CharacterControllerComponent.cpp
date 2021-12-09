@@ -9,7 +9,7 @@ CharacterControllerComponent::CharacterControllerComponent(std::string name)
 
 }
 
-void CharacterControllerComponent::Update(double delta, Scene& game)
+void CharacterControllerComponent::Update(double delta, Engine::Scene& game)
 {
 	// - Input
 

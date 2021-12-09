@@ -22,7 +22,7 @@ class Component;
 class GameObject : public Object
 {
 public:
-	Scene* scene;
+	Engine::Scene* scene;
 
 	Vector2 position;
 	float rotation;
@@ -43,7 +43,7 @@ public:
 	bool destroyed;
 
 	// Constructors
-	GameObject(Scene* scene);
+	GameObject(Engine::Scene* scene);
 	//GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color);
 
 	// Operator Overrides

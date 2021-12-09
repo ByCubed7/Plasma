@@ -12,7 +12,7 @@ class TilemapComponent : public Component
 public:
 	TilemapComponent(std::string name = "TilemapComponent");
 
-	void Update(double delta, Scene& game) override;
+	void Update(double delta, Engine::Scene& game) override;
 	void Draw(Render::Renderers& renderer) override;
 
 	Tilemaps::Tilemap tilemap;

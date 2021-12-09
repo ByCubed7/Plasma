@@ -2,7 +2,7 @@
 
 #include "GameObject.h"
 
-GameObject::GameObject(Scene* scene)
+GameObject::GameObject(Engine::Scene* scene)
     : Object("GameObject")
 {
     this->scene = scene;

@@ -8,7 +8,7 @@ BoxColliderComponent::BoxColliderComponent(std::string name)
 	bounds = AABB();
 }
 
-BoxColliderComponent* BoxColliderComponent::Bind(Scene* game)
+BoxColliderComponent* BoxColliderComponent::Bind(Engine::Scene* game)
 {
 	game->colliders.push_back(this);
 	return this;

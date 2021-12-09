@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClCompile Include="Engine\AABB.cpp" />
     <ClCompile Include="Engine\App.cpp" />
+    <ClCompile Include="Engine\AudioSourceComponent.cpp" />
     <ClCompile Include="Engine\Audio\AudioBuffer.cpp" />
     <ClCompile Include="Engine\Audio\AudioListener.cpp" />
     <ClCompile Include="Engine\Audio\AudioScene.cpp" />
@@ -199,6 +200,7 @@
   <ItemGroup>
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
+    <ClInclude Include="Engine\AudioSourceComponent.h" />
     <ClInclude Include="Engine\Audio\AudioBuffer.h" />
     <ClInclude Include="Engine\Audio\AudioListener.h" />
     <ClInclude Include="Engine\Audio\AudioScene.h" />
