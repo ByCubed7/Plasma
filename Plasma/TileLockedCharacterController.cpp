@@ -5,13 +5,17 @@
 
 TileLockedCharacterController::TileLockedCharacterController(GameObject* gameObject, std::string name)
 	: Component(gameObject, name)
-{
-
-}
+{}
 
 TileLockedCharacterController* TileLockedCharacterController::SetTilemap(TilemapComponent* tilemapComponent)
 {
 	this->tilemapComp = tilemapComponent;
+	return this;
+}
+
+TileLockedCharacterController* TileLockedCharacterController::SetSpeed(float speed)
+{
+	this->speed = speed;
 	return this;
 }
 

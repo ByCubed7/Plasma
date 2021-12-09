@@ -8,8 +8,6 @@
 #include "Engine/Resources.h"
 #include "Engine/Settings.h"
 #include "Engine/Gameobject.h"
-#include "Engine/Audio/AudioSource.h"
-#include "Engine/Audio/AudioBuffer.h"
 
 #include "Engine/SpriteComponent.h"
 #include "Engine/TilemapComponent.h"
@@ -27,7 +25,7 @@ int main(int argc, char* argv[])
 	App app = App();
 
 	GameConfig gameConfig;
-	gameConfig.PPU = 20;
+	gameConfig.PPU = 32;
 	gameConfig.screenHeight = gameConfig.PPU * 31;
 	gameConfig.screenWidth  = gameConfig.PPU * 28;
 
@@ -60,14 +58,6 @@ int main(int argc, char* argv[])
 	//Resources::LoadWav("assets/audio/eatghost.wav", "eatghost");
 	//Resources::LoadWav("assets/audio/extrapac.wav", "extrapac");
 	//Resources::LoadWav("assets/audio/intermission.wav", "intermission");
-	
-	/*
-	Audio::Source* source = scene->audio->CreateSource();
-	Audio::Buffer* buf = scene->audio->CreateBuffer(Resources::GetWav("beginning"));
-
-	source->Bind(buf->id);
-	source->Play();
-	//*/
 
 	// - Create audio
 	GameObject* audi = scene->CreateGameObject();
@@ -104,12 +94,13 @@ int main(int argc, char* argv[])
 	
 	playerSprite
 		->Set(Resources::GetTexture("player"))
-		->AnimationSpeed(4);
+		->AnimationSpeed(8);
 
 	//CharacterControllerComponent* playerController = new CharacterControllerComponent();
 	//player->AddComponent(playerController);
 
 	TileLockedCharacterController* playerController = new TileLockedCharacterController(player);
+	playerController->SetSpeed(8 * gameConfig.PPU);
 	playerController->SetTilemap(tilemapTilemap);
 
 	WarpComponent* playerWarp = new WarpComponent(player);

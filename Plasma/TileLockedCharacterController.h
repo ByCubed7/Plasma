@@ -20,6 +20,7 @@ public:
 	float speed = 100;
 
 	TileLockedCharacterController* SetTilemap(TilemapComponent* tilemapComponent);
+	TileLockedCharacterController* SetSpeed(float speed);
 
 	void Update(double delta, Engine::Scene& game) override;
 };

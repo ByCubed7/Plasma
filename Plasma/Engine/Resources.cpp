@@ -13,7 +13,7 @@
 #include <GLFW/glfw3.h>
 
 #include <ft2build.h>
-#include FT_FREETYPE_H  
+#include <freetype.h>  
 
 using namespace std;
 
@@ -70,17 +70,15 @@ Tilemaps::Tilemap Resources::LoadTilemap(const string file, string name)
     // What happens when we can't find the file?
     // Invalid format? ect.
     tiled.LoadMap(name, file);
-    cout << "Loaded Map" << endl;
 
     Tiled::Map* tiledMap = tiled.GetMap(name);
-    cout << "Got Map" << endl;
 
     // Convert the loaded map into a tilemap
     vector<Tiled::Layer> layers = tiledMap->Layers();
 
     for (int j = 0; j < layers.size(); j++)
     {
-        cout << layers[j].Tiles().size() << endl;
+        //cout << layers[j].Tiles().size() << endl;
 
         auto tiles = layers[j].Tiles();
         map.AddLayer();
