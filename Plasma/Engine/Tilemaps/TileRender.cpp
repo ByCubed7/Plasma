@@ -10,18 +10,22 @@ namespace Tilemaps {
 
 	void TileRender::Add(Tile tile)
 	{
+
+		glm::vec2 position(tile.position.x, tile.position.y);
+
 		ids.push_back(tile.id);
-		positions.push_back(tile.position);
+
+		positions.push_back(position);
 
 		// Calculate rotation and scale matrix
 
 		glm::mat4 transform = glm::mat4(1.0f);
 
 		//*
-		transform = glm::translate(transform, glm::vec3(tile.position.x, tile.position.y, 0.0f)); // move origin of rotation to center of quad
+		transform = glm::translate(transform, glm::vec3(position, 0.0f)); // move origin of rotation to center of quad
 		transform = glm::rotate(transform, glm::radians(tile.rotation), glm::vec3(0.0f, 0.0f, 1.0f)); // rotate
-		transform = glm::scale(transform, glm::vec3(tile.scale, 1.0f)); // scale
-		transform = glm::translate(transform, glm::vec3(-tile.position.x, -tile.position.y, 0.0f)); // move origin back
+		transform = glm::scale(transform, glm::vec3(tile.scale.x, tile.scale.y, 1.0f)); // scale
+		transform = glm::translate(transform, glm::vec3(-position, 0.0f)); // move origin back
 
 		//*/
 		//cout << glm::to_string(transform) << endl;
@@ -40,12 +44,6 @@ namespace Tilemaps {
 	vector<glm::vec2> TileRender::Positions()
 	{
 		return positions;
-		/*
-		vector<glm::vec2> data;
-		for (auto& position : positions)
-			data.push_back(position);
-		return data;
-		//*/
 	}
 
 	vector<glm::mat4> TileRender::RotScas()

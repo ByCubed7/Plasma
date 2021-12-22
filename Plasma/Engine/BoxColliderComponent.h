@@ -45,7 +45,7 @@ struct BoxColliderComponent::OnEnterEventParams
 	OnEnterEventParams(BoxColliderComponent* collider);
 	BoxColliderComponent* collider;
 
-	operator int() const { return collider->gameObject->position.x; }
+	operator int() const { return (int)collider->gameObject->position.x; }
 };
 
 struct BoxColliderComponent::OnStayEventParams
@@ -53,7 +53,7 @@ struct BoxColliderComponent::OnStayEventParams
 	OnStayEventParams(BoxColliderComponent* collider);
 	BoxColliderComponent* collider;
 
-	operator int() const { return collider->gameObject->position.x; }
+	operator int() const { return (int)collider->gameObject->position.x; }
 };
 
 struct BoxColliderComponent::OnExitEventParams
@@ -61,5 +61,5 @@ struct BoxColliderComponent::OnExitEventParams
 	OnExitEventParams(BoxColliderComponent* collider);
 	BoxColliderComponent* collider;
 
-	operator int() const { return collider->gameObject->position.x; }
+	operator int() const { return (int)collider->gameObject->position.x; }
 };

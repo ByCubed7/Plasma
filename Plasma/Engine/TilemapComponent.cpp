@@ -113,13 +113,6 @@ Vector2 TilemapComponent::GetTileDensity()
 int TilemapComponent::GetTileAtScenePosition(Vector2 pos)
 {
     pos = GetTilePositionAtScenePosition(pos);
-    return GetTileAt(pos);
+    return tilemap.layers[0].GetTileAt(pos);
 }
 int TilemapComponent::GetTileAtScenePosition(float x, float y) { return GetTileAtScenePosition({ x,y }); }
-
-
-int TilemapComponent::GetTileAt(int x, int y)
-{
-    return tilemap.GetTileAt(0, std::pair<int, int>(x, y));
-}
-int TilemapComponent::GetTileAt(Vector2 pos) { return GetTileAt(pos.x, pos.y); }

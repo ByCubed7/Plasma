@@ -41,7 +41,4 @@ public:
 
 	int GetTileAtScenePosition(Vector2 pos);
 	int GetTileAtScenePosition(float x, float y);
-
-	int GetTileAt(Vector2 pos);
-	int GetTileAt(int x, int y);
 };

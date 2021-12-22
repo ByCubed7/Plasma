@@ -15,6 +15,7 @@
 #include "texture.h"
 #include "shader.h"
 #include "Wav.h"
+#include "Vector2.h"
 
 using namespace std;
 

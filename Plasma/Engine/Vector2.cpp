@@ -180,190 +180,170 @@ Vector2 Vector2::Min(Vector2 vectorA, Vector2 vectorB)
 
 // - Vector
 
-// Adding to another vector
-Vector2 Vector2::operator+(const Vector2& otherVector) { return { x + otherVector.x, y + otherVector.y }; }
 
-// Subtracting to another vector
-Vector2 Vector2::operator-(const Vector2& otherVector) { return { x - otherVector.x, y - otherVector.y }; }
-
-// Multipling by another vector
-Vector2 Vector2::operator*(const Vector2& otherVector) { return { x * otherVector.x, y * otherVector.y }; }
-
-// Dividing by another vector
-// NOTE: Is this dividing by the right way?
-Vector2 Vector2::operator/(const Vector2& otherVector) { return { x / otherVector.x, y / otherVector.y }; }
-
+Vector2 Vector2::operator+(const Vector2& otherVector) { return { x + otherVector.x, y + otherVector.y }; } // Adding to another vector
+Vector2 Vector2::operator-(const Vector2& otherVector) { return { x - otherVector.x, y - otherVector.y }; } // Subtracting to another vector
+Vector2 Vector2::operator*(const Vector2& otherVector) { return { x * otherVector.x, y * otherVector.y }; } // Multipling by another vector
+Vector2 Vector2::operator/(const Vector2& otherVector) { return { x / otherVector.x, y / otherVector.y }; } // Dividing by another vector
+// ^ NOTE: Is this dividing by the right way?
 
 // Adding to another vector
 Vector2 Vector2::operator+=(const Vector2& otherVector)
 {
-	x += otherVector.x;
-	y += otherVector.y;
+	x += otherVector.x; y += otherVector.y;
 	return *this;
 }
 
 // Subtracting to another vector
 Vector2 Vector2::operator-=(const Vector2& otherVector)
 {
-	x -= otherVector.x;
-	y -= otherVector.y;
+	x -= otherVector.x; y -= otherVector.y;
 	return *this;
 }
 
 // Multipling by another vector
 Vector2 Vector2::operator*=(const Vector2& otherVector)
 {
-	x *= otherVector.x;
-	y *= otherVector.y;
+	x *= otherVector.x; y *= otherVector.y;
 	return *this;
 }
 
 // Dividing by another vector
 Vector2 Vector2::operator/=(const Vector2& otherVector)
 {
-	x /= otherVector.x;
-	y /= otherVector.y;
+	x /= otherVector.x; y /= otherVector.y;
 	return *this;
 }
 
+int Vector2::cmp(const Vector2& otherVector) const {
+	return (x + y * 1000) - (otherVector.x + otherVector.y * 1000);
+}
+
+//bool Vector2::operator==(const Vector2& otherVector) const { return cmp(otherVector) == 0; }
+bool Vector2::operator==(const Vector2& otherVector) const { return x == otherVector.x && y == otherVector.y; }
+
+//bool Vector2::operator< (const Vector2& otherVector) const { return cmp(otherVector) <  0; }
+//bool Vector2::operator< (const Vector2& otherVector) const { return (x + y) < (otherVector.x + otherVector.y); }
+bool Vector2::operator< (const Vector2& otherVector) const 
+{ 
+	
+	if (x < otherVector.x) return true;
+	if (x == otherVector.x) 
+	{
+		if (y < otherVector.y) return true;
+	}
+	return false;
+	//return (x < otherVector.x) && (y < otherVector.y); 
+}
+
+//bool Vector2::operator> (const Vector2& otherVector) const { return x + y > otherVector.x + otherVector.y; }
+//bool Vector2::operator<=(const Vector2& otherVector) const { return x <= otherVector.x && y <= otherVector.y; }
+//bool Vector2::operator>=(const Vector2& otherVector) const { return x >= otherVector.x && y >= otherVector.y; }
 
 // - Floats
 
-// Adding to float
-Vector2 Vector2::operator+(const float& amount) { return{ x + amount, y + amount }; }
-
-// Subtracting by float
-Vector2 Vector2::operator-(const float& amount) { return{ x - amount, y - amount }; }
-
-// Multipling by float
-Vector2 Vector2::operator*(const float& amount) { return{ x * amount, y * amount }; }
-
-// Dividing by float
-Vector2 Vector2::operator/(const float& amount) { return { x / amount, y / amount }; }
+Vector2 Vector2::operator+(const float& amount) { return { x + amount, y + amount }; } // Adding to float
+Vector2 Vector2::operator-(const float& amount) { return { x - amount, y - amount }; } // Subtracting by float
+Vector2 Vector2::operator*(const float& amount) { return { x * amount, y * amount }; } // Multipling by float
+Vector2 Vector2::operator/(const float& amount) { return { x / amount, y / amount }; } // Dividing by float
 
 // Adding to float
 Vector2 Vector2::operator+=(const float& amount)
 {
-	x += amount;
-	y += amount;
+	x += amount; y += amount;
 	return *this;
 }
 
 // Subtracting by float
 Vector2 Vector2::operator-=(const float& amount)
-{
-	x -= amount;
-	y -= amount;
+{	
+	x -= amount; y -= amount;
 	return *this;
 }
 
 // Multipling by float
 Vector2 Vector2::operator*=(const float& amount)
 {
-	x *= amount;
-	y *= amount;
+	x *= amount; y *= amount;
 	return *this;
 }
 
 // Dividing by float
 Vector2 Vector2::operator/=(const float& amount)
 {
-	x /= amount;
-	y /= amount;
+	x /= amount; y /= amount;
 	return *this;
 }
 
 
 // - Ints
 
-// Adding to int
-Vector2 Vector2::operator+(const int& amount) { return{ x + amount, y + amount }; }
-
-// Subtracting by int
-Vector2 Vector2::operator-(const int& amount) { return{ x - amount, y - amount }; }
-
-// Multipling by int
-Vector2 Vector2::operator*(const int& amount) { return{ x * amount, y * amount }; }
-
-// Dividing by int
-Vector2 Vector2::operator/(const int& amount) { return { x / amount, y / amount }; }
+Vector2 Vector2::operator+(const int& amount) { return { x + amount, y + amount }; } // Adding to int
+Vector2 Vector2::operator-(const int& amount) { return { x - amount, y - amount }; } // Subtracting by int
+Vector2 Vector2::operator*(const int& amount) { return { x * amount, y * amount }; } // Multipling by int
+Vector2 Vector2::operator/(const int& amount) { return { x / amount, y / amount }; } // Dividing by int
 
 // Adding to int
 Vector2 Vector2::operator+=(const int& amount)
 {
-	x += amount;
-	y += amount;
+	x += amount; y += amount;
 	return *this;
 }
 
 // Subtracting by int
 Vector2 Vector2::operator-=(const int& amount)
 {
-	x -= amount;
-	y -= amount;
+	x -= amount; y -= amount;
 	return *this;
 }
 
 // Multipling by int
 Vector2 Vector2::operator*=(const int& amount)
 {
-	x *= amount;
-	y *= amount;
+	x *= amount; y *= amount;
 	return *this;
 }
 
 // Dividing by int
 Vector2 Vector2::operator/=(const int& amount)
 {
-	x /= amount;
-	y /= amount;
+	x /= amount; y /= amount;
 	return *this;
 }
 
 
 // - Doubles
 
-// Adding to double
-Vector2 Vector2::operator+(const double& amount) { return{ x + (float)amount, y + (float)amount }; }
-
-// Subtracting by double
-Vector2 Vector2::operator-(const double& amount) { return{ x - (float)amount, y - (float)amount }; }
-
-// Multipling by double
-Vector2 Vector2::operator*(const double& amount) { return{ x * (float)amount, y * (float)amount }; }
-
-// Dividing by double
-Vector2 Vector2::operator/(const double& amount) { return { x / (float)amount, y / (float)amount }; }
+Vector2 Vector2::operator+(const double& amount) { return { x + (float)amount, y + (float)amount }; } // Adding to double
+Vector2 Vector2::operator-(const double& amount) { return { x - (float)amount, y - (float)amount }; } // Subtracting by double
+Vector2 Vector2::operator*(const double& amount) { return { x * (float)amount, y * (float)amount }; } // Multipling by double
+Vector2 Vector2::operator/(const double& amount) { return { x / (float)amount, y / (float)amount }; } // Dividing by double
 
 // Adding to double
 Vector2 Vector2::operator+=(const double& amount)
 {
-	x += amount;
-	y += amount;
+	x += amount; y += amount;
 	return *this;
 }
 
 // Subtracting by double
 Vector2 Vector2::operator-=(const double& amount)
 {
-	x -= amount;
-	y -= amount;
+	x -= amount; y -= amount;
 	return *this;
 }
 
 // Multipling by double
 Vector2 Vector2::operator*=(const double& amount)
 {
-	x *= amount;
-	y *= amount;
+	x *= amount; y *= amount;
 	return *this;
 }
 
 // Dividing by double
 Vector2 Vector2::operator/=(const double& amount)
 {
-	x /= amount;
-	y /= amount;
+	x /= amount; y /= amount;
 	return *this;
 }
 

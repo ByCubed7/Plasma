@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "../Vector2.h"
+
 #include "Tile.h"
 #include "TileRender.h"
 
@@ -19,22 +21,22 @@ namespace Tilemaps {
     class TileLayer
     {
     public:
-        vector<Tile> tiles;
 
         TileLayer();
 
         void AddTile(Tile tile);
-        void AddTile(int id, glm::vec2 position);
-        void AddTile(int id, glm::vec2 position, float rotation);
-        void AddTile(int id, glm::vec2 position, float rotation, glm::vec2 scale);
+        //void AddTile(int id, Vector2 position);
+        //void AddTile(int id, Vector2 position, float rotation);
+        //void AddTile(int id, Vector2 position, float rotation, Vector2 scale);
         
         TileRender GetRender();
 
         // - Attribute Gets
 
-        int GetTileAt(glm::vec2 position);
-        int GetTileAt(pair<int, int> position);
+        int GetTileAt(Vector2 position);
 
         size_t Count();
+    private:
+        map<Vector2, Tile> tiles;
     };
 }

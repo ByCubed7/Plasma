@@ -35,17 +35,6 @@ namespace Tilemaps {
         void AddLayer();
         void AddLayer(TileLayer layer);
 
-
-        void AddTile(int layer, Tile tile);
-        void AddTile(int layer, int id, glm::vec2 position);
-        void AddTile(int layer, int id, glm::vec2 position, float rotation);
-        void AddTile(int layer, int id, glm::vec2 position, float rotation, glm::vec2 scale);
-
-        // - Attribute Gets
-
-        int GetTileAt(int layer, glm::vec2 position);
-        int GetTileAt(int layer, pair<int, int> position);
-
     private:
     };
 }

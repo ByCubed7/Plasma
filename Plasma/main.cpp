@@ -17,16 +17,16 @@
 #include "PlayerCollisionEventManager.h"
 #include "WarpComponent.h"
 #include "TileLockedCharacterController.h"
+#include "Muncher.h"
 
 #include <iostream>
-#include "Muncher.h"
 
 int main(int argc, char* argv[])
 {
 	App app = App();
 
 	GameConfig gameConfig;
-	gameConfig.PPU = 16;
+	gameConfig.PPU = 32;
 	gameConfig.screenHeight = gameConfig.PPU * 31;
 	gameConfig.screenWidth  = gameConfig.PPU * 28;
 

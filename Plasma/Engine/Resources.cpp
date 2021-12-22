@@ -2,6 +2,8 @@
 
 #include "Resources.h"
 
+#include "Tilemaps/Tile.h"
+
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -78,12 +80,18 @@ Tilemaps::Tilemap Resources::LoadTilemap(const string file, string name)
 
     for (int j = 0; j < layers.size(); j++)
     {
-        //cout << layers[j].Tiles().size() << endl;
 
         auto tiles = layers[j].Tiles();
+        
+        //cout << tiles.size() << endl;
+
+
         map.AddLayer();
 
         //*
+        //cout << "Height: " << tiledMap->Height() << endl;
+        //cout << "Width: " << tiledMap->Width() << endl;
+
         for (int y = 0; y < tiledMap->Height(); ++y) {
             for (int x = 0; x < tiledMap->Width(); ++x) {
                 unsigned id = tiles[y][x];
@@ -102,7 +110,8 @@ Tilemaps::Tilemap Resources::LoadTilemap(const string file, string name)
 
                 // Converts the boolean mirror matrix to a rotation float and scale vector
                 // NOTE: This took me 5 hours and I found it by accedent at like 4am
-                glm::vec2 scale = glm::vec2(
+
+                Vector2 scale = Vector2(
                    flipH ^ flipD ? -1 : 1,
                    flipV ? -1 : 1
                 );
@@ -118,12 +127,14 @@ Tilemaps::Tilemap Resources::LoadTilemap(const string file, string name)
                 // Add the tile
                 if (id != 0) 
                 {
-                    map.AddTile(
-                        j, 
-                        map.tileset.GetIndexFromId(id), 
-                        glm::vec2(x, y), 
-                        rotat, scale
+                    map.layers[j].AddTile(
+                        Tilemaps::Tile(
+                            map.tileset.GetIndexFromId(id), 
+                            Vector2(x, y), 
+                            rotat, scale
+                        )
                     );
+
                 }
             }
         }

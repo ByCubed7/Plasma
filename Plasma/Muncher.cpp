@@ -12,8 +12,10 @@ Muncher* Muncher::SetTilemap(TilemapComponent* tilemapComponent)
 
 void Muncher::Update(double delta, Engine::Scene& game)
 {
-	Vector2 tilePosition = tilemapComp->GetTilePositionAtScenePosition(gameObject->position);
-	int tileAtCurrentPosition = tilemapComp->tilemap.GetTileAt(1, std::pair<int, int>(tilePosition.x, tilePosition.y));
+	//Vector2 tilePosition = tilemapComp->GetTilePositionAtScenePosition(gameObject->position) + 0.5f;
+	//int tileAtCurrentPosition = tilemapComp->tilemap.layers[1].GetTileAt(tilePosition);
 
-	cout << tileAtCurrentPosition << endl;
+	//tilemapComp->tilemap.layers[1].GetTileAt();
+
+	//cout << tileAtCurrentPosition << endl;
 }
