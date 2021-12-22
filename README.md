@@ -43,7 +43,7 @@ Changing Window properties
 App app = App();
 
 GameConfig gameConfig;
-gameConfig.PPU = 20;
+gameConfig.PPU = 16;
 gameConfig.screenHeight = gameConfig.PPU * 31;
 gameConfig.screenWidth  = gameConfig.PPU * 28;
 
@@ -67,30 +67,27 @@ Loading files
 
 scene->Initialize();
 
+Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");
 Resources::LoadTexture("assets/textures/Player.png", true, "player");
-Resources::LoadTexture("assets/textures/Ghost.png", true, "ghost");
-Resources::LoadTexture("assets/textures/Pip.png", true, "pip");
-Resources::LoadTexture("assets/textures/Cherry.png", true, "cherry");
+Resources::LoadWav("assets/audio/beginning.wav", "beginning");
+Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilemap");
+Resources::LoadFont("assets/fonts/arial.ttf", "arial");
 
 . . .
 ```
 
 Adding a Component (+ Getting Resource files)
 ```cpp
-SpriteComponent* playerSprite = new SpriteComponent();
+SpriteComponent* playerSprite = new SpriteComponent(player);
 	
 playerSprite
 	->Set(Resources::GetTexture("player"))
 	->AnimationSpeed(4);
 
-player->AddComponent(playerSprite);
-
-CharacterControllerComponent* playerController = new CharacterControllerComponent();
-player->AddComponent(playerController);
+CharacterControllerComponent* playerController = new CharacterControllerComponent(player);
 ```
 
 
 ## TODO
-- Implement sound with the OpenAL library.
 - Turn Input class into a static class.
 - Documentation API.
