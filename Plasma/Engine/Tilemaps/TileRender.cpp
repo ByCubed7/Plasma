@@ -8,13 +8,13 @@
 
 namespace Tilemaps {
 
-	void TileRender::Add(Tile tile)
+	void TileRender::Add(Tile& tile)
 	{
-
-		glm::vec2 position(tile.position.x, tile.position.y);
-
+		//if (tile.position == 0 && tile.id == 0) return;
+		
 		ids.push_back(tile.id);
 
+		glm::vec2 position(tile.position.x, tile.position.y);
 		positions.push_back(position);
 
 		// Calculate rotation and scale matrix

@@ -67,10 +67,8 @@ struct Vector2
     Vector2 operator*=(const Vector2& otherVector);
     Vector2 operator/=(const Vector2& otherVector);
 
-private:
-    int cmp(const Vector2& otherVector) const;
+    //int cmp(const Vector2& otherVector) const;
 
-public:
     bool operator==(const Vector2& otherVector) const;
     //bool operator!=(const Vector2& otherVector) const;
     bool operator< (const Vector2& otherVector) const;

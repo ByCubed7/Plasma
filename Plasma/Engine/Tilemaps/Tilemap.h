@@ -24,10 +24,8 @@ namespace Tilemaps {
         vector<TileLayer> layers;
 
         Texture2D tileSheet;
-
-        //int width, height;
     
-        pair<int, int> tileSize;
+        Vector2 tileSize;
         Tileset tileset;
 
         Tilemap();

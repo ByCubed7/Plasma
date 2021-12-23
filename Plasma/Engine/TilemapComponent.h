@@ -26,13 +26,12 @@ public:
 	TilemapComponent* Bind(Render::Renderers* renderer);
 	TilemapComponent* Set(Texture2D texture);
 	TilemapComponent* SetTilemap(const Tilemaps::Tilemap& tilemap);
-	TilemapComponent* SetTileSize(pair<int, int> size);
+	TilemapComponent* SetTileSize(int size);
 
 	Vector2 GetTilePositionAtScenePosition(Vector2 pos);
 	Vector2 GetTilePositionAtScenePosition(float x, float y);
 
 	Vector2 SPosAtTPos(Vector2 pos);
-	Vector2 SPosAtTPos(int x, int y);
 
 	Vector2 GetTileDensity();
 
@@ -40,5 +39,5 @@ public:
 	// Getting tiles
 
 	int GetTileAtScenePosition(Vector2 pos);
-	int GetTileAtScenePosition(float x, float y);
+	bool IsTileAtScenePosition(Vector2 pos);
 };

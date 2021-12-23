@@ -12,6 +12,7 @@
 #include <glm/gtx/string_cast.hpp>
 
 #include <map>
+#include <unordered_map>
 #include <string>
 #include <vector>
 
@@ -24,16 +25,18 @@ namespace Tilemaps {
 
         TileLayer();
 
-        void AddTile(Tile tile);
-        //void AddTile(int id, Vector2 position);
-        //void AddTile(int id, Vector2 position, float rotation);
-        //void AddTile(int id, Vector2 position, float rotation, Vector2 scale);
-        
+        void SetTile(Tile tile);
+        Tile GetTile(Vector2 position);
+        bool IsTile(Vector2 position);
+                
+        /// <summary>
+        /// Generates and Returns a TileLayers render data.
+        /// </summary>
+        /// <returns>Returns the TileLayers render data.</returns>
         TileRender GetRender();
 
         // - Attribute Gets
 
-        int GetTileAt(Vector2 position);
 
         size_t Count();
     private:

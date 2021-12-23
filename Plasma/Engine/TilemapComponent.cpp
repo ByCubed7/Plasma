@@ -8,18 +8,6 @@ TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
     animationPoint = 0;
     spriteFrame = 0;
 
-    //tilemap = Resources::GetTilemap("tilesheet");
-
-    //cout << "2 TilemapComponent::TilemapComponent" << endl;
-    //tilemap = Tilemaps::Tilemap();
-    //tilemap.AddLayer(Tilemaps::TileLayer());
-    //tilemap.AddTile({ 0, 0 }, 0);
-    /*
-    tilemap.AddTile(0, 1, { 0, 0 }, 0, { 1, 1 });
-    tilemap.AddTile(0, 2, { -1, 0 });
-    tilemap.AddTile(0, 2, { 0, 1 });
-    tilemap.AddTile(0, 0, { 1, -1 });
-    //*/
     color = { 1, 1, 1 };
     animationSpeed = 2;
 }
@@ -30,6 +18,7 @@ void TilemapComponent::Draw(Render::Renderers& renderer)
 
     //for (auto& tile : tilemap.layers[0].tiles)
     //    tile.rotation += 1;
+
 
     for (auto& layer : tilemap.layers)
     {
@@ -62,6 +51,8 @@ TilemapComponent* TilemapComponent::Bind(Render::Renderers* renderer)
     
 
     // Bad Cubie, use cacheing here
+    //renderer->tilemap.Update(tilemap.layers[0].GetRender());
+
     renderer->tilemap.Update(tilemap.layers[0].GetRender());
 
     return this;
@@ -79,7 +70,7 @@ TilemapComponent* TilemapComponent::SetTilemap(const Tilemaps::Tilemap& newTilem
     return this;
 }
 
-TilemapComponent* TilemapComponent::SetTileSize(pair<int, int> size) { this->tilemap.tileSize = size; return this; }
+TilemapComponent* TilemapComponent::SetTileSize(int size) { this->tilemap.tileSize = Vector2(size); return this; }
 
 Vector2 TilemapComponent::GetTilePositionAtScenePosition(Vector2 pos)
 {
@@ -100,7 +91,6 @@ Vector2 TilemapComponent::SPosAtTPos(Vector2 pos)
 
     return pos;
 }
-Vector2 TilemapComponent::SPosAtTPos(int x, int y) { return SPosAtTPos(Vector2(x, y)); }
 
 
 Vector2 TilemapComponent::GetTileDensity()
@@ -113,6 +103,10 @@ Vector2 TilemapComponent::GetTileDensity()
 int TilemapComponent::GetTileAtScenePosition(Vector2 pos)
 {
     pos = GetTilePositionAtScenePosition(pos);
-    return tilemap.layers[0].GetTileAt(pos);
+    return tilemap.layers[0].GetTile(pos).id;
 }
-int TilemapComponent::GetTileAtScenePosition(float x, float y) { return GetTileAtScenePosition({ x,y }); }
+
+bool TilemapComponent::IsTileAtScenePosition(Vector2 pos) 
+{
+    return tilemap.layers[0].IsTile(pos);
+}

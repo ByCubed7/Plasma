@@ -80,21 +80,17 @@ Tilemaps::Tilemap Resources::LoadTilemap(const string file, string name)
 
     for (int j = 0; j < layers.size(); j++)
     {
-
         auto tiles = layers[j].Tiles();
-        
-        //cout << tiles.size() << endl;
-
 
         map.AddLayer();
 
-        //*
-        //cout << "Height: " << tiledMap->Height() << endl;
-        //cout << "Width: " << tiledMap->Width() << endl;
 
         for (int y = 0; y < tiledMap->Height(); ++y) {
             for (int x = 0; x < tiledMap->Width(); ++x) {
-                unsigned id = tiles[y][x];
+                unsigned int id = tiles[y][x];
+
+                //cout << "First tile: " << tiles[0][0] << endl;
+                //if (j == 0) id = 3758096387;
 
                 // Read the flags
                 bool flipH = (id & Tiled::FLIPPED_HORIZONTALLY_FLAG);
@@ -127,7 +123,7 @@ Tilemaps::Tilemap Resources::LoadTilemap(const string file, string name)
                 // Add the tile
                 if (id != 0) 
                 {
-                    map.layers[j].AddTile(
+                    map.layers[j].SetTile(
                         Tilemaps::Tile(
                             map.tileset.GetIndexFromId(id), 
                             Vector2(x, y), 

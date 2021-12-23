@@ -22,7 +22,7 @@ namespace Tilemaps {
         vector<glm::vec2> positions;
         vector<glm::mat4> rotscas;
 
-        void Add(Tile tile);
+        void Add(Tile& tile);
 
         vector<float> Ids();
         vector<glm::vec2> Positions();

@@ -44,7 +44,7 @@ void TileLockedCharacterController::Update(double delta, Engine::Scene& game)
 	position /= tilemapComp->GetTileDensity();
 	position += Vector2(1.5f);
 
-	if (tilemapComp->tilemap.layers[0].GetTileAt(position) == -1)
+	if (!tilemapComp->tilemap.layers[0].IsTile(position))
 	{
 		gameObject->position += inputDirection * delta;
 		currentDirection = inputDirection;

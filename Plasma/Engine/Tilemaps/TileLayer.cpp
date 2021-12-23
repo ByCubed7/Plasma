@@ -15,41 +15,41 @@ namespace Tilemaps {
 		//height = 1;	
 	}
 
-	void TileLayer::AddTile(Tile tile)
+	void TileLayer::SetTile(Tile tile)
 	{
 		tiles[tile.position] = tile;
-		//cout << "AddTile: " << tile.position.ToString() << endl;
-
-
-		//cout << tile.position.ToString() << endl;
-		//cout << tiles.size() << endl;
-
-		// If the position is bigger than the total size, set the total size
-		//if (position.x + 1 > width) width = position.x + 1;
-		//if (position.y + 1 > height) height = position.y + 1;
 	}
 
+	Tile TileLayer::GetTile(Vector2 position)
+	{
+		map<Vector2, Tile>::iterator tile = tiles.find(position);
+		if (tile == tiles.end()) {
+			cerr << "[TileLayer::GetTile] Can't find tile at " << position.ToString() << endl
+				<< "Use TileLayer::IsTile(Vector2) to check whether a tile exists at location.";
+		}
+		return tile->second;
+	}
 
-	// Generates and Returns a TileLayers render data
+	bool TileLayer::IsTile(Vector2 position)
+	{
+		map<Vector2, Tile>::iterator tile = tiles.find(position);
+		return tile != tiles.end();
+	}
+	
 	TileRender TileLayer::GetRender()
 	{
 		TileRender renderData = TileRender();
 
-		//cout << "size: " << tiles.size() << endl;
-
+		int i = 0;
 		for (auto& tile : tiles) {
+
+			if (tile.second.position == 0 && tile.second.id == 0) cout << "INDEX: " << i << endl;
+
 			renderData.Add(tile.second);
-
-			//cout << "GetRender: " << tile.second.position.ToString() << endl;
+			i++;
 		}
+		
 		return renderData;
-	}
-
-	// - Gets
-
-	int TileLayer::GetTileAt(Vector2 position)
-	{
-		return tiles[position].id;
 	}
 
 	size_t TileLayer::Count() { return tiles.size(); }
