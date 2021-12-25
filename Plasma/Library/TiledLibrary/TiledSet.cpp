@@ -8,9 +8,9 @@ namespace Tiled {
 	// Load in from file
 	
 	Set::Set(
-		unordered_map<string, string> const& data,
-		unordered_map<string, string> const& properties,
-		vector<Tile> const& tiles)
+		std::unordered_map<std::string, std::string> const& data,
+		std::unordered_map<std::string, std::string> const& properties,
+		std::vector<Tile> const& tiles)
 	{
 		name = data.at("name");
 		source = data.at("source");
@@ -61,16 +61,16 @@ namespace Tiled {
 
 	unsigned int Set::Count() const noexcept { return count; }
 
-	array<unsigned int, 3> Set::TransparentColour() const noexcept { return transparentColour; }
+	std::array<unsigned int, 3> Set::TransparentColour() const noexcept { return transparentColour; }
 
-	string Set::Name() const noexcept { return name; }
-	string Set::Source() const noexcept { return source; }
+	std::string Set::Name() const noexcept { return name; }
+	std::string Set::Source() const noexcept { return source; }
 
-	string Set::Property(string const &key) noexcept
+	std::string Set::Property(std::string const &key) noexcept
 	{
 		auto prop = properties.find(key);
 		if (prop != properties.end()) return prop->second;
-		cout << "[Tiled] Property '" << key << "' not found." << endl;
+		std::cout << "[Tiled] Property '" << key << "' not found." << std::endl;
 		return nullptr;
 	}
 
@@ -79,7 +79,7 @@ namespace Tiled {
 		for (unsigned int i = 0; i < lastGID; ++i)
 			if (id == tiles[i].Id())
 				return &tiles[id];
-		cout << "[Tiled] Tile with ID '" << id << "' not found." << endl;
+		std::cout << "[Tiled] Tile with ID '" << id << "' not found." << std::endl;
 		return nullptr;
 	}
 }

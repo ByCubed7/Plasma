@@ -12,8 +12,6 @@
 #include "../Library/glad.h"
 #include <glm/glm.hpp>
 
-using namespace std;
-
 namespace Render
 {
 	struct Renderers

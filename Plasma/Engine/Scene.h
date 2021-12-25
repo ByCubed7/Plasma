@@ -12,8 +12,6 @@
 
 #include "Audio/AudioScene.h"
 
-using namespace std;
-
 // Forward declaration
 class GameObject;
 class Component;
@@ -36,7 +34,7 @@ namespace Engine {
 		State state;
 
 		Input input;
-		GameConfig settings;
+		Settings settings;
 
 	
 		unsigned int width, height;
@@ -44,16 +42,16 @@ namespace Engine {
 		Audio::Scene* audio;
 		Render::Renderers* renderer;
 
-		list<GameObject*> gameObjects;
-		list<Component*> components;
+		std::list<GameObject*> gameObjects;
+		std::list<Component*> components;
 
 		// Collision
-		list<BoxColliderComponent*> colliders;
-		map<BoxColliderComponent*, BoxColliderComponent*> collidersColliding;
+		std::list<BoxColliderComponent*> colliders;
+		std::map<BoxColliderComponent*, BoxColliderComponent*> collidersColliding;
 
 
 		// Constructor
-		Scene(GameConfig& setting);
+		Scene(Settings& setting);
 	
 		// Destructor
 		~Scene();

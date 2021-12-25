@@ -3,7 +3,7 @@
 #include <iostream>
 
 namespace Tiled {
-    Tile::Tile(unsigned int id, unordered_map<string, string> const& properties)
+    Tile::Tile(unsigned int id, std::unordered_map<std::string, std::string> const& properties)
     {
         this->id = id;
         this->properties = properties;
@@ -11,12 +11,12 @@ namespace Tiled {
 
     unsigned Tile::Id() const noexcept { return id; }
 
-    string Tile::Property(string const& key) noexcept
+    std::string Tile::Property(std::string const& key) noexcept
     {
         auto prop = properties.find(key);
         if (prop != properties.end())
             return prop->second;
-        cout << "[Tiled] property '" << key << "' not found." << endl;
+        std::cout << "[Tiled] property '" << key << "' not found." << std::endl;
         return nullptr;
     }
 }

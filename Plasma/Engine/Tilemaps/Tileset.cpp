@@ -6,8 +6,6 @@
 
 #include <iostream>
 
-using namespace std;
-
 namespace Tilemaps {
 
 	Tileset::Tileset() {}

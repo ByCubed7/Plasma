@@ -14,8 +14,6 @@
 #include "TiledSet.h"
 #include "TiledTile.h"
 
-using namespace std;
-
 namespace Tiled {
 
     const unsigned FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
@@ -27,19 +25,19 @@ namespace Tiled {
     public:
         Loader();
 
-        void LoadMap(string mapName, string filePath);
-        Map* GetMap(string mapName);
+        void LoadMap(std::string mapName, std::string filePath);
+        Map* GetMap(std::string mapName);
 
     private:
-        void LoadSettings(unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode);
-        void LoadTileSets(unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode);
-        void LoadLayers(unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode);
-        void LoadProperties(unordered_map<string, string>& propertiesMap, rapidxml::xml_node<>* parentNode);
+        void LoadSettings(std::unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode);
+        void LoadTileSets(std::unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode);
+        void LoadLayers(std::unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode);
+        void LoadProperties(std::unordered_map<std::string, std::string>& propertiesMap, rapidxml::xml_node<>* parentNode);
 
         // File loading
-        bool LoadFile(string filePath, string& fileContents);
+        bool LoadFile(std::string filePath, std::string& fileContents);
 
         // Loaded Maps cache
-        unordered_map<string, unique_ptr<Map>> maps;
+        std::unordered_map<std::string, std::unique_ptr<Map>> maps;
     };
 }

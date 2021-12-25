@@ -185,6 +185,7 @@
     <ClCompile Include="Engine\Tilemaps\TileLayer.cpp" />
     <ClCompile Include="Engine\Tilemaps\Tilemap.cpp" />
     <ClCompile Include="Engine\Tilemaps\Tileset.cpp" />
+    <ClCompile Include="Engine\UI\TextboxComponent.cpp" />
     <ClCompile Include="Engine\Vector2.cpp" />
     <ClCompile Include="Library\glad.c" />
     <ClCompile Include="Library\TiledLibrary\TiledLayer.cpp" />
@@ -195,6 +196,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Muncher.cpp" />
     <ClCompile Include="PlayerCollisionEventManager.cpp" />
+    <ClCompile Include="ScoreTracker.cpp" />
     <ClCompile Include="TileLockedCharacterController.cpp" />
     <ClCompile Include="WarpComponent.cpp" />
   </ItemGroup>
@@ -233,6 +235,7 @@
     <ClInclude Include="Engine\Tilemaps\TileLayer.h" />
     <ClInclude Include="Engine\Tilemaps\Tilemap.h" />
     <ClInclude Include="Engine\Tilemaps\Tileset.h" />
+    <ClInclude Include="Engine\UI\TextboxComponent.h" />
     <ClInclude Include="Engine\Vector2.h" />
     <ClInclude Include="Engine\Wav.h" />
     <ClInclude Include="Library\glad.h" />
@@ -255,6 +258,7 @@
     <ClInclude Include="Library\TiledLibrary\TiledTile.h" />
     <ClInclude Include="Muncher.h" />
     <ClInclude Include="PlayerCollisionEventManager.h" />
+    <ClInclude Include="ScoreTracker.h" />
     <ClInclude Include="TileLockedCharacterController.h" />
     <ClInclude Include="WarpComponent.h" />
   </ItemGroup>

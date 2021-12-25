@@ -1,7 +1,7 @@
 #include "TiledMap.h"
 
 namespace Tiled {
-    void Map::Settings(vector<string> const& data, unordered_map<string, string> const& props) noexcept
+    void Map::Settings(std::vector<std::string> const& data, std::unordered_map<std::string, std::string> const& props) noexcept
     {
         version = stoi(data[1]);
 
@@ -28,32 +28,32 @@ namespace Tiled {
     unsigned int Map::TileWidth() const noexcept { return tileWidth; }
     unsigned int Map::TileHeight() const noexcept { return tileHeight; }
 
-    array<unsigned int, 3> Map::BackgroundColor() const noexcept { return backgroundColour; }
+    std::array<unsigned int, 3> Map::BackgroundColor() const noexcept { return backgroundColour; }
 
-    string Map::Orientation() const noexcept { return orientation; }
-    string Map::RenderOrder() const noexcept { return renderOrder; }
+    std::string Map::Orientation() const noexcept { return orientation; }
+    std::string Map::RenderOrder() const noexcept { return renderOrder; }
 
     void Map::AddTileset(Set const& newTileSet) noexcept { tiles.push_back(newTileSet); }
 
-    Set* Map::GetTileset(string const& name) noexcept
+    Set* Map::GetTileset(std::string const& name) noexcept
     {
         for (size_t i = 0; i < tiles.size(); ++i)
             if (tiles[i].Name() == name)
                 return &tiles[i];
-        cout << "[Tiled] Tileset layer '" << name << "' could not be found." << endl;
+        std::cout << "[Tiled] Tileset layer '" << name << "' could not be found." << std::endl;
         return nullptr;
     }
 
     void Map::AddLayer(Layer const& newLayer) noexcept { layers.push_back(newLayer); }
 
-    Layer* Map::GetLayer(string const& name) noexcept
+    Layer* Map::GetLayer(std::string const& name) noexcept
     {
         for (size_t i = 0; i < tiles.size(); ++i)
             if (layers[i].Name() == name)
                 return &layers[i];
-        cout << "[Tiled] Tile layer '" << name << "' could not be found." << endl;
+        std::cout << "[Tiled] Tile layer '" << name << "' could not be found." << std::endl;
         return nullptr;
     }
 
-    vector<Layer>& Map::Layers() noexcept { return layers; }
+    std::vector<Layer>& Map::Layers() noexcept { return layers; }
 }

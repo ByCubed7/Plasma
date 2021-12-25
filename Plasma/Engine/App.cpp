@@ -12,7 +12,7 @@ App::App()
 	scene = nullptr;
 }
 
-Engine::Scene* App::CreateGame(GameConfig& gameConfig)
+Engine::Scene* App::CreateGame(Settings& gameConfig)
 {
 	Engine::Scene* newScene = new Engine::Scene(gameConfig);
 	// Add scene to list
@@ -30,7 +30,7 @@ int App::Prepare(Engine::Scene* setScene)
 
 	glfwWindowHint(GLFW_RESIZABLE, false);
 
-	window = glfwCreateWindow(scene->settings.screenWidth, scene->settings.screenHeight, scene->settings.name, nullptr, nullptr);
+	window = glfwCreateWindow(scene->settings.screenWidth, scene->settings.screenHeight, scene->settings.name.c_str(), nullptr, nullptr);
 	glfwMakeContextCurrent(window);
 
 	// Load OpenGL function pointers
@@ -121,7 +121,7 @@ int App::Run(Engine::Scene* setScene)
 		GLenum err;
 		while ((err = glGetError()) != GL_NO_ERROR)
 		{
-			cout << "ERROR:" << err << endl;
+			std::cout << "ERROR:" << err << std::endl;
 		}//*/
 	}
 

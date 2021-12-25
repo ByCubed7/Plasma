@@ -9,14 +9,12 @@
 #include <vector>
 #include <algorithm>
 
-using namespace std;
-
 template<typename T>
 class Dispatcher 
 {
 private:
-    using SlotType = function<void(const Event<T>&)>;
-    map < T, vector<SlotType> > observers;
+    using SlotType = std::function<void(const Event<T>&)>;
+    std::map < T, std::vector<SlotType> > observers;
 
 public:
     // Subscribe an observer

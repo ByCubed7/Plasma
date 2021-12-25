@@ -4,8 +4,6 @@
 
 #include <map>
 
-using namespace std;
-
 namespace Tilemaps {
     class Tileset
     {
@@ -19,6 +17,6 @@ namespace Tilemaps {
         unsigned int GetIndexFromId(unsigned int id);
     
     private:
-        map<unsigned int, unsigned int> idToIndex;
+        std::map<unsigned int, unsigned int> idToIndex;
     };
 }

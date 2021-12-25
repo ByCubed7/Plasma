@@ -33,20 +33,20 @@ namespace Tilemaps {
 		rotscas.push_back(transform);
 	}
 
-	vector<float> TileRender::Ids()
+	std::vector<float> TileRender::Ids()
 	{
-		vector<float> data;
+		std::vector<float> data;
 		for (int& tile : ids)
 			data.push_back((float)tile);
 		return data;
 	}
 
-	vector<glm::vec2> TileRender::Positions()
+	std::vector<glm::vec2> TileRender::Positions()
 	{
 		return positions;
 	}
 
-	vector<glm::mat4> TileRender::RotScas()
+	std::vector<glm::mat4> TileRender::RotScas()
 	{
 		return rotscas;
 	}

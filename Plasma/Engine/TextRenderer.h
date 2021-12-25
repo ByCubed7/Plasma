@@ -4,14 +4,10 @@
 
 #include "Renderer.h"
 
-#include <map>
+#include "shader.h"
 
 #include "../Library/glad.h"
 #include <glm/glm.hpp>
-
-#include "texture.h"
-#include "shader.h"
-#include "font.h"
 
 namespace Render
 {

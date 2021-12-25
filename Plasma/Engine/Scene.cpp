@@ -11,7 +11,7 @@
 #include <algorithm>
 
 namespace Engine {
-	Scene::Scene(GameConfig& setting)
+	Scene::Scene(Settings& setting)
 	{
 		state = Scene::State::ACTIVE;
 		input = Input();
@@ -56,6 +56,9 @@ namespace Engine {
 		Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
 		Resources::LoadShader("assets/shaders/tile.vs", "assets/shaders/tile.frag", nullptr, "tile");
 
+		// - Load Text Fonts
+		Resources::LoadFont("assets/fonts/arial.ttf", "arial");
+
 		// Sprite
 		Shader ShaderSprite = Resources::GetShader("sprite");
 		ShaderSprite.Use().SetInteger("image", 0);
@@ -81,9 +84,6 @@ namespace Engine {
 			ShaderText,
 			ShaderTile
 		);
-
-		// - Load Text Fonts
-		Resources::LoadFont("assets/fonts/arial.ttf", "arial");
 
 		// - Load Audio
 		audio->Prepare();
@@ -118,7 +118,7 @@ namespace Engine {
 		// - Update all of the colliders
 
 		//*/ First, put all of them on axis
-		vector<tuple<int, bool, BoxColliderComponent*>> axis = {};
+		std::vector<std::tuple<int, bool, BoxColliderComponent*>> axis = {};
 		for (const auto& collider : colliders)
 		{
 			BoxColliderComponent box = *collider;
@@ -134,18 +134,18 @@ namespace Engine {
 			});
 		}
 
-		sort(axis.begin(), axis.end(), [](auto a, auto b) { return get<0>(a) > get<0>(b); });
+		std::sort(axis.begin(), axis.end(), [](auto a, auto b) { return std::get<0>(a) > std::get<0>(b); });
 
-		map<BoxColliderComponent*, BoxColliderComponent*> collidersToCheck = {};
+		std::map<BoxColliderComponent*, BoxColliderComponent*> collidersToCheck = {};
 	
-		list<BoxColliderComponent*> inRange = {};
+		std::list<BoxColliderComponent*> inRange = {};
 		for (const auto& axi : axis)
 		{
 			// bool, BoxColliderComponent
 
-			BoxColliderComponent* currentCollider = get<2>(axi);
+			BoxColliderComponent* currentCollider = std::get<2>(axi);
 
-			if (get<1>(axi))
+			if (std::get<1>(axi))
 			{
 				// Check if any are colliding
 				for (const auto& colliderInRange : inRange)

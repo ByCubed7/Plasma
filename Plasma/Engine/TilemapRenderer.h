@@ -39,8 +39,8 @@ namespace Render
         unsigned int rotscaRow1InstanceVBO, rotscaRow2InstanceVBO, rotscaRow3InstanceVBO, rotscaRow4InstanceVBO;
 
         // Rendering States
-        vector<float> tileIds;
-        vector<glm::vec2> tilePositions;
-        vector<glm::vec4> tileRotScasRow1, tileRotScasRow2, tileRotScasRow3, tileRotScasRow4;
+        std::vector<float> tileIds;
+        std::vector<glm::vec2> tilePositions;
+        std::vector<glm::vec4> tileRotScasRow1, tileRotScasRow2, tileRotScasRow3, tileRotScasRow4;
     };
 }

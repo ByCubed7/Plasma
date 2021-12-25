@@ -2,8 +2,6 @@
 
 #include <iostream>
 
-using namespace std;
-
 // trim from end (in place)
 static inline void rtrim(std::string& s) {
 	s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
@@ -12,12 +10,12 @@ static inline void rtrim(std::string& s) {
 }
 
 // for string delimiter
-static inline vector<string> split(string s, string delimiter) {
+static inline std::vector<std::string> split(std::string s, std::string delimiter) {
 	size_t pos_start = 0, pos_end, delim_len = delimiter.length();
-	string token;
-	vector<string> res;
+	std::string token;
+	std::vector<std::string> res;
 
-	while ((pos_end = s.find(delimiter, pos_start)) != string::npos) {
+	while ((pos_end = s.find(delimiter, pos_start)) != std::string::npos) {
 		token = s.substr(pos_start, pos_end - pos_start);
 		pos_start = pos_end + delim_len;
 		res.push_back(token);
@@ -31,10 +29,10 @@ static inline vector<string> split(string s, string delimiter) {
 namespace Tiled {
 	Loader::Loader() : maps() {}
 
-	void Loader::LoadMap(string name, string path)
+	void Loader::LoadMap(std::string name, std::string path)
 	{
 		// String to hold file contents
-		string fileContents = "";
+		std::string fileContents = "";
 
 		// Attempt to Load file using provided file path
 		bool fileLoaded = LoadFile(path, fileContents);
@@ -46,7 +44,7 @@ namespace Tiled {
 
 			rapidxml::xml_node<>* parentNode = currentMap->first_node("map");
 
-			maps[name] = unique_ptr<Map>(new Map());
+			maps[name] = std::unique_ptr<Map>(new Map());
 
 			LoadSettings(maps[name], parentNode);
 			LoadTileSets(maps[name], parentNode);
@@ -57,37 +55,37 @@ namespace Tiled {
 		}
 		else
 		{
-			cout << "[Tiled] map '" << name << "' at '" << path << "' could not be Loaded." << endl;
+			std::cout << "[Tiled] map '" << name << "' at '" << path << "' could not be Loaded." << std::endl;
 		}
 	}
 
-	Map* Loader::GetMap(string name)
+	Map* Loader::GetMap(std::string name)
 	{
 		auto it = maps.find(name);
 		if (it != maps.end()) return it->second.get();
 
-		cout << "[Tiled] map '" << name << "' not found." << endl;
+		std::cout << "[Tiled] map '" << name << "' not found." << std::endl;
 		return nullptr;
 	}
 
-	void Loader::LoadSettings(unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode)
+	void Loader::LoadSettings(std::unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode)
 	{
-		vector<string> data;
+		std::vector<std::string> data;
 
 		for (rapidxml::xml_attribute<char>* attr = parentNode->first_attribute(); attr; attr = attr->next_attribute())
 			data.push_back(attr->value());
 
 
-		string colourString = data[6];
-		string colourSubstring = colourString.substr(1, colourString.length());
+		std::string colourString = data[6];
+		std::string colourSubstring = colourString.substr(1, colourString.length());
 
-		unsigned int colour = stoi(colourSubstring, 0, 16);
+		unsigned int colour = std::stoi(colourSubstring, 0, 16);
 
-		data.push_back(to_string(colour / 0x10000));
-		data.push_back(to_string((colour / 0x100) % 0x100));
-		data.push_back(to_string(colour / 0x10000));
+		data.push_back(std::to_string(colour / 0x10000));
+		data.push_back(std::to_string((colour / 0x100) % 0x100));
+		data.push_back(std::to_string(colour / 0x10000));
 
-		unordered_map<string, string> properties;
+		std::unordered_map<std::string, std::string> properties;
  
 
 		LoadProperties(properties, parentNode);
@@ -95,7 +93,7 @@ namespace Tiled {
 		map->Settings(data, properties);
 	}
 
-	void Loader::LoadTileSets(unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode)
+	void Loader::LoadTileSets(std::unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode)
 	{
 		return;
 		// TODO: Load from seperate TSX file, rather than relying on TMX files
@@ -103,7 +101,7 @@ namespace Tiled {
 
 	}
 
-	void Loader::LoadLayers(unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode)
+	void Loader::LoadLayers(std::unique_ptr<Map> const& map, rapidxml::xml_node<>* parentNode)
 	{
 		//return;
 
@@ -113,17 +111,17 @@ namespace Tiled {
 
 
 			// Get all of the properties of the layer element
-			unordered_map<string, string> properties;
+			std::unordered_map<std::string, std::string> properties;
 			for (const rapidxml::xml_attribute<>* a = currentNode->first_attribute(); a; a = a->next_attribute())
 				properties[a->name()] = a->value();
 			
-			string name = properties.at((string)"name");
-			unsigned int width = stoi(properties.at((string)"width"));
-			unsigned int height = stoi(properties.at((string)"height"));
+			std::string name = properties.at((std::string)"name");
+			unsigned int width = std::stoi(properties.at((std::string)"width"));
+			unsigned int height = std::stoi(properties.at((std::string)"height"));
 
 			// Load all of the tiles
 			//cout << "Loading all of the tiles" << endl;
-			vector<vector<unsigned int>> tiles(height, vector<unsigned int>(width));
+			std::vector<std::vector<unsigned int>> tiles(height, std::vector<unsigned int>(width));
 			currentNode = currentNode->first_node("data");
 
 			//cout << currentNode->value() << endl;
@@ -131,10 +129,10 @@ namespace Tiled {
 			// Grab the data, convert it to a list of ints
 			//vector<unsigned int> data;
 
-			string dataString = currentNode->value();
-			string delimiter = ",";
+			std::string dataString = currentNode->value();
+			std::string delimiter = ",";
 
-			vector<string> data = split(dataString, delimiter);
+			std::vector<std::string> data = split(dataString, delimiter);
 
 
 			//for (auto i : data) cout << "::" << i << endl;
@@ -165,7 +163,7 @@ namespace Tiled {
 
 	}
 
-	void Loader::LoadProperties(unordered_map<string, string>& properties, rapidxml::xml_node<>* parentNode)
+	void Loader::LoadProperties(std::unordered_map<std::string, std::string>& properties, rapidxml::xml_node<>* parentNode)
 	{
 		rapidxml::xml_node<>* currentNode = parentNode;
 
@@ -182,15 +180,15 @@ namespace Tiled {
 		}
 	}
 
-	bool Loader::LoadFile(string path, string& fileContents)
+	bool Loader::LoadFile(std::string path, std::string& fileContents)
 	{
-		ifstream file(path, ios::in | ios::binary);
+		std::ifstream file(path, std::ios::in | std::ios::binary);
 
 		if (file)
 		{
-			file.seekg(0, ios::end);
+			file.seekg(0, std::ios::end);
 			fileContents.resize((size_t)file.tellg());
-			file.seekg(0, ios::beg);
+			file.seekg(0, std::ios::beg);
 			file.read(&fileContents[0], fileContents.size());
 			file.close();
 

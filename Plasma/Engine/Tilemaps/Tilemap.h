@@ -7,21 +7,13 @@
 #include "Tileset.h"
 #include "Tile.h"
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtx/string_cast.hpp>
-
-#include <map>
-#include <string>
 #include <vector>
-
-using namespace std;
 
 namespace Tilemaps {
     class Tilemap
     {
     public:
-        vector<TileLayer> layers;
+        std::vector<TileLayer> layers;
 
         Texture2D tileSheet;
     
@@ -32,7 +24,5 @@ namespace Tilemaps {
 
         void AddLayer();
         void AddLayer(TileLayer layer);
-
-    private:
     };
 }

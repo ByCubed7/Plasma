@@ -29,9 +29,7 @@ public:
 	TilemapComponent* SetTileSize(int size);
 
 	Vector2 GetTilePositionAtScenePosition(Vector2 pos);
-	Vector2 GetTilePositionAtScenePosition(float x, float y);
-
-	Vector2 SPosAtTPos(Vector2 pos);
+	Vector2 GetScenePositionAtTilePosition(Vector2 pos);
 
 	Vector2 GetTileDensity();
 

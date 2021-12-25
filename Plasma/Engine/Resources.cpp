@@ -17,55 +17,52 @@
 #include <ft2build.h>
 #include <freetype.h>  
 
-using namespace std;
-
-
 // Cache any resources we load
-map<string, Texture2D> Resources::Textures;
-map<string, Shader> Resources::Shaders;
-map<string, Font> Resources::Fonts;
-map<string, Tilemaps::Tilemap> Resources::tilemaps;
-map<string, Wav> Resources::wavs;
+std::map<std::string, Texture2D> Resources::Textures;
+std::map<std::string, Shader> Resources::Shaders;
+std::map<std::string, Font> Resources::Fonts;
+std::map<std::string, Tilemaps::Tilemap> Resources::tilemaps;
+std::map<std::string, Wav> Resources::wavs;
 
 unsigned int Resources::defaultFontSize = 24;
 
 // Shader
 
-Shader Resources::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, string name)
+Shader Resources::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name)
 {
     Shaders[name] = LoadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
     return Shaders[name];
 }
 
-Shader& Resources::GetShader(string name) { return Shaders[name]; }
+Shader& Resources::GetShader(std::string name) { return Shaders[name]; }
 
 
 // Texture
 
-Texture2D Resources::LoadTexture(const string file, bool alpha, string name)
+Texture2D Resources::LoadTexture(const std::string file, bool alpha, std::string name)
 {
     Textures[name] = LoadTextureFromFile(file, alpha);
     return Textures[name];
 }
 
-Texture2D& Resources::GetTexture(string name) { return Textures[name]; }
+Texture2D& Resources::GetTexture(std::string name) { return Textures[name]; }
 
 
 // Font
 
-Font Resources::LoadFont(const string file, string name)
+Font Resources::LoadFont(const std::string file, std::string name)
 {
     Fonts[name] = LoadFontFromFile(file, defaultFontSize);
     return Fonts[name];
 }
 
-Font& Resources::GetFont(string name) { return Fonts[name]; }
+Font& Resources::GetFont(std::string name) { return Fonts[name]; }
 
 // Tilemaps
 
 Tiled::Loader Resources::tiled = Tiled::Loader();
 
-Tilemaps::Tilemap Resources::LoadTilemap(const string file, string name)
+Tilemaps::Tilemap Resources::LoadTilemap(const std::string file, std::string name)
 {
     Tilemaps::Tilemap map;
 
@@ -76,7 +73,7 @@ Tilemaps::Tilemap Resources::LoadTilemap(const string file, string name)
     Tiled::Map* tiledMap = tiled.GetMap(name);
 
     // Convert the loaded map into a tilemap
-    vector<Tiled::Layer> layers = tiledMap->Layers();
+    std::vector<Tiled::Layer> layers = tiledMap->Layers();
 
     for (int j = 0; j < layers.size(); j++)
     {
@@ -157,12 +154,12 @@ Tilemaps::Tilemap Resources::LoadTilemap(const string file, string name)
     return map;
 }
 
-Tilemaps::Tilemap& Resources::GetTilemap(string name)
+Tilemaps::Tilemap& Resources::GetTilemap(std::string name)
 {
     return tilemaps[name];
 }
 
-Wav Resources::LoadWav(const std::string file, string name)
+Wav Resources::LoadWav(const std::string file, std::string name)
 {
     Wav wav;
 
@@ -176,7 +173,7 @@ Wav Resources::LoadWav(const std::string file, string name)
     char* data = new char[wav.size];
     in.read(data, wav.size);
 
-    wav.data = vector<char>(data, data + wav.size);
+    wav.data = std::vector<char>(data, data + wav.size);
 
     wav.name = name;
     wav.filepath = file;
@@ -185,7 +182,7 @@ Wav Resources::LoadWav(const std::string file, string name)
     return wav;
 }
 
-Wav Resources::GetWav(string name)
+Wav Resources::GetWav(std::string name)
 {
     return wavs[name];
 }
@@ -340,16 +337,16 @@ void Resources::Clear()
 Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile)
 {
     // Retrieve the vertex/fragment source code from filePath
-    string vertexCode;
-    string fragmentCode;
-    string geometryCode;
+    std::string vertexCode;
+    std::string fragmentCode;
+    std::string geometryCode;
 
     try
     {
         // Open files
-        ifstream vertexShaderFile(vShaderFile);
-        ifstream fragmentShaderFile(fShaderFile);
-        stringstream vShaderStream, fShaderStream;
+        std::ifstream vertexShaderFile(vShaderFile);
+        std::ifstream fragmentShaderFile(fShaderFile);
+        std::stringstream vShaderStream, fShaderStream;
 
         // Read file's buffer contents into streams
         vShaderStream << vertexShaderFile.rdbuf();
@@ -366,17 +363,17 @@ Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShade
         // If geometry shader path is present, also load a geometry shader
         if (gShaderFile != nullptr)
         {
-            ifstream geometryShaderFile(gShaderFile);
-            stringstream gShaderStream;
+            std::ifstream geometryShaderFile(gShaderFile);
+            std::stringstream gShaderStream;
             gShaderStream << geometryShaderFile.rdbuf();
             geometryShaderFile.close();
             geometryCode = gShaderStream.str();
         }
     }
-    catch (exception e)
+    catch (std::exception e)
     {
         // Raise error
-        cout << "ERROR::SHADER: Failed to read shader files" << endl;
+        std::cout << "ERROR::SHADER: Failed to read shader files" << std::endl;
     }
     const char* vShaderCode = vertexCode.c_str();
     const char* fShaderCode = fragmentCode.c_str();
@@ -389,7 +386,7 @@ Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShade
     return shader;
 }
 
-Texture2D Resources::LoadTextureFromFile(const string file, bool alpha)
+Texture2D Resources::LoadTextureFromFile(const std::string file, bool alpha)
 {
     // Create texture object
     Texture2D texture;
@@ -413,19 +410,19 @@ Texture2D Resources::LoadTextureFromFile(const string file, bool alpha)
 }
 
 
-Font Resources::LoadFontFromFile(const string file, unsigned int size)
+Font Resources::LoadFontFromFile(const std::string file, unsigned int size)
 {
     FT_Library ft;
     if (FT_Init_FreeType(&ft))
     {
-        cout << "ERROR: Could not init FreeType Library" << endl;
+        std::cout << "ERROR: Could not init FreeType Library" << std::endl;
         //return -1;
     }
 
     FT_Face face;
     if (FT_New_Face(ft, file.c_str(), 0, &face))
     {
-        cout << "ERROR: Failed to load font" << endl;
+        std::cout << "ERROR: Failed to load font" << std::endl;
         //return -1;
     }
 
@@ -441,7 +438,7 @@ Font Resources::LoadFontFromFile(const string file, unsigned int size)
         // Load glyph 
         if (FT_Load_Char(face, c, FT_LOAD_RENDER))
         {
-            cout << "ERROR: Failed to load Glyph" << endl;
+            std::cout << "ERROR: Failed to load Glyph" << std::endl;
             continue;
         }
 
@@ -486,7 +483,7 @@ Font Resources::LoadFontFromFile(const string file, unsigned int size)
     return newFont;
 }
 
-vector<char> Resources::LoadWavFromFile(const std::string file)
+std::vector<char> Resources::LoadWavFromFile(const std::string file)
 {
-    return vector<char>();
+    return std::vector<char>();
 }

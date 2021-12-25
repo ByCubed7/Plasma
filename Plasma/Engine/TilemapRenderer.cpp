@@ -105,7 +105,7 @@ namespace Render
 
         tileIds = render.Ids();
         tilePositions = render.Positions();
-        vector<glm::mat4> tileRotScas = render.RotScas();
+        std::vector<glm::mat4> tileRotScas = render.RotScas();
 
         size_t len = tileIds.size();
         tileRotScasRow1.resize(len);

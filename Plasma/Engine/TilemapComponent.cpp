@@ -77,18 +77,16 @@ Vector2 TilemapComponent::GetTilePositionAtScenePosition(Vector2 pos)
     // Transform position to gameobject
     pos += gameObject->position;
     pos /= GetTileDensity();
+    pos.Round();
 
     return pos;
 }
-Vector2 TilemapComponent::GetTilePositionAtScenePosition(float x, float y) { return GetTilePositionAtScenePosition(Vector2(x, y)); }
 
-
-Vector2 TilemapComponent::SPosAtTPos(Vector2 pos)
+Vector2 TilemapComponent::GetScenePositionAtTilePosition(Vector2 pos)
 {
     // Transform position to gameobject
     pos *= GetTileDensity();
     pos -= gameObject->position;
-
     return pos;
 }
 

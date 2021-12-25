@@ -34,7 +34,7 @@ public:
 
 	Component* AddComponent(Component* component);
 
-	Component* GetComponent(string name);
+	Component* GetComponent(std::string name);
 	void RemoveComponent(Component *component);
 
 	//*/

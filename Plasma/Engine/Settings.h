@@ -2,20 +2,12 @@
 
 #pragma once
 
-#include <fstream>
 #include <string>
-#include <map>
-#include <sstream>
-#include <iostream>
-#include <vector>
 
-struct GameConfig
+struct Settings
 {
 	// - Constructors
-	GameConfig();
-
-	// Loads default settings
-	void LoadDefault();
+	Settings();
 
 	// Loads settings from file
 	void LoadFromFile();
@@ -29,12 +21,12 @@ struct GameConfig
 	unsigned int screenHeight = 600;
 
 	// The application name for the window
-	char name[4] = "App";
+	std::string name = "App";
 
 	// Pixels per unit
 	int PPU = 32;
 
-private:
-	std::map<std::string, std::string> mappify(std::ifstream& file);
+	int HalfWidth();
+	int HalfHeight();
 };
 

@@ -8,11 +8,12 @@
 #include "Engine/Resources.h"
 #include "Engine/Settings.h"
 #include "Engine/Gameobject.h"
-
 #include "Engine/SpriteComponent.h"
 #include "Engine/TilemapComponent.h"
 #include "Engine/CharacterControllerComponent.h"
 #include "Engine/AudioSourceComponent.h"
+
+#include "Engine/UI/TextboxComponent.h"
 
 #include "PlayerCollisionEventManager.h"
 #include "WarpComponent.h"
@@ -20,17 +21,18 @@
 #include "Muncher.h"
 
 #include <iostream>
+#include "ScoreTracker.h"
 
 int main(int argc, char* argv[])
 {
 	App app = App();
 
-	GameConfig gameConfig;
-	gameConfig.PPU = 32;
-	gameConfig.screenHeight = gameConfig.PPU * 31;
-	gameConfig.screenWidth  = gameConfig.PPU * 28;
+	Settings config;
+	config.PPU = 20;
+	config.screenHeight = config.PPU * (31 + 1);
+	config.screenWidth  = config.PPU * 28;
 
-	Engine::Scene* scene = app.CreateGame(gameConfig);
+	Engine::Scene* scene = app.CreateGame(config);
 	//Scene scene = pacman.scene; // Get the default scene
 
 	// Prepares an OpenGL context so that we can send API calls
@@ -38,9 +40,7 @@ int main(int argc, char* argv[])
 
 	scene->Initialize();
 
-	// -- Start
-
-	// - Load texture
+	// - Load textures
 	Resources::LoadTexture("assets/textures/Player.png", true, "player");
 	Resources::LoadTexture("assets/textures/Ghost.png", true, "ghost");
 	Resources::LoadTexture("assets/textures/Pip.png", true, "pip");
@@ -60,6 +60,7 @@ int main(int argc, char* argv[])
 	//Resources::LoadWav("assets/audio/extrapac.wav", "extrapac");
 	//Resources::LoadWav("assets/audio/intermission.wav", "intermission");
 
+
 	// - Create audio
 	GameObject* audi = scene->CreateGameObject();
 
@@ -76,7 +77,7 @@ int main(int argc, char* argv[])
 
 	//* Create the tilemap
 	GameObject* tilemap = scene->CreateGameObject();
-	tilemap->position = Vector2(gameConfig.PPU/2, gameConfig.PPU/2);
+	tilemap->position = Vector2(config.PPU/2, config.PPU/2);
 
 	TilemapComponent* tilemapTilemap = new TilemapComponent(tilemap);
 
@@ -89,7 +90,7 @@ int main(int argc, char* argv[])
 
 	// - Create player
 	GameObject* player = scene->CreateGameObject();
-	player->position = { 17,17 };
+	player->position = config.PPU * 0.5f;
 	player->scale = { 2,2 };
 
 	SpriteComponent* playerSprite = new SpriteComponent(player);
@@ -105,11 +106,11 @@ int main(int argc, char* argv[])
 	//player->AddComponent(playerController);
 
 	TileLockedCharacterController* playerController = new TileLockedCharacterController(player);
-	playerController->SetSpeed(5 * gameConfig.PPU);
+	playerController->SetSpeed(5 * config.PPU);
 	playerController->SetTilemap(tilemapTilemap);
 
 	WarpComponent* playerWarp = new WarpComponent(player);
-	playerWarp->SetOffset(player->scale * gameConfig.PPU);
+	playerWarp->SetOffset(player->scale * config.PPU);
 
 	BoxColliderComponent* playerCollider = new BoxColliderComponent(player);
 	playerCollider->Bind(scene);
@@ -119,119 +120,20 @@ int main(int argc, char* argv[])
 
 
 
+
+
+	// - - - Add UI - - - 
+	GameObject* scoreGameObject = scene->CreateGameObject();
+	scoreGameObject->position = Vector2(0, config.screenHeight - config.PPU);
+	scoreGameObject->scale = { 1,1 };
+
+	UI::TextboxComponent* scoreTextbox = new UI::TextboxComponent(scoreGameObject);
+	//scoreTextbox->text = "SCORE: XXXXX";
+
+	ScoreTracker* scoreTracker = new ScoreTracker(scoreGameObject);
+	scoreTracker->SetTextbox(scoreTextbox);
+	
+	playerMuncher->SetScore(scoreTracker);
+
 	return app.Run(scene);
-
-	/*
-
-	//* Create the Player
-	GameObject* player = new GameObject();
-	player->position = Vector2(100, 100);
-	AddGameObject(player);
-
-	SpriteComponent* playerSprite = new SpriteComponent(player);
-	
-	playerSprite
-		->Set(Resources::GetTexture("player"))
-		->AnimationSpeed(4);
-
-	AddComponent(playerSprite);
-
-	CharacterControllerComponent* playerController = new CharacterControllerComponent(player);
-	AddComponent(playerController);
-
-	WarpComponent* playerWarp = new WarpComponent(player);
-	AddComponent(playerWarp);
-
-	BoxColliderComponent* playerCollider = new BoxColliderComponent(player);
-	playerCollider->Bind(*this);
-	AddComponent(playerCollider);
-
-	PlayerCollisionEventManager* playerColliderEventMng = new PlayerCollisionEventManager(player);
-	playerColliderEventMng->Bind(playerCollider);
-	AddComponent(playerColliderEventMng);
-
-	return;
-
-	// Yikes
-	//player->GetComponent("SpriteComponent")
-	//cout << "Sprite Component === " << player->GetComponent("SpriteComponent");
-
-
-
-	//* Create the Ghost
-	GameObject* ghost = new GameObject();
-	ghost->position = Vector2(100, 100);
-	AddGameObject(ghost);
-
-	SpriteComponent* ghostSprite = new SpriteComponent(ghost);
-
-	ghostSprite
-		->Set(Resources::GetTexture("ghost"))
-		->AnimationSpeed(2);
-
-	AddComponent(ghostSprite);
-
-
-	BoxColliderComponent* ghostCollider = new BoxColliderComponent(ghost);
-
-	ghostCollider
-		->Bind(*this)
-		->SetSize(200);
-
-	AddComponent(ghostCollider);
-
-
-
-
-	//* Create the Pip
-	GameObject* pip = new GameObject();
-	pip->position = Vector2(300, 300);
-	//pip->scale = 1;
-	AddGameObject(pip);
-
-	SpriteComponent* pipSprite = new SpriteComponent(pip);
-
-	pipSprite
-		->Set(Resources::GetTexture("pip"))
-		->AnimationSpeed(2);
-
-	AddComponent(pipSprite);
-
-
-
-
-	//* Create the Cherry
-	GameObject* cherry = new GameObject();
-	cherry->position = Vector2(400, 300);
-	AddGameObject(cherry);
-
-	SpriteComponent* cherrySprite = new SpriteComponent(cherry);
-
-	cherrySprite
-		->Set(Resources::GetTexture("cherry"))
-		->AnimationSpeed(2);
-
-	AddComponent(cherrySprite);
-
-
-	
-	GameObject* ghost = new GameObject();
-	ghost->position = Vector2(100, 100);
-
-	SpriteComponent* ghostSprite = new SpriteComponent(ghost);
-	ghostSprite->Set(Resources::GetTexture("ghost"));
-	ghost->AddComponent(ghostSprite);
-	AddComponent(ghostSprite);
-
-	AddGameObject(ghost);
-
-
-
-	/* Create a Pip
-	Pip* pip = new Pip();
-	pip->position = Vector2(100, 300);
-	pip->sprite = Resources::GetTexture("pip");
-	AddGameObject(pip);
-	
-	*/
 }

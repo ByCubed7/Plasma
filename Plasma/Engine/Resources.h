@@ -17,9 +17,6 @@
 #include "Wav.h"
 #include "Vector2.h"
 
-using namespace std;
-
-
 // A singleton that deals with Textures and Shaders. 
 class Resources {
 public:
@@ -28,61 +25,61 @@ public:
 	// ▄█ █▀█ █▀█ █▄▀ ██▄ █▀▄
 
 	// All the shaders we have cached
-	static map<string, Shader> Shaders;
+	static std::map<std::string, Shader> Shaders;
 
 	// Loads a shader from file loading vertex, fragment shader's source code. 
 	// If gShaderFile is not nullptr, it also loads a geometry shader
-	static Shader LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, string name);
+	static Shader LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name);
 	
 	// Retrieves a cached shader
-	static Shader& GetShader(string name);
+	static Shader& GetShader(std::string name);
 	
 
 	//▀█▀ █▀▀ ▀▄▀ ▀█▀ █ █ █▀█ █▀▀
 	// █  ██▄ █ █  █  █▄█ █▀▄ ██▄
 
 	// All the textures we have cached
-	static map<string, Texture2D> Textures;
+	static std::map<std::string, Texture2D> Textures;
 
 	// Loads a texture
-	static Texture2D LoadTexture(const std::string file, bool alpha, string name);
+	static Texture2D LoadTexture(const std::string file, bool alpha, std::string name);
 	
 	// Retrieves a cached texture
-	static Texture2D& GetTexture(string name);
+	static Texture2D& GetTexture(std::string name);
 	
 
 	// █▀▀ █▀█ █▄ █ ▀█▀
 	// █▀  █▄█ █ ▀█  █ 
 
 	// All the fonts we have cached
-	static map<string, Font> Fonts;
+	static std::map<std::string, Font> Fonts;
 	
 	// Loads a font
-	static Font LoadFont(const std::string file, string name);
+	static Font LoadFont(const std::string file, std::string name);
 	
 	// Retrieves a cached font
-	static Font& GetFont(string name);
+	static Font& GetFont(std::string name);
 
 
 	// ▀█▀ █ █   █▀▀ █▀▄▀█ ▄▀█ █▀█
 	//  █  █ █▄▄ ██▄ █ ▀ █ █▀█ █▀▀
 
 	// All the fonts we have cached
-	static map<string, Tilemaps::Tilemap> tilemaps;
+	static std::map<std::string, Tilemaps::Tilemap> tilemaps;
 
 	// Loads a font
-	static Tilemaps::Tilemap LoadTilemap(const std::string file, string name);
+	static Tilemaps::Tilemap LoadTilemap(const std::string file, std::string name);
 
 	// Retrieves a cached tilemap
-	static Tilemaps::Tilemap& GetTilemap(string name);
+	static Tilemaps::Tilemap& GetTilemap(std::string name);
 
 	// Audio
 
-	static map<string, Wav> wavs;
+	static std::map<std::string, Wav> wavs;
 
-	static Wav LoadWav(const std::string file, string name);
+	static Wav LoadWav(const std::string file, std::string name);
 
-	static Wav GetWav(string name);
+	static Wav GetWav(std::string name);
 
 	// - - - - - - - - - - - - - - - - - - - - - - - -
 	// - - - - - - - - - - - - - - - - - - - - - - - -
@@ -111,6 +108,6 @@ private:
 	static Tiled::Loader tiled;
 
 	// 
-	static vector<char> LoadWavFromFile(const std::string file);
+	static std::vector<char> LoadWavFromFile(const std::string file);
 	static bool LoadWavHeader(std::ifstream& file, std::uint8_t& channels, std::int32_t& sampleRate, std::uint8_t& bitsPerSample, ALsizei& size);
 };

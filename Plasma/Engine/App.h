@@ -24,7 +24,7 @@ public:
 
 	App();
 
-	Engine::Scene* CreateGame(GameConfig& gameConfig);
+	Engine::Scene* CreateGame(Settings& gameConfig);
 	//Scene* GetScene();
 
 	/// <summary>

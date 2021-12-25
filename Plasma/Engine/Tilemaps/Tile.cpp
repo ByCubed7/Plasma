@@ -4,8 +4,6 @@
 
 #include "Tile.h"
 
-using namespace std;
-
 namespace Tilemaps {
 
 	Tile::Tile()

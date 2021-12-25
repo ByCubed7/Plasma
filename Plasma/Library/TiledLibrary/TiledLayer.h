@@ -3,31 +3,29 @@
 #include <vector>
 #include <unordered_map>
 
-using namespace std;
-
 namespace Tiled {
     class Layer
     {
     public:
         // Constructor
         Layer(
-            const string& name,
+            const std::string& name,
             unsigned int width, unsigned int height,
-            const unordered_map<string, string>& properties,
-            const vector<vector<unsigned int>>& tiles
+            const std::unordered_map<std::string, std::string>& properties,
+            const std::vector<std::vector<unsigned int>>& tiles
         );
 
         // - Gets
         unsigned Width() const noexcept;
         unsigned Height() const noexcept;
-        string Name() const noexcept;
-        string Property(string const& propertyName) noexcept;
-        vector<vector<unsigned int>> Tiles() const noexcept;
+        std::string Name() const noexcept;
+        std::string Property(std::string const& propertyName) noexcept;
+        std::vector<std::vector<unsigned int>> Tiles() const noexcept;
 
     private:
         unsigned int width, height;
-        string name;
-        vector<vector<unsigned int>> tiles;
-        unordered_map<string, string> properties;
+        std::string name;
+        std::vector<std::vector<unsigned int>> tiles;
+        std::unordered_map<std::string, std::string> properties;
     };
 }

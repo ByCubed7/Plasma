@@ -3,14 +3,14 @@
 #include "Object.h"
 
 // Constructor
-Object::Object(string name) 
+Object::Object(std::string name)
 {
 	this->name = name;
 }
 
 // Returns the object type
-string Object::ToString() { return name; }
+std::string Object::ToString() { return name; }
 
 // Operators
 
-Object::operator string() { return ToString(); }
+Object::operator std::string() { return ToString(); }

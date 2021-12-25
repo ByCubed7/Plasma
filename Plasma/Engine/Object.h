@@ -3,20 +3,18 @@
 #pragma once
 #include <string>
 
-using namespace std;
-
 struct Object
 {
 	// Constructor
-	Object(string name);
+	Object(std::string name);
 
 	// Returns the object type
-	virtual string ToString();
+	virtual std::string ToString();
 
-	operator string();
+	operator std::string();
 
 protected:
 	// The name of the object
-	string name;
+	std::string name;
 };
 

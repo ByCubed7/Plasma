@@ -36,7 +36,7 @@ Component* GameObject::AddComponent(Component* component)
 
 void GameObject::RemoveComponent(Component* component) { components.remove(component); }
 
-Component* GameObject::GetComponent(string name)
+Component* GameObject::GetComponent(std::string name)
 {
     for (const auto& component : components)
     {

@@ -7,16 +7,10 @@
 #include "Tile.h"
 #include "TileRender.h"
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtx/string_cast.hpp>
-
 #include <map>
-#include <unordered_map>
-#include <string>
 #include <vector>
 
-using namespace std;
+#include <glm/glm.hpp>
 
 namespace Tilemaps {
     class TileLayer
@@ -26,6 +20,8 @@ namespace Tilemaps {
         TileLayer();
 
         void SetTile(Tile tile);
+        void DeleteTile(Tile tile);
+
         Tile GetTile(Vector2 position);
         bool IsTile(Vector2 position);
                 
@@ -40,6 +36,6 @@ namespace Tilemaps {
 
         size_t Count();
     private:
-        map<Vector2, Tile> tiles;
+        std::map<Vector2, Tile> tiles;
     };
 }
