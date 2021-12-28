@@ -55,5 +55,6 @@ SpriteComponent* SpriteComponent::Set(Texture2D sprite) { this->sprite = sprite;
 Texture2D SpriteComponent::Get() { return this->sprite; }
 
 SpriteComponent* SpriteComponent::AnimationSpeed(double speed) { this->animationSpeed = speed; return this; }
+SpriteComponent* SpriteComponent::SetColour(glm::vec3 newColour) { color = newColour; return this; }
 int SpriteComponent::GetAnimationSpeed() { return this->animationSpeed; }
 

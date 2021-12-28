@@ -211,6 +211,7 @@ Vector2 Vector2::operator/=(const Vector2& otherVector)
 
 //bool Vector2::operator==(const Vector2& otherVector) const { return cmp(otherVector) == 0; }
 bool Vector2::operator==(const Vector2& otherVector) const { return x == otherVector.x && y == otherVector.y; }
+bool Vector2::operator!=(const Vector2& otherVector) const { return !(x == otherVector.x && y == otherVector.y); }
 
 //bool Vector2::operator< (const Vector2& otherVector) const { return cmp(otherVector) <  0; }
 //bool Vector2::operator< (const Vector2& otherVector) const { return (x + y) < (otherVector.x + otherVector.y); }
@@ -223,6 +224,15 @@ bool Vector2::operator< (const Vector2& otherVector) const
 	if (x == otherVector.x)
 	{
 		if (y < otherVector.y) return true;
+	}
+	return false;
+}
+bool Vector2::operator> (const Vector2& otherVector) const
+{
+	if (x > otherVector.x) return true;
+	if (x == otherVector.x)
+	{
+		if (y > otherVector.y) return true;
 	}
 	return false;
 }

@@ -187,6 +187,8 @@
     <ClCompile Include="Engine\Tilemaps\Tileset.cpp" />
     <ClCompile Include="Engine\UI\TextboxComponent.cpp" />
     <ClCompile Include="Engine\Vector2.cpp" />
+    <ClCompile Include="GuardGhostInputDirector.cpp" />
+    <ClCompile Include="InputDirector.cpp" />
     <ClCompile Include="Library\glad.c" />
     <ClCompile Include="Library\TiledLibrary\TiledLayer.cpp" />
     <ClCompile Include="Library\TiledLibrary\TiledLoader.cpp" />
@@ -196,8 +198,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Muncher.cpp" />
     <ClCompile Include="PlayerCollisionEventManager.cpp" />
+    <ClCompile Include="PlayerInputDirector.cpp" />
     <ClCompile Include="ScoreTracker.cpp" />
-    <ClCompile Include="TileLockedCharacterController.cpp" />
+    <ClCompile Include="TileLockedController.cpp" />
     <ClCompile Include="WarpComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +241,8 @@
     <ClInclude Include="Engine\UI\TextboxComponent.h" />
     <ClInclude Include="Engine\Vector2.h" />
     <ClInclude Include="Engine\Wav.h" />
+    <ClInclude Include="GuardGhostInputDirector.h" />
+    <ClInclude Include="InputDirector.h" />
     <ClInclude Include="Library\glad.h" />
     <ClInclude Include="Library\khrplatform.h" />
     <ClInclude Include="Library\OpenAL\AL\al.h" />
@@ -258,8 +263,9 @@
     <ClInclude Include="Library\TiledLibrary\TiledTile.h" />
     <ClInclude Include="Muncher.h" />
     <ClInclude Include="PlayerCollisionEventManager.h" />
+    <ClInclude Include="PlayerInputDirector.h" />
     <ClInclude Include="ScoreTracker.h" />
-    <ClInclude Include="TileLockedCharacterController.h" />
+    <ClInclude Include="TileLockedController.h" />
     <ClInclude Include="WarpComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

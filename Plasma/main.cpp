@@ -17,11 +17,15 @@
 
 #include "PlayerCollisionEventManager.h"
 #include "WarpComponent.h"
-#include "TileLockedCharacterController.h"
+#include "TileLockedController.h"
 #include "Muncher.h"
+#include "ScoreTracker.h"
+
+#include "InputDirector.h"
+#include "PlayerInputDirector.h"
 
 #include <iostream>
-#include "ScoreTracker.h"
+#include "GuardGhostInputDirector.h"
 
 int main(int argc, char* argv[])
 {
@@ -67,15 +71,13 @@ int main(int argc, char* argv[])
 	AudioSourceComponent* audiComp = new AudioSourceComponent(audi);
 	audiComp->Attach(Resources::GetWav("beginning"));
 
-	audiComp->source->Play();
+	//audiComp->source->Play();
 
 
 	//while (source->IsPlaying()) ;
 	//cout << "No longer playing" << endl;
 
-	// - Create Tilemap
-
-	//* Create the tilemap
+	// - - - Add Tilemap - - - 
 	GameObject* tilemap = scene->CreateGameObject();
 	tilemap->position = Vector2(config.PPU/2, config.PPU/2);
 
@@ -88,29 +90,32 @@ int main(int argc, char* argv[])
 
 
 
-	// - Create player
+	// - - - Add Player - - - 
 	GameObject* player = scene->CreateGameObject();
 	player->position = config.PPU * 0.5f;
-	player->scale = { 2,2 };
+	player->scale = 2;
 
 	SpriteComponent* playerSprite = new SpriteComponent(player);
 
 	playerSprite
 		->Set(Resources::GetTexture("player"))
+		->SetColour({ 0.7f, 0.7f, 0.3f })
 		->AnimationSpeed(8);
 
 	Muncher* playerMuncher = new Muncher(player);
 	playerMuncher->SetTilemap(tilemapTilemap);
 
-	//CharacterControllerComponent* playerController = new CharacterControllerComponent();
-	//player->AddComponent(playerController);
-
-	TileLockedCharacterController* playerController = new TileLockedCharacterController(player);
-	playerController->SetSpeed(5 * config.PPU);
-	playerController->SetTilemap(tilemapTilemap);
-
 	WarpComponent* playerWarp = new WarpComponent(player);
 	playerWarp->SetOffset(player->scale * config.PPU);
+
+	TileLockedController* playerController = new TileLockedController(player);
+	playerController
+		->SetSpeed(5 * config.PPU)
+		->SetTilemap(tilemapTilemap)
+		->SetRotatable(true);
+
+	PlayerInputDirector* playerInput = new PlayerInputDirector(player);
+	playerInput->SetController(playerController);
 
 	BoxColliderComponent* playerCollider = new BoxColliderComponent(player);
 	playerCollider->Bind(scene);
@@ -119,6 +124,34 @@ int main(int argc, char* argv[])
 	playerColliderEventMng->Bind(playerCollider);
 
 
+	// - - - Add Ghosts - - - 
+
+	// BLINKY 
+	GameObject* guardGhost = scene->CreateGameObject();
+	guardGhost->position = Vector2(config.HalfWidth(), config.HalfHeight());
+	guardGhost->scale = 2;
+
+	SpriteComponent* guardGhostSprite = new SpriteComponent(guardGhost);
+	guardGhostSprite
+		->Set(Resources::GetTexture("ghost"))
+		->SetColour({ 0.7f, 0.3f, 0.3f })
+		->AnimationSpeed(4);
+
+	TileLockedController* guardGhostController = new TileLockedController(guardGhost);
+	guardGhostController
+		->SetTilemap(tilemapTilemap)
+		->SetSpeed(75);
+
+	GuardGhostInputDirector* guardGhostAI = new GuardGhostInputDirector(guardGhost);
+	guardGhostAI
+		->SetTarget(player)
+		->SetController(guardGhostController);
+	
+	WarpComponent* guardGhostWarp = new WarpComponent(guardGhost);
+	guardGhostWarp->SetOffset(guardGhost->scale * config.PPU * 0.5f);
+
+	BoxColliderComponent* guardGhostCollider = new BoxColliderComponent(guardGhost);
+	guardGhostCollider->Bind(scene);
 
 
 

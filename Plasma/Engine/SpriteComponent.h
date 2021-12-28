@@ -34,6 +34,9 @@ public:
 	// Set the animation speed
 	SpriteComponent* AnimationSpeed(double speed);
 
+	// Set the animation speed
+	SpriteComponent* SetColour(glm::vec3 newColour);
+
 	// Get the Animation speed
 	int GetAnimationSpeed();
 

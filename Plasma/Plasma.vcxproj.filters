@@ -147,7 +147,7 @@
     <ClCompile Include="Engine\TilemapColliderComponent.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="TileLockedCharacterController.cpp">
+    <ClCompile Include="TileLockedController.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Audio\AudioScene.cpp">
@@ -170,6 +170,9 @@
     </ClCompile>
     <ClCompile Include="Engine\UI\TextboxComponent.cpp" />
     <ClCompile Include="ScoreTracker.cpp" />
+    <ClCompile Include="InputDirector.cpp" />
+    <ClCompile Include="PlayerInputDirector.cpp" />
+    <ClCompile Include="GuardGhostInputDirector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -304,7 +307,7 @@
     <ClInclude Include="Engine\TilemapColliderComponent.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
-    <ClInclude Include="TileLockedCharacterController.h">
+    <ClInclude Include="TileLockedController.h">
       <Filter>Game Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Audio\AudioScene.h">
@@ -348,6 +351,9 @@
     </ClInclude>
     <ClInclude Include="Engine\UI\TextboxComponent.h" />
     <ClInclude Include="ScoreTracker.h" />
+    <ClInclude Include="InputDirector.h" />
+    <ClInclude Include="PlayerInputDirector.h" />
+    <ClInclude Include="GuardGhostInputDirector.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

@@ -153,9 +153,9 @@ struct Vector2
     //int cmp(const Vector2& otherVector) const;
 
     bool operator==(const Vector2& otherVector) const;
-    //bool operator!=(const Vector2& otherVector) const;
+    bool operator!=(const Vector2& otherVector) const;
     bool operator< (const Vector2& otherVector) const;
-    //bool operator> (const Vector2& otherVector) const;
+    bool operator> (const Vector2& otherVector) const;
     //bool operator<=(const Vector2& otherVector) const;
     //bool operator>=(const Vector2& otherVector) const;
     
