@@ -153,6 +153,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AmbushGhostInputDirector.cpp" />
     <ClCompile Include="Engine\AABB.cpp" />
     <ClCompile Include="Engine\App.cpp" />
     <ClCompile Include="Engine\AudioSourceComponent.cpp" />
@@ -204,6 +205,7 @@
     <ClCompile Include="WarpComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AmbushGhostInputDirector.h" />
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
     <ClInclude Include="Engine\AudioSourceComponent.h" />

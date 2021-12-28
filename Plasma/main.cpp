@@ -23,9 +23,10 @@
 
 #include "InputDirector.h"
 #include "PlayerInputDirector.h"
+#include "GuardGhostInputDirector.h"
+#include "AmbushGhostInputDirector.h"
 
 #include <iostream>
-#include "GuardGhostInputDirector.h"
 
 int main(int argc, char* argv[])
 {
@@ -134,7 +135,7 @@ int main(int argc, char* argv[])
 	SpriteComponent* guardGhostSprite = new SpriteComponent(guardGhost);
 	guardGhostSprite
 		->Set(Resources::GetTexture("ghost"))
-		->SetColour({ 0.7f, 0.3f, 0.3f })
+		->SetColour({ 1, 0, 0 })
 		->AnimationSpeed(4);
 
 	TileLockedController* guardGhostController = new TileLockedController(guardGhost);
@@ -153,6 +154,33 @@ int main(int argc, char* argv[])
 	BoxColliderComponent* guardGhostCollider = new BoxColliderComponent(guardGhost);
 	guardGhostCollider->Bind(scene);
 
+
+	// PINKY
+	GameObject* ambushGhost = scene->CreateGameObject();
+	ambushGhost->position = Vector2(config.HalfWidth(), config.HalfHeight());
+	ambushGhost->scale = 2;
+
+	SpriteComponent* ambushGhostSprite = new SpriteComponent(ambushGhost);
+	ambushGhostSprite
+		->Set(Resources::GetTexture("ghost"))
+		->SetColour({ 1, 0.5f, 1 })
+		->AnimationSpeed(4);
+
+	TileLockedController* ambushGhostController = new TileLockedController(ambushGhost);
+	ambushGhostController
+		->SetTilemap(tilemapTilemap)
+		->SetSpeed(70);
+
+	AmbushGhostInputDirector* ambushGhostAI = new AmbushGhostInputDirector(ambushGhost);
+	ambushGhostAI
+		->SetTarget(player)
+		->SetController(ambushGhostController);
+
+	WarpComponent* ambushGhostWarp = new WarpComponent(ambushGhost);
+	ambushGhostWarp->SetOffset(ambushGhost->scale* config.PPU * 0.5f);
+
+	BoxColliderComponent* ambushGhostCollider = new BoxColliderComponent(ambushGhost);
+	ambushGhostCollider->Bind(scene);
 
 
 	// - - - Add UI - - - 

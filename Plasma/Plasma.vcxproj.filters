@@ -173,6 +173,7 @@
     <ClCompile Include="InputDirector.cpp" />
     <ClCompile Include="PlayerInputDirector.cpp" />
     <ClCompile Include="GuardGhostInputDirector.cpp" />
+    <ClCompile Include="AmbushGhostInputDirector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -354,6 +355,7 @@
     <ClInclude Include="InputDirector.h" />
     <ClInclude Include="PlayerInputDirector.h" />
     <ClInclude Include="GuardGhostInputDirector.h" />
+    <ClInclude Include="AmbushGhostInputDirector.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

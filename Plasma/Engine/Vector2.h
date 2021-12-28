@@ -162,35 +162,44 @@ struct Vector2
 
     // Float
 
-    Vector2 operator+(const float& otherVector);
-    Vector2 operator-(const float& otherVector);
-    Vector2 operator*(const float& otherVector);
-    Vector2 operator/(const float& otherVector);
-    Vector2 operator+=(const float& otherVector);
-    Vector2 operator-=(const float& otherVector);
-    Vector2 operator*=(const float& otherVector);
-    Vector2 operator/=(const float& otherVector);
+    Vector2 operator+(const float& amount);
+    Vector2 operator-(const float& amount);
+    Vector2 operator*(const float& amount);
+    Vector2 operator/(const float& amount);
+    Vector2 operator+=(const float& amount);
+    Vector2 operator-=(const float& amount);
+    Vector2 operator*=(const float& amount);
+    Vector2 operator/=(const float& amount);
 
     // Int
 
-    Vector2 operator+(const int& otherVector);
-    Vector2 operator-(const int& otherVector);
-    Vector2 operator*(const int& otherVector);
-    Vector2 operator/(const int& otherVector);
-    Vector2 operator+=(const int& otherVector);
-    Vector2 operator-=(const int& otherVector);
-    Vector2 operator*=(const int& otherVector);
-    Vector2 operator/=(const int& otherVector);
+    Vector2 operator+(const int& amount);
+    Vector2 operator-(const int& amount);
+    Vector2 operator*(const int& amount);
+    Vector2 operator/(const int& amount);
+    Vector2 operator+=(const int& amount);
+    Vector2 operator-=(const int& amount);
+    Vector2 operator*=(const int& amount);
+    Vector2 operator/=(const int& amount);
+
+    Vector2 operator+(const int& amount) const;
+    Vector2 operator-(const int& amount) const;
+    Vector2 operator*(const int& amount) const;
+    Vector2 operator/(const int& amount) const;
+    Vector2 operator+=(const int& amount) const;
+    Vector2 operator-=(const int& amount) const;
+    Vector2 operator*=(const int& amount) const;
+    Vector2 operator/=(const int& amount) const;
 
     // Double
 
-    Vector2 operator+(const double& otherVector);
-    Vector2 operator-(const double& otherVector);
-    Vector2 operator*(const double& otherVector);
-    Vector2 operator/(const double& otherVector);
-    Vector2 operator+=(const double& otherVector);
-    Vector2 operator-=(const double& otherVector);
-    Vector2 operator*=(const double& otherVector);
-    Vector2 operator/=(const double& otherVector);
+    Vector2 operator+(const double& amount);
+    Vector2 operator-(const double& amount);
+    Vector2 operator*(const double& amount);
+    Vector2 operator/(const double& amount);
+    Vector2 operator+=(const double& amount);
+    Vector2 operator-=(const double& amount);
+    Vector2 operator*=(const double& amount);
+    Vector2 operator/=(const double& amount);
 
 };

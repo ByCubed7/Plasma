@@ -284,33 +284,22 @@ Vector2 Vector2::operator-(const int& amount) { return { x - amount, y - amount 
 Vector2 Vector2::operator*(const int& amount) { return { x * amount, y * amount }; } // Multipling by int
 Vector2 Vector2::operator/(const int& amount) { return { x / amount, y / amount }; } // Dividing by int
 
-// Adding to int
-Vector2 Vector2::operator+=(const int& amount)
-{
-	x += amount; y += amount;
-	return *this;
-}
+Vector2 Vector2::operator+=(const int& amount) { x += amount; y += amount; return *this; } // Adding to int
+Vector2 Vector2::operator-=(const int& amount) { x -= amount; y -= amount; return *this; } // Subtracting by int
+Vector2 Vector2::operator*=(const int& amount) { x *= amount; y *= amount; return *this; } // Multipling by int
+Vector2 Vector2::operator/=(const int& amount) { x /= amount; y /= amount; return *this; } // Dividing by int
 
-// Subtracting by int
-Vector2 Vector2::operator-=(const int& amount)
-{
-	x -= amount; y -= amount;
-	return *this;
-}
 
-// Multipling by int
-Vector2 Vector2::operator*=(const int& amount)
-{
-	x *= amount; y *= amount;
-	return *this;
-}
+Vector2 Vector2::operator+(const int& amount) const { return { x + amount, y + amount }; } // Adding to int
+Vector2 Vector2::operator-(const int& amount) const { return { x - amount, y - amount }; } // Subtracting by int
+Vector2 Vector2::operator*(const int& amount) const { return { x * amount, y * amount }; } // Multipling by int
+Vector2 Vector2::operator/(const int& amount) const { return { x / amount, y / amount }; } // Dividing by int
 
-// Dividing by int
-Vector2 Vector2::operator/=(const int& amount)
-{
-	x /= amount; y /= amount;
-	return *this;
-}
+Vector2 Vector2::operator+=(const int& amount) const { const Vector2 newVector(x + amount, y + amount); return newVector; } // Adding to int
+Vector2 Vector2::operator-=(const int& amount) const { const Vector2 newVector(x - amount, y - amount); return newVector; } // Subtracting by int
+Vector2 Vector2::operator*=(const int& amount) const { const Vector2 newVector(x * amount, y * amount); return newVector; } // Multipling by int
+Vector2 Vector2::operator/=(const int& amount) const { const Vector2 newVector(x / amount, y / amount); return newVector; } // Dividing by int
+
 
 
 // - Doubles
