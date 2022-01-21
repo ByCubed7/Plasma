@@ -34,7 +34,11 @@ public:
 
 	Component* AddComponent(Component* component);
 
-	Component* GetComponent(std::string name);
+	Component* GetComponent(std::string componentName);
+
+	bool HasComponent(std::string componentName);
+	
+	
 	void RemoveComponent(Component *component);
 
 	//*/

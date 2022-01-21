@@ -7,11 +7,11 @@
 #include "Event.h"
 #include "Dispatcher.h"
 
-enum class BoxColliderComponentEventType {
-	TEST_EVENT,
-	TEST_EVENT2,
-	TEST_EVENT3
-};
+//enum class BoxColliderComponentEventType {
+//	TEST_EVENT,
+//	TEST_EVENT2,
+//	TEST_EVENT3
+//};
 
 class BoxColliderComponent : public Component
 {
@@ -29,14 +29,14 @@ public:
 
 	AABB GetBounds();
 
-	void OnCollisionEnter();
-	void OnCollisionStay();
-	void OnCollisionExit();
-
 	// Event Dispatchers
 	Dispatcher<OnEnterEventParams> OnCollisionEnterEvent;
 	Dispatcher<OnStayEventParams> OnCollisionStayEvent;
 	Dispatcher<OnExitEventParams> OnCollisionExitEvent;
+
+	void OnCollisionEnter();
+	void OnCollisionStay();
+	void OnCollisionExit();
 };
 
 

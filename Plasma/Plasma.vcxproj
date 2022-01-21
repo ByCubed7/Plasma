@@ -188,6 +188,7 @@
     <ClCompile Include="Engine\Tilemaps\Tileset.cpp" />
     <ClCompile Include="Engine\UI\TextboxComponent.cpp" />
     <ClCompile Include="Engine\Vector2.cpp" />
+    <ClCompile Include="GhostStateComponent.cpp" />
     <ClCompile Include="GuardGhostInputDirector.cpp" />
     <ClCompile Include="InputDirector.cpp" />
     <ClCompile Include="Library\glad.c" />
@@ -243,6 +244,7 @@
     <ClInclude Include="Engine\UI\TextboxComponent.h" />
     <ClInclude Include="Engine\Vector2.h" />
     <ClInclude Include="Engine\Wav.h" />
+    <ClInclude Include="GhostStateComponent.h" />
     <ClInclude Include="GuardGhostInputDirector.h" />
     <ClInclude Include="InputDirector.h" />
     <ClInclude Include="Library\glad.h" />

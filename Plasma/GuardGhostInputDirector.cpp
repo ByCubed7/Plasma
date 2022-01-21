@@ -6,13 +6,11 @@ GuardGhostInputDirector::GuardGhostInputDirector(GameObject* gameObject, std::st
 	: InputDirector(gameObject, name)
 {
 	target = nullptr;
+	stateComponent = nullptr;
 }
 
-GuardGhostInputDirector* GuardGhostInputDirector::SetTarget(GameObject* newTarget)
-{
-	target = newTarget;
-	return this;
-}
+GuardGhostInputDirector* GuardGhostInputDirector::SetTarget(GameObject* newTarget) { target = newTarget; return this; }
+GuardGhostInputDirector* GuardGhostInputDirector::SetStateComponent(GhostStateComponent* newStateComponent) { stateComponent = newStateComponent; return this; }
 
 void GuardGhostInputDirector::Update(double delta, Engine::Scene & game)
 {

@@ -2,6 +2,8 @@
 
 #include "GameObject.h"
 
+#include <type_traits>
+
 GameObject::GameObject(Engine::Scene* scene)
     : Object("GameObject")
 {
@@ -36,15 +38,27 @@ Component* GameObject::AddComponent(Component* component)
 
 void GameObject::RemoveComponent(Component* component) { components.remove(component); }
 
-Component* GameObject::GetComponent(std::string name)
+
+Component* GameObject::GetComponent(std::string componentName)
 {
-    for (const auto& component : components)
+    for (Component* component : components)
     {
-        if (component->ToString() == name)
+        if (component->ToString() == componentName)
             return component;
     }
 
     return nullptr;
+}
+
+bool GameObject::HasComponent(std::string componentName)
+{
+    for (Component* component : components)
+    {
+        if (component->ToString() == componentName)
+            return true;
+    }
+
+    return false;
 }
 
 GameObject::operator bool() { return !destroyed; }

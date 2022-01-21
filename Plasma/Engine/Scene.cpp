@@ -118,23 +118,28 @@ namespace Engine {
 		// - Update all of the colliders
 
 		//*/ First, put all of them on axis
-		std::vector<std::tuple<int, bool, BoxColliderComponent*>> axis = {};
+		std::vector<std::tuple<Vector2, bool, BoxColliderComponent*>> axis = {};
 		for (const auto& collider : colliders)
 		{
 			BoxColliderComponent box = *collider;
 			axis.push_back({
-				collider->bounds.lowerBound.x,
+				collider->GetBounds().lowerBound,
 				false,
 				collider
 			});
 			axis.push_back({
-				collider->bounds.upperBound.x,
+				collider->GetBounds().upperBound,
 				true,
 				collider
 			});
 		}
 
-		std::sort(axis.begin(), axis.end(), [](auto a, auto b) { return std::get<0>(a) > std::get<0>(b); });
+		std::sort(axis.begin(), axis.end(), [](std::tuple<Vector2, bool, BoxColliderComponent*> a, std::tuple<Vector2, bool, BoxColliderComponent*> b) {
+			//std::get<0>(a) > 
+			if (std::get<0>(a).x < std::get<0>(b).x) return true;
+			if (std::get<0>(a).x == std::get<0>(b).x && std::get<0>(a).y < std::get<0>(b).y) return true;
+			return false;
+		});
 
 		std::map<BoxColliderComponent*, BoxColliderComponent*> collidersToCheck = {};
 	
@@ -170,8 +175,10 @@ namespace Engine {
 
 			if (colliding)
 			{
-				if (isAlreadyColliding)
+				if (isAlreadyColliding) {
 					currentCollider->OnCollisionStay();
+					//std::cout << "Collidering! " << currentCollider->gameObject->position.ToString() << std::endl;
+				}
 				else {
 					currentCollider->OnCollisionEnter();
 					collidersColliding[currentCollider] = collidingCollider;

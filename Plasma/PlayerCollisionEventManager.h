@@ -10,8 +10,8 @@ class PlayerCollisionEventManager : public Component
 public:
 	PlayerCollisionEventManager(GameObject* gameObject, std::string name = "PlayerCollisionEventManager");
 
-	PlayerCollisionEventManager* Bind(BoxColliderComponent* boxColliderComponent);
-	PlayerCollisionEventManager* UnBind();
+	PlayerCollisionEventManager* Subscribe(BoxColliderComponent* boxColliderComponent);
+	PlayerCollisionEventManager* UnSubscribe();
 
 private:
 	void OnEnter(const Event<BoxColliderComponent::OnEnterEventParams>& e);

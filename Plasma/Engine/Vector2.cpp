@@ -289,6 +289,7 @@ Vector2 Vector2::operator-=(const int& amount) { x -= amount; y -= amount; retur
 Vector2 Vector2::operator*=(const int& amount) { x *= amount; y *= amount; return *this; } // Multipling by int
 Vector2 Vector2::operator/=(const int& amount) { x /= amount; y /= amount; return *this; } // Dividing by int
 
+// - Ints Const
 
 Vector2 Vector2::operator+(const int& amount) const { return { x + amount, y + amount }; } // Adding to int
 Vector2 Vector2::operator-(const int& amount) const { return { x - amount, y - amount }; } // Subtracting by int

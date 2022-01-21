@@ -8,19 +8,18 @@ AmbushGhostInputDirector::AmbushGhostInputDirector(GameObject* gameObject, std::
 	target = nullptr;
 }
 
-AmbushGhostInputDirector* AmbushGhostInputDirector::SetTarget(GameObject* newTarget)
-{
-	target = newTarget;
-	return this;
-}
+AmbushGhostInputDirector* AmbushGhostInputDirector::SetTarget(GameObject* newTarget) { target = newTarget; return this; }
+AmbushGhostInputDirector* AmbushGhostInputDirector::SetStateComponent(GhostStateComponent* newStateComponent) { stateComponent = newStateComponent; return this; }
 
 void AmbushGhostInputDirector::Update(double delta, Engine::Scene & game)
 {
 	Vector2 targetTile = controller->tilemapComp->GetTilePositionAtScenePosition(target->position);
-	if (target->rotation ==	  0) targetTile += Vector2::right * 2;
-	if (target->rotation ==  90) targetTile += Vector2::up	  * 2;
-	if (target->rotation == 180) targetTile += Vector2::left  * 2;
-	if (target->rotation == 270) targetTile += Vector2::down  * 2;
+	if (target->rotation ==	  0) targetTile += Vector2::right * 4;
+	if (target->rotation ==  90) targetTile += Vector2::up	  * 4;
+	if (target->rotation == 180) targetTile += Vector2::left  * 4;
+	if (target->rotation == 270) targetTile += Vector2::down  * 4;
+
+
 
 	Vector2 positionTile = controller->tilemapComp->GetTilePositionAtScenePosition(gameObject->position);
 

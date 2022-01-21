@@ -25,6 +25,7 @@
 #include "PlayerInputDirector.h"
 #include "GuardGhostInputDirector.h"
 #include "AmbushGhostInputDirector.h"
+#include "GhostStateComponent.h"
 
 #include <iostream>
 
@@ -119,10 +120,12 @@ int main(int argc, char* argv[])
 	playerInput->SetController(playerController);
 
 	BoxColliderComponent* playerCollider = new BoxColliderComponent(player);
-	playerCollider->Bind(scene);
+	playerCollider
+		->SetSize(Vector2(20))
+		->Bind(scene);
 
 	PlayerCollisionEventManager* playerColliderEventMng = new PlayerCollisionEventManager(player);
-	playerColliderEventMng->Bind(playerCollider);
+	playerColliderEventMng->Subscribe(playerCollider);
 
 
 	// - - - Add Ghosts - - - 
@@ -143,16 +146,22 @@ int main(int argc, char* argv[])
 		->SetTilemap(tilemapTilemap)
 		->SetSpeed(75);
 
+	GhostStateComponent* guardGhostState = new GhostStateComponent(guardGhost);
+	guardGhostState->Chase();
+
 	GuardGhostInputDirector* guardGhostAI = new GuardGhostInputDirector(guardGhost);
 	guardGhostAI
 		->SetTarget(player)
+		->SetStateComponent(guardGhostState)
 		->SetController(guardGhostController);
 	
 	WarpComponent* guardGhostWarp = new WarpComponent(guardGhost);
 	guardGhostWarp->SetOffset(guardGhost->scale * config.PPU * 0.5f);
 
 	BoxColliderComponent* guardGhostCollider = new BoxColliderComponent(guardGhost);
-	guardGhostCollider->Bind(scene);
+	guardGhostCollider
+		->SetSize(Vector2(20))
+		->Bind(scene);
 
 
 	// PINKY
@@ -171,16 +180,22 @@ int main(int argc, char* argv[])
 		->SetTilemap(tilemapTilemap)
 		->SetSpeed(70);
 
+	GhostStateComponent* ambushGhostState = new GhostStateComponent(ambushGhost);
+	ambushGhostState->Chase();
+
 	AmbushGhostInputDirector* ambushGhostAI = new AmbushGhostInputDirector(ambushGhost);
 	ambushGhostAI
 		->SetTarget(player)
+		->SetStateComponent(ambushGhostState)
 		->SetController(ambushGhostController);
 
 	WarpComponent* ambushGhostWarp = new WarpComponent(ambushGhost);
 	ambushGhostWarp->SetOffset(ambushGhost->scale* config.PPU * 0.5f);
 
 	BoxColliderComponent* ambushGhostCollider = new BoxColliderComponent(ambushGhost);
-	ambushGhostCollider->Bind(scene);
+	ambushGhostCollider
+		->Bind(scene)
+		->SetSize(Vector2(20));
 
 
 	// - - - Add UI - - - 
