@@ -40,7 +40,7 @@ void TilemapComponent::Update(double delta, Engine::Scene& game)
 {
     //*
     animationPoint += delta;
-    spriteFrame = animationPoint * animationSpeed;
+    spriteFrame = (int) animationPoint * animationSpeed;
     //*/
 }
 

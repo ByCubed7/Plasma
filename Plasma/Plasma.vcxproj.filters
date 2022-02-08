@@ -48,9 +48,6 @@
     <ClCompile Include="Engine\BoxColliderComponent.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Component.cpp">
-      <Filter>Engine\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\CharacterControllerComponent.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
@@ -175,6 +172,9 @@
     <ClCompile Include="GuardGhostInputDirector.cpp" />
     <ClCompile Include="AmbushGhostInputDirector.cpp" />
     <ClCompile Include="GhostStateComponent.cpp" />
+    <ClCompile Include="Engine\Component.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -190,9 +190,6 @@
       <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="Engine\BoxColliderComponent.h">
-      <Filter>Engine\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Component.h">
       <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="Engine\CharacterControllerComponent.h">
@@ -358,11 +355,11 @@
     <ClInclude Include="GuardGhostInputDirector.h" />
     <ClInclude Include="AmbushGhostInputDirector.h" />
     <ClInclude Include="GhostStateComponent.h" />
+    <ClInclude Include="Engine\Component.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
-      <Filter>Game Files</Filter>
-    </None>
     <None Include="Library\TiledLibrary\RapidXML\manual.html">
       <Filter>Library\TiledLibrary</Filter>
     </None>

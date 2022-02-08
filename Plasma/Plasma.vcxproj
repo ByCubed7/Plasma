@@ -80,7 +80,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(ProjectDir)Library\OpenAL\lib;$(ProjectDir)Library\SDL\lib\x64;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(ProjectDir)Library\OpenAL\AL;$(ProjectDir)Library\SDL;$(ProjectDir)Library;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)Include;$(ProjectDir)Library\OpenAL\AL;$(ProjectDir)Library\SDL;$(ProjectDir)Library;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -121,7 +121,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <UseFullPaths>false</UseFullPaths>
-      <AdditionalIncludeDirectories>$(SolutionDir)Plasma\Library\OpenAL\AL</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Plasma\Library\OpenAL\AL;$(SolutionDir)Plasma\Library\SDL;$(SolutionDir)Plasma\Library;$(SolutionDir)Plasma\Include;$(IncludePath)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,7 +151,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="Library\TiledLibrary\RapidXML\manual.html" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AmbushGhostInputDirector.cpp" />

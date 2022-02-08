@@ -37,7 +37,7 @@ void SpriteComponent::Draw(Render::Renderers& renderer)
 void SpriteComponent::Update(double delta, Engine::Scene& game)
 {
     animationPoint += delta;
-    spriteFrame = animationPoint * animationSpeed;
+    spriteFrame = (int) animationPoint * animationSpeed;
 }
 
 AABB SpriteComponent::GetBounds() { return bounds; }

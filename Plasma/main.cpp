@@ -112,7 +112,7 @@ int main(int argc, char* argv[])
 
 	TileLockedController* playerController = new TileLockedController(player);
 	playerController
-		->SetSpeed(5 * config.PPU)
+		->SetSpeed((float) 5 * config.PPU)
 		->SetTilemap(tilemapTilemap)
 		->SetRotatable(true);
 

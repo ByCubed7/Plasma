@@ -45,7 +45,7 @@ struct TilemapColliderComponent::OnEnterEventParams
 	OnEnterEventParams(TilemapColliderComponent* collider);
 	TilemapColliderComponent* collider;
 
-	operator int() const { return collider->gameObject->position.x; }
+	operator int() const { return (int) collider->gameObject->position.x; }
 };
 
 struct TilemapColliderComponent::OnStayEventParams
@@ -53,7 +53,7 @@ struct TilemapColliderComponent::OnStayEventParams
 	OnStayEventParams(TilemapColliderComponent* collider);
 	TilemapColliderComponent* collider;
 
-	operator int() const { return collider->gameObject->position.x; }
+	operator int() const { return (int) collider->gameObject->position.x; }
 };
 
 struct TilemapColliderComponent::OnExitEventParams
@@ -61,5 +61,5 @@ struct TilemapColliderComponent::OnExitEventParams
 	OnExitEventParams(TilemapColliderComponent* collider);
 	TilemapColliderComponent* collider;
 
-	operator int() const { return collider->gameObject->position.x; }
+	operator int() const { return (int) collider->gameObject->position.x; }
 };
