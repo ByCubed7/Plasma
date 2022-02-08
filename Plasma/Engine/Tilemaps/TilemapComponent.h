@@ -2,8 +2,11 @@
 
 #pragma once
 
-#include "Component.h"
-#include "Tilemaps/Tilemap.h"
+
+#include "../Engine/Component.h"
+#include "../Engine/Event.h"
+#include "../Engine/Dispatcher.h"
+#include "../Tilemaps/Tilemap.h"
 
 #include <vector>
 

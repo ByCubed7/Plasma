@@ -2,16 +2,15 @@
 
 #pragma once
 
-#include "Renderer.h"
+#include "../Render/Renderer.h"
+#include "../Render/Texture2D.h"
+#include "../Render/Shader.h"
+#include "../Tilemaps/Tilemap.h"
+#include "../Tilemaps/TileRender.h"
 
-#include "../Library/glad.h"
+#include "glad.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-
-#include "texture.h"
-#include "shader.h"
-#include "Tilemaps/Tilemap.h"
-#include "Tilemaps/TileRender.h"
 
 #include <vector>
 

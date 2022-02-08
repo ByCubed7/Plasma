@@ -4,10 +4,15 @@
 
 #include <iostream>
 
+#include "Shader.h"
 #include "SpriteRenderer.h"
 #include "TextRenderer.h"
-#include "TilemapRenderer.h"
-#include "Resources.h"
+
+#include "../Engine/Component.h"
+#include "../Engine/Event.h"
+#include "../Engine/Dispatcher.h"
+
+#include "../Tilemaps/TilemapRenderer.h"
 
 #include "../Library/glad.h"
 #include <glm/glm.hpp>

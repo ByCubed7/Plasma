@@ -5,15 +5,14 @@
 #include "AudioBuffer.h"
 #include "AudioSource.h"
 #include "AudioListener.h"
+#include "Audio.h"
+#include "Wav.h"
+
+#include "al.h"
 
 #include <iostream>
 #include <vector>
 #include <string>
-
-#include "../../Library/OpenAL/AL/al.h"
-#include "../../Library/OpenAL/AL/alc.h"
-#include "../Wav.h"
-
 
 namespace Audio
 {

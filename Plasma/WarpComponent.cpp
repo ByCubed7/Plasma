@@ -8,10 +8,7 @@ WarpComponent::WarpComponent(GameObject* gameObject, std::string name)
 {
     warpX = true;
     warpY = true;
-
-    
 }
-
 
 void WarpComponent::Update(double delta, Engine::Scene& game)
 {

@@ -13,17 +13,11 @@
     <Filter Include="Engine\Components">
       <UniqueIdentifier>{562b4972-8c1f-4756-b484-24cf312640fd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Events">
-      <UniqueIdentifier>{70c63dcb-7142-45dd-abf6-bd2192a20921}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Library\TiledLibrary">
       <UniqueIdentifier>{363597ac-3b52-4c69-9913-fc21754ef5ef}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Tilemaps">
       <UniqueIdentifier>{de37f00b-ddb1-4968-9ca0-f10614cfea00}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Resources">
-      <UniqueIdentifier>{df8e30af-e7ac-45e6-8c6c-8d3483e856ad}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Render">
       <UniqueIdentifier>{531c5ad7-d668-4903-beb0-3d9e40d4f885}</UniqueIdentifier>
@@ -34,31 +28,13 @@
     <Filter Include="Library\OpenAL">
       <UniqueIdentifier>{51efa8e5-908e-43b2-99d6-dd5333005898}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\UI">
+      <UniqueIdentifier>{40bf3fa0-866f-4e69-916c-fe9bad77f25e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
     <ClCompile Include="Library\glad.c">
       <Filter>Library</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\SpriteComponent.cpp">
-      <Filter>Engine\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\BoxColliderComponent.cpp">
-      <Filter>Engine\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\CharacterControllerComponent.cpp">
-      <Filter>Engine\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="WarpComponent.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerCollisionEventManager.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\TilemapComponent.cpp">
-      <Filter>Engine\Components</Filter>
     </ClCompile>
     <ClCompile Include="Library\TiledLibrary\TiledLayer.cpp">
       <Filter>Library\TiledLibrary</Filter>
@@ -75,8 +51,50 @@
     <ClCompile Include="Library\TiledLibrary\TiledTile.cpp">
       <Filter>Library\TiledLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Tilemaps\TileRender.cpp">
-      <Filter>Engine\Tilemaps</Filter>
+    <ClCompile Include="Engine\Audio\AudioBuffer.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioListener.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioScene.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioSource.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioSourceComponent.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\BoxColliderComponent.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\CharacterControllerComponent.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\SpriteComponent.cpp">
+      <Filter>Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\Font.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\Renderer.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\Renderers.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\Shader.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\SpriteRenderer.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\TextRenderer.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\Texture2D.cpp">
+      <Filter>Engine\Render</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Tilemaps\Tile.cpp">
       <Filter>Engine\Tilemaps</Filter>
@@ -87,35 +105,23 @@
     <ClCompile Include="Engine\Tilemaps\Tilemap.cpp">
       <Filter>Engine\Tilemaps</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\TilemapRenderer.cpp">
-      <Filter>Engine\Render</Filter>
+    <ClCompile Include="Engine\Tilemaps\TilemapColliderComponent.cpp">
+      <Filter>Engine\Tilemaps</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\TextRenderer.cpp">
-      <Filter>Engine\Render</Filter>
+    <ClCompile Include="Engine\Tilemaps\TilemapComponent.cpp">
+      <Filter>Engine\Tilemaps</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\SpriteRenderer.cpp">
-      <Filter>Engine\Render</Filter>
+    <ClCompile Include="Engine\Tilemaps\TilemapRenderer.cpp">
+      <Filter>Engine\Tilemaps</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Renderers.cpp">
-      <Filter>Engine\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Renderer.cpp">
-      <Filter>Engine\Render</Filter>
+    <ClCompile Include="Engine\Tilemaps\TileRender.cpp">
+      <Filter>Engine\Tilemaps</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Tilemaps\Tileset.cpp">
       <Filter>Engine\Tilemaps</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Vector2.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\AABB.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\App.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Scene.cpp">
-      <Filter>Engine</Filter>
+    <ClCompile Include="Engine\UI\TextboxComponent.cpp">
+      <Filter>Engine\UI</Filter>
     </ClCompile>
     <ClCompile Include="Engine\GameObject.cpp">
       <Filter>Engine</Filter>
@@ -126,54 +132,59 @@
     <ClCompile Include="Engine\Object.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Resources.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Scene.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\Settings.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Resources.cpp">
-      <Filter>Engine\Resources</Filter>
+    <ClCompile Include="Engine\Vector2.cpp">
+      <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Shader.cpp">
-      <Filter>Engine\Resources</Filter>
+    <ClCompile Include="Engine\AABB.cpp">
+      <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Texture.cpp">
-      <Filter>Engine\Resources</Filter>
+    <ClCompile Include="Engine\App.cpp">
+      <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Font.cpp">
-      <Filter>Engine\Resources</Filter>
+    <ClCompile Include="Engine\Component.cpp">
+      <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\TilemapColliderComponent.cpp">
-      <Filter>Engine\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="TileLockedController.cpp">
+    <ClCompile Include="InputDirector.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Audio\AudioScene.cpp">
-      <Filter>Engine\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Audio\AudioSource.cpp">
-      <Filter>Engine\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Audio\AudioListener.cpp">
-      <Filter>Engine\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Audio\AudioBuffer.cpp">
-      <Filter>Engine\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\AudioSourceComponent.cpp">
-      <Filter>Engine\Components</Filter>
+    <ClCompile Include="main.cpp">
+      <Filter>Game Files</Filter>
     </ClCompile>
     <ClCompile Include="Muncher.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\UI\TextboxComponent.cpp" />
-    <ClCompile Include="ScoreTracker.cpp" />
-    <ClCompile Include="InputDirector.cpp" />
-    <ClCompile Include="PlayerInputDirector.cpp" />
-    <ClCompile Include="GuardGhostInputDirector.cpp" />
-    <ClCompile Include="AmbushGhostInputDirector.cpp" />
-    <ClCompile Include="GhostStateComponent.cpp" />
-    <ClCompile Include="Engine\Component.cpp">
-      <Filter>Engine</Filter>
+    <ClCompile Include="AmbushGhostInputDirector.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GhostStateComponent.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GuardGhostInputDirector.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInputDirector.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreTracker.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TileLockedController.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WarpComponent.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCollisionEventManager.cpp">
+      <Filter>Game Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -185,30 +196,6 @@
     </ClInclude>
     <ClInclude Include="Library\stb_image.h">
       <Filter>Library</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SpriteComponent.h">
-      <Filter>Engine\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\BoxColliderComponent.h">
-      <Filter>Engine\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\CharacterControllerComponent.h">
-      <Filter>Engine\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="WarpComponent.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Dispatcher.h">
-      <Filter>Engine\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Event.h">
-      <Filter>Engine\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerCollisionEventManager.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\TilemapComponent.h">
-      <Filter>Engine\Components</Filter>
     </ClInclude>
     <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml.hpp">
       <Filter>Library\TiledLibrary</Filter>
@@ -237,81 +224,6 @@
     <ClInclude Include="Library\TiledLibrary\TiledTile.h">
       <Filter>Library\TiledLibrary</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Tilemaps\TileRender.h">
-      <Filter>Engine\Tilemaps</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Tilemaps\Tile.h">
-      <Filter>Engine\Tilemaps</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Tilemaps\TileLayer.h">
-      <Filter>Engine\Tilemaps</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Tilemaps\Tilemap.h">
-      <Filter>Engine\Tilemaps</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\TextRenderer.h">
-      <Filter>Engine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\SpriteRenderer.h">
-      <Filter>Engine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\TilemapRenderer.h">
-      <Filter>Engine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Renderers.h">
-      <Filter>Engine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Renderer.h">
-      <Filter>Engine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Tilemaps\Tileset.h">
-      <Filter>Engine\Tilemaps</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\AABB.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\App.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Scene.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\GameObject.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Input.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Object.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Settings.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Vector2.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Resources.h">
-      <Filter>Engine\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Shader.h">
-      <Filter>Engine\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Texture.h">
-      <Filter>Engine\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Font.h">
-      <Filter>Engine\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\TilemapColliderComponent.h">
-      <Filter>Engine\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="TileLockedController.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Audio\AudioScene.h">
-      <Filter>Engine\Audio</Filter>
-    </ClInclude>
     <ClInclude Include="Library\OpenAL\AL\al.h">
       <Filter>Library\OpenAL</Filter>
     </ClInclude>
@@ -330,33 +242,149 @@
     <ClInclude Include="Library\OpenAL\AL\efx.h">
       <Filter>Library\OpenAL</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Audio\AudioSource.h">
+    <ClInclude Include="Engine\Audio\AudioBuffer.h">
       <Filter>Engine\Audio</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Audio\AudioListener.h">
       <Filter>Engine\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Audio\AudioBuffer.h">
+    <ClInclude Include="Engine\Audio\AudioScene.h">
       <Filter>Engine\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Wav.h">
-      <Filter>Engine\Resources</Filter>
+    <ClInclude Include="Engine\Audio\AudioSource.h">
+      <Filter>Engine\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\AudioSourceComponent.h">
+    <ClInclude Include="Engine\Audio\AudioSourceComponent.h">
+      <Filter>Engine\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Audio\Wav.h">
+      <Filter>Engine\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\BoxColliderComponent.h">
       <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\CharacterControllerComponent.h">
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Components\SpriteComponent.h">
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\Font.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\Renderer.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\Renderers.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\Shader.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\SpriteRenderer.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\TextRenderer.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\Texture2D.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\Tile.h">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\TileLayer.h">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\Tilemap.h">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\TilemapColliderComponent.h">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\TilemapComponent.h">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\TilemapRenderer.h">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\TileRender.h">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemaps\Tileset.h">
+      <Filter>Engine\Tilemaps</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\UI\TextboxComponent.h">
+      <Filter>Engine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Dispatcher.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Event.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GameObject.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Input.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Object.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Resource.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Resources.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Scene.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Settings.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vector2.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\AABB.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\App.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GuardGhostInputDirector.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDirector.h">
+      <Filter>Game Files</Filter>
     </ClInclude>
     <ClInclude Include="Muncher.h">
       <Filter>Game Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\UI\TextboxComponent.h" />
-    <ClInclude Include="ScoreTracker.h" />
-    <ClInclude Include="InputDirector.h" />
-    <ClInclude Include="PlayerInputDirector.h" />
-    <ClInclude Include="GuardGhostInputDirector.h" />
-    <ClInclude Include="AmbushGhostInputDirector.h" />
-    <ClInclude Include="GhostStateComponent.h" />
-    <ClInclude Include="Engine\Component.h">
-      <Filter>Engine</Filter>
+    <ClInclude Include="AmbushGhostInputDirector.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GhostStateComponent.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCollisionEventManager.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInputDirector.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreTracker.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TileLockedController.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WarpComponent.h">
+      <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,11 +2,11 @@
 
 #pragma once
 
-#include "Object.h"
-#include "Component.h"
+#include "../Component.h"
 
 #include "Audio/AudioSource.h"
 #include "Audio/AudioBuffer.h"
+#include "Audio/Wav.h"
 
 class AudioSourceComponent : public Component
 {

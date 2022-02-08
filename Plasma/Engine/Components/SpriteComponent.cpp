@@ -1,4 +1,4 @@
-// By @ByCubed7 on Twitter
+/ By @ByCubed7 on Twitter
 
 #include "SpriteComponent.h"
 

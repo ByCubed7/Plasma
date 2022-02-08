@@ -3,13 +3,13 @@
 #pragma once
 
 #include "Renderer.h"
+#include "Texture2D.h"
+#include "Shader.h"
 
-#include "../Library/glad.h"
+#include "glad.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "texture.h"
-#include "shader.h"
 
 namespace Render
 {

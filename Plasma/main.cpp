@@ -1,31 +1,25 @@
 // By @ByCubed7 on Twitter
 
-#include "Library/glad.h"
-#include <GLFW/glfw3.h>
-
-#include "Engine/App.h"
-#include "Engine/Scene.h"
-#include "Engine/Resources.h"
-#include "Engine/Settings.h"
-#include "Engine/Gameobject.h"
-#include "Engine/SpriteComponent.h"
-#include "Engine/TilemapComponent.h"
-#include "Engine/CharacterControllerComponent.h"
-#include "Engine/AudioSourceComponent.h"
-
-#include "Engine/UI/TextboxComponent.h"
+#include "Core.h"
+#include "Components.h"
+#include "Tilemaps.h"
+#include "Render.h"
+#include "Audio.h"
+#include "UI.h"
 
 #include "PlayerCollisionEventManager.h"
 #include "WarpComponent.h"
 #include "TileLockedController.h"
 #include "Muncher.h"
 #include "ScoreTracker.h"
-
 #include "InputDirector.h"
 #include "PlayerInputDirector.h"
 #include "GuardGhostInputDirector.h"
 #include "AmbushGhostInputDirector.h"
 #include "GhostStateComponent.h"
+
+#include "glad.h"
+#include <GLFW/glfw3.h>
 
 #include <iostream>
 

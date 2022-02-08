@@ -12,8 +12,8 @@
 #include "../Engine/Component.h"
 
 // Events
-#include "Core/Dispatcher.h"
-#include "Core/Event.h"
+#include "../Engine/Dispatcher.h"
+#include "../Engine/Event.h"
 
 #include "../Engine/Scene.h"
 #include "../Engine/Settings.h"

@@ -1,5 +1,6 @@
 // By @ByCubed7 on Twitter
 
+#include "GameObject.h"
 #include "Component.h"
 #include "Object.h"
 

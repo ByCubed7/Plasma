@@ -2,6 +2,9 @@
 
 #pragma once
 
+#include "Core.h"
+#include "Components.h"
+
 #include "../Engine/Audio/AudioScene.h"
 #include "../Engine/Audio/AudioBuffer.h"
 

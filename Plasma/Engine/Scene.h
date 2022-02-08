@@ -2,20 +2,25 @@
 
 #pragma once
 
-#include "../Library/glad.h"
+#include "glad.h"
 
 #include "Input.h"
 #include "Settings.h"
-#include "Renderers.h"
+#include "GameObject.h"
+#include "Component.h"
+
+#include "Components/BoxColliderComponent.h"
+#include "Audio/AudioScene.h"
+#include "Render/Renderers.h"
 
 #include <list>
-
-#include "Audio/AudioScene.h"
 
 // Forward declaration
 class GameObject;
 class Component;
 class BoxColliderComponent;
+
+namespace Audio { class Scene; }
 
 namespace Engine {
 	/// <summary>
@@ -48,7 +53,6 @@ namespace Engine {
 		// Collision
 		std::list<BoxColliderComponent*> colliders;
 		std::map<BoxColliderComponent*, BoxColliderComponent*> collidersColliding;
-
 
 		// Constructor
 		Scene(Settings& setting);

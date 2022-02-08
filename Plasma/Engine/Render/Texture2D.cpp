@@ -1,6 +1,6 @@
 // By @ByCubed7 on Twitter
 
-#include "texture.h"
+#include "texture2D.h"
 
 #include <iostream>
 

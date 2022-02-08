@@ -2,22 +2,17 @@
 
 #pragma once
 
-#include "../Library/glad.h"
+#include "Vector2.h"
+#include "Scene.h"
+
+#include "glad.h"
 #include <glm/glm.hpp>
-
-//#include "Object.h"
-
-#include "Core.h"
-//#include "Vector2.h"
-//#include "AABB.h"
-//#include "Scene.h"
-//#include "Component.h"
 
 #include <list>
 
 // Forward declaration
-class Scene;
 class Component;
+namespace Engine { class Scene; }
 
 class GameObject : public Object
 {

@@ -2,11 +2,17 @@
 
 #pragma once
 
-#include "Object.h"
-#include "Renderers.h"
-#include "GameObject.h"
-#include "Scene.h"
-#include "Component.h"
+#include "../Engine/AABB.h"
+#include "../Engine/Vector2.h"
+#include "../Engine/Component.h"
+#include "../Engine/Event.h"
+#include "../Engine/Dispatcher.h"
+#include "../Render/Renderers.h"
+#include "../Render/Texture2D.h"
+
+class GameObject;
+namespace Engine { class Scene; }
+namespace Render { class Renderers; }
 
 class SpriteComponent : public Component
 {

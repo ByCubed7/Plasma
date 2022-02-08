@@ -1,12 +1,14 @@
 // By @ByCubed7 on Twitter
 
 #pragma once
+
+#include "Renderer.h"
+#include "Texture2D.h"
+#include "Shader.h"
+
+#include "glad.h"
+
 #include <map>
-
-#include "../Library/glad.h"
-
-#include "texture.h"
-#include "shader.h"
 
 
 /// Holds all state information relevant to a character as loaded using FreeType

@@ -4,8 +4,8 @@
 
 #include "../Vector2.h"
 
-#include "../../Library/OpenAL/AL/al.h"
-#include "../../Library/OpenAL/AL/alc.h"
+#include "al.h"
+#include "alc.h"
 
 #include <iostream>
 #include <vector>

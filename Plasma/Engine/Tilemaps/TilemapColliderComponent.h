@@ -2,12 +2,11 @@
 
 #pragma once
 
-#include "Component.h"
+#include "../Engine/Component.h"
+#include "../Engine/Event.h"
+#include "../Engine/Dispatcher.h"
 
-#include "Event.h"
-#include "Dispatcher.h"
-
-#include "Tilemaps/Tilemap.h"
+#include "../Tilemaps/Tilemap.h"
 
 enum class TilemapColliderComponentEventType {
 	TEST_EVENT,

@@ -2,10 +2,8 @@
 
 #pragma once
 
-#include "../Texture.h"
 #include "TileLayer.h"
 #include "Tileset.h"
-#include "Tile.h"
 
 #include <vector>
 
