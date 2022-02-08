@@ -1,9 +1,6 @@
 // By @ByCubed7 on Twitter
 
 #include "PlayerCollisionEventManager.h"
-
-#include "Engine/BoxColliderComponent.h"
-
 #include "GhostStateComponent.h"
 
 PlayerCollisionEventManager::PlayerCollisionEventManager(GameObject* gameObject, std::string name)

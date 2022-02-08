@@ -1,7 +1,5 @@
 #include "Muncher.h"
 
-#include "Engine/Tilemaps/Tile.h"
-
 Muncher::Muncher(GameObject* gameObject, std::string name) : Component(gameObject, name)
 {
 }

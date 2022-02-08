@@ -1,7 +1,8 @@
 // By @ByCubed7 on Twitter
 
 #pragma once
-#include "Engine/Component.h"
+
+#include "Core.h"
 
 class WarpComponent : public Component
 {

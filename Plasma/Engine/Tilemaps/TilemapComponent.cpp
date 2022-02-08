@@ -1,6 +1,7 @@
 // By @ByCubed7 on Twitter
 
 #include "TilemapComponent.h"
+#include "../GameObject.h"
 
 TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
     : Component(gameObject, name)

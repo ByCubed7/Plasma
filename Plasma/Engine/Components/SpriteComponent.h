@@ -2,17 +2,15 @@
 
 #pragma once
 
-#include "../Engine/AABB.h"
-#include "../Engine/Vector2.h"
-#include "../Engine/Component.h"
-#include "../Engine/Event.h"
-#include "../Engine/Dispatcher.h"
-#include "../Render/Renderers.h"
+#include "../Component.h"
+#include "../AABB.h"
 #include "../Render/Texture2D.h"
+
+#include <glm/glm.hpp>
 
 class GameObject;
 namespace Engine { class Scene; }
-namespace Render { class Renderers; }
+namespace Render { struct Renderers; }
 
 class SpriteComponent : public Component
 {

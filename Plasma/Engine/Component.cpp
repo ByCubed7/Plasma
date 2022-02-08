@@ -1,8 +1,11 @@
 // By @ByCubed7 on Twitter
 
-#include "GameObject.h"
 #include "Component.h"
+
+#include "GameObject.h"
 #include "Object.h"
+#include "Scene.h"
+#include "Render/Renderers.h"
 
 Component::Component(GameObject* gameObject, std::string name)
     : Object(name)

@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "Object.h"
 #include "Vector2.h"
 #include "Scene.h"
 

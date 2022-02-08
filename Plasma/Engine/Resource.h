@@ -2,29 +2,22 @@
 
 #pragma once
 
-#include "Vector2.h"
-#include "Render/Font.h"
-#include "Render/texture.h"
-#include "Render/shader.h"
-#include "Tilemaps/Tilemap.h"
-#include "Audio/Wav.h"
-
-#include "glad.h"
-#include <al.h>
-#include "TiledLibrary/TiledLoader.h"
-
 #include <map>
 #include <string>
 
 template<class T>
 class Resource {
 public:
-	// All the shaders we have cached
+	// Loads objs from file.
+	//virtual T Load(std::string name) = 0;
+
+	// Retrieves a cached objs.
+	static T& Get(std::string name);;
+
+	// Returns whether the Resource has the obj cached
+	static bool Has(std::string name);
+
+protected:
+	// All the objs we have cached
 	static std::map<std::string, T> cache;
-
-	// Loads from file.
-	static T LoadShader(std::string name);
-
-	// Retrieves a cached.
-	static T& GetShader(std::string name);
 };

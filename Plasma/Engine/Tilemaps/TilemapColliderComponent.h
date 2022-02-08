@@ -2,11 +2,14 @@
 
 #pragma once
 
-#include "../Engine/Component.h"
-#include "../Engine/Event.h"
-#include "../Engine/Dispatcher.h"
+#include "../Component.h"
+#include "../Event.h"
+#include "../Dispatcher.h"
 
-#include "../Tilemaps/Tilemap.h"
+#include "Tilemap.h"
+
+class GameObject;
+class Scene;
 
 enum class TilemapColliderComponentEventType {
 	TEST_EVENT,
@@ -43,22 +46,19 @@ struct TilemapColliderComponent::OnEnterEventParams
 {
 	OnEnterEventParams(TilemapColliderComponent* collider);
 	TilemapColliderComponent* collider;
-
-	operator int() const { return (int) collider->gameObject->position.x; }
+	operator int() const;
 };
 
 struct TilemapColliderComponent::OnStayEventParams
 {
 	OnStayEventParams(TilemapColliderComponent* collider);
 	TilemapColliderComponent* collider;
-
-	operator int() const { return (int) collider->gameObject->position.x; }
+	operator int() const;
 };
 
 struct TilemapColliderComponent::OnExitEventParams
 {
 	OnExitEventParams(TilemapColliderComponent* collider);
 	TilemapColliderComponent* collider;
-
-	operator int() const { return (int) collider->gameObject->position.x; }
+	operator int() const;
 };

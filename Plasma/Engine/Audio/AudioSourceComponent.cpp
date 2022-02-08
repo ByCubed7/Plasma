@@ -2,11 +2,13 @@
 
 //#define VERBOSE
 
-#include "SpriteComponent.h"
-
-#include "Component.h"
-#include "Settings.h"
 #include "AudioSourceComponent.h"
+
+
+#include "../Component.h"
+#include "../GameObject.h"
+#include "../Settings.h"
+#include "../Components/SpriteComponent.h"
 
 AudioSourceComponent::AudioSourceComponent(GameObject* gameObject, std::string name)
 	: Component(gameObject, name)

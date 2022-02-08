@@ -48,7 +48,6 @@ void BoxColliderComponent::OnCollisionExit()
 }
 
 
-
 BoxColliderComponent::OnEnterEventParams::OnEnterEventParams(BoxColliderComponent* collider)
 { this->collider = collider; };
 
@@ -58,4 +57,6 @@ BoxColliderComponent::OnStayEventParams::OnStayEventParams(BoxColliderComponent*
 BoxColliderComponent::OnExitEventParams::OnExitEventParams(BoxColliderComponent* collider)
 { this->collider = collider; };
 
-
+BoxColliderComponent::OnEnterEventParams::operator int() const { return (int)collider->GetGameObject()->position.x; }
+BoxColliderComponent::OnStayEventParams::operator int() const { return (int)collider->GetGameObject()->position.x; }
+BoxColliderComponent::OnExitEventParams::operator int() const { return (int)collider->GetGameObject()->position.x; }

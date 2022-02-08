@@ -2,6 +2,8 @@
 
 #include "GameObject.h"
 
+#include "Component.h"
+
 #include <type_traits>
 
 GameObject::GameObject(Engine::Scene* scene)

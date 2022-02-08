@@ -2,17 +2,10 @@
 
 #pragma once
 
-#include "../Engine/AABB.h"
-#include "../Engine/Vector2.h"
-#include "../Engine/Component.h"
-#include "../Engine/Scene.h"
-#include "../Engine/Event.h"
-#include "../Engine/Dispatcher.h"
-#include "../Render/Renderers.h"
-#include "../Render/Texture2D.h"
-
-
-#include "../Engine/GameObject.h"
+#include "../Component.h"
+#include "../GameObject.h"
+#include "../AABB.h"
+#include "../Dispatcher.h"
 
 //enum class BoxColliderComponentEventType {
 //	TEST_EVENT,
@@ -20,7 +13,10 @@
 //	TEST_EVENT3
 //};
 
-
+// Forward declaration
+class GameObject;
+struct Vector2;
+namespace Engine { class Scene; }
 
 class BoxColliderComponent : public Component
 {
@@ -56,29 +52,19 @@ struct BoxColliderComponent::OnEnterEventParams
 {
 	OnEnterEventParams(BoxColliderComponent* collider);
 	BoxColliderComponent* collider;
-
-
-	operator int() const { return (int) collider->GetGameObject()->position.x;}
+	operator int() const;
 };
 
 struct BoxColliderComponent::OnStayEventParams
 {
 	OnStayEventParams(BoxColliderComponent* collider);
 	BoxColliderComponent* collider;
-
-	operator int() const { return (int) collider->GetGameObject()->position.x; }
+	operator int() const;
 };
-
-void temp()
-{
-	BoxColliderComponent* collider;
-	collider->GetGameObject();
-}
 
 struct BoxColliderComponent::OnExitEventParams
 {
 	OnExitEventParams(BoxColliderComponent* collider);
 	BoxColliderComponent* collider;
-
-	operator int() const { return (int) collider->GetGameObject()->position.x; }
+	operator int() const;
 };

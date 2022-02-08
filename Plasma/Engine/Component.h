@@ -3,8 +3,10 @@
 #pragma once
 
 #include "Object.h"
-#include "GameObject.h"
-#include "Component.h"
+
+class GameObject;
+namespace Render { struct Renderers; }
+namespace Engine { class Scene; }
 
 class Component : public Object
 {

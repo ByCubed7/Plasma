@@ -10,7 +10,7 @@
 #include <iostream>
 #include <bit>
 
-#include "../Library/stb_image.h"
+#include "stb_image.h"
 
 #include <GLFW/glfw3.h>
 

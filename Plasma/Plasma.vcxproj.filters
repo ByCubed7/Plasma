@@ -186,6 +186,9 @@
     <ClCompile Include="PlayerCollisionEventManager.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Resource.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">

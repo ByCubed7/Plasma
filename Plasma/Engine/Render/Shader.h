@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include "../Library/glad.h"
+#include "glad.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 

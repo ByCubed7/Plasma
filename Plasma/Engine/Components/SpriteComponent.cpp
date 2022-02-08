@@ -1,9 +1,11 @@
-/ By @ByCubed7 on Twitter
+// By @ByCubed7 on Twitter
 
 #include "SpriteComponent.h"
 
-#include "Component.h"
-#include "Settings.h"
+#include "../GameObject.h"
+#include "../Component.h"
+#include "../Vector2.h"
+#include "../Settings.h"
 
 SpriteComponent::SpriteComponent(GameObject* gameObject, std::string name)
     : Component(gameObject, name)

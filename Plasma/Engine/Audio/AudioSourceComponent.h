@@ -3,10 +3,12 @@
 #pragma once
 
 #include "../Component.h"
+#include "Wav.h"
 
-#include "Audio/AudioSource.h"
-#include "Audio/AudioBuffer.h"
-#include "Audio/Wav.h"
+namespace Audio {
+	class Source;
+	class Buffer;
+}
 
 class AudioSourceComponent : public Component
 {

@@ -2,17 +2,18 @@
 
 //#define VERBOSE
 
-#include <iostream>
+#include "TextRenderer.h"
+
+#include "Texture2D.h"
+#include "Font.h"
+
+#include "../Engine/Resources.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
-#include "TextRenderer.h"
-#include "Resources.h"
-
-#include "texture.h"
-#include "font.h"
+#include <iostream>
 
 namespace Render
 {

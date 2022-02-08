@@ -2,8 +2,12 @@
 
 #pragma once
 
+#include <iostream>
 #include <vector>
 #include <string>
+
+#include <al.h>
+//#include <alc.h>
 
 struct Wav
 {

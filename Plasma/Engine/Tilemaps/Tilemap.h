@@ -5,6 +5,9 @@
 #include "TileLayer.h"
 #include "Tileset.h"
 
+#include "../Vector2.h"
+#include "../Render/Texture2D.h"
+
 #include <vector>
 
 namespace Tilemaps {

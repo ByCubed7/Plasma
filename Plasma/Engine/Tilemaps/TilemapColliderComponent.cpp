@@ -2,6 +2,9 @@
 
 #include "TilemapColliderComponent.h"
 
+#include "../GameObject.h"
+#include "../Scene.h"
+
 TilemapColliderComponent::TilemapColliderComponent(GameObject* gameObject, std::string name)
 	: Component(gameObject, name)
 {
@@ -47,3 +50,7 @@ TilemapColliderComponent::OnStayEventParams::OnStayEventParams(TilemapColliderCo
 
 TilemapColliderComponent::OnExitEventParams::OnExitEventParams(TilemapColliderComponent* collider)
 { this->collider = collider; }
+
+TilemapColliderComponent::OnEnterEventParams::operator int() const { return (int)collider->gameObject->position.x; }
+TilemapColliderComponent::OnStayEventParams::operator int() const { return (int)collider->gameObject->position.x; }
+TilemapColliderComponent::OnExitEventParams::operator int() const { return (int)collider->gameObject->position.x; }

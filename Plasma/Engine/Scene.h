@@ -17,10 +17,14 @@
 
 // Forward declaration
 class GameObject;
+struct Input;
+struct Settings;
 class Component;
 class BoxColliderComponent;
 
-namespace Audio { class Scene; }
+namespace Audio { struct Scene; }
+namespace Render { struct Renderers; }
+
 
 namespace Engine {
 	/// <summary>

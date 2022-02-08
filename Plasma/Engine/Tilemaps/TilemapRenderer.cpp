@@ -4,9 +4,9 @@
 
 #include "TilemapRenderer.h"
 
-#include "Shader.h"
-#include "Font.h"
-#include "Resources.h"
+#include "../Render/Shader.h"
+#include "../Render/Font.h"
+#include "../Resources.h"
 
 namespace Render
 {

@@ -19,8 +19,6 @@ void AmbushGhostInputDirector::Update(double delta, Engine::Scene & game)
 	if (target->rotation == 180) targetTile += Vector2::left  * 4;
 	if (target->rotation == 270) targetTile += Vector2::down  * 4;
 
-
-
 	Vector2 positionTile = controller->tilemapComp->GetTilePositionAtScenePosition(gameObject->position);
 
 	Vector2 currentDirection = controller->GetCurrentDirection();

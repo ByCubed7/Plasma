@@ -175,6 +175,7 @@
     <ClCompile Include="Engine\Render\SpriteRenderer.cpp" />
     <ClCompile Include="Engine\Render\TextRenderer.cpp" />
     <ClCompile Include="Engine\Render\Texture2D.cpp" />
+    <ClCompile Include="Engine\Resource.cpp" />
     <ClCompile Include="Engine\Resources.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />
     <ClCompile Include="Engine\Settings.cpp" />
