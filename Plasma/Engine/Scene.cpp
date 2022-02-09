@@ -1,11 +1,16 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
+//#define VERBOSE
+
 #include "Scene.h"
 
 #include "Resources.h"
 #include "GameObject.h"
 #include "Component.h"
-#include "BoxColliderComponent.h"
+#include "Input.h"
+#include "Render/Shader.h"
+#include "Components/BoxColliderComponent.h"
 
 #include <typeinfo>
 #include <algorithm>

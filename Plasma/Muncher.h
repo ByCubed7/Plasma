@@ -2,11 +2,9 @@
 
 #pragma once
 
-#include "Engine/Tilemaps/Tilemap.h"
-
-#include "Engine/Vector2.h"
-#include "Engine/Component.h"
-#include "Engine/TilemapComponent.h"
+#include "Core.h"
+#include "Components.h"
+#include "Tilemaps.h"
 
 #include "ScoreTracker.h"
 

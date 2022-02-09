@@ -1,5 +1,8 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
+//#define VERBOSE
+
 #include "AmbushGhostInputDirector.h"
 
 AmbushGhostInputDirector::AmbushGhostInputDirector(GameObject* gameObject, std::string name)
@@ -19,8 +22,6 @@ void AmbushGhostInputDirector::Update(double delta, Engine::Scene & game)
 	if (target->rotation == 180) targetTile += Vector2::left  * 4;
 	if (target->rotation == 270) targetTile += Vector2::down  * 4;
 
-
-
 	Vector2 positionTile = controller->tilemapComp->GetTilePositionAtScenePosition(gameObject->position);
 
 	Vector2 currentDirection = controller->GetCurrentDirection();
@@ -37,10 +38,10 @@ void AmbushGhostInputDirector::Update(double delta, Engine::Scene & game)
 		int pointsLeft	= 0;
 		int pointsRight = 0;
 
-		pointsUp	-= Vector2::Distance(positionTile + Vector2( 0,-1), targetTile);
-		pointsDown	-= Vector2::Distance(positionTile + Vector2( 0, 1), targetTile);
-		pointsLeft	-= Vector2::Distance(positionTile + Vector2(-1, 0), targetTile);
-		pointsRight -= Vector2::Distance(positionTile + Vector2( 1, 0), targetTile);
+		pointsUp	-= (int) Vector2::Distance(positionTile + Vector2( 0,-1), targetTile);
+		pointsDown	-= (int)Vector2::Distance(positionTile + Vector2( 0, 1), targetTile);
+		pointsLeft	-= (int)Vector2::Distance(positionTile + Vector2(-1, 0), targetTile);
+		pointsRight -= (int)Vector2::Distance(positionTile + Vector2( 1, 0), targetTile);
 
 		pointsUp	+= canGoUp		? 8 : 0;
 		pointsDown	+= canGoDown	? 8 : 0;

@@ -2,8 +2,7 @@
 
 #pragma once
 
-#include "Engine/Vector2.h"
-#include "Engine/Component.h"
+#include "Core.h"
 
 #include "TileLockedController.h"
 

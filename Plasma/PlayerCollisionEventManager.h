@@ -2,8 +2,8 @@
 
 #pragma once
 
-#include "Engine/Component.h"
-#include "Engine/BoxColliderComponent.h"
+#include "Core.h"
+#include "Components.h"
 
 class PlayerCollisionEventManager : public Component
 {

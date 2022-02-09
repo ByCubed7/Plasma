@@ -79,7 +79,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(SolutionDir)Plasma\Library\OpenAL\include;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(ProjectDir)Library\OpenAL\lib;$(ProjectDir)Library\SDL\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)PCH;$(ProjectDir)Include;$(ProjectDir)Library\OpenAL\AL;$(ProjectDir)Library\SDL;$(ProjectDir)Library;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -91,6 +92,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName)_$(PlatformTarget).pch</PrecompiledHeaderOutputFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -105,6 +108,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName)_$(PlatformTarget).pch</PrecompiledHeaderOutputFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -120,13 +125,15 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <UseFullPaths>false</UseFullPaths>
-      <AdditionalIncludeDirectories>$(SolutionDir)Plasma\Library\OpenAL\AL</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Plasma\Library\OpenAL\AL;$(SolutionDir)Plasma\Library\SDL;$(SolutionDir)Plasma\Library;$(SolutionDir)Plasma\Include;$(IncludePath)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName)_$(PlatformTarget).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderFile>All.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Plasma\Library\OpenAL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>OpenAL32.dll;SDL2.lib;SDL2main.lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -138,6 +145,8 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Plasma\Library\OpenAL\AL</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName)_$(PlatformTarget).pch</PrecompiledHeaderOutputFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,46 +159,71 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="Library\TiledLibrary\RapidXML\manual.html" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AmbushGhostInputDirector.cpp" />
-    <ClCompile Include="Engine\AABB.cpp" />
-    <ClCompile Include="Engine\App.cpp" />
-    <ClCompile Include="Engine\AudioSourceComponent.cpp" />
+    <ClCompile Include="Engine\AABB.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Engine\App.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Engine\Audio\AudioBuffer.cpp" />
     <ClCompile Include="Engine\Audio\AudioListener.cpp" />
     <ClCompile Include="Engine\Audio\AudioScene.cpp" />
     <ClCompile Include="Engine\Audio\AudioSource.cpp" />
-    <ClCompile Include="Engine\CharacterControllerComponent.cpp" />
-    <ClCompile Include="Engine\Component.cpp" />
-    <ClCompile Include="Engine\Font.cpp" />
-    <ClCompile Include="Engine\Scene.cpp" />
-    <ClCompile Include="Engine\GameObject.cpp" />
-    <ClCompile Include="Engine\Input.cpp" />
-    <ClCompile Include="Engine\Object.cpp" />
-    <ClCompile Include="Engine\Renderer.cpp" />
-    <ClCompile Include="Engine\Renderers.cpp" />
-    <ClCompile Include="Engine\Resources.cpp" />
-    <ClCompile Include="Engine\BoxColliderComponent.cpp" />
-    <ClCompile Include="Engine\Settings.cpp" />
-    <ClCompile Include="Engine\Shader.cpp" />
-    <ClCompile Include="Engine\SpriteComponent.cpp" />
-    <ClCompile Include="Engine\SpriteRenderer.cpp" />
-    <ClCompile Include="Engine\TextRenderer.cpp" />
-    <ClCompile Include="Engine\Texture.cpp" />
-    <ClCompile Include="Engine\TilemapColliderComponent.cpp" />
-    <ClCompile Include="Engine\TilemapComponent.cpp" />
-    <ClCompile Include="Engine\TilemapRenderer.cpp" />
-    <ClCompile Include="Engine\Tilemaps\TileRender.cpp" />
+    <ClCompile Include="Engine\Audio\AudioSourceComponent.cpp" />
+    <ClCompile Include="Engine\Component.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Engine\Components\BoxColliderComponent.cpp" />
+    <ClCompile Include="Engine\Components\CharacterControllerComponent.cpp" />
+    <ClCompile Include="Engine\Components\SpriteComponent.cpp" />
+    <ClCompile Include="Engine\GameObject.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Engine\Input.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Engine\Object.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Engine\Render\Font.cpp" />
+    <ClCompile Include="Engine\Render\Renderer.cpp" />
+    <ClCompile Include="Engine\Render\Renderers.cpp" />
+    <ClCompile Include="Engine\Render\Shader.cpp" />
+    <ClCompile Include="Engine\Render\SpriteRenderer.cpp" />
+    <ClCompile Include="Engine\Render\TextRenderer.cpp" />
+    <ClCompile Include="Engine\Render\Texture2D.cpp" />
+    <ClCompile Include="Engine\Render\TilemapRenderer.cpp" />
+    <ClCompile Include="Engine\Resource.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Engine\Resources.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Engine\Scene.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Engine\Settings.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Engine\Tilemaps\Tile.cpp" />
     <ClCompile Include="Engine\Tilemaps\TileLayer.cpp" />
     <ClCompile Include="Engine\Tilemaps\Tilemap.cpp" />
+    <ClCompile Include="Engine\Tilemaps\TilemapColliderComponent.cpp" />
+    <ClCompile Include="Engine\Tilemaps\TilemapComponent.cpp" />
+    <ClCompile Include="Engine\Tilemaps\TileRender.cpp" />
     <ClCompile Include="Engine\Tilemaps\Tileset.cpp" />
     <ClCompile Include="Engine\UI\TextboxComponent.cpp" />
-    <ClCompile Include="Engine\Vector2.cpp" />
+    <ClCompile Include="Engine\Vector2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="GhostStateComponent.cpp" />
     <ClCompile Include="GuardGhostInputDirector.cpp" />
+    <ClCompile Include="Include\All.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="InputDirector.cpp" />
     <ClCompile Include="Library\glad.c" />
     <ClCompile Include="Library\TiledLibrary\TiledLayer.cpp" />
@@ -209,43 +243,57 @@
     <ClInclude Include="AmbushGhostInputDirector.h" />
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
-    <ClInclude Include="Engine\AudioSourceComponent.h" />
     <ClInclude Include="Engine\Audio\AudioBuffer.h" />
     <ClInclude Include="Engine\Audio\AudioListener.h" />
     <ClInclude Include="Engine\Audio\AudioScene.h" />
     <ClInclude Include="Engine\Audio\AudioSource.h" />
-    <ClInclude Include="Engine\CharacterControllerComponent.h" />
+    <ClInclude Include="Engine\Audio\AudioSourceComponent.h">
+      <DeploymentContent>true</DeploymentContent>
+    </ClInclude>
+    <ClInclude Include="Engine\Audio\Wav.h" />
+    <ClInclude Include="Engine\Colour.h" />
     <ClInclude Include="Engine\Component.h" />
+    <ClInclude Include="Engine\Components\BoxColliderComponent.h" />
+    <ClInclude Include="Engine\Components\CharacterControllerComponent.h" />
+    <ClInclude Include="Engine\Components\SpriteComponent.h" />
     <ClInclude Include="Engine\Dispatcher.h" />
     <ClInclude Include="Engine\Event.h" />
-    <ClInclude Include="Engine\Font.h" />
-    <ClInclude Include="Engine\Scene.h" />
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\Input.h" />
     <ClInclude Include="Engine\Object.h" />
-    <ClInclude Include="Engine\Renderer.h" />
-    <ClInclude Include="Engine\Renderers.h" />
+    <ClInclude Include="Engine\Render\Font.h" />
+    <ClInclude Include="Engine\Render\Renderer.h" />
+    <ClInclude Include="Engine\Render\Renderers.h" />
+    <ClInclude Include="Engine\Render\Shader.h" />
+    <ClInclude Include="Engine\Render\SpriteRenderer.h" />
+    <ClInclude Include="Engine\Render\TextRenderer.h" />
+    <ClInclude Include="Engine\Render\Texture2D.h" />
+    <ClInclude Include="Engine\Render\TilemapRenderer.h" />
+    <ClInclude Include="Engine\Resource.h" />
     <ClInclude Include="Engine\Resources.h" />
-    <ClInclude Include="Engine\BoxColliderComponent.h" />
+    <ClInclude Include="Engine\Scene.h" />
     <ClInclude Include="Engine\Settings.h" />
-    <ClInclude Include="Engine\Shader.h" />
-    <ClInclude Include="Engine\SpriteComponent.h" />
-    <ClInclude Include="Engine\SpriteRenderer.h" />
-    <ClInclude Include="Engine\TextRenderer.h" />
-    <ClInclude Include="Engine\Texture.h" />
-    <ClInclude Include="Engine\TilemapColliderComponent.h" />
-    <ClInclude Include="Engine\TilemapComponent.h" />
-    <ClInclude Include="Engine\TilemapRenderer.h" />
-    <ClInclude Include="Engine\Tilemaps\TileRender.h" />
     <ClInclude Include="Engine\Tilemaps\Tile.h" />
     <ClInclude Include="Engine\Tilemaps\TileLayer.h" />
     <ClInclude Include="Engine\Tilemaps\Tilemap.h" />
+    <ClInclude Include="Engine\Tilemaps\TilemapColliderComponent.h" />
+    <ClInclude Include="Engine\Tilemaps\TilemapComponent.h" />
+    <ClInclude Include="Engine\Tilemaps\TileRender.h" />
     <ClInclude Include="Engine\Tilemaps\Tileset.h" />
     <ClInclude Include="Engine\UI\TextboxComponent.h" />
     <ClInclude Include="Engine\Vector2.h" />
-    <ClInclude Include="Engine\Wav.h" />
     <ClInclude Include="GhostStateComponent.h" />
     <ClInclude Include="GuardGhostInputDirector.h" />
+    <ClInclude Include="Include\All.h" />
+    <ClInclude Include="Include\Audio.h">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Audio.h</PrecompiledHeaderFile>
+    </ClInclude>
+    <ClInclude Include="Include\Components.h" />
+    <ClInclude Include="Include\Core.h" />
+    <ClInclude Include="Include\Render.h" />
+    <ClInclude Include="Include\Tilemaps.h" />
+    <ClInclude Include="Include\UI.h" />
     <ClInclude Include="InputDirector.h" />
     <ClInclude Include="Library\glad.h" />
     <ClInclude Include="Library\khrplatform.h" />

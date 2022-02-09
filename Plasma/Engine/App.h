@@ -15,6 +15,8 @@
 
 
 class Scene;
+namespace Engine { class Scene; }
+
 
 class App
 {

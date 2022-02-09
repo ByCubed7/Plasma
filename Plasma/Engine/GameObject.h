@@ -2,22 +2,17 @@
 
 #pragma once
 
-#include "../Library/glad.h"
-#include <glm/glm.hpp>
-
-#include "Scene.h"
 #include "Object.h"
 #include "Vector2.h"
-#include "AABB.h"
-#include "Texture.h"
-#include "SpriteRenderer.h"
-#include "Component.h"
+#include "Scene.h"
+
+#include <glm/glm.hpp>
 
 #include <list>
 
 // Forward declaration
-class Scene;
 class Component;
+namespace Engine { class Scene; }
 
 class GameObject : public Object
 {
@@ -31,14 +26,9 @@ public:
 	//*
 	std::list<Component*> components;
 
-
 	Component* AddComponent(Component* component);
-
 	Component* GetComponent(std::string componentName);
-
 	bool HasComponent(std::string componentName);
-	
-	
 	void RemoveComponent(Component *component);
 
 	//*/

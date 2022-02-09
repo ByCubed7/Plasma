@@ -1,3 +1,8 @@
+// By @ByCubed7 on Twitter
+
+#include "All.h"
+//#define VERBOSE
+
 #include "TiledLayer.h"
 
 #include <iostream>

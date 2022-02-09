@@ -1,3 +1,5 @@
+#include "All.h"
+
 #include "TiledSet.h"
 
 #include <iostream>

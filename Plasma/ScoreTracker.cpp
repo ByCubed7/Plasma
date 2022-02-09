@@ -1,6 +1,10 @@
+// By @ByCubed7 on Twitter
+
+#include "All.h"
+
 #include "ScoreTracker.h"
 
-#include "Engine/Tilemaps/Tile.h"
+#include "Tilemaps.h"
 
 ScoreTracker::ScoreTracker(GameObject* gameObject, std::string name)
 	: Component(gameObject, name)

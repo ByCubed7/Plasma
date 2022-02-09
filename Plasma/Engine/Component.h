@@ -4,19 +4,15 @@
 
 #include "Object.h"
 
-#include "Scene.h"
-#include "GameObject.h"
-
-#include "Renderers.h"
-#include "AABB.h"
-
 class GameObject;
-class Scene;
+namespace Render { struct Renderers; }
+namespace Engine { class Scene; }
 
 class Component : public Object
 {
 public:
 	Component(GameObject* gameObject, std::string name = "Component");
+
 
 	GameObject * gameObject;
 	Engine::Scene * scene;

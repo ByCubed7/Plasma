@@ -1,6 +1,12 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
+//#define VERBOSE
+
 #include "TextboxComponent.h"
+
+#include "../GameObject.h"
+#include "../Render/Renderers.h"
 
 namespace UI {
 	TextboxComponent::TextboxComponent(GameObject* gameObject, std::string name)

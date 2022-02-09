@@ -1,31 +1,27 @@
 // By @ByCubed7 on Twitter
 
-#include "Library/glad.h"
-#include <GLFW/glfw3.h>
+//#include "All.h"
+//#define VERBOSE
 
-#include "Engine/App.h"
-#include "Engine/Scene.h"
-#include "Engine/Resources.h"
-#include "Engine/Settings.h"
-#include "Engine/Gameobject.h"
-#include "Engine/SpriteComponent.h"
-#include "Engine/TilemapComponent.h"
-#include "Engine/CharacterControllerComponent.h"
-#include "Engine/AudioSourceComponent.h"
-
-#include "Engine/UI/TextboxComponent.h"
+#include "Core.h"
+#include "Components.h"
+#include "Tilemaps.h"
+#include "Render.h"
+#include "Audio.h"
+#include "UI.h"
 
 #include "PlayerCollisionEventManager.h"
 #include "WarpComponent.h"
 #include "TileLockedController.h"
 #include "Muncher.h"
 #include "ScoreTracker.h"
-
 #include "InputDirector.h"
 #include "PlayerInputDirector.h"
 #include "GuardGhostInputDirector.h"
 #include "AmbushGhostInputDirector.h"
 #include "GhostStateComponent.h"
+
+#include <GLFW/glfw3.h>
 
 #include <iostream>
 
@@ -101,7 +97,7 @@ int main(int argc, char* argv[])
 
 	playerSprite
 		->Set(Resources::GetTexture("player"))
-		->SetColour({ 0.7f, 0.7f, 0.3f })
+		->SetColour(glm::vec3(0.7f, 0.7f, 0.3f))
 		->AnimationSpeed(8);
 
 	Muncher* playerMuncher = new Muncher(player);
@@ -112,7 +108,7 @@ int main(int argc, char* argv[])
 
 	TileLockedController* playerController = new TileLockedController(player);
 	playerController
-		->SetSpeed(5 * config.PPU)
+		->SetSpeed((float) 5 * config.PPU)
 		->SetTilemap(tilemapTilemap)
 		->SetRotatable(true);
 
@@ -172,7 +168,7 @@ int main(int argc, char* argv[])
 	SpriteComponent* ambushGhostSprite = new SpriteComponent(ambushGhost);
 	ambushGhostSprite
 		->Set(Resources::GetTexture("ghost"))
-		->SetColour({ 1, 0.5f, 1 })
+		->SetColour(glm::vec3(1, 0.5f, 1))
 		->AnimationSpeed(4);
 
 	TileLockedController* ambushGhostController = new TileLockedController(ambushGhost);

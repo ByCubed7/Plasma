@@ -2,20 +2,19 @@
 
 #pragma once
 
-#include <map>
-#include <string>
+#include "Vector2.h"
+#include "Render/Font.h"
+#include "Render/Texture2D.h"
+#include "Render/Shader.h"
+#include "Tilemaps/Tilemap.h"
+#include "Audio/Wav.h"
 
-#include "../Library/glad.h"
-#include "../Library/TiledLibrary/TiledLoader.h"
-
+#include <glm/glm.hpp>
+#include "TiledLibrary/TiledLoader.h"
 #include <al.h>
 
-#include "Font.h"
-#include "Tilemaps/Tilemap.h"
-#include "texture.h"
-#include "shader.h"
-#include "Wav.h"
-#include "Vector2.h"
+#include <map>
+#include <string>
 
 // A singleton that deals with Textures and Shaders. 
 class Resources {

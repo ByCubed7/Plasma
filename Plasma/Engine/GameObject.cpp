@@ -1,8 +1,10 @@
 ﻿// By @ByCubed7 on Twitter
 
-#include "GameObject.h"
+#include "All.h"
+//#define VERBOSE
 
-#include <type_traits>
+#include "GameObject.h"
+#include "Component.h"
 
 GameObject::GameObject(Engine::Scene* scene)
     : Object("GameObject")

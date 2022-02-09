@@ -1,10 +1,13 @@
 ﻿// By @ByCubed7 on Twitter
 
+#include "All.h"
+//#define VERBOSE
+
+#include "Vector2.h"
+
 #include <iostream>
 #include <string>
 #include <math.h>
-
-#include "Vector2.h"
 
 
 // █▀ ▀█▀ ▄▀█ ▀█▀ █ █▀▀   █▀█ █▀█ █▀█ █▀█ █▀▀ █▀█ ▀█▀ █ █▀▀ █▀

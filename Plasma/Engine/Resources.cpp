@@ -1,5 +1,8 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
+//#define VERBOSE
+
 #include "Resources.h"
 
 #include "Tilemaps/Tile.h"
@@ -10,7 +13,7 @@
 #include <iostream>
 #include <bit>
 
-#include "../Library/stb_image.h"
+#include "stb_image.h"
 
 #include <GLFW/glfw3.h>
 

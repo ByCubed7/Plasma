@@ -1,5 +1,7 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
+
 #include "InputDirector.h"
 
 InputDirector::InputDirector(GameObject* gameObject, std::string name)

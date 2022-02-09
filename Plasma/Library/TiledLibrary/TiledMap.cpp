@@ -1,3 +1,5 @@
+#include "All.h"
+
 #include "TiledMap.h"
 
 namespace Tiled {
