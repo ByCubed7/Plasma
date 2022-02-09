@@ -1,6 +1,9 @@
 // By @ByCubed7 on Twitter
 
-#include "texture2D.h"
+#include "All.h"
+//#define VERBOSE
+
+#include "Texture2D.h"
 
 #include <iostream>
 

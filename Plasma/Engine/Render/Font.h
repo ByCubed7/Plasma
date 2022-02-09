@@ -3,13 +3,10 @@
 #pragma once
 
 #include "Renderer.h"
-#include "Texture2D.h"
-#include "Shader.h"
 
-#include "glad.h"
+#include <glm/glm.hpp>
 
 #include <map>
-
 
 /// Holds all state information relevant to a character as loaded using FreeType
 struct Character {

@@ -51,21 +51,6 @@
     <ClCompile Include="Library\TiledLibrary\TiledTile.cpp">
       <Filter>Library\TiledLibrary</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Audio\AudioBuffer.cpp">
-      <Filter>Engine\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Audio\AudioListener.cpp">
-      <Filter>Engine\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Audio\AudioScene.cpp">
-      <Filter>Engine\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Audio\AudioSource.cpp">
-      <Filter>Engine\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Audio\AudioSourceComponent.cpp">
-      <Filter>Engine\Audio</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Components\BoxColliderComponent.cpp">
       <Filter>Engine\Components</Filter>
     </ClCompile>
@@ -109,9 +94,6 @@
       <Filter>Engine\Tilemaps</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Tilemaps\TilemapComponent.cpp">
-      <Filter>Engine\Tilemaps</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Tilemaps\TilemapRenderer.cpp">
       <Filter>Engine\Tilemaps</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Tilemaps\TileRender.cpp">
@@ -189,6 +171,25 @@
     <ClCompile Include="Engine\Resource.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Render\TilemapRenderer.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioSource.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioSourceComponent.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioBuffer.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioListener.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Audio\AudioScene.cpp">
+      <Filter>Engine\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\All.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -308,9 +309,6 @@
     <ClInclude Include="Engine\Tilemaps\TilemapComponent.h">
       <Filter>Engine\Tilemaps</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Tilemaps\TilemapRenderer.h">
-      <Filter>Engine\Tilemaps</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Tilemaps\TileRender.h">
       <Filter>Engine\Tilemaps</Filter>
     </ClInclude>
@@ -389,6 +387,19 @@
     <ClInclude Include="WarpComponent.h">
       <Filter>Game Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Render\TilemapRenderer.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Colour.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Components.h" />
+    <ClInclude Include="Include\Core.h" />
+    <ClInclude Include="Include\Render.h" />
+    <ClInclude Include="Include\Tilemaps.h" />
+    <ClInclude Include="Include\UI.h" />
+    <ClInclude Include="Include\Audio.h" />
+    <ClInclude Include="Include\All.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\TiledLibrary\RapidXML\manual.html">

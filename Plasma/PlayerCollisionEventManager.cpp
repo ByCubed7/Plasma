@@ -1,5 +1,7 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
+
 #include "PlayerCollisionEventManager.h"
 #include "GhostStateComponent.h"
 

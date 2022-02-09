@@ -1,5 +1,8 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
+//#define VERBOSE
+
 #include "AABB.h"
 
 AABB::AABB(Vector2 lower, Vector2 upper)

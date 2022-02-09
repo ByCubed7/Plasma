@@ -1,5 +1,7 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
+
 #include "GuardGhostInputDirector.h"
 
 GuardGhostInputDirector::GuardGhostInputDirector(GameObject* gameObject, std::string name)

@@ -2,19 +2,19 @@
 
 #pragma once
 
-#include "../Engine/AABB.h"
-#include "../Engine/Vector2.h"
-#include "../Engine/Component.h"
-#include "../Engine/GameObject.h"
-#include "../Engine/Scene.h"
-#include "../Engine/Event.h"
-#include "../Engine/Dispatcher.h"
+#include "../AABB.h"
+#include "../Vector2.h"
+#include "../Component.h"
+#include "../GameObject.h"
+#include "../Scene.h"
+#include "../Event.h"
+#include "../Dispatcher.h"
 #include "../Render/Renderers.h"
 #include "../Render/Texture2D.h"
 
 class GameObject;
 namespace Engine { class Scene; }
-namespace Render { class Renderers; }
+namespace Render { struct Renderers; }
 
 class CharacterControllerComponent : public Component
 {

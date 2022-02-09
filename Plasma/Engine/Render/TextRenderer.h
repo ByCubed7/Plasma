@@ -4,10 +4,9 @@
 
 #include "Renderer.h"
 
-#include "shader.h"
-
-#include "../Library/glad.h"
 #include <glm/glm.hpp>
+
+class Shader;
 
 namespace Render
 {
@@ -23,7 +22,7 @@ namespace Render
         TextRenderer(Shader& shader);
 
         // Renders a string of text using the precompiled list of characters
-        void RenderText(std::string text, float x, float y, float scale, glm::vec2 pivot = { 0.5f, 0.5f }, glm::vec3 color = glm::vec3(1.0f));
+        void RenderText(std::string text, float x, float y, float scale, glm::vec2 pivot, glm::vec3 color);
 
     private:
         unsigned int verticeVBO;

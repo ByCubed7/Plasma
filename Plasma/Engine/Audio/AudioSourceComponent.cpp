@@ -1,9 +1,9 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
 //#define VERBOSE
 
 #include "AudioSourceComponent.h"
-
 
 #include "../Component.h"
 #include "../GameObject.h"

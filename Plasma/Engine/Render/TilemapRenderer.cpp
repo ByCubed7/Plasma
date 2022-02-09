@@ -1,12 +1,18 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
+//#define VERBOSE
+
 #pragma once
 
 #include "TilemapRenderer.h"
 
-#include "../Render/Shader.h"
-#include "../Render/Font.h"
+#include "Renderer.h"
+#include "Texture2D.h"
+#include "Shader.h"
+#include "Font.h"
 #include "../Resources.h"
+#include "../Tilemaps/Tilemap.h"
 
 namespace Render
 {

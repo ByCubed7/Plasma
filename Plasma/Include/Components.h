@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "All.h"
+
 #include "Core.h"
 
 #include "../Engine/Components/BoxColliderComponent.h"

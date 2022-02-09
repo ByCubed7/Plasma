@@ -2,11 +2,9 @@
 
 #pragma once
 
-#include "Engine/Tilemaps/Tilemap.h"
-
-#include "Engine/Vector2.h"
-#include "Engine/Component.h"
-#include "Engine/UI/TextboxComponent.h"
+#include "Core.h"
+#include "Components.h"
+#include "UI.h"
 
 class ScoreTracker : public Component
 {

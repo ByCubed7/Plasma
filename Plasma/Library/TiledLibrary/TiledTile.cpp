@@ -1,3 +1,5 @@
+#include "All.h"
+
 #include "TiledTile.h"
 
 #include <iostream>

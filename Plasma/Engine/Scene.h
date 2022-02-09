@@ -2,13 +2,8 @@
 
 #pragma once
 
-#include "glad.h"
-
 #include "Input.h"
 #include "Settings.h"
-#include "GameObject.h"
-#include "Component.h"
-
 #include "Components/BoxColliderComponent.h"
 #include "Audio/AudioScene.h"
 #include "Render/Renderers.h"
@@ -17,8 +12,6 @@
 
 // Forward declaration
 class GameObject;
-struct Input;
-struct Settings;
 class Component;
 class BoxColliderComponent;
 

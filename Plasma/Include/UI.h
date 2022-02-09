@@ -2,4 +2,6 @@
 
 #pragma once
 
+#include "All.h"
+
 #include "../Engine/UI/TextboxComponent.h"

@@ -1,5 +1,6 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
 //#define VERBOSE
 
 #include "TextRenderer.h"
@@ -7,11 +8,11 @@
 #include "Texture2D.h"
 #include "Font.h"
 
-#include "../Engine/Resources.h"
+#include "../Resources.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <ft2build.h>
-#include FT_FREETYPE_H
+#include <freetype.h>
 
 #include <iostream>
 

@@ -1,5 +1,8 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
+//#define VERBOSE
+
 #include "AmbushGhostInputDirector.h"
 
 AmbushGhostInputDirector::AmbushGhostInputDirector(GameObject* gameObject, std::string name)

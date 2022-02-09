@@ -1,3 +1,5 @@
+#include "All.h"
+
 #include "TiledLoader.h"
 
 #include <iostream>

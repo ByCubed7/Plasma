@@ -4,6 +4,7 @@
 
 #include "../Component.h"
 #include "../AABB.h"
+#include "../Colour.h"
 #include "../Render/Texture2D.h"
 
 #include <glm/glm.hpp>
@@ -20,7 +21,7 @@ public:
 	void Update(double delta, Engine::Scene& game) override;
 	void Draw(Render::Renderers& renderer) override;
 
-	glm::vec3 color;
+	Colour color;
 
 	double animationPoint;
 	int animationSpeed;
@@ -39,7 +40,7 @@ public:
 	SpriteComponent* AnimationSpeed(double speed);
 
 	// Set the animation speed
-	SpriteComponent* SetColour(glm::vec3 newColour);
+	SpriteComponent* SetColour(Colour newColour);
 
 	// Get the Animation speed
 	int GetAnimationSpeed();

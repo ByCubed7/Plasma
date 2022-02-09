@@ -1,6 +1,7 @@
 // By @ByCubed7 on Twitter
 
-//# define VERBOSE
+#include "All.h"
+//#define VERBOSE
 
 #include "AudioSource.h"
 

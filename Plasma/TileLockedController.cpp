@@ -1,10 +1,6 @@
-#include "TileLockedController.h"
-#include "TileLockedController.h"
-#include "TileLockedController.h"
-#include "TileLockedController.h"
-#include "TileLockedController.h"
-#include "TileLockedController.h"
 // By @ByCubed7 on Twitter
+
+#include "All.h"
 
 #include "TileLockedController.h"
 

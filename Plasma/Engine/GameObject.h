@@ -6,7 +6,6 @@
 #include "Vector2.h"
 #include "Scene.h"
 
-#include "glad.h"
 #include <glm/glm.hpp>
 
 #include <list>

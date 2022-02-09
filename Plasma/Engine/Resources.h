@@ -9,7 +9,7 @@
 #include "Tilemaps/Tilemap.h"
 #include "Audio/Wav.h"
 
-#include "glad.h"
+#include <glm/glm.hpp>
 #include "TiledLibrary/TiledLoader.h"
 #include <al.h>
 

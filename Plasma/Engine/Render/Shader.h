@@ -2,11 +2,9 @@
 
 #pragma once
 
-#include <string>
 
-#include "glad.h"
 #include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include <string>
 
 // General purpose shader class.
 class Shader

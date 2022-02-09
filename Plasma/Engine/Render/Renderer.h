@@ -4,11 +4,6 @@
 
 #include "Shader.h"
 
-#include "../Library/glad.h"
-#include <glm/glm.hpp>
-
-#include <iostream>
-
 namespace Render
 {
 	/// <summary>

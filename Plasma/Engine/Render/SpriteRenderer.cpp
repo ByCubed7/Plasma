@@ -1,5 +1,8 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
+//#define VERBOSE
+
 #pragma once
 
 #include "SpriteRenderer.h"

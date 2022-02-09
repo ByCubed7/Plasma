@@ -1,5 +1,8 @@
 // By @ByCubed7 on Twitter
 
+#include "All.h"
+//#define VERBOSE
+
 #include "BoxColliderComponent.h"
 
 BoxColliderComponent::BoxColliderComponent(GameObject* gameObject, std::string name)

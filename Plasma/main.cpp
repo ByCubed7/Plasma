@@ -1,5 +1,8 @@
 // By @ByCubed7 on Twitter
 
+//#include "All.h"
+//#define VERBOSE
+
 #include "Core.h"
 #include "Components.h"
 #include "Tilemaps.h"
@@ -18,7 +21,6 @@
 #include "AmbushGhostInputDirector.h"
 #include "GhostStateComponent.h"
 
-#include "glad.h"
 #include <GLFW/glfw3.h>
 
 #include <iostream>
@@ -95,7 +97,7 @@ int main(int argc, char* argv[])
 
 	playerSprite
 		->Set(Resources::GetTexture("player"))
-		->SetColour({ 0.7f, 0.7f, 0.3f })
+		->SetColour(glm::vec3(0.7f, 0.7f, 0.3f))
 		->AnimationSpeed(8);
 
 	Muncher* playerMuncher = new Muncher(player);
@@ -166,7 +168,7 @@ int main(int argc, char* argv[])
 	SpriteComponent* ambushGhostSprite = new SpriteComponent(ambushGhost);
 	ambushGhostSprite
 		->Set(Resources::GetTexture("ghost"))
-		->SetColour({ 1, 0.5f, 1 })
+		->SetColour(glm::vec3(1, 0.5f, 1))
 		->AnimationSpeed(4);
 
 	TileLockedController* ambushGhostController = new TileLockedController(ambushGhost);

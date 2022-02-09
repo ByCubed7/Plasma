@@ -2,17 +2,14 @@
 
 #pragma once
 
-#include "../Render/Renderer.h"
-#include "../Render/Texture2D.h"
-#include "../Render/Shader.h"
-#include "../Tilemaps/Tilemap.h"
-#include "../Tilemaps/TileRender.h"
+#include "Renderer.h"
 
-#include "glad.h"
 #include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-
 #include <vector>
+
+class Shader;
+class Texture2D;
+namespace Tilemaps { struct TileRender; }
 
 namespace Render 
 {
@@ -23,7 +20,7 @@ namespace Render
         TilemapRenderer(Shader& shader);
 
         // Renders a defined quad textured with given sprite
-        void DrawTileLayer(Texture2D& texture, glm::vec2 position, glm::vec2 size = glm::vec2(1.0f, 1.0f), float rotate = 0.0f, int frame = 0, glm::vec3 color = glm::vec3(1.0f));
+        void DrawTileLayer(Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, int frame, glm::vec3 color);
 
         // Updates the tilemaps render data
         void Update(Tilemaps::TileRender render);
