@@ -97,7 +97,7 @@ int main(int argc, char* argv[])
 
 	playerSprite
 		->Set(Resources::GetTexture("player"))
-		->SetColour(glm::vec3(0.7f, 0.7f, 0.3f))
+		->SetColour(Colour(180, 0, 255))
 		->AnimationSpeed(8);
 
 	Muncher* playerMuncher = new Muncher(player);
@@ -134,7 +134,7 @@ int main(int argc, char* argv[])
 	SpriteComponent* guardGhostSprite = new SpriteComponent(guardGhost);
 	guardGhostSprite
 		->Set(Resources::GetTexture("ghost"))
-		->SetColour({ 1, 0, 0 })
+		->SetColour({ 255, 0, 0 })
 		->AnimationSpeed(4);
 
 	TileLockedController* guardGhostController = new TileLockedController(guardGhost);
@@ -168,7 +168,7 @@ int main(int argc, char* argv[])
 	SpriteComponent* ambushGhostSprite = new SpriteComponent(ambushGhost);
 	ambushGhostSprite
 		->Set(Resources::GetTexture("ghost"))
-		->SetColour(glm::vec3(1, 0.5f, 1))
+		->SetColour(Colour(255, 128, 255))
 		->AnimationSpeed(4);
 
 	TileLockedController* ambushGhostController = new TileLockedController(ambushGhost);

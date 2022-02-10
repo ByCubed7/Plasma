@@ -35,7 +35,7 @@ void SpriteComponent::Draw(Render::Renderers& renderer)
         { gameObject->scale.x * ppu, gameObject->scale.y * ppu },
         gameObject->rotation,
         spriteFrame,
-        glm::vec3(color.red, color.blue, color.green)
+        glm::vec3(color.red / 255, color.blue / 255, color.green / 255)
     );
 }
 

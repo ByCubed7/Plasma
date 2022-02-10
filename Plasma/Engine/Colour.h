@@ -14,8 +14,7 @@ struct Colour
 	static constexpr Colour White() { return Colour(255, 255, 255); }
 
 	constexpr Colour(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255) : red(r), green(g), blue(b), alpha(a) {}
-	constexpr Colour(glm::vec3 v) : red((uint8_t) v.x * 255), green((uint8_t)v.y * 255), blue((uint8_t)v.z * 255), alpha(255) {}
-	constexpr Colour() : red(0), green(0), blue(0), alpha(255) {}
+	constexpr Colour() : red(255), green(255), blue(255), alpha(255) {}
 
 	// Attributes
 	uint8_t red;
