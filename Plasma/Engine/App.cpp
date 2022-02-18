@@ -32,9 +32,35 @@ int App::Prepare(Engine::Scene* setScene)
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	glfwWindowHint(GLFW_RESIZABLE, false);
+	
+	glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
+	int count, windowWidth, windowHeight, monitorX, monitorY;
+	// I am assuming that main monitor is in the 0 position
+	GLFWmonitor** monitors = glfwGetMonitors(&count);
+	const GLFWvidmode* videoMode = glfwGetVideoMode(monitors[0]);
+	// width: 75% of the screen
+	windowWidth = static_cast<int>(videoMode->width / 1.5);
+	// aspect ratio 16 to 9
+	windowHeight = static_cast<int>(videoMode->height / 16 * 9);
+	glfwGetMonitorPos(monitors[0], &monitorX, &monitorY);
+
+	// set the visibility window hint to false for subsequent window creation
+	glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 
 	window = glfwCreateWindow(scene->settings.screenWidth, scene->settings.screenHeight, scene->settings.name.c_str(), nullptr, nullptr);
-	glfwMakeContextCurrent(window);
+	glfwMakeContextCurrent(window); // Make the window's context current
+	
+	// reset the window hints to default
+	glfwDefaultWindowHints();
+
+	glfwSetWindowPos(window, monitorX + (videoMode->width - windowWidth) / 2, monitorY + (videoMode->height - windowHeight) / 2);
+
+	// show the window
+	glfwShowWindow(window);
+
+	// Hide the border of the window
+	glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_FALSE);
+
 
 	// Load OpenGL function pointers
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -112,7 +138,7 @@ int App::Run(Engine::Scene* setScene)
 		if (scene->state == Engine::Scene::State::CLOSING) glfwSetWindowShouldClose(window, true);
 
 		// Clear render
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		
 		// Render
