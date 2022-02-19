@@ -5,55 +5,46 @@
 
 #include "Window.h"
 
-// -- Callbacks
-
 namespace Engine {
-	Window::Window() : Object("Window")
+	Window* Window::instance = nullptr;
+
+	Window::Window(int width, int height) : Object("Window")
 	{
 		instance = this;
+		title = "Title";
 
 		state = State::RUNNING;
 
-		width = 100;
-		height = 100;
+		this->width = width;
+		this->height = height;
 
-		int count, windowWidth, windowHeight, monitorX, monitorY;
+		// See: https://gist.github.com/esmitt/e722265936f0ebe96fc166bdf1fff41b
 
-		// Assuming that main monitor is in the 0 position
-		GLFWmonitor** monitors = glfwGetMonitors(&count);
-		const GLFWvidmode* videoMode = glfwGetVideoMode(monitors[0]);
-
-		// Width: 75% of the screen
-		windowWidth = static_cast<int>(videoMode->width / 1.5);
-		windowHeight = static_cast<int>(videoMode->height / 16 * 9); // Aspect ratio 16 to 9
-		glfwGetMonitorPos(monitors[0], &monitorX, &monitorY);
+		glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
+		// Set the visibility window hint to false for subsequent window creation
+		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 
 		// Initialize window
-		window = glfwCreateWindow(scene->settings.screenWidth, scene->settings.screenHeight, scene->settings.name.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(window); // Make the window's context current
+		window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
+		glfwMakeContextCurrent(window); // Make the window's context 
 
 		glfwSetWindowAttrib(window, GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-		glfwSetWindowPos(window, monitorX + (videoMode->width - windowWidth) / 2, monitorY + (videoMode->height - windowHeight) / 2);
+		//glfwSetWindowPos(window, 0, 0);
 
-		// show the window
+		// Show the window
 		glfwShowWindow(window);
 
 		// Hide the border of the window
 		glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_FALSE);
-		
 
 		// Specifies whether the windowed mode window will be resizable by the user.
-		glfwSetWindowAttrib(window, GLFW_RESIZABLE, false);
-
-		//glfwSetWindowAttrib(window, GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
-
-		// set the visibility window hint to false for subsequent window creation
-		//glfwSetWindowAttrib(window, GLFW_VISIBLE, GLFW_FALSE);
+		//glfwSetWindowAttrib(window, GLFW_RESIZABLE, false);
 		
 		
 		
-		
+		// Done setting up the window, reset the window hints.
+		glfwDefaultWindowHints();
 		
 		// - REGISTER CALLBACKS
 		// This could certainly look better--
@@ -75,14 +66,37 @@ namespace Engine {
 		glfwSetFramebufferSizeCallback(window, callbackFramebuffer);
 	}
 
+	void Window::LoadScene(Scene* newScene)
+	{
+		scene = newScene;
+	}
+
 	void Window::Render()
 	{
 		scene->Render();
 		glfwSwapBuffers(window);
 
 		// Check the Game state to see whether to close
-		if (scene->state == Scene::State::CLOSING) glfwSetWindowShouldClose(window, true);
+		if (scene->state == Scene::State::CLOSING) {
+			state = State::QUITTING;
+			glfwSetWindowShouldClose(window, true);
+		}
 	}
+
+	void Window::Title(std::string newName)
+	{
+		title = newName;
+		glfwSetWindowTitle(window, title.c_str());
+	}
+
+	void Window::Resize(int newWidth, int newHeight)
+	{
+		width = newWidth;
+		height = newHeight;
+		glfwSetWindowSize(window, width, height);
+	}
+
+	//
 
 	void Window::GraphicsCallbackKey(GLFWwindow* window, int key, int scancode, int action, int mode)
 	{

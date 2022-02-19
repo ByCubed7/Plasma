@@ -30,9 +30,9 @@ namespace Engine {
 		//Scene* GetScene();
 
 		/// <summary>
-		/// Prepares and configuares the GLWF API to recieve calls, creates the window, prepares window callbacks. ect
+		/// Prepares and configuares GLWF to recieve calls, creates the window, prepares window callbacks. ect
 		/// </summary>
-		/// <param name="scene">- The scene to prepare GLWF with.</param>
+		/// <param name="scene">- The scene to prepare with.</param>
 		/// <returns>The result ID of the opperation, if any.</returns>
 		int Build(Engine::Scene* scene);
 

@@ -26,15 +26,18 @@ namespace Engine {
 		static Window* instance;
 
 		// Constructors
-		Window();
+		Window(int width, int height);
 
+		void LoadScene(Scene* newScene);
 		void Render();
-
+		void Title(std::string newName);
+		void Resize(int newWidth, int newHeight);
 
 	private:
 		GLFWwindow* window;
 		Engine::Scene* scene;
 
+		std::string title;
 		int height, width;
 
 		/// <summary>

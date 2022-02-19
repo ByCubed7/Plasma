@@ -27,7 +27,7 @@
 
 int main(int argc, char* argv[])
 {
-	App app = App();
+	Engine::App app = Engine::App();
 
 	Settings config;
 	config.PPU = 20;
@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
 	//Scene scene = pacman.scene; // Get the default scene
 
 	// Prepares an OpenGL context so that we can send API calls
-	app.Prepare(scene);
+	app.Build(scene);
 
 	scene->Initialize();
 

@@ -12,8 +12,8 @@ namespace Engine {
 
 	App::App()
 	{
-		window = 0;
 		instance = this;
+		window = nullptr;
 		scene = nullptr;
 	}
 
@@ -25,7 +25,7 @@ namespace Engine {
 		return newScene;
 	}
 
-	int App::Build  (Engine::Scene* setScene)
+	int App::Build(Engine::Scene* setScene)
 	{
 		scene = setScene;
 
@@ -38,13 +38,9 @@ namespace Engine {
 
 		// Specifies which OpenGL profile to create the context for
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-		// reset the window hints to default
-		//glfwDefaultWindowHints();
-
-		auto callbackException = [](GLenum source, GLenum type, unsigned int id, GLenum severity, GLsizei length, const char* message, const void* userParam)
-		{ App::instance->GraphicsCallbackException(source, type, id, severity, length, message, userParam); };
-
+		
+		window = new Window(scene->settings.screenWidth, scene->settings.screenHeight);
+		window->LoadScene(scene);
 
 		// Load OpenGL function pointers
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -53,7 +49,9 @@ namespace Engine {
 			return -1;
 		}
 
-		window = new Window();
+		auto callbackException = [](GLenum source, GLenum type, unsigned int id, GLenum severity, GLsizei length, const char* message, const void* userParam)
+		{ App::instance->GraphicsCallbackException(source, type, id, severity, length, message, userParam); };
+
 
 		// Configure OpenGL
 		glViewport(0, 0, scene->settings.screenWidth, scene->settings.screenHeight);
@@ -95,6 +93,8 @@ namespace Engine {
 
 			// Update game state
 			scene->Update(deltaTime);
+
+			window->Render();
 			 
 
 			// Clear render
