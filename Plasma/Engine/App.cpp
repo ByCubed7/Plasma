@@ -1,242 +1,167 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
+#include "All.h" 
 //#define VERBOSE
 
 #include "App.h"
+#include "Window.h"
 #include "../Library/OpenAL/AL/al.h"
 
-App* App::instance = nullptr;
+namespace Engine {
+	App* App::instance = nullptr;
 
-App::App()
-{
-	window = 0;
-	instance = this;
-	scene = nullptr;
-}
-
-Engine::Scene* App::CreateGame(Settings& gameConfig)
-{
-	Engine::Scene* newScene = new Engine::Scene(gameConfig);
-	// Add scene to list
-	return newScene;
-}
-
-int App::Prepare(Engine::Scene* setScene)
-{
-	scene = setScene;
-
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-	glfwWindowHint(GLFW_RESIZABLE, false);
-	
-	glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
-	int count, windowWidth, windowHeight, monitorX, monitorY;
-	// I am assuming that main monitor is in the 0 position
-	GLFWmonitor** monitors = glfwGetMonitors(&count);
-	const GLFWvidmode* videoMode = glfwGetVideoMode(monitors[0]);
-	// width: 75% of the screen
-	windowWidth = static_cast<int>(videoMode->width / 1.5);
-	// aspect ratio 16 to 9
-	windowHeight = static_cast<int>(videoMode->height / 16 * 9);
-	glfwGetMonitorPos(monitors[0], &monitorX, &monitorY);
-
-	// set the visibility window hint to false for subsequent window creation
-	glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-
-	window = glfwCreateWindow(scene->settings.screenWidth, scene->settings.screenHeight, scene->settings.name.c_str(), nullptr, nullptr);
-	glfwMakeContextCurrent(window); // Make the window's context current
-	
-	// reset the window hints to default
-	glfwDefaultWindowHints();
-
-	glfwSetWindowPos(window, monitorX + (videoMode->width - windowWidth) / 2, monitorY + (videoMode->height - windowHeight) / 2);
-
-	// show the window
-	glfwShowWindow(window);
-
-	// Hide the border of the window
-	glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_FALSE);
-
-
-	// Load OpenGL function pointers
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	App::App()
 	{
-		std::cout << "Failed to initialize GLAD" << std::endl;
-		return -1;
+		window = 0;
+		instance = this;
+		scene = nullptr;
 	}
 
 
-	// - CALLBACKS
-	// This could certainly look better--
-
-	auto callbackKey = [](GLFWwindow* window, int key, int scancode, int action, int mode)
-	{ return App::instance->GraphicsCallbackKey(window, key, scancode, action, mode); };
-	glfwSetKeyCallback(window, callbackKey);
-
-	auto callbackCursorPosition = [](GLFWwindow* window, double xpos, double ypos)
-	{ return App::instance->GraphicsCallbackCursorPosition(window, xpos, ypos); };
-	glfwSetCursorPosCallback(window, callbackCursorPosition);
-
-	auto callbackMouseButton = [](GLFWwindow* window, int button, int action, int mods)
-	{ return App::instance->GraphicsCallbackMouseButton(window, button, action, mods); };
-	glfwSetMouseButtonCallback(window, callbackMouseButton);
-
-	auto callbackFramebuffer = [](GLFWwindow* window, int width, int height)
-	{ return App::instance->GraphicsCallbackFramebuffer(window, width, height); };
-	glfwSetFramebufferSizeCallback(window, callbackFramebuffer);
-
-	auto callbackException = [](GLenum source, GLenum type, unsigned int id, GLenum severity, GLsizei length, const char* message, const void* userParam)
-	{ App::instance->GraphicsCallbackException(source, type, id, severity, length, message, userParam); };
-	//
-
-	// Configure OpenGL
-	glViewport(0, 0, scene->settings.screenWidth, scene->settings.screenHeight);
-	glEnable(GL_BLEND);
-	//glEnable(GL_DEPTH_TEST);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	// Debugging Callback
-	int flags; glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
-	if (flags & GL_CONTEXT_FLAG_DEBUG_BIT)
+	Engine::Scene* App::CreateGame(Settings& gameConfig)
 	{
-		glEnable(GL_DEBUG_OUTPUT);
-		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-		glDebugMessageCallback(callbackException, nullptr);
-		glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
+		Engine::Scene* newScene = new Engine::Scene(gameConfig);
+		// Add scene to list
+		return newScene;
 	}
 
-
-
-	return 0;
-}
-
-int App::Run(Engine::Scene* setScene)
-{
-	// Delta Time
-	double deltaTime = 0.0f;
-	double lastFrame = 0.0f;
-
-	while (!glfwWindowShouldClose(window))
+	int App::Build  (Engine::Scene* setScene)
 	{
-		// Calculate delta time
-		double currentFrame = glfwGetTime();
-		deltaTime = currentFrame - lastFrame;
-		lastFrame = currentFrame;
-		glfwPollEvents();
+		scene = setScene;
 
-		// Process the User Input
-		scene->ProcessInput(deltaTime);
+		glfwInit();
 
-		// Update game state
-		scene->Update(deltaTime);
+		// Specify the client API version that the created context must be compatible with. 
+		// The exact behavior of these hints depend on the requested client API.
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 
-		// Check the Game state to see whether to close
-		if (scene->state == Engine::Scene::State::CLOSING) glfwSetWindowShouldClose(window, true);
+		// Specifies which OpenGL profile to create the context for
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-		// Clear render
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-		
-		// Render
-		scene->Render();
+		// reset the window hints to default
+		//glfwDefaultWindowHints();
 
-		glfwSwapBuffers(window);
+		auto callbackException = [](GLenum source, GLenum type, unsigned int id, GLenum severity, GLsizei length, const char* message, const void* userParam)
+		{ App::instance->GraphicsCallbackException(source, type, id, severity, length, message, userParam); };
 
-		//* Print any errors
-		GLenum err;
-		while ((err = glGetError()) != GL_NO_ERROR)
+
+		// Load OpenGL function pointers
+		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		{
-			std::cout << "ERROR:" << err << std::endl;
-		}//*/
+			std::cout << "Failed to initialize GLAD" << std::endl;
+			return -1;
+		}
+
+		window = new Window();
+
+		// Configure OpenGL
+		glViewport(0, 0, scene->settings.screenWidth, scene->settings.screenHeight);
+		glEnable(GL_BLEND);
+		//glEnable(GL_DEPTH_TEST);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		// Debugging Callback
+		int flags; glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
+		if (flags & GL_CONTEXT_FLAG_DEBUG_BIT)
+		{
+			glEnable(GL_DEBUG_OUTPUT);
+			glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+			glDebugMessageCallback(callbackException, nullptr);
+			glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
+		}
+
+
+
+		return 0;
 	}
 
-	//delete audio;
+	int App::Run(Engine::Scene* setScene)
+	{
+		// Delta Time
+		double deltaTime = 0.0f;
+		double lastFrame = 0.0f;
 
-	// Clear all of the loaded resources 
-	Resources::Clear();
+		while (window->state == Window::State::RUNNING)
+		{
+			// Calculate delta time
+			double currentFrame = glfwGetTime();
+			deltaTime = currentFrame - lastFrame;
+			lastFrame = currentFrame;
+			glfwPollEvents();
 
-	// Terminate the OpenGL window
-	glfwTerminate();
+			// Process the User Input
+			scene->ProcessInput(deltaTime);
 
-	return 0;
-}
+			// Update game state
+			scene->Update(deltaTime);
+			 
 
-// -- Callbacks
-
-void App::GraphicsCallbackKey(GLFWwindow* window, int key, int scancode, int action, int mode)
-{
-	if (!scene->input.KeyExists(key)) return;
-	if (action != GLFW_PRESS && action != GLFW_RELEASE) return;
-
-	scene->input.SetKey(key, action == GLFW_PRESS);
-	//if (action == GLFW_PRESS) App.input.Pressed(key);
-	//else if (action == GLFW_RELEASE) App.input.Released(key);
+			// Clear render
+			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
 	
-}
 
-void App::GraphicsCallbackMouseButton(GLFWwindow* window, int button, int action, int mods)
-{
-	if (action != GLFW_PRESS && action != GLFW_RELEASE) return;
+			//* Print any errors
+			GLenum err;
+			while ((err = glGetError()) != GL_NO_ERROR)
+			{
+				std::cout << "ERROR:" << err << std::endl;
+			}//*/
+		}
 
-	//if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
-	scene->input.SetMouseButton(button, action == GLFW_PRESS);
-}
+		//delete audio;
 
-void App::GraphicsCallbackCursorPosition(GLFWwindow* window, double xpos, double ypos)
-{
-	scene->input.SetMousePosition(xpos, ypos);
-}
+		// Clear all of the loaded resources 
+		Resources::Clear();
 
-void App::GraphicsCallbackFramebuffer(GLFWwindow* window, int width, int height)
-{
-	glViewport(0, 0, width, height);
-}
+		// Terminate the OpenGL window
+		glfwTerminate();
 
+		return 0;
+	}
 
-void App::GraphicsCallbackException(GLenum source, GLenum type, unsigned int id, GLenum severity, GLsizei length, const char* message, const void* userParam)
-{
-	// Ignore non-significant error/warning codes
-	if (id == 131169 || id == 131185 || id == 131218 || id == 131204) return;
-
-	std::cout << "---------------" << std::endl;
-	std::cout << "Debug message (" << id << "): " << message << std::endl;
-
-	switch (source)
+	// -- Callbacks
+	void App::GraphicsCallbackException(GLenum source, GLenum type, unsigned int id, GLenum severity, GLsizei length, const char* message, const void* userParam)
 	{
-		case GL_DEBUG_SOURCE_API:				std::cout << "Source: API"; break;
-		case GL_DEBUG_SOURCE_WINDOW_SYSTEM:		std::cout << "Source: Window System"; break;
-		case GL_DEBUG_SOURCE_SHADER_COMPILER:	std::cout << "Source: Shader Compiler"; break;
-		case GL_DEBUG_SOURCE_THIRD_PARTY:		std::cout << "Source: Third Party"; break;
-		case GL_DEBUG_SOURCE_APPLICATION:		std::cout << "Source: Application"; break;
-		case GL_DEBUG_SOURCE_OTHER:				std::cout << "Source: Other"; break;
-	} std::cout << std::endl;
+		// Ignore non-significant error/warning codes
+		if (id == 131169 || id == 131185 || id == 131218 || id == 131204) return;
 
-	switch (type)
-	{
-		case GL_DEBUG_TYPE_ERROR:				std::cout << "Type: Error"; break;
-		case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR:	std::cout << "Type: Deprecated Behaviour"; break;
-		case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:	std::cout << "Type: Undefined Behaviour"; break;
-		case GL_DEBUG_TYPE_PORTABILITY:			std::cout << "Type: Portability"; break;
-		case GL_DEBUG_TYPE_PERFORMANCE:			std::cout << "Type: Performance"; break;
-		case GL_DEBUG_TYPE_MARKER:				std::cout << "Type: Marker"; break;
-		case GL_DEBUG_TYPE_PUSH_GROUP:			std::cout << "Type: Push Group"; break;
-		case GL_DEBUG_TYPE_POP_GROUP:			std::cout << "Type: Pop Group"; break;
-		case GL_DEBUG_TYPE_OTHER:				std::cout << "Type: Other"; break;
-	} std::cout << std::endl;
+		std::cout << "---------------" << std::endl;
+		std::cout << "Debug message (" << id << "): " << message << std::endl;
 
-	switch (severity)
-	{
-		case GL_DEBUG_SEVERITY_HIGH:			std::cout << "Severity: high"; break;
-		case GL_DEBUG_SEVERITY_MEDIUM:			std::cout << "Severity: medium"; break;
-		case GL_DEBUG_SEVERITY_LOW:				std::cout << "Severity: low"; break;
-		case GL_DEBUG_SEVERITY_NOTIFICATION:	std::cout << "Severity: notification"; break;
-	} std::cout << std::endl;
-	std::cout << std::endl;
+		switch (source)
+		{
+			case GL_DEBUG_SOURCE_API:				std::cout << "Source: API"; break;
+			case GL_DEBUG_SOURCE_WINDOW_SYSTEM:		std::cout << "Source: Window System"; break;
+			case GL_DEBUG_SOURCE_SHADER_COMPILER:	std::cout << "Source: Shader Compiler"; break;
+			case GL_DEBUG_SOURCE_THIRD_PARTY:		std::cout << "Source: Third Party"; break;
+			case GL_DEBUG_SOURCE_APPLICATION:		std::cout << "Source: Application"; break;
+			case GL_DEBUG_SOURCE_OTHER:				std::cout << "Source: Other"; break;
+		} std::cout << std::endl;
+
+		switch (type)
+		{
+			case GL_DEBUG_TYPE_ERROR:				std::cout << "Type: Error"; break;
+			case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR:	std::cout << "Type: Deprecated Behaviour"; break;
+			case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR:	std::cout << "Type: Undefined Behaviour"; break;
+			case GL_DEBUG_TYPE_PORTABILITY:			std::cout << "Type: Portability"; break;
+			case GL_DEBUG_TYPE_PERFORMANCE:			std::cout << "Type: Performance"; break;
+			case GL_DEBUG_TYPE_MARKER:				std::cout << "Type: Marker"; break;
+			case GL_DEBUG_TYPE_PUSH_GROUP:			std::cout << "Type: Push Group"; break;
+			case GL_DEBUG_TYPE_POP_GROUP:			std::cout << "Type: Pop Group"; break;
+			case GL_DEBUG_TYPE_OTHER:				std::cout << "Type: Other"; break;
+		} std::cout << std::endl;
+
+		switch (severity)
+		{
+			case GL_DEBUG_SEVERITY_HIGH:			std::cout << "Severity: high"; break;
+			case GL_DEBUG_SEVERITY_MEDIUM:			std::cout << "Severity: medium"; break;
+			case GL_DEBUG_SEVERITY_LOW:				std::cout << "Severity: low"; break;
+			case GL_DEBUG_SEVERITY_NOTIFICATION:	std::cout << "Severity: notification"; break;
+		} std::cout << std::endl;
+		std::cout << std::endl;
+	}
+
+
 }
-
-
-

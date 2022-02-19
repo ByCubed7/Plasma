@@ -219,6 +219,7 @@
     <ClCompile Include="Engine\Vector2.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Engine\Window.cpp" />
     <ClCompile Include="GhostStateComponent.cpp" />
     <ClCompile Include="GuardGhostInputDirector.cpp" />
     <ClCompile Include="Include\All.cpp">
@@ -282,6 +283,7 @@
     <ClInclude Include="Engine\Tilemaps\Tileset.h" />
     <ClInclude Include="Engine\UI\TextboxComponent.h" />
     <ClInclude Include="Engine\Vector2.h" />
+    <ClInclude Include="Engine\Window.h" />
     <ClInclude Include="GhostStateComponent.h" />
     <ClInclude Include="GuardGhostInputDirector.h" />
     <ClInclude Include="Include\All.h" />
