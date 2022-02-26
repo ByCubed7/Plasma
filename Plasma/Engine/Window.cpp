@@ -5,6 +5,9 @@
 
 #include "Window.h"
 
+#include <windows.h>
+#include <tchar.h>
+
 namespace Engine {
 	Window* Window::instance = nullptr;
 
@@ -23,6 +26,9 @@ namespace Engine {
 		glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
 		// Set the visibility window hint to false for subsequent window creation
 		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+		glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
+		glfwWindowHint(GLFW_FLOATING, GLFW_TRUE);
+		glfwWindowHint(GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
 
 		// Initialize window
 		window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
@@ -81,6 +87,13 @@ namespace Engine {
 			state = State::QUITTING;
 			glfwSetWindowShouldClose(window, true);
 		}
+
+		//
+		/*if (msg == WM_WINDOWPOSCHANGING) { 
+			if ((WNDPOS*)lparam)->hwndInsertAfter != lastWindowPos) 
+				SetWindowPos(otherWindowHwnd, hwnd, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE) 
+		}*/
+	
 	}
 
 	void Window::Title(std::string newName)
@@ -105,8 +118,18 @@ namespace Engine {
 
 		scene->input.SetKey(key, action == GLFW_PRESS);
 		//if (action == GLFW_PRESS) App.input.Pressed(key);
-		//else if (action == GLFW_RELEASE) App.input.Released(key);
+		//else if (action == GLFW_RELEASE) App.input.Releas.ed(key);
 
+		/*
+
+		// Send to window behind
+		HWND notepad = FindWindow(_T(title), NULL);
+		HWND edit = FindWindowEx(notepad, NULL, _T("Edit"), NULL);
+		SendMessage(edit, WM_SETTEXT, NULL, (LPARAM) _T("hello"));
+
+		SetForegroundWindow(notepad);
+
+		*/
 	}
 
 	void Window::GraphicsCallbackMouseButton(GLFWwindow* window, int button, int action, int mods)
@@ -115,6 +138,27 @@ namespace Engine {
 
 		//if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
 		scene->input.SetMouseButton(button, action == GLFW_PRESS);
+
+		/*/ CLICK
+		POINT pos_cursor;
+		GetCursorPos(&pos_cursor);
+
+
+		INPUT inputs[3] = { 0 };
+
+		inputs[0].type = INPUT_MOUSE;
+		inputs[0].mi.dx = pos_cursor.x; // desired X coordinate
+		inputs[0].mi.dy = pos_cursor.y; // desired Y coordinate
+		inputs[0].mi.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
+
+		inputs[1].type = INPUT_MOUSE;
+		inputs[1].mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+
+		inputs[2].type = INPUT_MOUSE;
+		inputs[2].mi.dwFlags = MOUSEEVENTF_LEFTUP;
+
+		SendInput(3, inputs, sizeof(INPUT));
+		//*/
 	}
 
 	void Window::GraphicsCallbackCursorPosition(GLFWwindow* window, double xpos, double ypos)

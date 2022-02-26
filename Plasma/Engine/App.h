@@ -21,7 +21,6 @@ namespace Engine {
 	class App
 	{
 	public:
-
 		static App* instance;
 
 		App();
@@ -42,7 +41,6 @@ namespace Engine {
 		/// <param name="scene"></param>
 		/// <returns>The result ID of the opperation, if any.</returns>
 		int Run(Engine::Scene* scene);
-
 
 	private:
 		Engine::Window* window;
