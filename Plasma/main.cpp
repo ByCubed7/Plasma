@@ -31,6 +31,7 @@
 
 int main(int argc, char* argv[])
 {
+	FreeConsole();
 	Engine::App app = Engine::App();
 
 	Settings config;

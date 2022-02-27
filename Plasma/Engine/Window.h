@@ -6,14 +6,16 @@
 #include "Vector2.h"
 #include "Scene.h"
 
-#include <glm/glm.hpp>
+#include <GLFW/glfw3.h>
+//#include <glm/glm.hpp>
+
+#include <windows.h>
 
 #include <list>
 
 // Forward declaration
 class Component;
 namespace Engine { class Scene; }
-
 //
 
 namespace Engine {
@@ -39,6 +41,12 @@ namespace Engine {
 
 		std::string title;
 		int height, width;
+		int x, y;
+
+
+		GLFWmonitor* monitor;
+		int monitorWidth, monitorHeight;
+		int monitorX, monitorY;
 
 		/// <summary>
 		/// Notifys when a physical key is pressed, released or repeats.
@@ -49,13 +57,11 @@ namespace Engine {
 		/// <param name="action">- descirbes the type of callback that has occured. Is one of GLFW_PRESS, GLFW_REPEAT or GLFW_RELEASE</param>
 		/// <param name="mode">- The modifier key flags. See: https://www.glfw.org/docs/3.3/group__mods.html </param>
 		void GraphicsCallbackKey(GLFWwindow* window, int key, int scancode, int action, int mode);
-
 		void GraphicsCallbackMouseButton(GLFWwindow* window, int button, int action, int mods);
-
 		void GraphicsCallbackCursorPosition(GLFWwindow* window, double xpos, double ypos);
-
 		void GraphicsCallbackFramebuffer(GLFWwindow* window, int width, int height);
 
+		HWND hWnd;
 	};
 
 }

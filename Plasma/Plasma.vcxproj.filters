@@ -411,5 +411,6 @@
     <None Include="Library\TiledLibrary\RapidXML\manual.html">
       <Filter>Library\TiledLibrary</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
