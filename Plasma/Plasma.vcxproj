@@ -30,26 +30,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -73,6 +73,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>$(ProjectDir)PCH;$(ProjectDir)Include;$(ProjectDir)Library\OpenAL\AL;$(ProjectDir)Library\SDL;$(ProjectDir)Library;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)Library\OpenAL\lib;$(ProjectDir)Library\SDL\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -92,12 +96,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName)_$(PlatformTarget).pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Plasma\Library\OpenAL\AL;$(SolutionDir)Plasma\Library\SDL;$(SolutionDir)Plasma\Library;$(SolutionDir)Plasma\Include;$(IncludePath)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>All.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>OpenAL32.dll;SDL2.lib;SDL2main.lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -159,6 +167,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="Library\TiledLibrary\RapidXML\manual.html" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AmbushGhostInputDirector.cpp" />
@@ -219,6 +228,7 @@
     <ClCompile Include="Engine\Vector2.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Engine\Window.cpp" />
     <ClCompile Include="GhostStateComponent.cpp" />
     <ClCompile Include="GuardGhostInputDirector.cpp" />
     <ClCompile Include="Include\All.cpp">
@@ -282,6 +292,7 @@
     <ClInclude Include="Engine\Tilemaps\Tileset.h" />
     <ClInclude Include="Engine\UI\TextboxComponent.h" />
     <ClInclude Include="Engine\Vector2.h" />
+    <ClInclude Include="Engine\Window.h" />
     <ClInclude Include="GhostStateComponent.h" />
     <ClInclude Include="GuardGhostInputDirector.h" />
     <ClInclude Include="Include\All.h" />
@@ -327,7 +338,7 @@
     <Import Project="..\packages\glm.0.9.9.800\build\native\glm.targets" Condition="Exists('..\packages\glm.0.9.9.800\build\native\glm.targets')" />
     <Import Project="..\packages\Nlohmann-JSON.3.8.0\build\native\Nlohmann-JSON.targets" Condition="Exists('..\packages\Nlohmann-JSON.3.8.0\build\native\Nlohmann-JSON.targets')" />
     <Import Project="..\packages\freetype2.2.6.0.1\build\native\freetype2.targets" Condition="Exists('..\packages\freetype2.2.6.0.1\build\native\freetype2.targets')" />
-    <Import Project="..\packages\glfw.3.3.5\build\native\glfw.targets" Condition="Exists('..\packages\glfw.3.3.5\build\native\glfw.targets')" />
+    <Import Project="..\packages\glfw.3.3.6\build\native\glfw.targets" Condition="Exists('..\packages\glfw.3.3.6\build\native\glfw.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -339,6 +350,6 @@
     <Error Condition="!Exists('..\packages\soil.1.16.0\build\native\soil.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\soil.1.16.0\build\native\soil.props'))" />
     <Error Condition="!Exists('..\packages\Nlohmann-JSON.3.8.0\build\native\Nlohmann-JSON.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Nlohmann-JSON.3.8.0\build\native\Nlohmann-JSON.targets'))" />
     <Error Condition="!Exists('..\packages\freetype2.2.6.0.1\build\native\freetype2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\freetype2.2.6.0.1\build\native\freetype2.targets'))" />
-    <Error Condition="!Exists('..\packages\glfw.3.3.5\build\native\glfw.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glfw.3.3.5\build\native\glfw.targets'))" />
+    <Error Condition="!Exists('..\packages\glfw.3.3.6\build\native\glfw.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glfw.3.3.6\build\native\glfw.targets'))" />
   </Target>
 </Project>
