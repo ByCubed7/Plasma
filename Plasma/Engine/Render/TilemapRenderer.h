@@ -13,7 +13,7 @@ namespace Tilemaps { struct TileRender; }
 
 namespace Render 
 {
-    class TilemapRenderer : Renderer
+    class TilemapRenderer : public Renderer
     {
     public:
         // Constructor (inits shaders/shapes)

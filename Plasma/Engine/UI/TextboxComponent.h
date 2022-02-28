@@ -8,12 +8,12 @@
 #include "../Dispatcher.h"
 
 namespace UI {
-	class TextboxComponent : public Component
+	class TextboxComponent : public Engine::Component
 	{
 	public:
 		//struct NameEvent;
 
-		TextboxComponent(GameObject* gameObject, std::string name = "TextboxComponent");
+		TextboxComponent(Engine::GameObject* gameObject, std::string name = "TextboxComponent");
 
 		std::string text;
 

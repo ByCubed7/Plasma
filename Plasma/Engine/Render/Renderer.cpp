@@ -19,4 +19,9 @@ namespace Render {
         // Tell OpenGL to free up the memory used by the VAO.
         glDeleteVertexArrays(1, &vertexArrayObject);
     }
+
+    Shader& Renderer::GetShader()
+    {
+        return shader;
+    }
 }

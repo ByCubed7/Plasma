@@ -31,7 +31,7 @@ unsigned int Resources::defaultFontSize = 24;
 
 // Shader
 
-Shader Resources::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name)
+Shader& Resources::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name)
 {
     Shaders[name] = LoadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
     return Shaders[name];
@@ -383,7 +383,7 @@ Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShade
     const char* gShaderCode = geometryCode.c_str(); // <-- Could raise a bug in the future
     
     // Create shader object from source code
-    Shader shader;
+    Shader shader = Shader();
     shader.Compile(vShaderCode, fShaderCode, gShaderFile != nullptr ? gShaderCode : nullptr);
     
     return shader;

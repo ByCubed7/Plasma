@@ -16,10 +16,10 @@ class GameObject;
 namespace Engine { class Scene; }
 namespace Render { struct Renderers; }
 
-class CharacterControllerComponent : public Component
+class CharacterControllerComponent : public Engine::Component
 {
 public:
-	CharacterControllerComponent(GameObject* gameObject, std::string name = "CharacterControllerComponent");
+	CharacterControllerComponent(Engine::GameObject* gameObject, std::string name = "CharacterControllerComponent");
 	void Update(double delta, Engine::Scene& game) override;
 };
 

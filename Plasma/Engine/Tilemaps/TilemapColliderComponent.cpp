@@ -8,7 +8,7 @@
 #include "../GameObject.h"
 #include "../Scene.h"
 
-TilemapColliderComponent::TilemapColliderComponent(GameObject* gameObject, std::string name)
+TilemapColliderComponent::TilemapColliderComponent(Engine::GameObject* gameObject, std::string name)
 	: Component(gameObject, name)
 {
 }

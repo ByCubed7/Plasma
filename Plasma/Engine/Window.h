@@ -11,14 +11,16 @@
 
 #include <windows.h>
 
-#include <list>
-
 // Forward declaration
-class Component;
-namespace Engine { class Scene; }
-//
 
-namespace Engine {
+
+namespace Engine 
+{
+	// Forward declaration
+	class Component;
+	class Scene;
+	class App;
+
 	class Window : public Object
 	{
 	public:
@@ -28,21 +30,25 @@ namespace Engine {
 		static Window* instance;
 
 		// Constructors
-		Window(int width, int height);
+		Window(App* app);
 
 		void LoadScene(Scene* newScene);
 		void Render();
 		void Title(std::string newName);
-		void Resize(int newWidth, int newHeight);
+
+		void UpdateSize();
+		int GetPPU();
 
 	private:
+		App* app;
+
+		int PPU;
+
 		GLFWwindow* window;
 		Engine::Scene* scene;
 
 		std::string title;
-		int height, width;
 		int x, y;
-
 
 		GLFWmonitor* monitor;
 		int monitorWidth, monitorHeight;

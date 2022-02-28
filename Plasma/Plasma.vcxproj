@@ -170,7 +170,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AmbushGhostInputDirector.cpp" />
     <ClCompile Include="Engine\AABB.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
     </ClCompile>
@@ -214,9 +213,6 @@
     <ClCompile Include="Engine\Scene.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Engine\Settings.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="Engine\Tilemaps\Tile.cpp" />
     <ClCompile Include="Engine\Tilemaps\TileLayer.cpp" />
     <ClCompile Include="Engine\Tilemaps\Tilemap.cpp" />
@@ -229,12 +225,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Engine\Window.cpp" />
-    <ClCompile Include="GhostStateComponent.cpp" />
-    <ClCompile Include="GuardGhostInputDirector.cpp" />
     <ClCompile Include="Include\All.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="InputDirector.cpp" />
     <ClCompile Include="Library\glad.c" />
     <ClCompile Include="Library\TiledLibrary\TiledLayer.cpp" />
     <ClCompile Include="Library\TiledLibrary\TiledLoader.cpp" />
@@ -242,15 +235,11 @@
     <ClCompile Include="Library\TiledLibrary\TiledSet.cpp" />
     <ClCompile Include="Library\TiledLibrary\TiledTile.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Muncher.cpp" />
-    <ClCompile Include="PlayerCollisionEventManager.cpp" />
-    <ClCompile Include="PlayerInputDirector.cpp" />
-    <ClCompile Include="ScoreTracker.cpp" />
-    <ClCompile Include="TileLockedController.cpp" />
+    <ClCompile Include="TargetMouseComponent.cpp" />
+    <ClCompile Include="WalkComponent.cpp" />
     <ClCompile Include="WarpComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AmbushGhostInputDirector.h" />
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
     <ClInclude Include="Engine\Audio\AudioBuffer.h" />
@@ -282,7 +271,6 @@
     <ClInclude Include="Engine\Resource.h" />
     <ClInclude Include="Engine\Resources.h" />
     <ClInclude Include="Engine\Scene.h" />
-    <ClInclude Include="Engine\Settings.h" />
     <ClInclude Include="Engine\Tilemaps\Tile.h" />
     <ClInclude Include="Engine\Tilemaps\TileLayer.h" />
     <ClInclude Include="Engine\Tilemaps\Tilemap.h" />
@@ -293,8 +281,6 @@
     <ClInclude Include="Engine\UI\TextboxComponent.h" />
     <ClInclude Include="Engine\Vector2.h" />
     <ClInclude Include="Engine\Window.h" />
-    <ClInclude Include="GhostStateComponent.h" />
-    <ClInclude Include="GuardGhostInputDirector.h" />
     <ClInclude Include="Include\All.h" />
     <ClInclude Include="Include\Audio.h">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -305,7 +291,6 @@
     <ClInclude Include="Include\Render.h" />
     <ClInclude Include="Include\Tilemaps.h" />
     <ClInclude Include="Include\UI.h" />
-    <ClInclude Include="InputDirector.h" />
     <ClInclude Include="Library\glad.h" />
     <ClInclude Include="Library\khrplatform.h" />
     <ClInclude Include="Library\OpenAL\AL\al.h" />
@@ -324,11 +309,8 @@
     <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml_utils.hpp" />
     <ClInclude Include="Library\TiledLibrary\TiledSet.h" />
     <ClInclude Include="Library\TiledLibrary\TiledTile.h" />
-    <ClInclude Include="Muncher.h" />
-    <ClInclude Include="PlayerCollisionEventManager.h" />
-    <ClInclude Include="PlayerInputDirector.h" />
-    <ClInclude Include="ScoreTracker.h" />
-    <ClInclude Include="TileLockedController.h" />
+    <ClInclude Include="TargetMouseComponent.h" />
+    <ClInclude Include="WalkComponent.h" />
     <ClInclude Include="WarpComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

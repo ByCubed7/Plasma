@@ -11,7 +11,7 @@ class Texture2D;
 
 namespace Render
 {
-    class SpriteRenderer : Renderer
+    class SpriteRenderer : public Renderer
     {
     public:
         // Constructor (inits shaders/shapes)

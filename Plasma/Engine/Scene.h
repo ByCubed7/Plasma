@@ -3,7 +3,6 @@
 #pragma once
 
 #include "Input.h"
-#include "Settings.h"
 #include "Components/BoxColliderComponent.h"
 #include "Audio/AudioScene.h"
 #include "Render/Renderers.h"
@@ -11,15 +10,20 @@
 #include <list>
 
 // Forward declaration
-class GameObject;
-class Component;
 class BoxColliderComponent;
 
 namespace Audio { struct Scene; }
 namespace Render { struct Renderers; }
 
 
-namespace Engine {
+namespace Engine 
+{
+	// Forward declaration
+	class App;
+	class Window;
+	class GameObject;
+	class Component;
+
 	/// <summary>
 	/// Game holds all game-related state and functionality.
 	/// Combines all game-related data into a single class for easy access to 
@@ -30,16 +34,13 @@ namespace Engine {
 	public:
 		enum class State { ACTIVE, PAUSED, CLOSING };
 
+		App* app;
+
 		float timeStep = 1.0f;
 
 		// The game state
 		State state;
-
 		Input input;
-		Settings settings;
-
-	
-		unsigned int width, height;
 
 		Audio::Scene* audio;
 		Render::Renderers* renderer;
@@ -51,8 +52,10 @@ namespace Engine {
 		std::list<BoxColliderComponent*> colliders;
 		std::map<BoxColliderComponent*, BoxColliderComponent*> collidersColliding;
 
+		Window* GetWindow();
+
 		// Constructor
-		Scene(Settings& setting);
+		Scene(App* app);
 	
 		// Destructor
 		~Scene();
@@ -71,7 +74,9 @@ namespace Engine {
 		/// <summary>
 		/// Initializes the DEFAULT shaders, textures, projection, renderers and fonts.
 		/// </summary>
-		void Initialize();
+		void Load();
+
+		void UpdateProjection();
 
 		/// <summary>
 		/// Called every frame. Updates all components, collisions and events.

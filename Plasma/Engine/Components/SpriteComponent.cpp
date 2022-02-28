@@ -8,9 +8,9 @@
 #include "../GameObject.h"
 #include "../Component.h"
 #include "../Vector2.h"
-#include "../Settings.h"
+#include "../Window.h"
 
-SpriteComponent::SpriteComponent(GameObject* gameObject, std::string name)
+SpriteComponent::SpriteComponent(Engine::GameObject* gameObject, std::string name)
     : Component(gameObject, name)
 {
     color = { 1, 1, 1 };
@@ -27,7 +27,7 @@ SpriteComponent::SpriteComponent(GameObject* gameObject, std::string name)
 
 void SpriteComponent::Draw(Render::Renderers& renderer)
 {
-    int ppu = gameObject->scene->settings.PPU;
+    int ppu = gameObject->scene->GetWindow()->GetPPU();
 
     renderer.sprite.DrawSprite(
         this->sprite,
@@ -50,7 +50,7 @@ AABB SpriteComponent::GetBounds() { return bounds; }
 // Update bounds
 void SpriteComponent::CalcBounds() 
 {
-    int ppu = gameObject->scene->settings.PPU;
+    int ppu = gameObject->scene->GetWindow()->GetPPU();
     Vector2 upperBound = Vector2(ppu) / 2;
     Vector2 lowerBound = Vector2(-ppu) / 2;
     this->bounds = AABB(lowerBound, upperBound);

@@ -5,7 +5,7 @@
 
 #include "BoxColliderComponent.h"
 
-BoxColliderComponent::BoxColliderComponent(GameObject* gameObject, std::string name)
+BoxColliderComponent::BoxColliderComponent(Engine::GameObject* gameObject, std::string name)
     : Component(gameObject, name)
 {
 	bounds = AABB();

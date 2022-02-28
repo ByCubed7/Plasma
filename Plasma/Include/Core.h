@@ -18,9 +18,9 @@
 
 // Other
 #include "../Engine/Scene.h"
-#include "../Engine/Settings.h"
 #include "../Engine/Input.h"
 #include "../Engine/App.h"
+//#include "../Engine/Window.h"
 
 // Soon to be gone
 #include "../Engine/Resources.h"

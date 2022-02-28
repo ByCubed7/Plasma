@@ -15,7 +15,7 @@ namespace Render
     /// FreeType library. A single font is loaded, processed into a list of Character
     /// items for later rendering.
     /// </summary>
-    class TextRenderer : Renderer
+    class TextRenderer : public Renderer
     {
     public:
         // Constructor

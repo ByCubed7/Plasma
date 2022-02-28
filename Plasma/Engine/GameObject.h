@@ -4,43 +4,46 @@
 
 #include "Object.h"
 #include "Vector2.h"
-#include "Scene.h"
 
 #include <glm/glm.hpp>
 
 #include <list>
 
-// Forward declaration
-class Component;
-namespace Engine { class Scene; }
-
-class GameObject : public Object
+namespace Engine 
 {
-public:
-	Engine::Scene* scene;
+	// Forward declaration
+	class Scene;
+	class Component;
 
-	Vector2 position;
-	float rotation;
-	Vector2 scale;
 
-	//*
-	std::list<Component*> components;
+	class GameObject : public Object
+	{
+	public:
+		Engine::Scene* scene;
 
-	Component* AddComponent(Component* component);
-	Component* GetComponent(std::string componentName);
-	bool HasComponent(std::string componentName);
-	void RemoveComponent(Component *component);
+		Vector2 position;
+		float rotation;
+		Vector2 scale;
 
-	//*/
+		//*
+		std::list<Component*> components;
 
-	bool isSolid;
-	bool destroyed;
+		Component* AddComponent(Component* component);
+		Component* GetComponent(std::string componentName);
+		bool HasComponent(std::string componentName);
+		void RemoveComponent(Component* component);
 
-	// Constructors
-	GameObject(Engine::Scene* scene);
-	//GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color);
+		//*/
 
-	// Operator Overrides
-	operator bool();
-};
+		bool isSolid;
+		bool destroyed;
 
+		// Constructors
+		GameObject(Engine::Scene* scene);
+		//GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color);
+
+		// Operator Overrides
+		operator bool();
+	};
+
+}

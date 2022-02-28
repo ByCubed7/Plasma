@@ -5,68 +5,77 @@
 
 #include "Window.h"
 
+#include "App.h"
+
+#include <GLFW/glfw3.h>
+//#include <glm/glm.hpp>
+
 #define GLFW_EXPOSE_NATIVE_WIN32
 #include <GLFW/glfw3native.h>
 
+#include <windows.h>
 #include <tchar.h>
 
 namespace Engine {
 	Window* Window::instance = nullptr;
 
-	Window::Window(int width, int height) : Object("Window")
+	Window::Window(App* app) : Object("Window")
 	{
 		instance = this;
+		this->app = app;
+
 		title = "Title";
 
 		state = State::RUNNING;
 
-		this->width = width;
-		this->height = height;
 		x = 0;
 		y = 0;
 
+		PPU = 200;
+
+
 		// See: https://gist.github.com/esmitt/e722265936f0ebe96fc166bdf1fff41b
 
-		glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
+		//glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
 		// Set the visibility window hint to false for subsequent window creation
-		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+		//glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 
 		// Specifies whether the window will be given input focus when glfwShowWindow is called
-		glfwWindowHint(GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
+		//glfwWindowHint(GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
 		
 		// By default, newly created windows are given input focus. But we don't want this.
-		glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
+		//glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
 
 		// Specifies whether the windowed mode window will be floating above other regular windows, also called topmost or always-on-top.
 		// Stops from hiding behind windows when not focused
-		glfwWindowHint(GLFW_FLOATING, GLFW_TRUE);
+		//glfwWindowHint(GLFW_FLOATING, GLFW_TRUE);
+
 
 
 		// Initialize window
-		window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
+		Vector2 size = app->GetSize();
+		window = glfwCreateWindow(size.x, size.y, title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window); // Make the window's context 
-		glfwSetWindowPos(window, x, y);
-		//glfwSetWindowSize(window, width, height);
-		glfwShowWindow(window);
+		//glfwSetWindowAspectRatio(window, 1, 1);
+		//glfwShowWindow(window);
 
-		glfwSetWindowAttrib(window, GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-		// Hide the border of the window
-		glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_FALSE);
-
-		// Specifies whether the windowed mode window will be resizable by the user.
-		//glfwSetWindowAttrib(window, GLFW_RESIZABLE, false);
-
-		// Done setting up the window, reset the window hints.
-		glfwDefaultWindowHints();
-	
-
-		// - - MONITOR
+		/*/ - - MONITOR
 		monitor = glfwGetPrimaryMonitor();
 		glfwGetMonitorWorkarea(monitor, &monitorX, &monitorY, &monitorWidth, &monitorHeight);
 
-		// Set window to cover monitor
-		Resize(monitorWidth, monitorHeight);
+		//glfwMaximizeWindow(window);
+		width = monitorWidth;
+		height = monitorHeight;
+		glfwSetWindowSize(window, width, height);
+
+		glfwSetWindowPos(window, 0, 0);
+		glfwShowWindow(window);
+		//*/
+
+		// Hide the border of the window
+		//glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_FALSE);
+
 
 
 		// - REGISTER CALLBACKS
@@ -97,7 +106,7 @@ namespace Engine {
 		long style = GetWindowLong(hWnd, GWL_STYLE);
 		long exstyle = GetWindowLong(hWnd, GWL_EXSTYLE);
 
-		// - - IGNORE FOCUS
+		/*/ - - IGNORE FOCUS
 		// This took months to work out--
 		// This tells the window to ignore all focus calls, causing them to fallback behind the window
 		// https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getwindowlonga
@@ -107,19 +116,30 @@ namespace Engine {
 		// 524288 (0x80000) is WS_EX_LAYERED
 		//int originalWindowStyle = GetWindowLong(hwnd, -20);
 		exstyle |= WS_EX_LAYERED | WS_EX_TRANSPARENT;
+		//*/
 
 
-		// - - HIDE FROM TASKBAR
+		/*/ - - HIDE FROM TASKBAR
 		// https://stackoverflow.com/questions/7219063/win32-how-to-hide-3rd-party-windows-in-taskbar-by-hwnd
 		exstyle &= ~(WS_VISIBLE);    // this works - window become invisible 
 		exstyle |= WS_EX_TOOLWINDOW;   // flags don't work - windows remains in taskbar
 		exstyle &= ~(WS_EX_APPWINDOW);
+		//*/
 
-		// Update Style
+		/*/ Update Style
 		ShowWindow(hWnd, SW_HIDE); // hide the window
 		SetWindowLong(hWnd, GWL_STYLE, style);
 		SetWindowLong(hWnd, GWL_EXSTYLE, exstyle);
 		ShowWindow(hWnd, SW_SHOW); // show the window for the new style to come into effect
+		//*/
+
+
+		// Done setting up the window, reset the window hints.
+		glfwDefaultWindowHints();
+
+		//gladLoadGL();
+
+
 	}
 
 	void Window::LoadScene(Scene* newScene)
@@ -132,11 +152,22 @@ namespace Engine {
 		scene->Render();
 		glfwSwapBuffers(window);
 
+		// Get mouse position
+		//double xpos, ypos;
+		//glfwGetCursorPos(window, &xpos, &ypos);
+		//std::cout << xpos << ":" << ypos << std::endl;
+		//scene->input.SetMousePosition(xpos/2, ypos/2);
+		//scene->input.SetMousePosition(20, 20);
+
 		// Check the Game state to see whether to close
 		if (scene->state == Scene::State::CLOSING) {
 			state = State::QUITTING;
 			glfwSetWindowShouldClose(window, true);
 		}
+
+		GLenum err;
+		while ((err = glGetError()) != GL_NO_ERROR)
+			std::cout << "[Window::Render] OpenGL Error: " << err << std::endl;
 	}
 
 	void Window::Title(std::string newName)
@@ -145,12 +176,15 @@ namespace Engine {
 		glfwSetWindowTitle(window, title.c_str());
 	}
 
-	void Window::Resize(int newWidth, int newHeight)
+	void Window::UpdateSize()
 	{
-		// BUG: Fails to update if called after glViewport has been set
-		width = newWidth;
-		height = newHeight;
-		glfwSetWindowSize(window, width, height); 
+		Vector2 size = app->GetSize();
+		glfwSetWindowSize(window, size.x, size.y);
+	}
+
+	int Window::GetPPU()
+	{
+		return PPU;
 	}
 
 	//
@@ -174,6 +208,7 @@ namespace Engine {
 		SetForegroundWindow(notepad);
 
 		*/
+
 	}
 
 	void Window::GraphicsCallbackMouseButton(GLFWwindow* window, int button, int action, int mods)
@@ -186,7 +221,7 @@ namespace Engine {
 
 	void Window::GraphicsCallbackCursorPosition(GLFWwindow* window, double xpos, double ypos)
 	{
-		scene->input.SetMousePosition(xpos, ypos);
+		//scene->input.SetMousePosition(xpos, ypos);
 	}
 
 	void Window::GraphicsCallbackFramebuffer(GLFWwindow* window, int width, int height)

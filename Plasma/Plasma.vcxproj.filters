@@ -120,9 +120,6 @@
     <ClCompile Include="Engine\Scene.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Settings.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Vector2.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -134,39 +131,6 @@
     </ClCompile>
     <ClCompile Include="Engine\Component.cpp">
       <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="InputDirector.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Muncher.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AmbushGhostInputDirector.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GhostStateComponent.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GuardGhostInputDirector.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerInputDirector.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreTracker.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TileLockedController.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WarpComponent.cpp">
-      <Filter>Game Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerCollisionEventManager.cpp">
-      <Filter>Game Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Resource.cpp">
       <Filter>Engine</Filter>
@@ -192,6 +156,18 @@
     <ClCompile Include="Include\All.cpp" />
     <ClCompile Include="Engine\Window.cpp">
       <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="WarpComponent.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WalkComponent.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TargetMouseComponent.cpp">
+      <Filter>Game Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -348,9 +324,6 @@
     <ClInclude Include="Engine\Scene.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Settings.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Vector2.h">
       <Filter>Engine</Filter>
     </ClInclude>
@@ -359,36 +332,6 @@
     </ClInclude>
     <ClInclude Include="Engine\App.h">
       <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="GuardGhostInputDirector.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InputDirector.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Muncher.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AmbushGhostInputDirector.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GhostStateComponent.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerCollisionEventManager.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerInputDirector.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ScoreTracker.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TileLockedController.h">
-      <Filter>Game Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WarpComponent.h">
-      <Filter>Game Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Render\TilemapRenderer.h">
       <Filter>Engine\Render</Filter>
@@ -405,6 +348,15 @@
     <ClInclude Include="Include\All.h" />
     <ClInclude Include="Engine\Window.h">
       <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="WarpComponent.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WalkComponent.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TargetMouseComponent.h">
+      <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

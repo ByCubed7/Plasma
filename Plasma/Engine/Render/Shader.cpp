@@ -15,8 +15,8 @@ Shader::Shader()
 
 Shader::~Shader()
 {
-    //glDeleteProgram(program);
-    //program = 0;
+    glDeleteProgram(program);
+    program = 0;
 }
 
 Shader& Shader::Use()

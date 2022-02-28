@@ -1,11 +1,11 @@
 // By @ByCubed7 on Twitter
 
 #include "All.h"
-
 #include "WarpComponent.h"
+#include "Engine/Window.h"
 
 
-WarpComponent::WarpComponent(GameObject* gameObject, std::string name)
+WarpComponent::WarpComponent(Engine::GameObject* gameObject, std::string name)
     : Component(gameObject, name)
 {
     warpX = true;
@@ -14,16 +14,17 @@ WarpComponent::WarpComponent(GameObject* gameObject, std::string name)
 
 void WarpComponent::Update(double delta, Engine::Scene& game)
 {
-    if (warpX) {
+    int ppu = gameObject->scene->GetWindow()->GetPPU();
 
-        int maxLeftSide = game.width + offset.x - gameObject->scale.x * game.settings.PPU;
+    if (warpX) {
+        int maxLeftSide = game.app->GetSize().x + offset.x - gameObject->scale.x * ppu;
         
         if (gameObject->position.x < 0 - offset.x) gameObject->position.x = maxLeftSide;
         if (gameObject->position.x > maxLeftSide) gameObject->position.x = 0 - offset.x;
     }
 
     if (warpY) {
-        int maxTopSide = game.height + offset.y - gameObject->scale.y * game.settings.PPU;
+        int maxTopSide = game.app->GetSize().y + offset.y - gameObject->scale.y * ppu;
 
         if (gameObject->position.y < 0 - offset.x) gameObject->position.y = maxTopSide;
         if (gameObject->position.y > maxTopSide) gameObject->position.y = 0 - offset.x;
