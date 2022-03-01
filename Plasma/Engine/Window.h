@@ -36,8 +36,10 @@ namespace Engine
 		void Render();
 		void Title(std::string newName);
 
-		void UpdateSize();
 		int GetPPU();
+		Vector2 GetMonitorSize();
+
+		void UpdateSize();
 
 	private:
 		App* app;

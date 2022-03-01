@@ -270,6 +270,7 @@
     <ClInclude Include="Engine\Render\TilemapRenderer.h" />
     <ClInclude Include="Engine\Resource.h" />
     <ClInclude Include="Engine\Resources.h" />
+    <ClInclude Include="Engine\Resources\ShaderResource.h" />
     <ClInclude Include="Engine\Scene.h" />
     <ClInclude Include="Engine\Tilemaps\Tile.h" />
     <ClInclude Include="Engine\Tilemaps\TileLayer.h" />

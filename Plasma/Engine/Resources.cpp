@@ -31,7 +31,7 @@ unsigned int Resources::defaultFontSize = 24;
 
 // Shader
 
-Shader& Resources::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name)
+Shader Resources::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name)
 {
     Shaders[name] = LoadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
     return Shaders[name];

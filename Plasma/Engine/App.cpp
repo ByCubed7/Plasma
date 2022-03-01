@@ -76,10 +76,9 @@ namespace Engine {
 
 	int App::Run(Engine::Scene* setScene)
 	{
-		scene->Load();
 		window->LoadScene(scene);
 
-		SetSize(1000);
+		SetSize(window->GetMonitorSize());
 
 		// Delta Time
 		double deltaTime = 0.0f;
@@ -101,12 +100,10 @@ namespace Engine {
 
 			window->Render();
 			 
-
 			// Clear render
-			glClearColor(0.4f, 0.0f, 0.0f, 0.1f);
+			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 	
-
 			//* Print any errors
 			GLenum err;
 			while ((err = glGetError()) != GL_NO_ERROR)

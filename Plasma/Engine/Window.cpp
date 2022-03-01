@@ -31,50 +31,48 @@ namespace Engine {
 		x = 0;
 		y = 0;
 
-		PPU = 200;
+		PPU = 20;
 
 
 		// See: https://gist.github.com/esmitt/e722265936f0ebe96fc166bdf1fff41b
 
-		//glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
+		glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
+		
 		// Set the visibility window hint to false for subsequent window creation
-		//glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 
 		// Specifies whether the window will be given input focus when glfwShowWindow is called
-		//glfwWindowHint(GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
+		glfwWindowHint(GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
 		
 		// By default, newly created windows are given input focus. But we don't want this.
-		//glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
+		glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
 
 		// Specifies whether the windowed mode window will be floating above other regular windows, also called topmost or always-on-top.
 		// Stops from hiding behind windows when not focused
-		//glfwWindowHint(GLFW_FLOATING, GLFW_TRUE);
+		glfwWindowHint(GLFW_FLOATING, GLFW_TRUE);
 
 
 
 		// Initialize window
 		Vector2 size = app->GetSize();
-		window = glfwCreateWindow(size.x, size.y, title.c_str(), nullptr, nullptr);
+		window = glfwCreateWindow((int)size.x, (int)size.y, title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window); // Make the window's context 
-		//glfwSetWindowAspectRatio(window, 1, 1);
-		//glfwShowWindow(window);
+		glfwSetWindowAspectRatio(window, 1, 1);
+		glfwShowWindow(window);
 
 
-		/*/ - - MONITOR
+		// - - MONITOR
 		monitor = glfwGetPrimaryMonitor();
 		glfwGetMonitorWorkarea(monitor, &monitorX, &monitorY, &monitorWidth, &monitorHeight);
 
 		//glfwMaximizeWindow(window);
-		width = monitorWidth;
-		height = monitorHeight;
-		glfwSetWindowSize(window, width, height);
 
 		glfwSetWindowPos(window, 0, 0);
 		glfwShowWindow(window);
 		//*/
 
 		// Hide the border of the window
-		//glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_FALSE);
+		glfwSetWindowAttrib(window, GLFW_DECORATED, GLFW_FALSE);
 
 
 
@@ -106,27 +104,25 @@ namespace Engine {
 		long style = GetWindowLong(hWnd, GWL_STYLE);
 		long exstyle = GetWindowLong(hWnd, GWL_EXSTYLE);
 
-		/*/ - - IGNORE FOCUS
+		// - - IGNORE FOCUS
 		// This took months to work out--
 		// This tells the window to ignore all focus calls, causing them to fallback behind the window
 		// https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getwindowlonga
 		// https://docs.microsoft.com/en-us/windows/win32/winmsg/extended-window-
-		// -20 is the offset for the Extended Window Styles information. 
 		// 32	  (0x20)    is WS_EX_TRANSPARENT
 		// 524288 (0x80000) is WS_EX_LAYERED
-		//int originalWindowStyle = GetWindowLong(hwnd, -20);
 		exstyle |= WS_EX_LAYERED | WS_EX_TRANSPARENT;
 		//*/
 
 
-		/*/ - - HIDE FROM TASKBAR
+		// - - HIDE FROM TASKBAR
 		// https://stackoverflow.com/questions/7219063/win32-how-to-hide-3rd-party-windows-in-taskbar-by-hwnd
 		exstyle &= ~(WS_VISIBLE);    // this works - window become invisible 
 		exstyle |= WS_EX_TOOLWINDOW;   // flags don't work - windows remains in taskbar
 		exstyle &= ~(WS_EX_APPWINDOW);
 		//*/
 
-		/*/ Update Style
+		// Update Style
 		ShowWindow(hWnd, SW_HIDE); // hide the window
 		SetWindowLong(hWnd, GWL_STYLE, style);
 		SetWindowLong(hWnd, GWL_EXSTYLE, exstyle);
@@ -135,11 +131,12 @@ namespace Engine {
 
 
 		// Done setting up the window, reset the window hints.
-		glfwDefaultWindowHints();
+		//glfwDefaultWindowHints();
 
-		//gladLoadGL();
+		gladLoadGL();
 
-
+		//UpdateSize();
+		std::cout << "[Window::Ctor] END " << std::endl;
 	}
 
 	void Window::LoadScene(Scene* newScene)
@@ -153,10 +150,10 @@ namespace Engine {
 		glfwSwapBuffers(window);
 
 		// Get mouse position
-		//double xpos, ypos;
-		//glfwGetCursorPos(window, &xpos, &ypos);
+		double xpos, ypos;
+		glfwGetCursorPos(window, &xpos, &ypos);
 		//std::cout << xpos << ":" << ypos << std::endl;
-		//scene->input.SetMousePosition(xpos/2, ypos/2);
+		scene->input.SetMousePosition(xpos, ypos);
 		//scene->input.SetMousePosition(20, 20);
 
 		// Check the Game state to see whether to close
@@ -179,12 +176,17 @@ namespace Engine {
 	void Window::UpdateSize()
 	{
 		Vector2 size = app->GetSize();
-		glfwSetWindowSize(window, size.x, size.y);
+		glfwSetWindowSize(window, (int)size.x, (int)size.y);
 	}
 
 	int Window::GetPPU()
 	{
 		return PPU;
+	}
+
+	Vector2 Window::GetMonitorSize()
+	{
+		return Vector2(monitorWidth, monitorHeight);
 	}
 
 	//
@@ -226,6 +228,6 @@ namespace Engine {
 
 	void Window::GraphicsCallbackFramebuffer(GLFWwindow* window, int width, int height)
 	{
-		glViewport(0, 0, width, height);
+		//glViewport(0, 0, width, height);
 	}
 }

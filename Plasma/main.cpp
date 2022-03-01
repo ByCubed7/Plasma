@@ -24,7 +24,7 @@
 
 int main(int argc, char* argv[])
 {
-	//FreeConsole();
+	FreeConsole();
 	Engine::App app = Engine::App();
 	Engine::Scene* scene = app.CreateGame();
 	//Scene scene = pacman.scene; // Get the default scene
@@ -54,13 +54,13 @@ int main(int argc, char* argv[])
 	//cout << "No longer playing" << endl;
 
 	Engine::GameObject* playerGO = scene->CreateGameObject();
-	playerGO->position = Vector2(100, 100);
+	playerGO->position = Vector2(0, 0);
 	playerGO->scale = Vector2(4, 4);
 
 	SpriteComponent* spriteComponent = new SpriteComponent(playerGO);
 	spriteComponent
 		->Set(Resources::GetTexture("capybara"))
-		->AnimationSpeed(4)
+		->AnimationSpeed(8)
 		->SetColour({ 255,255,255 });
 
 	WalkComponent* walkComponent = new WalkComponent(playerGO);

@@ -31,6 +31,9 @@
     <Filter Include="Engine\UI">
       <UniqueIdentifier>{40bf3fa0-866f-4e69-916c-fe9bad77f25e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Resources">
+      <UniqueIdentifier>{37d2ebe2-ec4e-4fde-8e5f-d19cf1cc0dd7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Library\glad.c">
@@ -357,6 +360,9 @@
     </ClInclude>
     <ClInclude Include="TargetMouseComponent.h">
       <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Resources\ShaderResource.h">
+      <Filter>Engine\Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,9 +2,12 @@
 
 #pragma once
 
-#include "Resource.h"
-#include "Shader.h"
+#include "../Resource.h"
+#include "../Render/Shader.h"
 
+#include <iostream>
+#include <fstream>
+#include <sstream>
 #include <string>
 
 // █▀ █ █ ▄▀█ █▀▄ █▀▀ █▀█
@@ -61,7 +64,7 @@ private:
         }
         const char* vShaderCode = vertexCode.c_str();
         const char* fShaderCode = fragmentCode.c_str();
-        const char* gShaderCode = geometryCode.c_str(); // <-- Could raise a bug in the future
+        const char* gShaderCode = geometryCode.c_str(); // <-- Could raise a bug?
 
         // Create shader object from source code
         Shader shader;

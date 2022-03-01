@@ -100,7 +100,6 @@ namespace Engine
 
 	void Scene::UpdateProjection()
 	{
-		return;
 		// As this is 2D we don't have to worry about perspective, use orthographic projection
 		Vector2 size = app->GetSize();
 		glm::mat4 projection = glm::ortho(0.0f, (float)size.x, (float)size.y, 0.0f, -1.0f, 1.0f);

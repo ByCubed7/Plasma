@@ -17,8 +17,9 @@ WalkComponent::WalkComponent(Engine::GameObject* gameObject, std::string name)
 void WalkComponent::Update(double delta, Engine::Scene& game)
 {
 	//std::cout << absoluteTarget.ToString() << std::endl;
-	gameObject->position = absoluteTarget;
-	return;
+	//gameObject->position = absoluteTarget;
+	//return;
+
 	float absoluteDistance = Vector2::Distance(absoluteTarget, target);
 	float distance = Vector2::Distance(target, gameObject->position);
 
@@ -38,7 +39,7 @@ void WalkComponent::Update(double delta, Engine::Scene& game)
 		stepCount++;
 
 	gameObject->rotation = sin(wobble.x * stepCount) * wobble.y;
-	std::cout << stepCount << std::endl;
+	//std::cout << stepCount << std::endl;
 }
 
 WalkComponent* WalkComponent::SetTargetPosition(Vector2 position)
