@@ -234,6 +234,7 @@
     <ClCompile Include="Library\TiledLibrary\TiledMap.cpp" />
     <ClCompile Include="Library\TiledLibrary\TiledSet.cpp" />
     <ClCompile Include="Library\TiledLibrary\TiledTile.cpp" />
+    <ClCompile Include="LockComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TargetMouseComponent.cpp" />
     <ClCompile Include="WalkComponent.cpp" />
@@ -310,6 +311,7 @@
     <ClInclude Include="Library\TiledLibrary\RapidXML\rapidxml_utils.hpp" />
     <ClInclude Include="Library\TiledLibrary\TiledSet.h" />
     <ClInclude Include="Library\TiledLibrary\TiledTile.h" />
+    <ClInclude Include="LockComponent.h" />
     <ClInclude Include="TargetMouseComponent.h" />
     <ClInclude Include="WalkComponent.h" />
     <ClInclude Include="WarpComponent.h" />

@@ -29,6 +29,7 @@ public:
 	Texture2D sprite;
 	int spriteFrame;
 	int spriteSize;
+	Vector2 pivot;
 
 	// Set the texture
 	SpriteComponent* Set(Texture2D sprite);

@@ -13,6 +13,7 @@
 #include "WarpComponent.h"
 #include "WalkComponent.h"
 #include "TargetMouseComponent.h"
+#include "LockComponent.h"
 
 #include <GLFW/glfw3.h>
 
@@ -36,6 +37,7 @@ int main(int argc, char* argv[])
 
 	// - Load textures
 	Resources::LoadTexture("assets/textures/Capybara.png", true, "capybara");
+	Resources::LoadTexture("assets/textures/Shadow.png", true, "shadow");
 
 	// Load levels
 	Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
@@ -53,20 +55,37 @@ int main(int argc, char* argv[])
 	//while (source->IsPlaying()) ;
 	//cout << "No longer playing" << endl;
 
+
+	// SHADOW
+
+	Engine::GameObject* shadowGO = scene->CreateGameObject();
+
+	SpriteComponent* spriteComponent = new SpriteComponent(shadowGO);
+	spriteComponent
+		->Set(Resources::GetTexture("shadow"))
+		->SetColour({ 0,0,0,128 });
+	LockComponent* lockComponent = new LockComponent(shadowGO);
+
+	// CAPYBARA
+
 	Engine::GameObject* playerGO = scene->CreateGameObject();
 	playerGO->position = Vector2(0, 0);
 	playerGO->scale = Vector2(4, 4);
 
-	SpriteComponent* spriteComponent = new SpriteComponent(playerGO);
-	spriteComponent
+	SpriteComponent* playerSprite = new SpriteComponent(playerGO);
+	playerSprite
 		->Set(Resources::GetTexture("capybara"))
 		->AnimationSpeed(8)
 		->SetColour({ 255,255,255 });
 
-	WalkComponent* walkComponent = new WalkComponent(playerGO);
+	WalkComponent* playerWalk = new WalkComponent(playerGO);
 
-	TargetMouseComponent* targetMouseComponent = new TargetMouseComponent(playerGO);
-	targetMouseComponent->Bind(walkComponent);
+	TargetMouseComponent* targetMouse = new TargetMouseComponent(playerGO);
+	targetMouse->Bind(playerWalk);
+
+
+	// LINK
+	lockComponent->SetTarget(playerGO);
 
 	// Mainloop
 	return app.Run(scene);

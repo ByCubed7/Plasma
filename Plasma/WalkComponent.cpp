@@ -29,7 +29,6 @@ void WalkComponent::Update(double delta, Engine::Scene& game)
 	if (distance > 10) {
 		stepCount++;
 
-
 		Vector2 targetStep = Vector2(target - gameObject->position);
 		targetStep.Normalize();
 
@@ -39,6 +38,8 @@ void WalkComponent::Update(double delta, Engine::Scene& game)
 		stepCount++;
 
 	gameObject->rotation = sin(wobble.x * stepCount) * wobble.y;
+
+	gameObject->scale.x = abs(gameObject->scale.x) * (gameObject->position > target.x ? 1 : -1);
 	//std::cout << stepCount << std::endl;
 }
 

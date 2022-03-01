@@ -22,6 +22,8 @@ SpriteComponent::SpriteComponent(Engine::GameObject* gameObject, std::string nam
 	spriteFrame = 0;
 	spriteSize = 1024;
 
+    pivot = { 0.5, 0.5 };
+
     bounds = AABB();
 }
 
@@ -33,6 +35,7 @@ void SpriteComponent::Draw(Render::Renderers& renderer)
         this->sprite,
         { gameObject->position.x, gameObject->position.y },
         { gameObject->scale.x * ppu, gameObject->scale.y * ppu },
+        { pivot.x, pivot.y },
         gameObject->rotation,
         spriteFrame,
         glm::vec3(color.red / 255, color.blue / 255, color.green / 255)
