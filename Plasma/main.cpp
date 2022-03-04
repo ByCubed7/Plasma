@@ -35,14 +35,12 @@ int main(int argc, char* argv[])
 
 	scene->Load();
 
-	// - Load textures
+	// - Load Resources
 	Resources::LoadTexture("assets/textures/Capybara.png", true, "capybara");
 	Resources::LoadTexture("assets/textures/Shadow.png", true, "shadow");
 
-	// Load levels
-	Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
-	Resources::LoadWav("assets/audio/Venus by SketchyLogic.wav", "venus");	
-	Resources::LoadWav("assets/audio/beginning.wav", "beginning");
+	//Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
+	//Resources::LoadWav("assets/audio/Venus by SketchyLogic.wav", "venus");
 
 
 	// - Create audio

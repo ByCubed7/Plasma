@@ -7,6 +7,9 @@
 #include "Window.h"
 #include "../Library/OpenAL/AL/al.h"
 
+#include <chrono>
+#include <thread>
+
 namespace Engine {
 	App* App::instance = nullptr;
 
@@ -33,10 +36,16 @@ namespace Engine {
 
 		glfwInit();
 
+		// The only OpenGL 3.x and 4.x contexts currently supported by macOS are forward-compatible, 
+		// core profile contexts. The supported versions are 3.2 on 10.7 Lion and 3.3 and 4.1 on 10.9 Mavericks. 
+		// In all cases, your GPU needs to support the specified OpenGL version for context creation to succeed.
+
 		// Specify the client API version that the created context must be compatible with. 
 		// The exact behavior of these hints depend on the requested client API.
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); // Was 3
+		
+		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 		// Specifies which OpenGL profile to create the context for
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -84,12 +93,26 @@ namespace Engine {
 		double deltaTime = 0.0f;
 		double lastFrame = 0.0f;
 
+		int targetFrameRate = 30;
+
 		while (window->state == Window::State::RUNNING)
 		{
 			// Calculate delta time
 			double currentFrame = glfwGetTime();
 			deltaTime = currentFrame - lastFrame;
 			lastFrame = currentFrame;
+			
+			// Get framerate
+			double wait_time = 1.0 / targetFrameRate;
+			double dur = wait_time - deltaTime;
+
+			if (dur > 0) {
+				std::cout << "Sleeping for: " << dur << std::endl;
+				std::this_thread::sleep_for(std::chrono::duration<double>(dur));
+			}
+
+			std::cout << "Framerate: " << 1/dur << std::endl;
+			
 			glfwPollEvents();
 
 			// Process the User Input
