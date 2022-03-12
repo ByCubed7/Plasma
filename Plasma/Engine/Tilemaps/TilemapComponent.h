@@ -2,18 +2,17 @@
 
 #pragma once
 
-
-#include "../Engine/Component.h"
-#include "../Engine/Event.h"
-#include "../Engine/Dispatcher.h"
+#include "../Component.h"
+#include "../Event.h"
+#include "../Dispatcher.h"
 #include "../Tilemaps/Tilemap.h"
 
 #include <vector>
 
-class TilemapComponent : public Component
+class TilemapComponent : public Engine::Component
 {
 public:
-	TilemapComponent(GameObject* gameObject, std::string name = "TilemapComponent");
+	TilemapComponent(Engine::GameObject* gameObject, std::string name = "TilemapComponent");
 
 	void Update(double delta, Engine::Scene& game) override;
 	void Draw(Render::Renderers& renderer) override;

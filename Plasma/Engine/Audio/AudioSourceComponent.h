@@ -10,10 +10,10 @@ namespace Audio {
 	class Buffer;
 }
 
-class AudioSourceComponent : public Component
+class AudioSourceComponent : public Engine::Component
 {
 public:
-	AudioSourceComponent(GameObject* gameObject, std::string name = "AudioSourceComponent");
+	AudioSourceComponent(Engine::GameObject* gameObject, std::string name = "AudioSourceComponent");
 
 	void Update(double delta, Engine::Scene& game);
 

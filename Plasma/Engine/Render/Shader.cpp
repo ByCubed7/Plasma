@@ -15,6 +15,7 @@ Shader::Shader()
 
 Shader::~Shader()
 {
+    std::cout << "[Shader::Use] Dtor: " << program << std::endl;
     //glDeleteProgram(program);
     //program = 0;
 }
@@ -51,7 +52,7 @@ void Shader::Compile(const char* vertexSource, const char* fragmentSource, const
         checkCompileErrors(gShader, "GEOMETRY");
     }
     
-    // Shader program
+    // Set up Program
     program = glCreateProgram();
     glAttachShader(program, sVertex);
     glAttachShader(program, sFragment);

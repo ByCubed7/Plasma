@@ -2,24 +2,13 @@
 
 #pragma once
 
-#include "../AABB.h"
-#include "../Vector2.h"
-#include "../Component.h"
-#include "../GameObject.h"
-#include "../Scene.h"
-#include "../Event.h"
-#include "../Dispatcher.h"
-#include "../Render/Renderers.h"
-#include "../Render/Texture2D.h"
-
-class GameObject;
-namespace Engine { class Scene; }
+namespace Engine { class Scene; class GameObject;  }
 namespace Render { struct Renderers; }
 
-class CharacterControllerComponent : public Component
+class CharacterControllerComponent : public Engine::Component
 {
 public:
-	CharacterControllerComponent(GameObject* gameObject, std::string name = "CharacterControllerComponent");
+	CharacterControllerComponent(Engine::GameObject* gameObject, std::string name = "CharacterControllerComponent");
 	void Update(double delta, Engine::Scene& game) override;
 };
 

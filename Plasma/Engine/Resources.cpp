@@ -13,7 +13,7 @@
 #include <iostream>
 #include <bit>
 
-#include "stb_image.h"
+#include "lodepng.h"
 
 #include <GLFW/glfw3.h>
 
@@ -383,13 +383,13 @@ Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShade
     const char* gShaderCode = geometryCode.c_str(); // <-- Could raise a bug in the future
     
     // Create shader object from source code
-    Shader shader;
+    Shader shader = Shader();
     shader.Compile(vShaderCode, fShaderCode, gShaderFile != nullptr ? gShaderCode : nullptr);
     
     return shader;
 }
 
-Texture2D Resources::LoadTextureFromFile(const std::string file, bool alpha)
+Texture2D Resources::LoadTextureFromFile(const std::string filename, bool alpha)
 {
     // Create texture object
     Texture2D texture;
@@ -401,14 +401,19 @@ Texture2D Resources::LoadTextureFromFile(const std::string file, bool alpha)
     }
 
     // Load
-    int width, height, nrChannels;
-    unsigned char* data = stbi_load(file.c_str(), &width, &height, &nrChannels, 0);
+    //int width, height, nrChannels;
+    //unsigned char* data = stbi_load(file.c_str(), &width, &height, &nrChannels, 0);
+
+    std::vector<unsigned char> data;
+    unsigned width, height;
+    unsigned error = lodepng::decode(data, width, height, filename);
+
 
     // Generate texture
-    texture.Generate(width, height, data);
+    texture.Generate(width, height, &data[0]);
     
     // Free image data
-    stbi_image_free(data);
+    //stbi_image_free(data);
     return texture;
 }
 

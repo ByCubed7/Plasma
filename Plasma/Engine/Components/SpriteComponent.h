@@ -13,10 +13,10 @@ class GameObject;
 namespace Engine { class Scene; }
 namespace Render { struct Renderers; }
 
-class SpriteComponent : public Component
+class SpriteComponent : public Engine::Component
 {
 public:
-	SpriteComponent(GameObject* gameObject, std::string name = "SpriteComponent");
+	SpriteComponent(Engine::GameObject* gameObject, std::string name = "SpriteComponent");
 
 	void Update(double delta, Engine::Scene& game) override;
 	void Draw(Render::Renderers& renderer) override;
@@ -29,6 +29,7 @@ public:
 	Texture2D sprite;
 	int spriteFrame;
 	int spriteSize;
+	Vector2 pivot;
 
 	// Set the texture
 	SpriteComponent* Set(Texture2D sprite);

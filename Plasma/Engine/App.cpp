@@ -7,6 +7,9 @@
 #include "Window.h"
 #include "../Library/OpenAL/AL/al.h"
 
+#include <chrono>
+#include <thread>
+
 namespace Engine {
 	App* App::instance = nullptr;
 
@@ -15,12 +18,14 @@ namespace Engine {
 		instance = this;
 		window = nullptr;
 		scene = nullptr;
+
+		size = Vector2(100);
 	}
 
 
-	Engine::Scene* App::CreateGame(Settings& gameConfig)
+	Engine::Scene* App::CreateGame()
 	{
-		Engine::Scene* newScene = new Engine::Scene(gameConfig);
+		Engine::Scene* newScene = new Engine::Scene(this);
 		// Add scene to list
 		return newScene;
 	}
@@ -31,16 +36,21 @@ namespace Engine {
 
 		glfwInit();
 
+		// The only OpenGL 3.x and 4.x contexts currently supported by macOS are forward-compatible, 
+		// core profile contexts. The supported versions are 3.2 on 10.7 Lion and 3.3 and 4.1 on 10.9 Mavericks. 
+		// In all cases, your GPU needs to support the specified OpenGL version for context creation to succeed.
+
 		// Specify the client API version that the created context must be compatible with. 
 		// The exact behavior of these hints depend on the requested client API.
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); // Was 3
+		
+		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 		// Specifies which OpenGL profile to create the context for
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		
-		window = new Window(scene->settings.screenWidth, scene->settings.screenHeight);
-		window->LoadScene(scene);
+
+		window = new Window(this);
 
 		// Load OpenGL function pointers
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -54,7 +64,7 @@ namespace Engine {
 
 
 		// Configure OpenGL
-		glViewport(0, 0, scene->settings.screenWidth, scene->settings.screenHeight);
+		glViewport(0, 0, size.x, size.y);
 		glEnable(GL_BLEND);
 		//glEnable(GL_DEPTH_TEST);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -70,15 +80,20 @@ namespace Engine {
 		}
 
 
-
 		return 0;
 	}
 
 	int App::Run(Engine::Scene* setScene)
 	{
+		window->LoadScene(scene);
+
+		SetSize(window->GetMonitorSize());
+
 		// Delta Time
 		double deltaTime = 0.0f;
 		double lastFrame = 0.0f;
+
+		int targetFrameRate = 30;
 
 		while (window->state == Window::State::RUNNING)
 		{
@@ -86,6 +101,18 @@ namespace Engine {
 			double currentFrame = glfwGetTime();
 			deltaTime = currentFrame - lastFrame;
 			lastFrame = currentFrame;
+			
+			// Get framerate
+			double wait_time = 1.0 / targetFrameRate;
+			double dur = wait_time - deltaTime;
+
+			if (dur > 0) {
+				std::cout << "Sleeping for: " << dur << std::endl;
+				std::this_thread::sleep_for(std::chrono::duration<double>(dur));
+			}
+
+			std::cout << "Framerate: " << 1/dur << std::endl;
+			
 			glfwPollEvents();
 
 			// Process the User Input
@@ -96,18 +123,14 @@ namespace Engine {
 
 			window->Render();
 			 
-
 			// Clear render
 			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 	
-
 			//* Print any errors
 			GLenum err;
 			while ((err = glGetError()) != GL_NO_ERROR)
-			{
-				std::cout << "ERROR:" << err << std::endl;
-			}//*/
+				std::cout << "[MAINLOOP] OpenGL Error: " << err << std::endl;
 		}
 
 		//delete audio;
@@ -119,6 +142,35 @@ namespace Engine {
 		glfwTerminate();
 
 		return 0;
+	}
+
+	Engine::Window* App::GetWindow()
+	{
+		return window;
+	}
+
+	Engine::Scene* App::GetScene()
+	{
+		return scene;
+	}
+
+	Vector2 App::GetSize()
+	{
+		return size;
+	}
+
+	void App::SetSize(Vector2 newSize)
+	{
+		std::cout << "Setting size: " << newSize.ToString() << std::endl;
+		size = newSize;
+		
+		// Update the scenes projection matrix
+		scene->UpdateProjection();
+
+		// Update the windows size
+		window->UpdateSize();
+
+		glViewport(0, 0, size.x, size.y);
 	}
 
 	// -- Callbacks

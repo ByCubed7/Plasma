@@ -10,16 +10,10 @@
 #include "Audio.h"
 #include "UI.h"
 
-#include "PlayerCollisionEventManager.h"
 #include "WarpComponent.h"
-#include "TileLockedController.h"
-#include "Muncher.h"
-#include "ScoreTracker.h"
-#include "InputDirector.h"
-#include "PlayerInputDirector.h"
-#include "GuardGhostInputDirector.h"
-#include "AmbushGhostInputDirector.h"
-#include "GhostStateComponent.h"
+#include "WalkComponent.h"
+#include "TargetMouseComponent.h"
+#include "LockComponent.h"
 
 #include <GLFW/glfw3.h>
 
@@ -33,39 +27,20 @@ int main(int argc, char* argv[])
 {
 	FreeConsole();
 	Engine::App app = Engine::App();
-
-	Settings config;
-	config.PPU = 20;
-	config.screenHeight = config.PPU * (31 + 1);
-	config.screenWidth  = config.PPU * 28;
-
-	Engine::Scene* scene = app.CreateGame(config);
+	Engine::Scene* scene = app.CreateGame();
 	//Scene scene = pacman.scene; // Get the default scene
 
 	// Prepares an OpenGL context so that we can send API calls
 	app.Build(scene);
 
-	scene->Initialize();
+	scene->Load();
 
-	// - Load textures
-	Resources::LoadTexture("assets/textures/Player.png", true, "player");
-	Resources::LoadTexture("assets/textures/Ghost.png", true, "ghost");
-	Resources::LoadTexture("assets/textures/Pip.png", true, "pip");
-	Resources::LoadTexture("assets/textures/Cherry.png", true, "cherry");
-	Resources::LoadTexture("assets/textures/Tilesheet.png", true, "tilesheet");
+	// - Load Resources
+	Resources::LoadTexture("assets/textures/Capybara.png", true, "capybara");
+	Resources::LoadTexture("assets/textures/Shadow.png", true, "shadow");
 
-	// Load levels
-	Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
-
-	Resources::LoadWav("assets/audio/Venus by SketchyLogic.wav", "venus");
-	
-	Resources::LoadWav("assets/audio/beginning.wav", "beginning");
-	//Resources::LoadWav("assets/audio/chomp.wav", "chomp");
-	//Resources::LoadWav("assets/audio/death.wav", "death");
-	//Resources::LoadWav("assets/audio/eatfruit.wav", "eatfruit");
-	//Resources::LoadWav("assets/audio/eatghost.wav", "eatghost");
-	//Resources::LoadWav("assets/audio/extrapac.wav", "extrapac");
-	//Resources::LoadWav("assets/audio/intermission.wav", "intermission");
+	//Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
+	//Resources::LoadWav("assets/audio/Venus by SketchyLogic.wav", "venus");
 
 
 	// - Create audio
@@ -78,21 +53,37 @@ int main(int argc, char* argv[])
 	//while (source->IsPlaying()) ;
 	//cout << "No longer playing" << endl;
 
-	// - - - Add Tilemap - - - 
-	GameObject* tilemap = scene->CreateGameObject();
-	tilemap->position = Vector2(config.PPU/2, config.PPU/2);
 
-	TilemapComponent* tilemapTilemap = new TilemapComponent(tilemap);
+	// SHADOW
 
-	tilemapTilemap
-		->SetTilemap(Resources::GetTilemap("tilesheet"))
-		->Set(Resources::GetTexture("tilesheet"))
-		->Bind(scene->renderer);
+	Engine::GameObject* shadowGO = scene->CreateGameObject();
+
+	SpriteComponent* spriteComponent = new SpriteComponent(shadowGO);
+	spriteComponent
+		->Set(Resources::GetTexture("shadow"))
+		->SetColour({ 0,0,0,128 });
+	LockComponent* lockComponent = new LockComponent(shadowGO);
+
+	// CAPYBARA
+
+	Engine::GameObject* playerGO = scene->CreateGameObject();
+	playerGO->position = Vector2(0, 0);
+	playerGO->scale = Vector2(4, 4);
+
+	SpriteComponent* playerSprite = new SpriteComponent(playerGO);
+	playerSprite
+		->Set(Resources::GetTexture("capybara"))
+		->AnimationSpeed(8)
+		->SetColour({ 255,255,255 });
+
+	WalkComponent* playerWalk = new WalkComponent(playerGO);
+
+	TargetMouseComponent* targetMouse = new TargetMouseComponent(playerGO);
+	targetMouse->Bind(playerWalk);
 
 
-
-
-
+	// LINK
+	lockComponent->SetTarget(playerGO);
 
 	// Mainloop
 	return app.Run(scene);

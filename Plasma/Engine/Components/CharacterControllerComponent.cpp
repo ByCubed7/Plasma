@@ -6,7 +6,7 @@
 #include "CharacterControllerComponent.h"
 
 
-CharacterControllerComponent::CharacterControllerComponent(GameObject* gameObject, std::string name)
+CharacterControllerComponent::CharacterControllerComponent(Engine::GameObject* gameObject, std::string name)
 	: Component(gameObject, name)
 {
 

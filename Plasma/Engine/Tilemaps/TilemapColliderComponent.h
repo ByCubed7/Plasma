@@ -17,14 +17,14 @@ enum class TilemapColliderComponentEventType {
 	TEST_EVENT3
 };
 
-class TilemapColliderComponent : public Component
+class TilemapColliderComponent : public Engine::Component
 {
 public:
 	struct OnEnterEventParams;
 	struct OnStayEventParams;
 	struct OnExitEventParams;
 
-	TilemapColliderComponent(GameObject* gameObject, std::string name = "BoxColliderComponent");
+	TilemapColliderComponent(Engine::GameObject* gameObject, std::string name = "BoxColliderComponent");
 
 	Tilemaps::Tilemap tilemap;
 

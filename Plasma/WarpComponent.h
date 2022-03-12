@@ -4,10 +4,10 @@
 
 #include "Core.h"
 
-class WarpComponent : public Component
+class WarpComponent : public Engine::Component
 {
 public:
-	WarpComponent(GameObject* gameObject, std::string name = "WarpComponent");
+	WarpComponent(Engine::GameObject* gameObject, std::string name = "WarpComponent");
 
 	void Update(double delta, Engine::Scene& game) override;
 

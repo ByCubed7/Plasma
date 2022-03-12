@@ -5,6 +5,7 @@
 
 #include "Scene.h"
 
+#include "Window.h"
 #include "Resources.h"
 #include "GameObject.h"
 #include "Component.h"
@@ -15,15 +16,15 @@
 #include <typeinfo>
 #include <algorithm>
 
-namespace Engine {
-	Scene::Scene(Settings& setting)
+namespace Engine 
+{
+
+	Scene::Scene(App* app)
 	{
+		this->app = app;
+
 		state = Scene::State::ACTIVE;
 		input = Input();
-		width = setting.screenWidth;
-		height = setting.screenHeight;
-
-		this->settings = setting;
 
 		audio = new Audio::Scene();
 	}
@@ -32,6 +33,11 @@ namespace Engine {
 	{
 		delete audio;
 		delete renderer;
+	}
+
+	Window* Scene::GetWindow()
+	{
+		return app->GetWindow();
 	}
 
 	GameObject* Scene::CreateGameObject()
@@ -51,37 +57,35 @@ namespace Engine {
 		components.emplace_back(component);
 	}
 
-	void Scene::Initialize()
+	void Scene::Load() 
 	{
-		// As this is 2D we don't have to worry about perspective, use orthographic projection
-		glm::mat4 projection = glm::ortho(0.0f, (float)this->width, (float)this->height, 0.0f, -1.0f, 1.0f);
-
+		Vector2 size = app->GetSize();
+		glm::mat4 projection = glm::ortho(0.0f, size.x, size.y, 0.0f, -1.0f, 1.0f);
+		
 		// - Load and Config shaders
-		Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");
-		Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
-		Resources::LoadShader("assets/shaders/tile.vs", "assets/shaders/tile.frag", nullptr, "tile");
+
+		// Sprite
+		Shader ShaderSprite = Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");
+		ShaderSprite.Use();
+		ShaderSprite.SetInteger("image", 0);
+		ShaderSprite.SetInteger("index", 1);
+		ShaderSprite.SetMatrix4("projection", projection);
+
+		// Text
+		Shader ShaderText = Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
+		ShaderText.Use();
+		ShaderText.SetInteger("text", 0);
+		ShaderText.SetMatrix4("projection", projection);
+		
+		//* Tilemap
+		Shader ShaderTile = Resources::LoadShader("assets/shaders/tile.vs", "assets/shaders/tile.frag", nullptr, "tile");
+		ShaderTile.Use();
+		ShaderTile.SetInteger("image", 0);
+		ShaderTile.SetInteger("index", 1);
+		ShaderTile.SetMatrix4("projection", projection);
 
 		// - Load Text Fonts
 		Resources::LoadFont("assets/fonts/arial.ttf", "arial");
-
-		// Sprite
-		Shader ShaderSprite = Resources::GetShader("sprite");
-		ShaderSprite.Use().SetInteger("image", 0);
-		ShaderSprite.SetMatrix4("projection", projection);
-		ShaderSprite.SetInteger("index", 1);
-
-		// Text
-		Shader ShaderText = Resources::GetShader("text");
-		ShaderText.Use().SetInteger("text", 0);
-		ShaderText.SetMatrix4("projection", projection);
-
-		//* Tilemap
-		Shader ShaderTile = Resources::GetShader("tile");
-		ShaderTile.Use().SetInteger("image", 0);
-		ShaderTile.SetMatrix4("projection", projection);
-		ShaderTile.SetInteger("index", 1);
-		//*/
-
 
 		// Load Renderer
 		renderer = new Render::Renderers(
@@ -92,6 +96,17 @@ namespace Engine {
 
 		// - Load Audio
 		audio->Prepare();
+	}
+
+	void Scene::UpdateProjection()
+	{
+		// As this is 2D we don't have to worry about perspective, use orthographic projection
+		Vector2 size = app->GetSize();
+		glm::mat4 projection = glm::ortho(0.0f, (float)size.x, (float)size.y, 0.0f, -1.0f, 1.0f);
+
+		Resources::GetShader("sprite").Use().SetMatrix4("projection", projection);
+		Resources::GetShader("text").Use().SetMatrix4("projection", projection);
+		Resources::GetShader("tile").Use().SetMatrix4("projection", projection);		
 	}
 
 	void Scene::ProcessInput(double dt)

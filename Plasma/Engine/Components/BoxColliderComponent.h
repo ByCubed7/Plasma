@@ -14,21 +14,24 @@
 //};
 
 // Forward declaration
-class GameObject;
 struct Vector2;
-namespace Engine { class Scene; }
 
-class BoxColliderComponent : public Component
+namespace Engine { 
+	class Scene;
+	class GameObject;
+}
+
+class BoxColliderComponent : public Engine::Component
 {
 public:
 
-	GameObject* GetGameObject() { return gameObject; };
+	Engine::GameObject* GetGameObject() { return gameObject; };
 
 	struct OnEnterEventParams;
 	struct OnStayEventParams;
 	struct OnExitEventParams;
 
-	BoxColliderComponent(GameObject* gameObject, std::string name = "BoxColliderComponent");
+	BoxColliderComponent(Engine::GameObject* gameObject, std::string name = "BoxColliderComponent");
 
 	AABB bounds;
 

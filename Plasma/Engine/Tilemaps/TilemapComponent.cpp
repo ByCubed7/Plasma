@@ -5,8 +5,9 @@
 
 #include "TilemapComponent.h"
 #include "../GameObject.h"
+#include "../Window.h"
 
-TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
+TilemapComponent::TilemapComponent(Engine::GameObject* gameObject, std::string name)
     : Component(gameObject, name)
 {
     animationPoint = 0;
@@ -18,7 +19,7 @@ TilemapComponent::TilemapComponent(GameObject* gameObject, std::string name)
 
 void TilemapComponent::Draw(Render::Renderers& renderer)
 {
-    int ppu(gameObject->scene->settings.PPU);
+    int ppu = gameObject->scene->GetWindow()->GetPPU();
 
     //for (auto& tile : tilemap.layers[0].tiles)
     //    tile.rotation += 1;
@@ -99,7 +100,7 @@ Vector2 TilemapComponent::GetTileDensity()
 {
     // Scale position from PPU
     // Note: Also scale by gameobject scale
-    return Vector2(gameObject->scene->settings.PPU);
+    return Vector2(gameObject->scene->GetWindow()->GetPPU());
 }
 
 int TilemapComponent::GetTileAtScenePosition(Vector2 pos)

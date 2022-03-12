@@ -22,6 +22,8 @@ namespace Render
 		// Deconstructor
 		~Renderer();
 
+		Shader& GetShader();
+
 	protected:
 		/// <summary>
 		/// Our shader that we'll use to render
