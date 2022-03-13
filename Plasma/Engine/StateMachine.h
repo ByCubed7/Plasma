@@ -4,32 +4,40 @@
 #include <iostream>
 #include <map>
 
-template<enum States, enum Actions>
+template<typename States, typename Actions>
 class FiniteStateMachine {
 public:
 
-    //public event EventHandler StateExitEv;    
-    //public event EventHandler StateEnterEv;
+    //event EventHandler StateExitEv;    
+    //event EventHandler StateEnterEv;
 
-    FSM(States startState, std::map<std::pair<States, Actions>, States> _stateMatrix)
+    FiniteStateMachine(States startState)
     {
-        stateMatrix = _stateMatrix;
-        currentState = startState;
+        stateTable = _stateTable;
+    }
+
+    void AddTransition(States fromState, Actions action, States newState) {
+        std::pair<States, Actions> pair = std::make_pair(fromState, action);
+        stateTable.insert(pair, newState);
     }
 
 protected:
-    void ProcessEvent(Actions theAction)
+    void ProcessEvent(Actions action)
     {
-        States newState = stateMatrix[std::make_pair(currentState, theAction)];
+        std::pair<States, Actions> pair = std::make_pair(currentState, action);
+
+        if (!stateTable.contains(pair)) {
+            // Do NOT update the state.            
+            std::cout << "Warning : Action '" << action << "' not expected while in this state '" << currentState << "'" << std::endl;
+            return;
+        }
+        
+        States newState = stateTable[pair];
 
         // If the state has not changed then do not raise a change event.        
         if (newState == currentState) return;
 
-        if (newState == 0) {
-            // Do NOT update the state.            
-            std::cout << "Warning : Action '" << theAction << "' not expected while in this state '" << currentState << "'" << std::endl;
-            return;
-        }
+
         //Debug.Log("FSM - ProcessEvent =" + theAction + " : State=" + currentState + " : NewState=" + newState);        
 
         // Raise exit events.        
@@ -42,8 +50,10 @@ protected:
         //StateEnterEv?.Invoke(this, null);    
     }
 
+
+
     States GetState() {
-        return state;
+        return currentState;
     }
 
     void SetState(States newState) {
@@ -52,6 +62,6 @@ protected:
 
 private:
     States currentState;
-    std::map<std::pair<States, Actions>, Actions> stateMatrix;
+    std::map<std::pair<States, Actions>, Actions> stateTable;
 };
 

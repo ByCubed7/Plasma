@@ -176,6 +176,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CapybaraAI.cpp" />
     <ClCompile Include="Engine\AABB.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
     </ClCompile>
@@ -247,6 +248,7 @@
     <ClCompile Include="WarpComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CapybaraAI.h" />
     <ClInclude Include="Engine\AABB.h" />
     <ClInclude Include="Engine\App.h" />
     <ClInclude Include="Engine\Audio\AudioBuffer.h" />
@@ -279,6 +281,7 @@
     <ClInclude Include="Engine\Resources.h" />
     <ClInclude Include="Engine\Resources\ShaderResource.h" />
     <ClInclude Include="Engine\Scene.h" />
+    <ClInclude Include="Engine\StateMachine.h" />
     <ClInclude Include="Engine\Tilemaps\Tile.h" />
     <ClInclude Include="Engine\Tilemaps\TileLayer.h" />
     <ClInclude Include="Engine\Tilemaps\Tilemap.h" />

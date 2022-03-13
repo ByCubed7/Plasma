@@ -6,7 +6,16 @@
 
 class WalkComponent;
 
-class CapybaraAI : public Engine::Component
+
+enum CapybaraStates {
+	AAAAAAA, WANDER, STAND
+};
+
+enum CapybaraActions {
+	TICK, CLICK
+};
+
+class CapybaraAI : public Engine::Component, FiniteStateMachine<CapybaraStates, CapybaraActions>
 {
 public:
 	CapybaraAI(Engine::GameObject* gameObject, std::string name = "CapybaraAIComponent");
@@ -17,4 +26,3 @@ public:
 
 	CapybaraAI* Bind(WalkComponent* component);
 };
-

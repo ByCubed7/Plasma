@@ -11,6 +11,7 @@
 
 #include "../Engine/GameObject.h"
 #include "../Engine/Component.h"
+#include "../Engine/StateMachine.h"
 
 // Events
 #include "../Engine/Dispatcher.h"

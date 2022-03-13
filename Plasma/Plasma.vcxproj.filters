@@ -175,6 +175,10 @@
     <ClCompile Include="LockComponent.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
+    <ClCompile Include="CapybaraAI.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\lodepng.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -369,6 +373,10 @@
     </ClInclude>
     <ClInclude Include="LockComponent.h">
       <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CapybaraAI.h" />
+    <ClInclude Include="Engine\StateMachine.h">
+      <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
