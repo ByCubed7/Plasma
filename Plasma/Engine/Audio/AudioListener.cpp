@@ -12,8 +12,8 @@ namespace Audio
 		#ifdef VERBOSE
 		std::cout << "\n[Listener::Ctor] Created Default Listener" << std::endl;
 		#endif
-		SetPosition(Vector2::zero);
-		SetVelocity(Vector2::zero);
+		SetPosition(Vector2(0));
+		SetVelocity(Vector2(0));
 
 		ALfloat listenerOri[] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f };
 		alListenerfv(AL_ORIENTATION, listenerOri);
@@ -28,7 +28,7 @@ namespace Audio
 		std::cout << "[Listener::SetPosition] Setting Position" << std::endl;
 		#endif
 		this->position = position;
-		alListener3f(AL_POSITION, position.x, position.y, 1.0f); // Set Z to 0?
+		alListener3f(AL_POSITION, velocity.x, velocity.y, 1.0f); // Set Z to 0?
 	}
 	void Listener::SetVelocity(Vector2 velocity)
 	{

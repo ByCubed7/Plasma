@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "../Vector.h"
 #include "../Component.h"
 #include "../GameObject.h"
 #include "../AABB.h"
@@ -12,9 +13,6 @@
 //	TEST_EVENT2,
 //	TEST_EVENT3
 //};
-
-// Forward declaration
-struct Vector2;
 
 namespace Engine { 
 	class Scene;
@@ -55,19 +53,25 @@ struct BoxColliderComponent::OnEnterEventParams
 {
 	OnEnterEventParams(BoxColliderComponent* collider);
 	BoxColliderComponent* collider;
-	operator int() const;
+
+	bool operator <(const OnEnterEventParams& rhs) const
+	{ return collider->gameObject->position.x < rhs.collider->gameObject->position.x; }
 };
 
 struct BoxColliderComponent::OnStayEventParams
 {
 	OnStayEventParams(BoxColliderComponent* collider);
 	BoxColliderComponent* collider;
-	operator int() const;
+
+	bool operator <(const OnStayEventParams& rhs) const
+	{ return collider->gameObject->position.x < rhs.collider->gameObject->position.x; }
 };
 
 struct BoxColliderComponent::OnExitEventParams
 {
 	OnExitEventParams(BoxColliderComponent* collider);
 	BoxColliderComponent* collider;
-	operator int() const;
+
+	bool operator <(const OnExitEventParams& rhs) const
+	{ return collider->gameObject->position.x < rhs.collider->gameObject->position.x; }
 };

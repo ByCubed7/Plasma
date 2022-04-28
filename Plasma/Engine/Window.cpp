@@ -186,7 +186,7 @@ namespace Engine {
 
 	Vector2 Window::GetMonitorSize()
 	{
-		return Vector2(monitorWidth, monitorHeight);
+		return Vector2({ (float)monitorWidth, (float)monitorHeight });
 	}
 
 	//

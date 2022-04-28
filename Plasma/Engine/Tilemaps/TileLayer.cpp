@@ -28,10 +28,10 @@ namespace Tilemaps {
 		tiles.erase(tile.position);
 	}
 
-	Tile TileLayer::GetTile(Vector2 position)
+	Tile TileLayer::GetTile(Vector2Int position)
 	{
-		position.Round(1);
-		std::map<Vector2, Tile>::iterator tile = tiles.find(position);
+		//position.Round(1);
+		std::map<Vector2Int, Tile>::iterator tile = tiles.find(position);
 		if (tile == tiles.end()) {
 			std::cerr << "[TileLayer::GetTile] Can't find tile at " << position.ToString() << std::endl
 				<< "Use TileLayer::IsTile(Vector2) to check whether a tile exists at location.";
@@ -39,10 +39,10 @@ namespace Tilemaps {
 		return tile->second;
 	}
 
-	bool TileLayer::IsTile(Vector2 position)
+	bool TileLayer::IsTile(Vector2Int position)
 	{
-		position.Round(1);
-		std::map<Vector2, Tile>::iterator tile = tiles.find(position);
+		//position.Round(1);
+		std::map<Vector2Int, Tile>::iterator tile = tiles.find(position);
 		return tile != tiles.end();
 	}
 	
@@ -53,7 +53,7 @@ namespace Tilemaps {
 		int i = 0;
 		for (auto& tile : tiles) {
 
-			if (tile.second.position == 0 && tile.second.id == 0) std::cout << "INDEX: " << i << std::endl;
+			//if (tile.second.position == VectorInt(0) && tile.second.id == 0) std::cout << "INDEX: " << i << std::endl;
 
 			renderData.Add(tile.second);
 			i++;

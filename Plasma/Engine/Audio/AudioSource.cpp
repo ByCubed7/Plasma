@@ -26,8 +26,8 @@ namespace Audio
 
 		SetPitch(1);
 		SetGain(1);
-		SetPosition(Vector2::zero);
-		SetVelocity(Vector2::zero);
+		SetPosition(Vector2(0));
+		SetVelocity(Vector2(0));
 		SetLoop(false);
 	}
 	Source::~Source()

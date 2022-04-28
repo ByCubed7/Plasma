@@ -123,7 +123,7 @@
     <ClCompile Include="Engine\Scene.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Vector2.cpp">
+    <ClCompile Include="Engine\Vector2 OLD.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="Engine\AABB.cpp">
@@ -133,9 +133,6 @@
       <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Component.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Resource.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Render\TilemapRenderer.cpp">
@@ -175,9 +172,11 @@
     <ClCompile Include="LockComponent.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
-    <ClCompile Include="CapybaraAI.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\lodepng.cpp">
       <Filter>Library</Filter>
+    </ClCompile>
+    <ClCompile Include="CapybaraAI.cpp">
+      <Filter>Game Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -334,7 +333,7 @@
     <ClInclude Include="Engine\Scene.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Vector2.h">
+    <ClInclude Include="Engine\Vector2 OLD.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Engine\AABB.h">
@@ -374,8 +373,13 @@
     <ClInclude Include="LockComponent.h">
       <Filter>Game Files</Filter>
     </ClInclude>
-    <ClInclude Include="CapybaraAI.h" />
     <ClInclude Include="Engine\StateMachine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="CapybaraAI.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vector.h">
       <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>

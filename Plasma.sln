@@ -9,6 +9,8 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Mac|x64 = Mac|x64
+		Mac|x86 = Mac|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
@@ -17,6 +19,10 @@ Global
 		{4199008F-D82B-4764-89E8-54CED158E2AB}.Debug|x64.Build.0 = Debug|x64
 		{4199008F-D82B-4764-89E8-54CED158E2AB}.Debug|x86.ActiveCfg = Debug|Win32
 		{4199008F-D82B-4764-89E8-54CED158E2AB}.Debug|x86.Build.0 = Debug|Win32
+		{4199008F-D82B-4764-89E8-54CED158E2AB}.Mac|x64.ActiveCfg = Mac|x64
+		{4199008F-D82B-4764-89E8-54CED158E2AB}.Mac|x64.Build.0 = Mac|x64
+		{4199008F-D82B-4764-89E8-54CED158E2AB}.Mac|x86.ActiveCfg = Mac|Win32
+		{4199008F-D82B-4764-89E8-54CED158E2AB}.Mac|x86.Build.0 = Mac|Win32
 		{4199008F-D82B-4764-89E8-54CED158E2AB}.Release|x64.ActiveCfg = Release|x64
 		{4199008F-D82B-4764-89E8-54CED158E2AB}.Release|x64.Build.0 = Release|x64
 		{4199008F-D82B-4764-89E8-54CED158E2AB}.Release|x86.ActiveCfg = Release|Win32

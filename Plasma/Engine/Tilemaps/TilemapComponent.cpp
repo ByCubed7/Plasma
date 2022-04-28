@@ -82,7 +82,7 @@ Vector2 TilemapComponent::GetTilePositionAtScenePosition(Vector2 pos)
     // Transform position to gameobject
     pos += gameObject->position;
     pos /= GetTileDensity();
-    pos.Round();
+    pos.Round(1);
 
     return pos;
 }
@@ -106,10 +106,12 @@ Vector2 TilemapComponent::GetTileDensity()
 int TilemapComponent::GetTileAtScenePosition(Vector2 pos)
 {
     pos = GetTilePositionAtScenePosition(pos);
-    return tilemap.layers[0].GetTile(pos).id;
+    Vector2Int posInt = Vector2Int({ (int)pos.x, (int)pos.y });
+    return tilemap.layers[0].GetTile(posInt).id;
 }
 
 bool TilemapComponent::IsTileAtScenePosition(Vector2 pos) 
 {
-    return tilemap.layers[0].IsTile(pos);
+    Vector2Int posInt = Vector2Int({ (int)pos.x, (int)pos.y });
+    return tilemap.layers[0].IsTile(posInt);
 }

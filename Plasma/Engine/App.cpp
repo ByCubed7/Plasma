@@ -107,11 +107,10 @@ namespace Engine {
 			double dur = wait_time - deltaTime;
 
 			if (dur > 0) {
-				std::cout << "Sleeping for: " << dur << std::endl;
 				std::this_thread::sleep_for(std::chrono::duration<double>(dur));
 			}
 
-			std::cout << "Framerate: " << 1/dur << std::endl;
+			//std::cout << "Framerate: " << 1/dur << std::endl;
 			
 			glfwPollEvents();
 
@@ -161,7 +160,6 @@ namespace Engine {
 
 	void App::SetSize(Vector2 newSize)
 	{
-		std::cout << "Setting size: " << newSize.ToString() << std::endl;
 		size = newSize;
 		
 		// Update the scenes projection matrix

@@ -5,6 +5,14 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Mac|Win32">
+      <Configuration>Mac</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Mac|x64">
+      <Configuration>Mac</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
@@ -51,6 +59,12 @@
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Mac|Win32'">
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Mac|x64'">
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -104,6 +118,7 @@
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName)_$(PlatformTarget).pch</PrecompiledHeaderOutputFile>
       <AdditionalIncludeDirectories>$(SolutionDir)Plasma\Library\OpenAL\AL;$(SolutionDir)Plasma\Library\SDL;$(SolutionDir)Plasma\Library;$(SolutionDir)Plasma\Include;$(IncludePath)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>All.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,6 +137,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName)_$(PlatformTarget).pch</PrecompiledHeaderOutputFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,6 +156,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Plasma\Library\OpenAL\AL;$(SolutionDir)Plasma\Library\SDL;$(SolutionDir)Plasma\Library;$(SolutionDir)Plasma\Include;$(IncludePath)</AdditionalIncludeDirectories>
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName)_$(PlatformTarget).pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeaderFile>All.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,6 +178,7 @@
       <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName)_$(PlatformTarget).pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeaderFile>All.h</PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -170,6 +188,16 @@
       <AdditionalDependencies>OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>OpenAL32.dll;SDL2.lib;SDL2main.lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Mac|Win32'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Mac|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="Library\TiledLibrary\RapidXML\manual.html" />
@@ -211,9 +239,6 @@
     <ClCompile Include="Engine\Render\TextRenderer.cpp" />
     <ClCompile Include="Engine\Render\Texture2D.cpp" />
     <ClCompile Include="Engine\Render\TilemapRenderer.cpp" />
-    <ClCompile Include="Engine\Resource.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="Engine\Resources.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
     </ClCompile>
@@ -228,7 +253,7 @@
     <ClCompile Include="Engine\Tilemaps\TileRender.cpp" />
     <ClCompile Include="Engine\Tilemaps\Tileset.cpp" />
     <ClCompile Include="Engine\UI\TextboxComponent.cpp" />
-    <ClCompile Include="Engine\Vector2.cpp">
+    <ClCompile Include="Engine\Vector2 OLD.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Engine\Window.cpp" />
@@ -290,7 +315,8 @@
     <ClInclude Include="Engine\Tilemaps\TileRender.h" />
     <ClInclude Include="Engine\Tilemaps\Tileset.h" />
     <ClInclude Include="Engine\UI\TextboxComponent.h" />
-    <ClInclude Include="Engine\Vector2.h" />
+    <ClInclude Include="Engine\Vector.h" />
+    <ClInclude Include="Engine\Vector2 OLD.h" />
     <ClInclude Include="Engine\Window.h" />
     <ClInclude Include="Include\All.h" />
     <ClInclude Include="Include\Audio.h">

@@ -21,7 +21,6 @@
 #include <freetype.h>  
 
 // Cache any resources we load
-std::map<std::string, Texture2D> Resources::Textures;
 std::map<std::string, Shader> Resources::Shaders;
 std::map<std::string, Font> Resources::Fonts;
 std::map<std::string, Tilemaps::Tilemap> Resources::tilemaps;
@@ -38,18 +37,6 @@ Shader Resources::LoadShader(const char* vShaderFile, const char* fShaderFile, c
 }
 
 Shader& Resources::GetShader(std::string name) { return Shaders[name]; }
-
-
-// Texture
-
-Texture2D Resources::LoadTexture(const std::string file, bool alpha, std::string name)
-{
-    Textures[name] = LoadTextureFromFile(file, alpha);
-    return Textures[name];
-}
-
-Texture2D& Resources::GetTexture(std::string name) { return Textures[name]; }
-
 
 // Font
 
@@ -107,10 +94,10 @@ Tilemaps::Tilemap Resources::LoadTilemap(const std::string file, std::string nam
                 // Converts the boolean mirror matrix to a rotation float and scale vector
                 // NOTE: This took me 5 hours and I found it by accedent at like 4am
 
-                Vector2 scale = Vector2(
+                Vector2Int scale = Vector2Int({
                    flipH ^ flipD ? -1 : 1,
                    flipV ? -1 : 1
-                );
+                });
 
                 if (flipD) {
                     int temp = scale.x;
@@ -126,7 +113,7 @@ Tilemaps::Tilemap Resources::LoadTilemap(const std::string file, std::string nam
                     map.layers[j].SetTile(
                         Tilemaps::Tile(
                             map.tileset.GetIndexFromId(id), 
-                            Vector2(x, y), 
+                            { x, y },
                             rotat, scale
                         )
                     );
@@ -332,7 +319,6 @@ void Resources::Clear()
 {
     // Delete all the shaders and textures
     for (auto iter : Shaders) glDeleteProgram(iter.second.program);
-    for (auto iter : Textures) glDeleteTextures(1, &iter.second.ID);
 }
 
 //
@@ -388,35 +374,6 @@ Shader Resources::LoadShaderFromFile(const char* vShaderFile, const char* fShade
     
     return shader;
 }
-
-Texture2D Resources::LoadTextureFromFile(const std::string filename, bool alpha)
-{
-    // Create texture object
-    Texture2D texture;
-    
-    if (alpha)
-    {
-        texture.Internal_Format = GL_RGBA;
-        texture.Image_Format = GL_RGBA;
-    }
-
-    // Load
-    //int width, height, nrChannels;
-    //unsigned char* data = stbi_load(file.c_str(), &width, &height, &nrChannels, 0);
-
-    std::vector<unsigned char> data;
-    unsigned width, height;
-    unsigned error = lodepng::decode(data, width, height, filename);
-
-
-    // Generate texture
-    texture.Generate(width, height, &data[0]);
-    
-    // Free image data
-    //stbi_image_free(data);
-    return texture;
-}
-
 
 Font Resources::LoadFontFromFile(const std::string file, unsigned int size)
 {

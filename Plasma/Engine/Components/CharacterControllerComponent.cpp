@@ -31,10 +31,10 @@ void CharacterControllerComponent::Update(double delta, Engine::Scene& game)
 	if (velocity.Magnitude())
 	{
 		velocity.Normalize();
-		velocity = velocity * 300;
+		velocity *= 300;
 	}
 
-	gameObject->position += velocity * delta;
+	gameObject->position += velocity * (float) delta;
 
 	// Rotation
 	if (game.input.IsKey(Input::Key_W)) gameObject->rotation = 270;

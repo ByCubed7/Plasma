@@ -7,7 +7,7 @@
 
 #include "../GameObject.h"
 #include "../Component.h"
-#include "../Vector2.h"
+#include "../Vector.h"
 #include "../Window.h"
 
 SpriteComponent::SpriteComponent(Engine::GameObject* gameObject, std::string name)

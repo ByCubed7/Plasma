@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "Vector2.h"
+#include "Vector.h"
 #include "Render/Font.h"
 #include "Render/Texture2D.h"
 #include "Render/Shader.h"
@@ -32,19 +32,6 @@ public:
 	
 	// Retrieves a cached shader
 	static Shader& GetShader(std::string name);
-	
-
-	//▀█▀ █▀▀ ▀▄▀ ▀█▀ █ █ █▀█ █▀▀
-	// █  ██▄ █ █  █  █▄█ █▀▄ ██▄
-
-	// All the textures we have cached
-	static std::map<std::string, Texture2D> Textures;
-
-	// Loads a texture
-	static Texture2D LoadTexture(const std::string file, bool alpha, std::string name);
-	
-	// Retrieves a cached texture
-	static Texture2D& GetTexture(std::string name);
 	
 
 	// █▀▀ █▀█ █▄ █ ▀█▀
@@ -94,9 +81,6 @@ private:
 
 	// Loads a shader from a file
 	static Shader LoadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile = nullptr);
-
-	// Loads a texture from a file
-	static Texture2D LoadTextureFromFile(const std::string file, bool alpha);
 
 	// Loads a font from a file
 	static Font LoadFontFromFile(const std::string file, unsigned int fontSize);

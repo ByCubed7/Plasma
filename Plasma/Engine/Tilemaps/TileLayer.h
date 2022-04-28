@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "../Vector2.h"
+#include "../Vector.h"
 
 #include "Tile.h"
 #include "TileRender.h"
@@ -22,8 +22,8 @@ namespace Tilemaps {
         void SetTile(Tile tile);
         void DeleteTile(Tile tile);
 
-        Tile GetTile(Vector2 position);
-        bool IsTile(Vector2 position);
+        Tile GetTile(Vector2Int position);
+        bool IsTile(Vector2Int position);
                 
         /// <summary>
         /// Generates and Returns a TileLayers render data.
@@ -36,6 +36,6 @@ namespace Tilemaps {
 
         size_t Count();
     private:
-        std::map<Vector2, Tile> tiles;
+        std::map<Vector2Int, Tile> tiles;
     };
 }

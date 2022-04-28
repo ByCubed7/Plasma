@@ -3,7 +3,7 @@
 #pragma once
 
 #include <list>
-#include "Vector2.h"
+#include "Vector.h"
 
 // An axis aligned bounding box.
 struct AABB

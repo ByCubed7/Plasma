@@ -1,6 +1,7 @@
 // By @ByCubed7 on Twitter
 
 #pragma once
+
 #include <iostream>
 #include <map>
 
@@ -13,12 +14,13 @@ public:
 
     FiniteStateMachine(States startState)
     {
-        stateTable = _stateTable;
+        currentState = startState;
+        stateTable = std::map<std::pair<States, Actions>, States>();
     }
 
     void AddTransition(States fromState, Actions action, States newState) {
         std::pair<States, Actions> pair = std::make_pair(fromState, action);
-        stateTable.insert(pair, newState);
+        stateTable[pair] = newState;
     }
 
 protected:
@@ -28,7 +30,7 @@ protected:
 
         if (!stateTable.contains(pair)) {
             // Do NOT update the state.            
-            std::cout << "Warning : Action '" << action << "' not expected while in this state '" << currentState << "'" << std::endl;
+            std::cout << "Warning : Action '" << action << "' not expected while in state '" << currentState << "'" << std::endl;
             return;
         }
         
@@ -41,13 +43,13 @@ protected:
         //Debug.Log("FSM - ProcessEvent =" + theAction + " : State=" + currentState + " : NewState=" + newState);        
 
         // Raise exit events.        
-        //StateExitEv?.Invoke(this, null);        
+        //StateExitEv.Invoke(this, null);        
 
         // Update state.        
         currentState = newState;
 
         // Raise enter events.          
-        //StateEnterEv?.Invoke(this, null);    
+        //StateEnterEv.Invoke(this, null);    
     }
 
 
@@ -62,6 +64,6 @@ protected:
 
 private:
     States currentState;
-    std::map<std::pair<States, Actions>, Actions> stateTable;
+    std::map<std::pair<States, Actions>, States> stateTable;
 };
 

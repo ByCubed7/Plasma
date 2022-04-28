@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "../Vector2.h"
+#include "../Vector.h"
 
 #include "../../Library/OpenAL/AL/al.h"
 #include "../../Library/OpenAL/AL/alc.h"

@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "Vector2.h"
+#include "Vector.h"
 #include <unordered_set>
 
 // The current state of the keyboard and mouse

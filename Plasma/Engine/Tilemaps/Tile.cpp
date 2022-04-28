@@ -17,7 +17,7 @@ namespace Tilemaps {
 		scale = { 1,1 };
 	}
 
-	Tile::Tile(int id, Vector2 position)
+	Tile::Tile(int id, Vector2Int position)
 	{
 		this->id = id;
 		this->position = position;
@@ -25,7 +25,7 @@ namespace Tilemaps {
 		scale = { 1,1 };
 	}
 
-	Tile::Tile(int id, Vector2 position, float rotation)
+	Tile::Tile(int id, Vector2Int position, float rotation)
 	{
 		this->id = id;
 		this->position = position;
@@ -33,7 +33,7 @@ namespace Tilemaps {
 		scale = { 1,1 };
 	}
 
-	Tile::Tile(int id, Vector2 position, float rotation, Vector2 scale)
+	Tile::Tile(int id, Vector2Int position, float rotation, Vector2Int scale)
 	{
 		this->id = id;
 		this->position = position;

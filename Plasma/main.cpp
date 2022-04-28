@@ -14,6 +14,7 @@
 #include "WalkComponent.h"
 #include "TargetMouseComponent.h"
 #include "LockComponent.h"
+#include "CapybaraAI.h"
 
 #include <GLFW/glfw3.h>
 
@@ -25,7 +26,7 @@
 
 int main(int argc, char* argv[])
 {
-	FreeConsole();
+	//FreeConsole();
 	Engine::App app = Engine::App();
 	Engine::Scene* scene = app.CreateGame();
 	//Scene scene = pacman.scene; // Get the default scene
@@ -36,8 +37,13 @@ int main(int argc, char* argv[])
 	scene->Load();
 
 	// - Load Resources
-	Resources::LoadTexture("assets/textures/Capybara.png", true, "capybara");
-	Resources::LoadTexture("assets/textures/Shadow.png", true, "shadow");
+	//Resources::LoadTexture("assets/textures/Capybara.png", true, "capybara");
+	//Resources::LoadTexture("assets/textures/Shadow.png", true, "shadow");
+
+
+	//Texture2D::Init();
+	Texture2D::Load("assets/textures/Capybara.png", "capybara");
+	Texture2D::Load("assets/textures/Shadow.png", "shadow");
 
 	//Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
 	//Resources::LoadWav("assets/audio/Venus by SketchyLogic.wav", "venus");
@@ -60,27 +66,29 @@ int main(int argc, char* argv[])
 
 	SpriteComponent* spriteComponent = new SpriteComponent(shadowGO);
 	spriteComponent
-		->Set(Resources::GetTexture("shadow"))
+		->Set(Texture2D::Get("shadow"))
 		->SetColour({ 0,0,0,128 });
 	LockComponent* lockComponent = new LockComponent(shadowGO);
 
 	// CAPYBARA
 
 	Engine::GameObject* playerGO = scene->CreateGameObject();
-	playerGO->position = Vector2(0, 0);
-	playerGO->scale = Vector2(4, 4);
+	playerGO->position = Vector2(0);
+	playerGO->scale = Vector2(4);
 
 	SpriteComponent* playerSprite = new SpriteComponent(playerGO);
 	playerSprite
-		->Set(Resources::GetTexture("capybara"))
+		->Set(Texture2D::Get("capybara"))
 		->AnimationSpeed(8)
 		->SetColour({ 255,255,255 });
 
 	WalkComponent* playerWalk = new WalkComponent(playerGO);
 
-	TargetMouseComponent* targetMouse = new TargetMouseComponent(playerGO);
-	targetMouse->Bind(playerWalk);
+	CapybaraAI* playerAI = new CapybaraAI(playerGO);
+	playerAI->Bind(playerWalk);
 
+	//TargetMouseComponent* targetMouse = new TargetMouseComponent(playerGO);
+	//targetMouse->Bind(playerWalk);
 
 	// LINK
 	lockComponent->SetTarget(playerGO);

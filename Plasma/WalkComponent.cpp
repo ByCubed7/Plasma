@@ -11,12 +11,13 @@ WalkComponent::WalkComponent(Engine::GameObject* gameObject, std::string name)
 {
 	target = 0;
 	step = 1;
-	wobble = Vector2(100,10);
+	wobble = Vector2({ 100, 10 });
 }
 
 void WalkComponent::Update(double delta, Engine::Scene& game)
 {
-	//std::cout << absoluteTarget.ToString() << std::endl;
+	//std::cout << gameObject->position << std::endl;
+	//std::cout << gameObject->position.x << ", " << gameObject->position.y << std::endl;
 	//gameObject->position = absoluteTarget;
 	//return;
 
@@ -40,7 +41,6 @@ void WalkComponent::Update(double delta, Engine::Scene& game)
 	gameObject->rotation = sin(wobble.x * stepCount) * wobble.y;
 
 	gameObject->scale.x = abs(gameObject->scale.x) * (gameObject->position > target.x ? 1 : -1);
-	//std::cout << stepCount << std::endl;
 }
 
 WalkComponent* WalkComponent::SetTargetPosition(Vector2 position)

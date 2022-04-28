@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "../Vector2.h"
+#include "../Vector.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -12,13 +12,13 @@ namespace Tilemaps {
     struct Tile
     {
         Tile();
-        Tile(int id, Vector2 position);
-        Tile(int id, Vector2 position, float rotation);
-        Tile(int id, Vector2 position, float rotation, Vector2 scale);
+        Tile(int id, Vector2Int position);
+        Tile(int id, Vector2Int position, float rotation);
+        Tile(int id, Vector2Int position, float rotation, Vector2Int scale);
 
         int id;
-        Vector2 position;
+        Vector2Int position;
         float rotation;
-        Vector2 scale;
+        Vector2Int scale;
     };
 }

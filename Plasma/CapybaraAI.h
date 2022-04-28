@@ -8,11 +8,11 @@ class WalkComponent;
 
 
 enum CapybaraStates {
-	AAAAAAA, WANDER, STAND
+	AAAAAAA, WANDER, STAND, FOLLOW
 };
 
 enum CapybaraActions {
-	TICK, CLICK
+	TICK, CLICK, WANDERED, OFFSCREEN, DRAGGING, SEEFOOD, ONFOOD
 };
 
 class CapybaraAI : public Engine::Component, FiniteStateMachine<CapybaraStates, CapybaraActions>
