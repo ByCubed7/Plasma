@@ -37,7 +37,7 @@ void Texture2D::Bind() const
     glBindTexture(GL_TEXTURE_2D, id);
 }
 
-Texture2D* Texture2D::FromFile(const std::string filename)
+Texture2D Texture2D::FromFile(const std::string filename)
 {
     bool alpha = true;
 
@@ -64,7 +64,7 @@ Texture2D* Texture2D::FromFile(const std::string filename)
 
     // Free image data
     //stbi_image_free(data);
-    return this;
+    return *this;
 }
 
 void Texture2D::Clear()

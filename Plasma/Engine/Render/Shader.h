@@ -2,12 +2,13 @@
 
 #pragma once
 
+#include "../Resource.h"
 
 #include <glm/glm.hpp>
 #include <string>
 
 // General purpose shader class.
-class Shader
+class Shader : public Resource<Shader>
 {
 public:
     // State
@@ -40,52 +41,57 @@ public:
     /// <summary> Sets a float uniform in the shader.</summary>
     /// <param name="name">- the name of the Uniform.</param> <param name="value">- the value to set it to.</param> 
     /// <param name="useShader">- whether to tell OpenGL to use the shader.</param>
-    void SetFloat(const char* name, float value, bool useShader = false);
+    Shader& SetFloat(const char* name, float value, bool useShader = false);
 
     /// <summary> Sets an int uniform in the shader.</summary>
     /// <param name="name">- the name of the Uniform.</param> <param name="value">- the value to set it to.</param> 
     /// <param name="useShader">- whether to tell OpenGL to use the shader.</param>
-    void SetInteger(const char* name, int value, bool useShader = false);
+    Shader& SetInteger(const char* name, int value, bool useShader = false);
 
     /// <summary> Sets an ivec2 uniform in the shader.</summary>
     /// <param name="name">- the name of the Uniform.</param> <param name="value">- the value to set it to.</param> 
     /// <param name="useShader">- whether to tell OpenGL to use the shader.</param>
-    void SetVector2(const char* name, int x, int y, bool useShader = false);
+    Shader& SetVector2(const char* name, int x, int y, bool useShader = false);
 
     /// <summary> Sets an vec2 uniform in the shader.</summary>
     /// <param name="name">- the name of the Uniform.</param> <param name="value">- the value to set it to.</param> 
     /// <param name="useShader">- whether to tell OpenGL to use the shader.</param>
-    void SetVector2f(const char* name, float x, float y, bool useShader = false);
+    Shader& SetVector2f(const char* name, float x, float y, bool useShader = false);
 
     /// <summary> Sets an vec3 uniform in the shader.</summary>
     /// <param name="name">- the name of the Uniform.</param> <param name="value">- the value to set it to.</param> 
     /// <param name="useShader">- whether to tell OpenGL to use the shader.</param>
-    void SetVector2f(const char* name, const glm::vec2& value, bool useShader = false);
+    Shader& SetVector2f(const char* name, const glm::vec2& value, bool useShader = false);
 
     /// <summary> Sets an vec3 uniform in the shader.</summary>
     /// <param name="name">- the name of the Uniform.</param> <param name="value">- the value to set it to.</param> 
     /// <param name="useShader">- whether to tell OpenGL to use the shader.</param>
-    void SetVector3f(const char* name, float x, float y, float z, bool useShader = false);
+    Shader& SetVector3f(const char* name, float x, float y, float z, bool useShader = false);
 
     /// <summary> Sets an vec3 uniform in the shader.</summary>
     /// <param name="name">- the name of the Uniform.</param> <param name="value">- the value to set it to.</param> 
     /// <param name="useShader">- whether to tell OpenGL to use the shader.</param>
-    void SetVector3f(const char* name, const glm::vec3& value, bool useShader = false);
+    Shader& SetVector3f(const char* name, const glm::vec3& value, bool useShader = false);
 
     /// <summary> Sets an vec4 uniform in the shader.</summary>
     /// <param name="name">- the name of the Uniform.</param> <param name="value">- the value to set it to.</param> 
     /// <param name="useShader">- whether to tell OpenGL to use the shader.</param>
-    void SetVector4f(const char* name, float x, float y, float z, float w, bool useShader = false);
+    Shader& SetVector4f(const char* name, float x, float y, float z, float w, bool useShader = false);
 
     /// <summary> Sets an vec4 uniform in the shader.</summary>
     /// <param name="name">- the name of the Uniform.</param> <param name="value">- the value to set it to.</param> 
     /// <param name="useShader">- whether to tell OpenGL to use the shader.</param>
-    void SetVector4f(const char* name, const glm::vec4& value, bool useShader = false);
+    Shader& SetVector4f(const char* name, const glm::vec4& value, bool useShader = false);
 
     /// <summary> Sets an mat4 uniform in the shader.</summary>
     /// <param name="name">- the name of the Uniform.</param> <param name="value">- the value to set it to.</param> 
     /// <param name="useShader">- whether to tell OpenGL to use the shader.</param>
-    void SetMatrix4(const char* name, const glm::mat4& matrix, bool useShader = false);
+    Shader& SetMatrix4(const char* name, const glm::mat4& matrix, bool useShader = false);
+
+
+protected:
+    Shader FromFile(const std::string filename) override;
+    void Clear() override;
 
 private:
     /// <summary>

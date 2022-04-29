@@ -33,7 +33,6 @@
             x(_contents[0]), y(_contents[1]), z(_contents[2]), w(_contents[3])
         { 
             _contents = std::array<T, N>({ 0 });
-            Bind();
         }
         
         Vector(T value) : Object("Vector"), _contents{ value }, 
@@ -41,7 +40,6 @@
         {
             for (int i = 0; i < N; i++) 
                 _contents[i] = value;
-            Bind();
         }
 
         Vector(std::initializer_list<T> value) : Object("Vector"), _contents{ 0 }, 
@@ -54,7 +52,6 @@
                 _contents[i] = *it;
             }
             //std::copy(std::begin(value), std::end(value), std::begin(_contents));
-            Bind();
         }
 
         // Copy Constructor
@@ -63,7 +60,6 @@
         {
             for (int i = 0; i < N; i++)
                 _contents[i] = value._contents[i];
-            Bind();
         }
 
 
@@ -515,15 +511,6 @@
         // *Should* be private, but it's much easier to reference this when it's not-
         std::array<T, N> _contents;
         T& x; T& y; T& z; T& w;
-
-    private:
-        T zit = -1;
-        constexpr void Bind() {
-            if (N >= 1) x = _contents[0];
-            if (N >= 2) y = _contents[1];
-            if (N >= 3) z = _contents[2];
-            if (N >= 4) w = _contents[3];
-        }
     };
     //
 

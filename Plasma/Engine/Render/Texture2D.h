@@ -33,6 +33,6 @@ public:
     // - 
 
 protected:
-    Texture2D* FromFile(const std::string filename) override;
+    Texture2D FromFile(const std::string filename) override;
     void Clear() override;
 };

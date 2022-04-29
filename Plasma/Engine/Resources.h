@@ -18,21 +18,7 @@
 
 // A singleton that deals with Textures and Shaders. 
 class Resources {
-public:
-	
-	// █▀ █ █ ▄▀█ █▀▄ █▀▀ █▀█
-	// ▄█ █▀█ █▀█ █▄▀ ██▄ █▀▄
-
-	// All the shaders we have cached
-	static std::map<std::string, Shader> Shaders;
-
-	// Loads a shader from file loading vertex, fragment shader's source code. 
-	// If gShaderFile is not nullptr, it also loads a geometry shader
-	static Shader LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name);
-	
-	// Retrieves a cached shader
-	static Shader& GetShader(std::string name);
-	
+public:	
 
 	// █▀▀ █▀█ █▄ █ ▀█▀
 	// █▀  █▄█ █ ▀█  █ 
@@ -78,9 +64,6 @@ public:
 private:
 	// Private constructor
 	Resources() {}
-
-	// Loads a shader from a file
-	static Shader LoadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile = nullptr);
 
 	// Loads a font from a file
 	static Font LoadFontFromFile(const std::string file, unsigned int fontSize);

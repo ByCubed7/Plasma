@@ -136,7 +136,7 @@ namespace Engine {
 		gladLoadGL();
 
 		//UpdateSize();
-		std::cout << "[Window::Ctor] END " << std::endl;
+		//std::cout << "[Window::Ctor] END " << std::endl;
 	}
 
 	void Window::LoadScene(Scene* newScene)

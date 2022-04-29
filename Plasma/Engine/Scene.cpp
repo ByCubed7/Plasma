@@ -65,24 +65,28 @@ namespace Engine
 		// - Load and Config shaders
 
 		// Sprite
-		Shader ShaderSprite = Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");
-		ShaderSprite.Use();
-		ShaderSprite.SetInteger("image", 0);
-		ShaderSprite.SetInteger("index", 1);
-		ShaderSprite.SetMatrix4("projection", projection);
+		Shader::Load("assets/shaders/sprite.shader", "sprite");
+		Shader::Load("assets/shaders/text.shader", "text");
+		Shader::Load("assets/shaders/tile.shader", "tile");
+
+		Shader ShaderSprite = Shader::Get("sprite");
+		ShaderSprite.Use()
+			.SetInteger("image", 0)
+			.SetInteger("index", 1)
+			.SetMatrix4("projection", projection);
 
 		// Text
-		Shader ShaderText = Resources::LoadShader("assets/shaders/text.vs", "assets/shaders/text.frag", nullptr, "text");
-		ShaderText.Use();
-		ShaderText.SetInteger("text", 0);
-		ShaderText.SetMatrix4("projection", projection);
+		Shader ShaderText = Shader::Get("text");
+		ShaderText.Use()
+			.SetInteger("text", 0)
+			.SetMatrix4("projection", projection);
 		
 		//* Tilemap
-		Shader ShaderTile = Resources::LoadShader("assets/shaders/tile.vs", "assets/shaders/tile.frag", nullptr, "tile");
-		ShaderTile.Use();
-		ShaderTile.SetInteger("image", 0);
-		ShaderTile.SetInteger("index", 1);
-		ShaderTile.SetMatrix4("projection", projection);
+		Shader ShaderTile = Shader::Get("tile");
+		ShaderTile.Use()
+			.SetInteger("image", 0)
+			.SetInteger("index", 1)
+			.SetMatrix4("projection", projection);
 
 		// - Load Text Fonts
 		Resources::LoadFont("assets/fonts/arial.ttf", "arial");
@@ -104,9 +108,9 @@ namespace Engine
 		Vector2 size = app->GetSize();
 		glm::mat4 projection = glm::ortho(0.0f, (float)size.x, (float)size.y, 0.0f, -1.0f, 1.0f);
 
-		Resources::GetShader("sprite").Use().SetMatrix4("projection", projection);
-		Resources::GetShader("text").Use().SetMatrix4("projection", projection);
-		Resources::GetShader("tile").Use().SetMatrix4("projection", projection);		
+		Shader::Get("sprite").Use().SetMatrix4("projection", projection);
+		Shader::Get("text").Use().SetMatrix4("projection", projection);
+		Shader::Get("tile").Use().SetMatrix4("projection", projection);
 	}
 
 	void Scene::ProcessInput(double dt)

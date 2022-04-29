@@ -11,7 +11,7 @@ template<class T>
 class Resource {
 public:
 	static bool Has(std::string name) { return cache.find(name) != cache.end(); } // Returns whether the Resource has the obj cached
-	static T& Get(std::string name) { return cache[name]; } // Retrieves a cached objs.
+	static T Get(std::string name) { return cache[name]; } // Retrieves a cached objs.
 
 	// Virtual static idiom
 	static void Load(const std::string file, const std::string name)
@@ -19,7 +19,7 @@ public:
 		if (!Has(name)) 
 		{
 			Resource* resource = (Resource*)(new T()); // I dispise this implementation
-			cache[name] = *resource->FromFile(file);
+			cache[name] = resource->FromFile(file);
 			//delete resource;
 		}
 		//return cache[name];
@@ -38,6 +38,6 @@ protected:
 
 	//std::string filepath, name;
 
-	virtual T* FromFile(const std::string filepath) = 0;
+	virtual T FromFile(const std::string filepath) = 0;
 	virtual void Clear() = 0;
 };
