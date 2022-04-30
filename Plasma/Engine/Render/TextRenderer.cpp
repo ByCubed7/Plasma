@@ -52,7 +52,7 @@ namespace Render
         #endif
 
         // Get Font from resources
-        Font font = Resources::GetFont("arial");
+        Font font = Font::Get("arial");
 
         // Activate corresponding render state	
         this->shader.Use();

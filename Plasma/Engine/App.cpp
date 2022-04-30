@@ -110,7 +110,7 @@ namespace Engine {
 				std::this_thread::sleep_for(std::chrono::duration<double>(dur));
 			}
 
-			//std::cout << "Framerate: " << 1/dur << std::endl;
+			//std::cout << "Framerate: " << 1 / dur << std::endl;
 			
 			glfwPollEvents();
 
@@ -135,7 +135,10 @@ namespace Engine {
 		//delete audio;
 
 		// Clear all of the loaded resources 
-		Resources::Clear();
+		
+		Texture2D::CleanUp();
+		Shader::CleanUp();
+		Font::CleanUp();
 
 		// Terminate the OpenGL window
 		glfwTerminate();

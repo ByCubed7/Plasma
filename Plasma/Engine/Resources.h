@@ -20,31 +20,6 @@
 class Resources {
 public:	
 
-	// █▀▀ █▀█ █▄ █ ▀█▀
-	// █▀  █▄█ █ ▀█  █ 
-
-	// All the fonts we have cached
-	static std::map<std::string, Font> Fonts;
-	
-	// Loads a font
-	static Font LoadFont(const std::string file, std::string name);
-	
-	// Retrieves a cached font
-	static Font& GetFont(std::string name);
-
-
-	// ▀█▀ █ █   █▀▀ █▀▄▀█ ▄▀█ █▀█
-	//  █  █ █▄▄ ██▄ █ ▀ █ █▀█ █▀▀
-
-	// All the fonts we have cached
-	static std::map<std::string, Tilemaps::Tilemap> tilemaps;
-
-	// Loads a font
-	static Tilemaps::Tilemap LoadTilemap(const std::string file, std::string name);
-
-	// Retrieves a cached tilemap
-	static Tilemaps::Tilemap& GetTilemap(std::string name);
-
 	// Audio
 
 	static std::map<std::string, Wav> wavs;
@@ -54,24 +29,10 @@ public:
 	static Wav GetWav(std::string name);
 
 	// - - - - - - - - - - - - - - - - - - - - - - - -
-	// - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-	// Properly de-allocates all loaded resources
-	// The deconstructor, basically
-	static void Clear();
 
 private:
 	// Private constructor
 	Resources() {}
-
-	// Loads a font from a file
-	static Font LoadFontFromFile(const std::string file, unsigned int fontSize);
-
-	static unsigned int defaultFontSize;
-
-	// Deals with TMX file tilesheet loading
-	static Tiled::Loader tiled;
 
 	// 
 	static std::vector<char> LoadWavFromFile(const std::string file);

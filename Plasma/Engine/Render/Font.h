@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Renderer.h"
+#include "../Resource.h"
 
 #include <glm/glm.hpp>
 
@@ -17,10 +18,16 @@ struct Character {
 };
 
 
-struct Font
+struct Font : Resource<Font>
 {
 	std::map<char, Character> Characters;
 
 	void AddCharacter(char c, Character character);
 	Character GetCharacter(char c);
+
+protected:
+    static unsigned int defaultFontSize;
+
+    Font FromFile(const std::string filename) override;
+    void Clear() override;
 };

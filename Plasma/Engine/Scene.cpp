@@ -89,7 +89,8 @@ namespace Engine
 			.SetMatrix4("projection", projection);
 
 		// - Load Text Fonts
-		Resources::LoadFont("assets/fonts/arial.ttf", "arial");
+		//Resources::LoadFont("assets/fonts/arial.ttf", "arial");
+		Font::Load("assets/fonts/arial.ttf", "arial");
 
 		// Load Renderer
 		renderer = new Render::Renderers(
