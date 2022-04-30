@@ -54,8 +54,8 @@ namespace Engine {
 
 
 		// Initialize window
-		Vector2 size = app->GetSize();
-		window = glfwCreateWindow((int)size.x, (int)size.y, title.c_str(), nullptr, nullptr);
+		Vector2Int size = app->GetSize();
+		window = glfwCreateWindow((float)size.x, (float)size.y, title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window); // Make the window's context 
 		glfwSetWindowAspectRatio(window, 1, 1);
 		glfwShowWindow(window);
@@ -175,8 +175,8 @@ namespace Engine {
 
 	void Window::UpdateSize()
 	{
-		Vector2 size = app->GetSize();
-		glfwSetWindowSize(window, (int)size.x, (int)size.y);
+		Vector2Int size = app->GetSize();
+		glfwSetWindowSize(window, size.x, size.y);
 	}
 
 	int Window::GetPPU()
@@ -184,9 +184,9 @@ namespace Engine {
 		return PPU;
 	}
 
-	Vector2 Window::GetMonitorSize()
+	Vector2Int Window::GetMonitorSize()
 	{
-		return Vector2({ (float)monitorWidth, (float)monitorHeight });
+		return Vector2Int({ monitorWidth, monitorHeight });
 	}
 
 	//

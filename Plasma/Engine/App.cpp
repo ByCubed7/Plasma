@@ -13,15 +13,11 @@
 namespace Engine {
 	App* App::instance = nullptr;
 
-	App::App()
+	App::App() : window(nullptr), scene(nullptr), size(100)
 	{
+		// Singleton D:<
 		instance = this;
-		window = nullptr;
-		scene = nullptr;
-
-		size = Vector2(100);
 	}
-
 
 	Engine::Scene* App::CreateGame()
 	{
@@ -156,12 +152,12 @@ namespace Engine {
 		return scene;
 	}
 
-	Vector2 App::GetSize()
+	Vector2Int App::GetSize()
 	{
 		return size;
 	}
 
-	void App::SetSize(Vector2 newSize)
+	void App::SetSize(Vector2Int newSize)
 	{
 		size = newSize;
 		

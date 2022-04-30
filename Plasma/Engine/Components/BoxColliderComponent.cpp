@@ -35,19 +35,19 @@ AABB BoxColliderComponent::GetBounds()
 void BoxColliderComponent::OnCollisionEnter()
 {
 	Event<BoxColliderComponent::OnEnterEventParams> e(this);
-	OnCollisionEnterEvent.post(e);
+	OnCollisionEnterEvent.Invoke(e);
 }
 
 void BoxColliderComponent::OnCollisionStay()
 {
 	Event<BoxColliderComponent::OnStayEventParams> e(this);
-	OnCollisionStayEvent.post(e);
+	OnCollisionStayEvent.Invoke(e);
 }
 
 void BoxColliderComponent::OnCollisionExit()
 {
 	Event<BoxColliderComponent::OnExitEventParams> e(this);
-	OnCollisionExitEvent.post(e);
+	OnCollisionExitEvent.Invoke(e);
 }
 
 

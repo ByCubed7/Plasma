@@ -2,8 +2,12 @@
 
 #pragma once
 
+#include "Event.h"
+#include "Dispatcher.h"
+
 #include <iostream>
 #include <map>
+
 
 template<typename States, typename Actions>
 class FiniteStateMachine {
@@ -22,6 +26,17 @@ public:
         std::pair<States, Actions> pair = std::make_pair(fromState, action);
         stateTable[pair] = newState;
     }
+
+    // Event Params
+    struct OnUpdateStateParams {
+        OnUpdateStateParams(States currentState, Actions cause) : state(currentState), action(cause) {}
+        States state;
+        Actions action;
+    };
+
+    // Event Dispatchers
+    Dispatcher<OnUpdateStateParams> onEnterEvent;
+    Dispatcher<OnUpdateStateParams> onExitEvent;
 
 protected:
     void ProcessEvent(Actions action)
@@ -43,16 +58,18 @@ protected:
         //Debug.Log("FSM - ProcessEvent =" + theAction + " : State=" + currentState + " : NewState=" + newState);        
 
         // Raise exit events.        
-        //StateExitEv.Invoke(this, null);        
+        //OnEnterEvent.Invoke(this, null);  
+        Event<OnUpdateStateParams> exitEvent(currentState);
+        onExitEvent.Invoke(exitEvent);
 
         // Update state.        
         currentState = newState;
 
-        // Raise enter events.          
-        //StateEnterEv.Invoke(this, null);    
+        // Raise enter events.    
+        Event<OnUpdateStateParams> enterEvent(currentState);
+        onEnterEvent.Invoke(enterEvent);
+        //OnExitEvent.Invoke(this, null);    
     }
-
-
 
     States GetState() {
         return currentState;
@@ -66,4 +83,3 @@ private:
     States currentState;
     std::map<std::pair<States, Actions>, States> stateTable;
 };
-

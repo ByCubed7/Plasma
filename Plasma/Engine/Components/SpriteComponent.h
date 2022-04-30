@@ -38,7 +38,7 @@ public:
 	Texture2D Get();
 
 	// Set the animation speed
-	SpriteComponent* AnimationSpeed(double speed);
+	SpriteComponent* AnimationSpeed(int speed);
 
 	// Set the animation speed
 	SpriteComponent* SetColour(Colour newColour);

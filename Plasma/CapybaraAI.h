@@ -25,4 +25,6 @@ public:
 	WalkComponent* walkComponent;
 
 	CapybaraAI* Bind(WalkComponent* component);
+
+	Vector2 wanderTargetPosition;
 };

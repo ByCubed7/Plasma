@@ -37,7 +37,7 @@ namespace Engine
 		void Title(std::string newName);
 
 		int GetPPU();
-		Vector2 GetMonitorSize();
+		Vector2Int GetMonitorSize();
 
 		void UpdateSize();
 

@@ -8,12 +8,6 @@
 #include "../AABB.h"
 #include "../Dispatcher.h"
 
-//enum class BoxColliderComponentEventType {
-//	TEST_EVENT,
-//	TEST_EVENT2,
-//	TEST_EVENT3
-//};
-
 namespace Engine { 
 	class Scene;
 	class GameObject;
@@ -22,7 +16,6 @@ namespace Engine {
 class BoxColliderComponent : public Engine::Component
 {
 public:
-
 	Engine::GameObject* GetGameObject() { return gameObject; };
 
 	struct OnEnterEventParams;

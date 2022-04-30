@@ -59,8 +59,8 @@ namespace Engine
 
 	void Scene::Load() 
 	{
-		Vector2 size = app->GetSize();
-		glm::mat4 projection = glm::ortho(0.0f, size.x, size.y, 0.0f, -1.0f, 1.0f);
+		Vector2Int size = app->GetSize();
+		glm::mat4 projection = glm::ortho(0.0f, (float)size.x, (float)size.y, 0.0f, -1.0f, 1.0f);
 		
 		// - Load and Config shaders
 
@@ -106,7 +106,7 @@ namespace Engine
 	void Scene::UpdateProjection()
 	{
 		// As this is 2D we don't have to worry about perspective, use orthographic projection
-		Vector2 size = app->GetSize();
+		Vector2Int size = app->GetSize();
 		glm::mat4 projection = glm::ortho(0.0f, (float)size.x, (float)size.y, 0.0f, -1.0f, 1.0f);
 
 		Shader::Get("sprite").Use().SetMatrix4("projection", projection);

@@ -18,13 +18,13 @@ private:
 
 public:
     // Subscribe an observer
-    void subscribe(T type, const SlotType& funct) 
+    void Subscribe(T type, const SlotType& funct) 
     {
         observers[type].push_back(funct);
     };
 
     // Send the event to all the observers
-    void post(Event<T>& event) 
+    void Invoke(Event<T>& event)
     {
         if (observers.find(event.type()) == observers.end())
             return;

@@ -45,14 +45,14 @@ namespace Engine
 		Engine::Window* GetWindow();
 		Engine::Scene* GetScene();
 		
-		Vector2 GetSize();
-		void SetSize(Vector2 newSize);
+		Vector2Int GetSize();
+		void SetSize(Vector2Int newSize);
 
 	private:
 		Engine::Window* window;
 		Engine::Scene* scene;
 
-		Vector2 size;
+		Vector2Int size;
 
 		void GraphicsCallbackException(GLenum source, GLenum type, unsigned int id, GLenum severity, GLsizei length, const char* message, const void* userParam);
 	};

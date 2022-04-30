@@ -29,19 +29,19 @@ TilemapColliderComponent* TilemapColliderComponent::SetTilemap(Tilemaps::Tilemap
 void TilemapColliderComponent::OnCollisionEnter()
 {
 	Event<TilemapColliderComponent::OnEnterEventParams> e(this);
-	OnCollisionEnterEvent.post(e);
+	OnCollisionEnterEvent.Invoke(e);
 }
 
 void TilemapColliderComponent::OnCollisionStay()
 {
 	Event<TilemapColliderComponent::OnStayEventParams> e(this);
-	OnCollisionStayEvent.post(e);
+	OnCollisionStayEvent.Invoke(e);
 }
 
 void TilemapColliderComponent::OnCollisionExit()
 {
 	Event<TilemapColliderComponent::OnExitEventParams> e(this);
-	OnCollisionExitEvent.post(e);
+	OnCollisionExitEvent.Invoke(e);
 }
 
 
