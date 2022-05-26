@@ -68,8 +68,7 @@ namespace Engine
 		/// <summary>
 		/// Stores the state of the current input. Keyboard presses, mouse position, ect
 		/// </summary>
-		/// <param name="delta">- the interval in seconds from the last frame to the current one.</param>
-		void ProcessInput(double delta);
+		void ProcessInput();
 
 		/// <summary>
 		/// Initializes the DEFAULT shaders, textures, projection, renderers and fonts.
@@ -82,7 +81,7 @@ namespace Engine
 		/// Called every frame. Updates all components, collisions and events.
 		/// </summary>
 		/// <param name="delta">- the interval in seconds from the last frame to the current one.</param>
-		void Update(double delta);
+		void Update(double time, double delta);
 
 		/// <summary>
 		/// Called at the end of each frame. Renders all of the components.

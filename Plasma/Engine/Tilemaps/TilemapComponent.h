@@ -14,7 +14,7 @@ class TilemapComponent : public Engine::Component
 public:
 	TilemapComponent(Engine::GameObject* gameObject, std::string name = "TilemapComponent");
 
-	void Update(double delta, Engine::Scene& game) override;
+	void Update(double time, double delta, Engine::Scene& game) override;
 	void Draw(Render::Renderers& renderer) override;
 
 	Tilemaps::Tilemap tilemap;

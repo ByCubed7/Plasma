@@ -200,6 +200,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="Library\TiledLibrary\RapidXML\manual.html" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -284,7 +285,6 @@
       <DeploymentContent>true</DeploymentContent>
     </ClInclude>
     <ClInclude Include="Engine\Audio\Wav.h" />
-    <ClInclude Include="Engine\Colour.h" />
     <ClInclude Include="Engine\Component.h" />
     <ClInclude Include="Engine\Components\BoxColliderComponent.h" />
     <ClInclude Include="Engine\Components\CharacterControllerComponent.h" />
@@ -295,6 +295,7 @@
     <ClInclude Include="Engine\Input.h" />
     <ClInclude Include="Engine\Object.h" />
     <ClInclude Include="Engine\Render\Font.h" />
+    <ClInclude Include="Engine\Render\Renderable.h" />
     <ClInclude Include="Engine\Render\Renderer.h" />
     <ClInclude Include="Engine\Render\Renderers.h" />
     <ClInclude Include="Engine\Render\Shader.h" />
@@ -304,7 +305,6 @@
     <ClInclude Include="Engine\Render\TilemapRenderer.h" />
     <ClInclude Include="Engine\Resource.h" />
     <ClInclude Include="Engine\Resources.h" />
-    <ClInclude Include="Engine\Resources\ShaderResource.h" />
     <ClInclude Include="Engine\Scene.h" />
     <ClInclude Include="Engine\StateMachine.h" />
     <ClInclude Include="Engine\Tilemaps\Tile.h" />

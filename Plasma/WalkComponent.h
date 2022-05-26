@@ -9,10 +9,10 @@ class WalkComponent : public Engine::Component
 public:
 	WalkComponent(Engine::GameObject* gameObject, std::string name = "WalkComponent");
 
-	void Update(double delta, Engine::Scene& game) override;
+	void Update(double time, double delta, Engine::Scene& game) override;
 
 
-	float stepCount;
+	double stepCount;
 
 	WalkComponent* SetTargetPosition(Vector2 position);
 private:

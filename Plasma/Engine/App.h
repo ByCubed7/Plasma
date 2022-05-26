@@ -31,9 +31,14 @@ namespace Engine
 		/// <summary>
 		/// Prepares and configuares GLWF to recieve calls, creates the window, prepares window callbacks. ect
 		/// </summary>
-		/// <param name="scene">- The scene to prepare with.</param>
 		/// <returns>The result ID of the opperation, if any.</returns>
-		int Build(Engine::Scene* scene);
+		int Build();
+
+		/// <summary>
+		/// Loads a scene onto the app
+		/// </summary>
+		/// <param name="newScene">- the scene to load.</param>
+		void Load(Engine::Scene* newScene);
 
 		/// <summary>
 		/// Runs the Mainloop.
@@ -42,10 +47,16 @@ namespace Engine
 		/// <returns>The result ID of the opperation, if any.</returns>
 		int Run(Engine::Scene* scene);
 
+		// Returns the current window
 		Engine::Window* GetWindow();
+
+		// Returns the current loaded scene
 		Engine::Scene* GetScene();
 		
+		// Returns the size of the window
 		Vector2Int GetSize();
+
+		// Sets the size of the window
 		void SetSize(Vector2Int newSize);
 
 	private:

@@ -17,6 +17,7 @@ namespace Engine {
 	{
 		// Singleton D:<
 		instance = this;
+
 	}
 
 	Engine::Scene* App::CreateGame()
@@ -26,10 +27,8 @@ namespace Engine {
 		return newScene;
 	}
 
-	int App::Build(Engine::Scene* setScene)
+	int App::Build()
 	{
-		scene = setScene;
-
 		glfwInit();
 
 		// The only OpenGL 3.x and 4.x contexts currently supported by macOS are forward-compatible, 
@@ -79,49 +78,65 @@ namespace Engine {
 		return 0;
 	}
 
+	void App::Load(Engine::Scene* newScene)
+	{
+		this->scene = newScene;
+	}
+
 	int App::Run(Engine::Scene* setScene)
 	{
 		window->LoadScene(scene);
 
 		SetSize(window->GetMonitorSize());
 
+		//const int framerate = 30;
+		const double framerate = 1.0 / 30;
+
 		// Delta Time
-		double deltaTime = 0.0f;
-		double lastFrame = 0.0f;
+		double time = 0.0;
+		const double deltaTime = 0.05;
 
-		int targetFrameRate = 30;
-
-		while (window->state == Window::State::RUNNING)
+		double currentTime = 0;
+		double accumulator = 0;
+		
+		bool quit = false;
+		while (!quit)
 		{
-			// Calculate delta time
-			double currentFrame = glfwGetTime();
-			deltaTime = currentFrame - lastFrame;
-			lastFrame = currentFrame;
-			
-			// Get framerate
-			double wait_time = 1.0 / targetFrameRate;
-			double dur = wait_time - deltaTime;
+			//quit = window->state != Window::State::RUNNING;
 
-			if (dur > 0) {
-				std::this_thread::sleep_for(std::chrono::duration<double>(dur));
+			// Calculate frame time
+			double newTime = glfwGetTime();
+			double frameTime = newTime - currentTime; //std::cout << "Frame time: " << frameTime << std::endl;
+			currentTime = newTime;
+
+			accumulator += frameTime;
+
+			while (accumulator >= deltaTime)
+			{
+				glfwPollEvents();
+
+				// Process the User Input
+				scene->ProcessInput();
+
+				// Update game state
+				scene->Update(time, deltaTime);
+				//std::cout << "Update" << std::endl;
+				//integrate(state, t, dt);
+
+				accumulator -= deltaTime;
+				time += deltaTime;
 			}
 
-			//std::cout << "Framerate: " << 1 / dur << std::endl;
-			
-			glfwPollEvents();
-
-			// Process the User Input
-			scene->ProcessInput(deltaTime);
-
-			// Update game state
-			scene->Update(deltaTime);
-
+			//Texture2D::Draw(Texture2D::Get("capybara"), { 100,100 }, { 320,320 }, { 0, 0 }, 0, 0, { 1,1,1 });
 			window->Render();
-			 
+			//std::cout << "Render" << std::endl;
+
 			// Clear render
-			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+			//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
-	
+
+			std::this_thread::sleep_for(std::chrono::duration<double>(framerate - frameTime));
+
 			//* Print any errors
 			GLenum err;
 			while ((err = glGetError()) != GL_NO_ERROR)

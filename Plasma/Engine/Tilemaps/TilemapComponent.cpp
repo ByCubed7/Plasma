@@ -17,6 +17,14 @@ TilemapComponent::TilemapComponent(Engine::GameObject* gameObject, std::string n
     animationSpeed = 2;
 }
 
+void TilemapComponent::Update(double time, double delta, Engine::Scene& game)
+{
+    //*
+    animationPoint += delta;
+    spriteFrame = (int)animationPoint * animationSpeed;
+    //*/
+}
+
 void TilemapComponent::Draw(Render::Renderers& renderer)
 {
     int ppu = gameObject->scene->GetWindow()->GetPPU();
@@ -38,14 +46,6 @@ void TilemapComponent::Draw(Render::Renderers& renderer)
             { 1, 1, 1 }
         );
     }
-    //*/
-}
-
-void TilemapComponent::Update(double delta, Engine::Scene& game)
-{
-    //*
-    animationPoint += delta;
-    spriteFrame = (int) animationPoint * animationSpeed;
     //*/
 }
 

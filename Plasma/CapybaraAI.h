@@ -20,7 +20,7 @@ class CapybaraAI : public Engine::Component, FiniteStateMachine<CapybaraStates, 
 public:
 	CapybaraAI(Engine::GameObject* gameObject, std::string name = "CapybaraAIComponent");
 
-	void Update(double delta, Engine::Scene& game) override;
+	void Update(double time, double delta, Engine::Scene& game) override;
 
 	WalkComponent* walkComponent;
 

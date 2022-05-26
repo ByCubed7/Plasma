@@ -13,7 +13,7 @@ TargetMouseComponent::TargetMouseComponent(Engine::GameObject* gameObject, std::
 	walkComponent = nullptr;
 }
 
-void TargetMouseComponent::Update(double delta, Engine::Scene& game)
+void TargetMouseComponent::Update(double time, double delta, Engine::Scene& game)
 {
 	walkComponent->SetTargetPosition(gameObject->scene->input.mousePosition);
 }

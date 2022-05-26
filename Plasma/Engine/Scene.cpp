@@ -69,6 +69,9 @@ namespace Engine
 		Shader::Load("assets/shaders/text.shader", "text");
 		Shader::Load("assets/shaders/tile.shader", "tile");
 
+
+		Texture2D::PrepareRenderer(Shader::Get("sprite"));
+
 		Shader ShaderSprite = Shader::Get("sprite");
 		ShaderSprite.Use()
 			.SetInteger("image", 0)
@@ -114,8 +117,13 @@ namespace Engine
 		Shader::Get("tile").Use().SetMatrix4("projection", projection);
 	}
 
-	void Scene::ProcessInput(double dt)
+	void Scene::ProcessInput()
 	{
+		// Get mouse position
+		double xpos, ypos;
+		glfwGetCursorPos(app->GetWindow()->Get(), &xpos, &ypos);
+		input.SetMousePosition(xpos, ypos);
+
 		// If the escape key is pressed, set the game to closing
 		if (input.IsKey(input.Key_Escape))
 			state = State::CLOSING;
@@ -124,11 +132,10 @@ namespace Engine
 			state = state == State::ACTIVE ? State::PAUSED : State::ACTIVE;
 
 		//std::cout << input.IsKeyDown(input.Key_P);
-
 		input.Tick();
 	}
 
-	void Scene::Update(double delta) 
+	void Scene::Update(double time, double delta)
 	{
 		// - IF PAUSED, DO NOTHING!
 		if (state != State::ACTIVE) return;
@@ -136,7 +143,7 @@ namespace Engine
 		// Update all of the components
 		for (const auto& component : components)
 		{
-			component->Update(delta, *this);
+			component->Update(time, delta, *this);
 		}
 
 

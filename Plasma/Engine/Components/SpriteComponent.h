@@ -4,7 +4,6 @@
 
 #include "../Component.h"
 #include "../AABB.h"
-#include "../Colour.h"
 #include "../Render/Texture2D.h"
 
 #include <glm/glm.hpp>
@@ -18,10 +17,10 @@ class SpriteComponent : public Engine::Component
 public:
 	SpriteComponent(Engine::GameObject* gameObject, std::string name = "SpriteComponent");
 
-	void Update(double delta, Engine::Scene& game) override;
+	void Update(double time, double delta, Engine::Scene& game) override;
 	void Draw(Render::Renderers& renderer) override;
 
-	Colour color;
+	RGBA color;
 
 	double animationPoint;
 	int animationSpeed;
@@ -41,7 +40,7 @@ public:
 	SpriteComponent* AnimationSpeed(int speed);
 
 	// Set the animation speed
-	SpriteComponent* SetColour(Colour newColour);
+	SpriteComponent* SetColour(RGBA newColour);
 
 	// Get the Animation speed
 	int GetAnimationSpeed();

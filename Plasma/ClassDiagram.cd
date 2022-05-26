@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
+  <Class Name="Dispatcher&lt;T&gt;">
+    <Position X="28" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAIAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Dispatcher.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Event&lt;T&gt;">
+    <Position X="29.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAQAAEAAAAAAAgABAAAAAAAEAABAAAA=</HashCode>
+      <FileName>Engine\Event.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Resource&lt;T&gt;">
+    <Position X="5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAgAAAAAACAABAAAAAAAAAAAAAAAAEAAAAAEBAAAA=</HashCode>
+      <FileName>Engine\Resource.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Resources" Collapsed="true">
+    <Position X="7.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAIAIAAAAAAAAAAAAAAAAAAAACAAAAAQIAAAAAA=</HashCode>
+      <FileName>Engine\Resources.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FiniteStateMachine&lt;States, Actions&gt;">
+    <Position X="31.75" Y="3.25" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="FiniteStateMachine&lt;States, Actions&gt;::OnUpdateStateParams" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine\StateMachine.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAJEACAAAAABAAIAAAAAAAAACAAAICAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\StateMachine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Scene" Collapsed="true">
+    <Position X="15.75" Y="3.25" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Engine::Scene::State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine\Scene.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AARAgAAAAABIBAAAgACAAAgRQAAgABAEADAAEACAgAA=</HashCode>
+      <FileName>Engine\Scene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Window">
+    <Position X="21.75" Y="3.25" Width="3.25" />
+    <NestedTypes>
+      <Enum Name="Engine::Window::State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine\Window.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAQAAAAEBAAAACKICAgkBAgAxMADAACAAAAEQ=</HashCode>
+      <FileName>Engine\Window.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::App" Collapsed="true">
+    <Position X="19.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAQCAAIAKAIAAAABAgAAICAAAAACgAAI=</HashCode>
+      <FileName>Engine\App.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::GameObject">
+    <Position X="25.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAEAACAJIACAAAAAAAEACAAgAIAAAA=</HashCode>
+      <FileName>Engine\GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Engine::Component">
+    <Position X="10.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAIAAAAAAAAAAAgBAAAAAAAA=</HashCode>
+      <FileName>Engine\Component.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoxColliderComponent">
+    <Position X="5" Y="6.25" Width="2" />
+    <NestedTypes>
+      <Struct Name="BoxColliderComponent::OnEnterEventParams" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine\Components\BoxColliderComponent.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="BoxColliderComponent::OnStayEventParams" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine\Components\BoxColliderComponent.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="BoxColliderComponent::OnExitEventParams" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine\Components\BoxColliderComponent.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAgAQAAAgAAAEAgAAIAAAgAAgAAAAMAAgCAAAAAAA=</HashCode>
+      <FileName>Engine\Components\BoxColliderComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharacterControllerComponent">
+    <Position X="1.75" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Components\CharacterControllerComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpriteComponent">
+    <Position X="7.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAJAgEDiBAAAAAAAAAABAAAACAABAiAAAAAAA=</HashCode>
+      <FileName>Engine\Components\SpriteComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TilemapColliderComponent">
+    <Position X="15.5" Y="6.25" Width="2.25" />
+    <NestedTypes>
+      <Struct Name="TilemapColliderComponent::OnEnterEventParams" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine\Tilemaps\TilemapColliderComponent.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="TilemapColliderComponent::OnStayEventParams" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine\Tilemaps\TilemapColliderComponent.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="TilemapColliderComponent::OnExitEventParams" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine\Tilemaps\TilemapColliderComponent.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAgAQAAAAAAAAAgAAAAAAggAgAAAAMAAAAAAAAKAA=</HashCode>
+      <FileName>Engine\Tilemaps\TilemapColliderComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TilemapComponent">
+    <Position X="18.5" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAIAIAAEBxAAAAAAAAAAgAAAADCAQBAAAAAAIAA=</HashCode>
+      <FileName>Engine\Tilemaps\TilemapComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shader">
+    <Position X="6" Y="14.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAYBAAAAAAAhAAAAAAAAAAAAAEAAAFJAAAAABIAEE=</HashCode>
+      <FileName>Engine\Render\Shader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Texture2D">
+    <Position X="9" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAgAAAABAAAEQAQAAAACAAAAAAAABEAAAAAEBAAiA=</HashCode>
+      <FileName>Engine\Render\Texture2D.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioSourceComponent">
+    <Position X="10.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAIAAAAAAAAAAIAAAAAAAABAAAAAAAI=</HashCode>
+      <FileName>Engine\Audio\AudioSourceComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Render::Renderer">
+    <Position X="14.25" Y="11.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAEAAQAA=</HashCode>
+      <FileName>Engine\Render\Renderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Render::SpriteRenderer">
+    <Position X="17" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAABAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Engine\Render\SpriteRenderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Render::TextRenderer">
+    <Position X="12" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Render\TextRenderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Render::TilemapRenderer">
+    <Position X="14.25" Y="14.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAAAAAAABAQBIACAhUAAIAgCCAAAAEAA=</HashCode>
+      <FileName>Engine\Render\TilemapRenderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Audio::Buffer">
+    <Position X="28.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQgA=</HashCode>
+      <FileName>Engine\Audio\AudioBuffer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Audio::Listener">
+    <Position X="27" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAYAAAAABAAgCAAAQAAAAAAAA=</HashCode>
+      <FileName>Engine\Audio\AudioListener.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Audio::Source">
+    <Position X="30.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAGAgAADCAAAAAAIAAAAAQAAkCAgQQAAAAAAhA=</HashCode>
+      <FileName>Engine\Audio\AudioSource.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tilemaps::TileLayer" Collapsed="true">
+    <Position X="3" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARAAAAAAAAAAAAAAQAAABAQAAgCAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Tilemaps\TileLayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tilemaps::Tilemap">
+    <Position X="3.25" Y="14.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACQAAAAAQAACAAAAAAAAAAAAEoAAAhABAAAA=</HashCode>
+      <FileName>Engine\Tilemaps\Tilemap.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tilemaps::Tileset" Collapsed="true">
+    <Position X="4.75" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAgAAAIAAEAAAAAAAA=</HashCode>
+      <FileName>Engine\Tilemaps\Tileset.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI::TextboxComponent">
+    <Position X="13" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAQAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\UI\TextboxComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="AABB" Collapsed="true">
+    <Position X="32.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAIAQEAAAAAAACAAAAAAAAAAAABAAABAEAYAAA=</HashCode>
+      <FileName>Engine\AABB.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Input" Collapsed="true">
+    <Position X="17.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAZBCAAgAMAEEDAAgAAIABAAAAAQQAEAAABAQAAEYQA=</HashCode>
+      <FileName>Engine\Input.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Object">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAkAAAgAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Object.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Render::Renderers">
+    <Position X="12.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAgBAAAAAIAACAAAAAAAA=</HashCode>
+      <FileName>Engine\Render\Renderers.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Audio::Scene">
+    <Position X="25.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAAAQAAAgAAAABAAQCAAAEBACIAAAAAAAAA=</HashCode>
+      <FileName>Engine\Audio\AudioScene.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Character">
+    <Position X="12" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIIAAAAgAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Render\Font.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Font">
+    <Position X="1" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAABACAAAAAAAAAAAAAAEAQAAAABAAAA=</HashCode>
+      <FileName>Engine\Render\Font.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Wav" Collapsed="true">
+    <Position X="7.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAgAAAAIAAAAACAAgEABAAAAAQAAAEAAA=</HashCode>
+      <FileName>Engine\Audio\Wav.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Tilemaps::Tile" Collapsed="true">
+    <Position X="3" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAIAACAAAAAAAAAAAAAAAAAwA=</HashCode>
+      <FileName>Engine\Tilemaps\Tile.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Tilemaps::TileRender" Collapsed="true">
+    <Position X="4.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAAAAAAAAgAAAAIAQAAAAQAAAAAAAAABAAAgA=</HashCode>
+      <FileName>Engine\Tilemaps\TileRender.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="TilemapColliderComponentEventType">
+    <Position X="6.75" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Engine\Tilemaps\TilemapColliderComponent.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

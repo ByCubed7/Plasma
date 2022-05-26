@@ -29,6 +29,15 @@ SpriteComponent::SpriteComponent(Engine::GameObject* gameObject, std::string nam
 
 void SpriteComponent::Draw(Render::Renderers& renderer)
 {
+    //std::cout << "Draw!" << std::endl;
+
+    //color = RGBA({
+    //    (unsigned char)(rand() % 255),
+    //    (unsigned char)(rand() % 255),
+    //    (unsigned char)(rand() % 255)
+    //});
+    //color.w = 255;
+
     int ppu = gameObject->scene->GetWindow()->GetPPU();
 
     renderer.sprite.DrawSprite(
@@ -38,12 +47,14 @@ void SpriteComponent::Draw(Render::Renderers& renderer)
         { pivot.x, pivot.y },
         gameObject->rotation,
         spriteFrame,
-        glm::vec3(color.red / 255, color.blue / 255, color.green / 255)
+        glm::vec3(color.x / 255.0f, color.y / 255.0f, color.z / 255.0f)
     );
 }
 
-void SpriteComponent::Update(double delta, Engine::Scene& game)
+void SpriteComponent::Update(double time, double delta, Engine::Scene& game)
 {
+    //std::cout << "Update!" << std::endl;
+
     animationPoint += delta;
     spriteFrame = (int) animationPoint * animationSpeed;
 }
@@ -63,6 +74,6 @@ SpriteComponent* SpriteComponent::Set(Texture2D sprite) { this->sprite = sprite;
 Texture2D SpriteComponent::Get() { return this->sprite; }
 
 SpriteComponent* SpriteComponent::AnimationSpeed(int speed) { this->animationSpeed = speed; return this; }
-SpriteComponent* SpriteComponent::SetColour(Colour newColour) { color = newColour; return this; }
+SpriteComponent* SpriteComponent::SetColour(RGBA newColour) { color = newColour; return this; }
 int SpriteComponent::GetAnimationSpeed() { return this->animationSpeed; }
 

@@ -10,17 +10,12 @@ WalkComponent::WalkComponent(Engine::GameObject* gameObject, std::string name)
 	: Component(gameObject, name)
 {
 	target = 0;
-	step = 1;
-	wobble = Vector2({ 100, 10 });
+	step = 5;
+	wobble = Vector2({ 800, 10 });
 }
 
-void WalkComponent::Update(double delta, Engine::Scene& game)
+void WalkComponent::Update(double time, double delta, Engine::Scene& game)
 {
-	//std::cout << gameObject->position << std::endl;
-	//std::cout << gameObject->position.x << ", " << gameObject->position.y << std::endl;
-	//gameObject->position = absoluteTarget;
-	//return;
-
 	float absoluteDistance = Vector2::Distance(absoluteTarget, target);
 	float distance = Vector2::Distance(target, gameObject->position);
 
@@ -28,17 +23,17 @@ void WalkComponent::Update(double delta, Engine::Scene& game)
 		target = absoluteTarget;
 
 	if (distance > 10) {
-		stepCount++;
+		stepCount += delta;
 
 		Vector2 targetStep = Vector2(target - gameObject->position);
 		targetStep.Normalize();
 
-		gameObject->position += targetStep;
+		gameObject->position += targetStep * step;
 	}
 	else if (abs(gameObject->rotation) > 3)
-		stepCount++;
+		stepCount += delta;
 
-	gameObject->rotation = sin(wobble.x * stepCount) * wobble.y;
+	gameObject->rotation = sin(stepCount * wobble.x * step) * wobble.y;
 
 	gameObject->scale.x = abs(gameObject->scale.x) * (gameObject->position > target.x ? 1 : -1);
 }

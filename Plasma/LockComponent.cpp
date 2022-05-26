@@ -12,7 +12,7 @@ LockComponent::LockComponent(Engine::GameObject* gameObject, std::string name)
 	target = gameObject;
 }
 
-void LockComponent::Update(double delta, Engine::Scene& game)
+void LockComponent::Update(double time, double delta, Engine::Scene& game)
 {
 	gameObject->position = target->position;
 	//gameObject->rotation = target->rotation;

@@ -33,6 +33,8 @@ namespace Engine
 		Window(App* app);
 
 		void LoadScene(Scene* newScene);
+		void Update();
+		GLFWwindow* Get();
 		void Render();
 		void Title(std::string newName);
 
@@ -50,11 +52,11 @@ namespace Engine
 		Engine::Scene* scene;
 
 		std::string title;
-		int x, y;
+		Vector2Int position;
 
 		GLFWmonitor* monitor;
-		int monitorWidth, monitorHeight;
-		int monitorX, monitorY;
+		Vector2Int monitorSize;
+		Vector2Int monitorPosition;
 
 		/// <summary>
 		/// Notifys when a physical key is pressed, released or repeats.

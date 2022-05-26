@@ -21,6 +21,6 @@ namespace Engine
         gameObject->AddComponent(this);
     }
 
-    void Component::Update(double delta, Engine::Scene& game) {}
+    void Component::Update(double time, double delta, Engine::Scene& game) {}
     void Component::Draw(Render::Renderers& renderer) {}
 }

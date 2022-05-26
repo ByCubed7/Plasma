@@ -28,8 +28,7 @@ namespace Engine {
 
 		state = State::RUNNING;
 
-		x = 0;
-		y = 0;
+		position = 0;
 
 		PPU = 20;
 
@@ -63,9 +62,9 @@ namespace Engine {
 
 		// - - MONITOR
 		monitor = glfwGetPrimaryMonitor();
-		glfwGetMonitorWorkarea(monitor, &monitorX, &monitorY, &monitorWidth, &monitorHeight);
+		glfwGetMonitorWorkarea(monitor, &monitorPosition.x, &monitorPosition.y, &monitorSize.x, &monitorSize.y);
 
-		//glfwMaximizeWindow(window);
+		glfwMaximizeWindow(window);
 
 		glfwSetWindowPos(window, 0, 0);
 		glfwShowWindow(window);
@@ -144,27 +143,24 @@ namespace Engine {
 		scene = newScene;
 	}
 
+	void Window::Update()
+	{
+
+	}
+
+	GLFWwindow* Window::Get()
+	{
+		return window;
+	}
+
 	void Window::Render()
 	{
 		scene->Render();
 		glfwSwapBuffers(window);
 
-		// Get mouse position
-		double xpos, ypos;
-		glfwGetCursorPos(window, &xpos, &ypos);
-		//std::cout << xpos << ":" << ypos << std::endl;
-		scene->input.SetMousePosition(xpos, ypos);
-		//scene->input.SetMousePosition(20, 20);
-
-		// Check the Game state to see whether to close
-		if (scene->state == Scene::State::CLOSING) {
-			state = State::QUITTING;
-			glfwSetWindowShouldClose(window, true);
-		}
-
-		GLenum err;
-		while ((err = glGetError()) != GL_NO_ERROR)
-			std::cout << "[Window::Render] OpenGL Error: " << err << std::endl;
+		//GLenum err;
+		//while ((err = glGetError()) != GL_NO_ERROR)
+		//	std::cout << "[Window::Render] OpenGL Error: " << err << std::endl;
 	}
 
 	void Window::Title(std::string newName)
@@ -186,7 +182,7 @@ namespace Engine {
 
 	Vector2Int Window::GetMonitorSize()
 	{
-		return Vector2Int({ monitorWidth, monitorHeight });
+		return Vector2Int({ monitorSize.x, monitorSize.y });
 	}
 
 	//
@@ -228,6 +224,6 @@ namespace Engine {
 
 	void Window::GraphicsCallbackFramebuffer(GLFWwindow* window, int width, int height)
 	{
-		//glViewport(0, 0, width, height);
+		glViewport(0, 0, width, height);
 	}
 }

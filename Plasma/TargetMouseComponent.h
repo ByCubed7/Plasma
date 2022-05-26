@@ -11,7 +11,7 @@ class TargetMouseComponent : public Engine::Component
 public:
 	TargetMouseComponent(Engine::GameObject* gameObject, std::string name = "TargetMouseComponent");
 
-	void Update(double delta, Engine::Scene& game) override;
+	void Update(double time, double delta, Engine::Scene& game) override;
 
 	WalkComponent* walkComponent;
 

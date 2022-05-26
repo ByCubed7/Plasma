@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Renderer.h"
+#include "Renderable.h"
 #include "../Resource.h"
 
 #include <glm/glm.hpp>
@@ -18,16 +19,25 @@ struct Character {
 };
 
 
-struct Font : Resource<Font>
+struct Font : Resource<Font>, Renderable<Font>
 {
 	std::map<char, Character> Characters;
 
 	void AddCharacter(char c, Character character);
 	Character GetCharacter(char c);
 
+    std::string text;
+
 protected:
     static unsigned int defaultFontSize;
 
     Font FromFile(const std::string filename) override;
     void Clear() override;
+
+    // Renderable
+    unsigned int verticeVBO;
+    void LoadRenderer() override;
+    void UnloadRenderer() override;
+
+    void Render(glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color) override;
 };

@@ -10,7 +10,7 @@ CapybaraAI::CapybaraAI(Engine::GameObject* gameObject, std::string name) :
 	AddTransition(CapybaraStates::WANDER, CapybaraActions::WANDERED, CapybaraStates::STAND); 
 }
 
-void CapybaraAI::Update(double delta, Engine::Scene& game)
+void CapybaraAI::Update(double time, double delta, Engine::Scene& game)
 {
 	if (walkComponent == nullptr) return;
 

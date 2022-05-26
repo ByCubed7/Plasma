@@ -26,13 +26,16 @@
 
 int main(int argc, char* argv[])
 {
+	srand(static_cast <unsigned> (time(0)));
+
 	//FreeConsole();
 	Engine::App app = Engine::App();
 	Engine::Scene* scene = app.CreateGame();
-	//Scene scene = pacman.scene; // Get the default scene
 
 	// Prepares an OpenGL context so that we can send API calls
-	app.Build(scene);
+	app.Build();
+
+	app.Load(scene);
 
 	scene->Load();
 
@@ -60,38 +63,35 @@ int main(int argc, char* argv[])
 	//cout << "No longer playing" << endl;
 
 
-	// SHADOW
+	// - CAPYBARA SHADOW
 
-	Engine::GameObject* shadowGO = scene->CreateGameObject();
+	Engine::GameObject* shadow_GameObject = scene->CreateGameObject();
 
-	SpriteComponent* spriteComponent = new SpriteComponent(shadowGO);
-	spriteComponent
+	SpriteComponent* shadow_SpriteComponent = new SpriteComponent(shadow_GameObject);
+	shadow_SpriteComponent
 		->Set(Texture2D::Get("shadow"))
 		->SetColour({ 0,0,0,128 });
-	LockComponent* lockComponent = new LockComponent(shadowGO);
 
-	// CAPYBARA
+	// - CAPYBARA
 
-	Engine::GameObject* playerGO = scene->CreateGameObject();
-	playerGO->position = Vector2(0);
-	playerGO->scale = Vector2(4);
+	Engine::GameObject* capybara_GameObject = scene->CreateGameObject();
+	capybara_GameObject->position = Vector2(0);
+	capybara_GameObject->scale = Vector2(4);
 
-	SpriteComponent* playerSprite = new SpriteComponent(playerGO);
-	playerSprite
+	SpriteComponent* capybara_SpriteComponent = new SpriteComponent(capybara_GameObject);
+	capybara_SpriteComponent
 		->Set(Texture2D::Get("capybara"))
 		->AnimationSpeed(8)
 		->SetColour({ 255,255,255 });
 
-	WalkComponent* playerWalk = new WalkComponent(playerGO);
+	WalkComponent* capybara_WalkComponent = new WalkComponent(capybara_GameObject);
 
-	CapybaraAI* playerAI = new CapybaraAI(playerGO);
-	playerAI->Bind(playerWalk);
-
-	//TargetMouseComponent* targetMouse = new TargetMouseComponent(playerGO);
-	//targetMouse->Bind(playerWalk);
+	CapybaraAI* capybara_CapybaraAI = new CapybaraAI(capybara_GameObject);
+	capybara_CapybaraAI->Bind(capybara_WalkComponent);
 
 	// LINK
-	lockComponent->SetTarget(playerGO);
+	LockComponent* shadow_LockComponent = new LockComponent(shadow_GameObject);
+	shadow_LockComponent->SetTarget(capybara_GameObject);
 
 	// Mainloop
 	return app.Run(scene);

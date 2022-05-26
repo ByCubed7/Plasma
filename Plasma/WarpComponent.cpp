@@ -12,7 +12,7 @@ WarpComponent::WarpComponent(Engine::GameObject* gameObject, std::string name)
     warpY = true;
 }
 
-void WarpComponent::Update(double delta, Engine::Scene& game)
+void WarpComponent::Update(double time, double delta, Engine::Scene& game)
 {
     int ppu = gameObject->scene->GetWindow()->GetPPU();
 

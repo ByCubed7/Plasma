@@ -7,7 +7,6 @@
 
 #include "../Engine/AABB.h"
 #include "../Engine/Vector.h"
-#include "../Engine/Colour.h"
 
 #include "../Engine/GameObject.h"
 #include "../Engine/Component.h"

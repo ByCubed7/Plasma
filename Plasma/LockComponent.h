@@ -9,7 +9,7 @@ class LockComponent : public Engine::Component
 public:
 	LockComponent(Engine::GameObject* gameObject, std::string name = "LockComponent");
 
-	void Update(double delta, Engine::Scene& game) override;
+	void Update(double time, double delta, Engine::Scene& game) override;
 
 	LockComponent* SetTarget(Engine::GameObject* target);
 private:

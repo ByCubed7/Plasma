@@ -31,9 +31,6 @@
     <Filter Include="Engine\UI">
       <UniqueIdentifier>{40bf3fa0-866f-4e69-916c-fe9bad77f25e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Resources">
-      <UniqueIdentifier>{37d2ebe2-ec4e-4fde-8e5f-d19cf1cc0dd7}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Library\glad.c">
@@ -345,9 +342,6 @@
     <ClInclude Include="Engine\Render\TilemapRenderer.h">
       <Filter>Engine\Render</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Colour.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Include\Components.h" />
     <ClInclude Include="Include\Core.h" />
     <ClInclude Include="Include\Render.h" />
@@ -367,9 +361,6 @@
     <ClInclude Include="TargetMouseComponent.h">
       <Filter>Game Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Resources\ShaderResource.h">
-      <Filter>Engine\Resources</Filter>
-    </ClInclude>
     <ClInclude Include="LockComponent.h">
       <Filter>Game Files</Filter>
     </ClInclude>
@@ -382,11 +373,15 @@
     <ClInclude Include="Engine\Vector.h">
       <Filter>Engine</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Render\Renderable.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\TiledLibrary\RapidXML\manual.html">
       <Filter>Library\TiledLibrary</Filter>
     </None>
     <None Include="packages.config" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

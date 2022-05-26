@@ -12,7 +12,7 @@ CharacterControllerComponent::CharacterControllerComponent(Engine::GameObject* g
 
 }
 
-void CharacterControllerComponent::Update(double delta, Engine::Scene& game)
+void CharacterControllerComponent::Update(double time, double delta, Engine::Scene& game)
 {
 	// - Input
 
