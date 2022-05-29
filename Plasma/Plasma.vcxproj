@@ -259,9 +259,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Engine\Window.cpp" />
-    <ClCompile Include="Include\All.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="Library\glad.c" />
     <ClCompile Include="Library\TiledLibrary\TiledLayer.cpp" />
     <ClCompile Include="Library\TiledLibrary\TiledLoader.cpp" />
@@ -292,9 +289,11 @@
     <ClInclude Include="Engine\Components\SpriteComponent.h" />
     <ClInclude Include="Engine\Dispatcher.h" />
     <ClInclude Include="Engine\Event.h" />
+    <ClInclude Include="Engine\FiniteStateMachine.h" />
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\Input.h" />
     <ClInclude Include="Engine\Object.h" />
+    <ClInclude Include="Engine\Render\Animation.h" />
     <ClInclude Include="Engine\Render\Font.h" />
     <ClInclude Include="Engine\Render\Renderable.h" />
     <ClInclude Include="Engine\Render\Renderer.h" />

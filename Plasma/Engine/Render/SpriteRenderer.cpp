@@ -1,14 +1,11 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
 //#define VERBOSE
 
 #pragma once
 
 #include "SpriteRenderer.h"
 #include "Shader.h"
-#include "Font.h"
-#include "../Engine/Resources.h"
 
 namespace Render
 {

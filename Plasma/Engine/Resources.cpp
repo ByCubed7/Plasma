@@ -1,6 +1,6 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
+
 //#define VERBOSE
 
 #include "Resources.h"
@@ -14,8 +14,6 @@
 #include <bit>
 
 #include "lodepng.h"
-
-#include <GLFW/glfw3.h>
 
 #include <ft2build.h>
 #include <freetype.h>  

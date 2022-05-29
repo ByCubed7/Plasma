@@ -1,11 +1,13 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
+
 //#define VERBOSE
 
 #include "TilemapComponent.h"
 #include "../GameObject.h"
 #include "../Window.h"
+
+#include "../Render/Renderers.h"
 
 TilemapComponent::TilemapComponent(Engine::GameObject* gameObject, std::string name)
     : Component(gameObject, name)

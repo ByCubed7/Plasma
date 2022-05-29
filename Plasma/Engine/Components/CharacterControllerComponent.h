@@ -2,6 +2,9 @@
 
 #pragma once
 
+#include "../Component.h"
+#include <string>
+
 namespace Engine { class Scene; class GameObject;  }
 namespace Render { struct Renderers; }
 

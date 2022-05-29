@@ -16,8 +16,9 @@
 
 namespace Audio
 {
-	struct Scene
+	class Scene
 	{
+	public:
 		Scene();
 		~Scene();
 

@@ -150,7 +150,6 @@
     <ClCompile Include="Engine\Audio\AudioScene.cpp">
       <Filter>Engine\Audio</Filter>
     </ClCompile>
-    <ClCompile Include="Include\All.cpp" />
     <ClCompile Include="Engine\Window.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -380,6 +379,12 @@
       <Filter>Engine\Render</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Render\Text.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FiniteStateMachine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\Animation.h">
       <Filter>Engine\Render</Filter>
     </ClInclude>
   </ItemGroup>

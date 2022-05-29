@@ -1,6 +1,6 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
+
 //#define VERBOSE
 
 #include "SpriteComponent.h"
@@ -9,6 +9,8 @@
 #include "../Component.h"
 #include "../Vector.h"
 #include "../Window.h"
+
+#include "../Render/Renderers.h"
 
 SpriteComponent::SpriteComponent(Engine::GameObject* gameObject, std::string name)
     : Component(gameObject, name)

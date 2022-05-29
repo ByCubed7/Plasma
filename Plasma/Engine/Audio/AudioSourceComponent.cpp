@@ -1,10 +1,11 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
+
 //#define VERBOSE
 
 #include "AudioSourceComponent.h"
 
+#include "AudioScene.h"
 #include "../Component.h"
 #include "../GameObject.h"
 #include "../Components/SpriteComponent.h"

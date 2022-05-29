@@ -3,13 +3,13 @@
 #pragma once
 
 #include "../Component.h"
+#include "../Scene.h"
 #include "../Event.h"
 #include "../Dispatcher.h"
 
 #include "Tilemap.h"
 
-class GameObject;
-class Scene;
+namespace Engine { class Scene; class GameObject; }
 
 enum class TilemapColliderComponentEventType {
 	TEST_EVENT,
@@ -24,11 +24,11 @@ public:
 	struct OnStayEventParams;
 	struct OnExitEventParams;
 
-	TilemapColliderComponent(Engine::GameObject* gameObject, std::string name = "BoxColliderComponent");
+	TilemapColliderComponent(Engine::GameObject* gameObject, std::string name = "TilemapColliderComponent");
 
 	Tilemaps::Tilemap tilemap;
 
-	TilemapColliderComponent* Bind(Scene* game);
+	TilemapColliderComponent* Bind(Engine::Scene* game);
 	TilemapColliderComponent* SetTilemap(Tilemaps::Tilemap tilemap);
 
 	void OnCollisionEnter();

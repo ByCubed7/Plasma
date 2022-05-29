@@ -2,15 +2,8 @@
 
 #pragma once
 
-#include "Vector.h"
-#include "Render/Font.h"
-#include "Render/Texture2D.h"
-#include "Render/Shader.h"
-#include "Tilemaps/Tilemap.h"
 #include "Audio/Wav.h"
 
-#include <glm/glm.hpp>
-#include "TiledLibrary/TiledLoader.h"
 #include <al.h>
 
 #include <map>

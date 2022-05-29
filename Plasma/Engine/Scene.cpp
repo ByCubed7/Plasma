@@ -1,24 +1,29 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
 //#define VERBOSE
 
 #include "Scene.h"
+
+#include "Render/Shader.h"
+#include "Render/Renderers.h"
+#include "Components/BoxColliderComponent.h"
+#include "Audio/AudioScene.h"
 
 #include "Window.h"
 #include "Resources.h"
 #include "GameObject.h"
 #include "Component.h"
 #include "Input.h"
-#include "Render/Shader.h"
-#include "Components/BoxColliderComponent.h"
 
 #include <typeinfo>
 #include <algorithm>
 
+#include <glm/glm.hpp>
+#include <glm/ext/matrix_transform.hpp>
+#include <glm/ext/matrix_clip_space.hpp>
+
 namespace Engine 
 {
-
 	Scene::Scene(App* app)
 	{
 		this->app = app;

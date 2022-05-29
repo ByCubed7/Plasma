@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "All.h"
+
 
 #include "Core.h"
 

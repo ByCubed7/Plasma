@@ -1,9 +1,14 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
+
 //#define VERBOSE
 
 #include "CharacterControllerComponent.h"
+
+#include "../Component.h"
+#include "../GameObject.h"
+#include "../Scene.h"
+#include "../Vector.h"
 
 
 CharacterControllerComponent::CharacterControllerComponent(Engine::GameObject* gameObject, std::string name)

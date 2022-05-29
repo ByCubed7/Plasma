@@ -1,17 +1,11 @@
 ﻿// By @ByCubed7 on Twitter
 
-#include "All.h"
+
 //#define VERBOSE
 
 #include "Window.h"
 
 #include "App.h"
-
-#include <GLFW/glfw3.h>
-//#include <glm/glm.hpp>
-
-#define GLFW_EXPOSE_NATIVE_WIN32
-#include <GLFW/glfw3native.h>
 
 #include <windows.h>
 #include <tchar.h>

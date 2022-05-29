@@ -5,13 +5,10 @@
 #include "../Vector.h"
 #include "../Component.h"
 #include "../GameObject.h"
+#include "../Scene.h"
 #include "../AABB.h"
 #include "../Dispatcher.h"
 
-namespace Engine { 
-	class Scene;
-	class GameObject;
-}
 
 class BoxColliderComponent : public Engine::Component
 {
@@ -48,7 +45,9 @@ struct BoxColliderComponent::OnEnterEventParams
 	BoxColliderComponent* collider;
 
 	bool operator <(const OnEnterEventParams& rhs) const
-	{ return collider->gameObject->position.x < rhs.collider->gameObject->position.x; }
+	{
+		return collider->gameObject->position.x < rhs.collider->gameObject->position.x;
+	}
 };
 
 struct BoxColliderComponent::OnStayEventParams
@@ -57,7 +56,9 @@ struct BoxColliderComponent::OnStayEventParams
 	BoxColliderComponent* collider;
 
 	bool operator <(const OnStayEventParams& rhs) const
-	{ return collider->gameObject->position.x < rhs.collider->gameObject->position.x; }
+	{
+		return collider->gameObject->position.x < rhs.collider->gameObject->position.x;
+	}
 };
 
 struct BoxColliderComponent::OnExitEventParams
@@ -66,5 +67,7 @@ struct BoxColliderComponent::OnExitEventParams
 	BoxColliderComponent* collider;
 
 	bool operator <(const OnExitEventParams& rhs) const
-	{ return collider->gameObject->position.x < rhs.collider->gameObject->position.x; }
+	{
+		return collider->gameObject->position.x < rhs.collider->gameObject->position.x;
+	}
 };

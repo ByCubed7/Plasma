@@ -3,12 +3,12 @@
 
 #include <iostream>
 
-#define VERBOSE
+//#define VERBOSE
 
 void Text::LoadRenderer()
 {
 #ifdef VERBOSE
-    std::cout << "[TextRenderer::Ctor]\n\t - Created TextRenderer" << std::endl;
+    std::cout << "[Text::LoadRenderer]\n\t - Created TextRenderer" << std::endl;
 #endif
 
     // Configure VBO for texture quads
@@ -36,7 +36,7 @@ void Text::UnloadRenderer()
 void Text::Render(glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color)
 {
 #ifdef VERBOSE
-    std::cout << "[TextRenderer::RenderText]" << std::endl;
+    std::cout << "[Text::Render]" << std::endl;
     std::cout << "\t - Attempting to render: " << contents << std::endl;
 #endif
 

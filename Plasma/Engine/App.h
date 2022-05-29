@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "../Library/glad.h"
+#include <glad.h>
 #include <GLFW/glfw3.h>
 
 #include "Audio/AudioScene.h"
@@ -13,11 +13,11 @@
 #include <iostream>
 
 
-class Scene;
-namespace Engine { class Scene; class Window; }
-
 namespace Engine 
 {
+	class Scene; 
+	class Window;
+
 	class App
 	{
 	public:

@@ -1,6 +1,6 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
+
 //#define VERBOSE
 
 #include "TilemapColliderComponent.h"
@@ -13,7 +13,7 @@ TilemapColliderComponent::TilemapColliderComponent(Engine::GameObject* gameObjec
 {
 }
 
-TilemapColliderComponent* TilemapColliderComponent::Bind(Scene* game)
+TilemapColliderComponent* TilemapColliderComponent::Bind(Engine::Scene* game)
 {
 	//game->colliders.push_back(this);
 	return this;

@@ -8,8 +8,8 @@
 
 #include <glm/glm.hpp>
 
-class GameObject;
-namespace Engine { class Scene; }
+
+namespace Engine { class Scene; class GameObject; }
 namespace Render { struct Renderers; }
 
 class SpriteComponent : public Engine::Component

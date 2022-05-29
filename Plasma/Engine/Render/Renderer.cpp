@@ -1,9 +1,11 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
+
 //#define VERBOSE
 
 #include "Renderer.h"
+
+#include <glad.h>
 
 namespace Render {
     Renderer::Renderer(Shader& shader)

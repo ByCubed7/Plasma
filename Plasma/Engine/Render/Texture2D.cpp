@@ -1,12 +1,14 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
+
 //#define VERBOSE
 
 #include "Texture2D.h"
 
-#include <glm/glm.hpp>
 #include <iostream>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <lodepng.h>
 
 

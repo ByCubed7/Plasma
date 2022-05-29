@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Shader.h"
-#include "../../Library/glad.h"
+#include "glad.h"
 
 #include <iostream>
 

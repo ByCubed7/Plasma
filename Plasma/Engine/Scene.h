@@ -3,16 +3,14 @@
 #pragma once
 
 #include "Input.h"
-#include "Components/BoxColliderComponent.h"
-#include "Audio/AudioScene.h"
-#include "Render/Renderers.h"
 
 #include <list>
+#include <map>
 
 // Forward declaration
 class BoxColliderComponent;
 
-namespace Audio { struct Scene; }
+namespace Audio { class Scene; }
 namespace Render { struct Renderers; }
 
 

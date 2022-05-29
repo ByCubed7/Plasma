@@ -20,6 +20,7 @@
 #include "../Engine/Scene.h"
 #include "../Engine/Input.h"
 #include "../Engine/App.h"
+#include "../Engine/FiniteStateMachine.h"
 //#include "../Engine/Window.h"
 
 // Soon to be gone

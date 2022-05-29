@@ -1,14 +1,14 @@
 // By @ByCubed7 on Twitter
 
-//#include "All.h"
 //#define VERBOSE
 
-#include "Core.h"
-#include "Components.h"
-#include "Tilemaps.h"
-#include "Render.h"
-#include "Audio.h"
-#include "UI.h"
+//#include "Core.h"
+//#include "Components.h"
+//#include "Tilemaps.h"
+//#include "Render.h"
+//#include "Audio.h"
+//#include "UI.h"
+#include "All.h"
 
 #include "WarpComponent.h"
 #include "WalkComponent.h"
@@ -16,22 +16,21 @@
 #include "LockComponent.h"
 #include "CapybaraAI.h"
 
-#include <GLFW/glfw3.h>
-
 #include <iostream>
 
-#include <windows.h>
-#include <tchar.h>
+using namespace Engine;
 
+GameObject* ForgeCapybara(Engine::Scene* scene);
+
+//Scene sceneObject;
 
 int main(int argc, char* argv[])
 {
 	srand(static_cast <unsigned> (time(0)));
 
 
-
 	//FreeConsole();
-	Engine::App app = Engine::App();
+	App app = App();
 	Engine::Scene* scene = app.CreateGame();
 
 	// Prepares an OpenGL context so that we can send API calls
@@ -74,10 +73,21 @@ int main(int argc, char* argv[])
 	//while (source->IsPlaying()) ;
 	//cout << "No longer playing" << endl;
 
+	// - CAPYBARA
+	GameObject* capybara_GameObject = ForgeCapybara(scene);
+
+	// Mainloop
+	return app.Run(scene);
+}
+
+
+
+GameObject* ForgeCapybara(Engine::Scene* scene) {
 
 	// - CAPYBARA SHADOW
+	// The capybara shadow must be added BEFORE to be put behind in the rendering order
 
-	Engine::GameObject* shadow_GameObject = scene->CreateGameObject();
+	GameObject* shadow_GameObject = scene->CreateGameObject();
 
 	SpriteComponent* shadow_SpriteComponent = new SpriteComponent(shadow_GameObject);
 	shadow_SpriteComponent
@@ -86,7 +96,7 @@ int main(int argc, char* argv[])
 
 	// - CAPYBARA
 
-	Engine::GameObject* capybara_GameObject = scene->CreateGameObject();
+	GameObject* capybara_GameObject = scene->CreateGameObject();
 	capybara_GameObject->position = Vector2(0);
 	capybara_GameObject->scale = Vector2(4);
 
@@ -101,10 +111,11 @@ int main(int argc, char* argv[])
 	CapybaraAI* capybara_CapybaraAI = new CapybaraAI(capybara_GameObject);
 	capybara_CapybaraAI->Bind(capybara_WalkComponent);
 
-	// LINK
+
+	// Tell the shadow to follow the capybara
 	LockComponent* shadow_LockComponent = new LockComponent(shadow_GameObject);
 	shadow_LockComponent->SetTarget(capybara_GameObject);
 
-	// Mainloop
-	return app.Run(scene);
+
+	return capybara_GameObject;
 }

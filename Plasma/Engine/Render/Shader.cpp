@@ -1,11 +1,15 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
+
 //#define VERBOSE
 
 #include "shader.h"
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
+
+#include <glad.h>
 #include <glm/gtc/type_ptr.hpp>
 
 Shader::Shader()
