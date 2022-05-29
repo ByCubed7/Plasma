@@ -62,15 +62,7 @@ namespace Engine
 		Vector2Int size = app->GetSize();
 		glm::mat4 projection = glm::ortho(0.0f, (float)size.x, (float)size.y, 0.0f, -1.0f, 1.0f);
 		
-		// - Load and Config shaders
-
-		// Sprite
-		Shader::Load("assets/shaders/sprite.shader", "sprite");
-		Shader::Load("assets/shaders/text.shader", "text");
-		Shader::Load("assets/shaders/tile.shader", "tile");
-
-
-		Texture2D::PrepareRenderer(Shader::Get("sprite"));
+		// - Config shaders
 
 		Shader ShaderSprite = Shader::Get("sprite");
 		ShaderSprite.Use()
@@ -90,10 +82,6 @@ namespace Engine
 			.SetInteger("image", 0)
 			.SetInteger("index", 1)
 			.SetMatrix4("projection", projection);
-
-		// - Load Text Fonts
-		//Resources::LoadFont("assets/fonts/arial.ttf", "arial");
-		Font::Load("assets/fonts/arial.ttf", "arial");
 
 		// Load Renderer
 		renderer = new Render::Renderers(
@@ -146,6 +134,7 @@ namespace Engine
 			component->Update(time, delta, *this);
 		}
 
+		//renderer->text.RenderText("iauduaidbawidb", 10, 10, 2, { 0,0 }, {1,1,1});
 
 		// - Update all of the colliders
 

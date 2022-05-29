@@ -175,6 +175,9 @@
     <ClCompile Include="CapybaraAI.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Render\Text.cpp">
+      <Filter>Engine\Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -374,6 +377,9 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Render\Renderable.h">
+      <Filter>Engine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render\Text.h">
       <Filter>Engine\Render</Filter>
     </ClInclude>
   </ItemGroup>

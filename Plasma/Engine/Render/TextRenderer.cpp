@@ -28,6 +28,7 @@ namespace Render
         // Configure VBO for texture quads
         glBindVertexArray(vertexArrayObject);
 
+
         glGenBuffers(1, &verticeVBO);
         glBindBuffer(GL_ARRAY_BUFFER, verticeVBO);
         #ifdef VERBOSE

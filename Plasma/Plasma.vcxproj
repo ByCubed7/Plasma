@@ -237,6 +237,7 @@
     <ClCompile Include="Engine\Render\Renderers.cpp" />
     <ClCompile Include="Engine\Render\Shader.cpp" />
     <ClCompile Include="Engine\Render\SpriteRenderer.cpp" />
+    <ClCompile Include="Engine\Render\Text.cpp" />
     <ClCompile Include="Engine\Render\TextRenderer.cpp" />
     <ClCompile Include="Engine\Render\Texture2D.cpp" />
     <ClCompile Include="Engine\Render\TilemapRenderer.cpp" />
@@ -300,6 +301,7 @@
     <ClInclude Include="Engine\Render\Renderers.h" />
     <ClInclude Include="Engine\Render\Shader.h" />
     <ClInclude Include="Engine\Render\SpriteRenderer.h" />
+    <ClInclude Include="Engine\Render\Text.h" />
     <ClInclude Include="Engine\Render\TextRenderer.h" />
     <ClInclude Include="Engine\Render\Texture2D.h" />
     <ClInclude Include="Engine\Render\TilemapRenderer.h" />

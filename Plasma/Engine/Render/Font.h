@@ -19,7 +19,7 @@ struct Character {
 };
 
 
-struct Font : Resource<Font>, Renderable<Font>
+struct Font : Resource<Font>
 {
 	std::map<char, Character> Characters;
 
@@ -28,16 +28,16 @@ struct Font : Resource<Font>, Renderable<Font>
 
     std::string text;
 
+    void Render(std::string text, int vao, glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color);
+
 protected:
     static unsigned int defaultFontSize;
 
     Font FromFile(const std::string filename) override;
     void Clear() override;
 
-    // Renderable
-    unsigned int verticeVBO;
-    void LoadRenderer() override;
-    void UnloadRenderer() override;
-
-    void Render(glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color) override;
+    //// Renderable
+    //unsigned int verticeVBO;
+    //void LoadRenderer();
+    //void UnloadRenderer();
 };

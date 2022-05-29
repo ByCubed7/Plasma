@@ -28,25 +28,37 @@ int main(int argc, char* argv[])
 {
 	srand(static_cast <unsigned> (time(0)));
 
+
+
 	//FreeConsole();
 	Engine::App app = Engine::App();
 	Engine::Scene* scene = app.CreateGame();
 
 	// Prepares an OpenGL context so that we can send API calls
 	app.Build();
-
 	app.Load(scene);
+
+
+	Shader::Load("assets/shaders/sprite.shader", "sprite");
+	Shader::Load("assets/shaders/text.shader", "text");
+	Shader::Load("assets/shaders/tile.shader", "tile");
+
+	//Texture2D::Init();
+	Texture2D::Load("assets/textures/Capybara.png", "capybara");
+	Texture2D::Load("assets/textures/Shadow.png", "shadow");
+
+	Font::Load("assets/fonts/arial.ttf", "arial");
+
+	Texture2D::PrepareRenderer(Shader::Get("sprite"));
+	Text::PrepareRenderer(Shader::Get("text"));
+
+
 
 	scene->Load();
 
 	// - Load Resources
 	//Resources::LoadTexture("assets/textures/Capybara.png", true, "capybara");
 	//Resources::LoadTexture("assets/textures/Shadow.png", true, "shadow");
-
-
-	//Texture2D::Init();
-	Texture2D::Load("assets/textures/Capybara.png", "capybara");
-	Texture2D::Load("assets/textures/Shadow.png", "shadow");
 
 	//Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
 	//Resources::LoadWav("assets/audio/Venus by SketchyLogic.wav", "venus");

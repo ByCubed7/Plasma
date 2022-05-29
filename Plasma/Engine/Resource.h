@@ -8,7 +8,8 @@
 // Most likely an anti-pattern, but I can't figure out a proper implementation at this time.
 
 template<class T>
-class Resource {
+class Resource 
+{
 public:
 	static bool Has(std::string name) { return cache.find(name) != cache.end(); } // Returns whether the Resource has the obj cached
 	static T Get(std::string name) { return cache[name]; } // Retrieves a cached objs.

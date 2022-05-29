@@ -11,6 +11,7 @@
 // Sprites
 #include "../Engine/Render/Texture2D.h"
 #include "../Engine/Render/Font.h"
+#include "../Engine/Render/Text.h"
 
 // Renderers
 #include "../Engine/Render/SpriteRenderer.h"

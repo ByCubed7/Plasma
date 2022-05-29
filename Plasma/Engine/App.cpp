@@ -9,6 +9,7 @@
 
 #include <chrono>
 #include <thread>
+#include "Render/Text.h"
 
 namespace Engine {
 	App* App::instance = nullptr;
@@ -127,7 +128,9 @@ namespace Engine {
 				time += deltaTime;
 			}
 
+			//Text::Draw(testText, {0,0}, { 1,1 }, { 0,0 }, 0, 0, { 1, 1, 1 });
 			//Texture2D::Draw(Texture2D::Get("capybara"), { 100,100 }, { 320,320 }, { 0, 0 }, 0, 0, { 1,1,1 });
+
 			window->Render();
 			//std::cout << "Render" << std::endl;
 
