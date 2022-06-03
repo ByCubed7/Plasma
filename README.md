@@ -28,66 +28,13 @@ Deals with rendering sprites and text, physics, controller inputs, shader compil
 ### Helloworld
 ```cpp
 App app = App();
+Scene* scene = app.CreateGame();
 
-GameConfig gameConfig;
-Scene* scene = app.CreateGame(gameConfig);
+// Prepares an OpenGL context so that we can send API calls
+app.Build();
+app.Load(scene);
 
-scene->Initialize();
+scene->Load();
 
-app.Prepare(scene);
 app.Run(scene);
 ```
-
-Changing Window properties
-```cpp
-App app = App();
-
-GameConfig gameConfig;
-gameConfig.PPU = 16;
-gameConfig.screenHeight = gameConfig.PPU * 31;
-gameConfig.screenWidth  = gameConfig.PPU * 28;
-
-Scene* scene = app.CreateGame(gameConfig);
-scene->Initialize();
-
-app.Prepare(scene);
-app.Run(scene);
-```
-
-Creating a GameObject
-```cpp
-GameObject* player = scene->CreateGameObject();
-player->position = { 17,17 };
-player->scale = { 2,2 };
-```
-
-Loading files
-```cpp
-. . .
-
-scene->Initialize();
-
-Resources::LoadShader("assets/shaders/sprite.vs", "assets/shaders/sprite.frag", nullptr, "sprite");
-Resources::LoadTexture("assets/textures/Player.png", true, "player");
-Resources::LoadWav("assets/audio/beginning.wav", "beginning");
-Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilemap");
-Resources::LoadFont("assets/fonts/arial.ttf", "arial");
-
-. . .
-```
-
-Adding a Component (+ Getting Resource files)
-```cpp
-SpriteComponent* playerSprite = new SpriteComponent(player);
-	
-playerSprite
-	->Set(Resources::GetTexture("player"))
-	->AnimationSpeed(4);
-
-CharacterControllerComponent* playerController = new CharacterControllerComponent(player);
-```
-
-
-## TODO
-- Turn Input class into a static class.
-- Documentation API.
