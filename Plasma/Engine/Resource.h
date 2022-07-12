@@ -5,8 +5,6 @@
 #include <map>
 #include <string>
 
-// Most likely an anti-pattern, but I can't figure out a proper implementation at this time.
-
 template<class T>
 class Resource 
 {
@@ -19,7 +17,8 @@ public:
 	{
 		if (!Has(name)) 
 		{
-			Resource* resource = (Resource*)(new T()); // I dispise this implementation
+			// NOTE: I dispise this implementation
+			Resource* resource = (Resource*)(new T()); 
 			cache[name] = resource->FromFile(file);
 			//delete resource;
 		}

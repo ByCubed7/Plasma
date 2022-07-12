@@ -16,6 +16,7 @@ public:
 
 	WalkComponent* SetTargetPosition(Vector2 position);
 private:
+	SpriteComponent* sprite;
 
 	Vector2 absoluteTarget;
 	Vector2 target;

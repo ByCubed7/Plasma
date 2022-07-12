@@ -29,7 +29,6 @@ namespace Engine
 		this->app = app;
 
 		state = Scene::State::ACTIVE;
-		input = Input();
 
 		audio = new Audio::Scene();
 	}
@@ -48,7 +47,7 @@ namespace Engine
 	GameObject* Scene::CreateGameObject()
 	{
 		GameObject* newGameObject = new GameObject(this);
-		gameObjects.emplace_back(newGameObject);
+		AddGameObject(newGameObject);
 		return newGameObject;
 	}
 
@@ -115,17 +114,16 @@ namespace Engine
 		// Get mouse position
 		double xpos, ypos;
 		glfwGetCursorPos(app->GetWindow()->Get(), &xpos, &ypos);
-		input.SetMousePosition(xpos, ypos);
+		app->input.SetMousePosition(xpos, ypos);
 
 		// If the escape key is pressed, set the game to closing
-		if (input.IsKey(input.Key_Escape))
+		if (app->input.IsKey(Input::Key_Escape))
 			state = State::CLOSING;
 	
-		if (input.IsKeyDown(input.Key_P))
+		if (app->input.IsKeyDown(Input::Key_P))
 			state = state == State::ACTIVE ? State::PAUSED : State::ACTIVE;
 
 		//std::cout << input.IsKeyDown(input.Key_P);
-		input.Tick();
 	}
 
 	void Scene::Update(double time, double delta)
@@ -139,7 +137,8 @@ namespace Engine
 			component->Update(time, delta, *this);
 		}
 
-		//renderer->text.RenderText("iauduaidbawidb", 10, 10, 2, { 0,0 }, {1,1,1});
+		// We don't currently use colliders
+		return;
 
 		// - Update all of the colliders
 

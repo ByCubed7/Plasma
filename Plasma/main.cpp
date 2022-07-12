@@ -15,23 +15,22 @@
 #include "TargetMouseComponent.h"
 #include "LockComponent.h"
 #include "CapybaraAI.h"
+#include "FoodSpawner.h"
 
 #include <iostream>
+#include "Engine/Components/AnimatedSprite.h"
 
 using namespace Engine;
 
-GameObject* ForgeCapybara(Engine::Scene* scene);
-
-//Scene sceneObject;
+GameObject* ForgeCapybara(Scene* scene);
 
 int main(int argc, char* argv[])
 {
-	srand(static_cast <unsigned> (time(0)));
-
+	srand(static_cast <unsigned>(time(0)));
 
 	//FreeConsole();
 	App app = App();
-	Engine::Scene* scene = app.CreateGame();
+	Scene* scene = app.CreateGame();
 
 	// Prepares an OpenGL context so that we can send API calls
 	app.Build();
@@ -45,6 +44,8 @@ int main(int argc, char* argv[])
 	//Texture2D::Init();
 	Texture2D::Load("assets/textures/Capybara.png", "capybara");
 	Texture2D::Load("assets/textures/Shadow.png", "shadow");
+	Texture2D::Load("assets/textures/Hat.png", "hat");
+	Texture2D::Load("assets/textures/Food.png", "food");
 
 	Font::Load("assets/fonts/arial.ttf", "arial");
 
@@ -60,62 +61,102 @@ int main(int argc, char* argv[])
 	//Resources::LoadTexture("assets/textures/Shadow.png", true, "shadow");
 
 	//Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
-	//Resources::LoadWav("assets/audio/Venus by SketchyLogic.wav", "venus");
+	Resources::LoadWav("assets/audio/Capybara.wav", "capybara");
 
 
 	// - Create audio
-	//GameObject* audi = scene->CreateGameObject();
+	GameObject* audi = scene->CreateGameObject();
 
-	//AudioSourceComponent* audiComp = new AudioSourceComponent(audi);
-	//audiComp->Attach(Resources::GetWav("beginning"));
+	AudioSourceComponent* audiComp = new AudioSourceComponent(audi);
+	audiComp->Attach(Resources::GetWav("capybara"));
 
-	//audiComp->source->Play();
-	//while (source->IsPlaying()) ;
-	//cout << "No longer playing" << endl;
+	audiComp->source->Play();
+	//while (audiComp->source->IsPlaying()) ;
+	//std::cout << "No longer playing" << std::endl;
+
+	GameObject* controller_GameObject = scene->CreateGameObject()
+		->SetPosition(0);
+
+	controller_GameObject->Add<FoodSpawner>();
+
 
 	// - CAPYBARA
-	GameObject* capybara_GameObject = ForgeCapybara(scene);
+
+	//for (int capycount = 0; capycount < 40; capycount++)
+		GameObject* capybara = ForgeCapybara(scene);
+
+	app.SetSize(app.GetWindow()->GetMonitorSize());
 
 	// Mainloop
-	return app.Run(scene);
+	return app.Run();
 }
 
 
-
-GameObject* ForgeCapybara(Engine::Scene* scene) {
-
-	// - CAPYBARA SHADOW
+ 
+//  +@@@@@-@@@@@@@==
+//      +=@@@@@
+//        @@%@@@
+//       --     --
+GameObject* ForgeCapybara(Scene* scene) 
+{
+	// - SHADOW
 	// The capybara shadow must be added BEFORE to be put behind in the rendering order
 
 	GameObject* shadow_GameObject = scene->CreateGameObject();
 
-	SpriteComponent* shadow_SpriteComponent = new SpriteComponent(shadow_GameObject);
-	shadow_SpriteComponent
-		->Set(Texture2D::Get("shadow"))
-		->SetColour({ 0,0,0,128 });
+	auto shadow_SpriteComponent =
+		shadow_GameObject->Add<SpriteComponent>()
+			->Set(Texture2D::Get("shadow"))
+			->SetColour({ 0,0,0,128 });
+	shadow_SpriteComponent->size = 16;
+
 
 	// - CAPYBARA
 
-	GameObject* capybara_GameObject = scene->CreateGameObject();
-	capybara_GameObject->position = Vector2(0);
-	capybara_GameObject->scale = Vector2(4);
+	GameObject* capybara_GameObject = scene->CreateGameObject()
+		->SetPosition(0)
+		->SetScale(rand() % 2 + 3);
 
-	SpriteComponent* capybara_SpriteComponent = new SpriteComponent(capybara_GameObject);
-	capybara_SpriteComponent
-		->Set(Texture2D::Get("capybara"))
-		->AnimationSpeed(8)
-		->SetColour({ 255,255,255 });
+	auto capybara_SpriteComponent =
+		capybara_GameObject->Add<SpriteComponent>()
+			->Set(Texture2D::Get("capybara"));
+	capybara_SpriteComponent->size = 16;
+	capybara_SpriteComponent->crop = { rand() % 4, 0 };
 
 	WalkComponent* capybara_WalkComponent = new WalkComponent(capybara_GameObject);
+
+	// Animations
+	//auto capybara_Animation = new AnimatedSprite<CapybaraStates, CapybaraActions>(capybara_GameObject, CapybaraStates::WANDER);
+	//capybara_Animation->animation.AddTransition(AAAAAAA, TICK, WANDER);
 
 	CapybaraAI* capybara_CapybaraAI = new CapybaraAI(capybara_GameObject);
 	capybara_CapybaraAI->Bind(capybara_WalkComponent);
 
+	// - HAT
+	GameObject* hat_GameObject = scene->CreateGameObject();
 
-	// Tell the shadow to follow the capybara
-	LockComponent* shadow_LockComponent = new LockComponent(shadow_GameObject);
-	shadow_LockComponent->SetTarget(capybara_GameObject);
+	SpriteComponent* hat_SpriteComponent = new SpriteComponent(hat_GameObject);
+	hat_SpriteComponent
+		->Set(Texture2D::Get("hat"));
+	hat_SpriteComponent->size = 64;
+	hat_SpriteComponent->crop = { rand() % 10,0};
 
+	//std::cout << hat_SpriteComponent->crop << std::endl;
+
+	// Tell the gameobjects to follow the capybara
+
+	auto shadow_LockComponent =
+		shadow_GameObject->Add<LockComponent>()
+			->SetTarget(capybara_GameObject)
+			->LockPosition()->LockRotation()->LockScale()
+			->LockSpriteReflection(capybara_SpriteComponent);
+
+	auto hat_LockComponent = 
+		hat_GameObject->Add<LockComponent>()
+			->SetTarget(capybara_GameObject)
+			->LockPosition()->LockRotation()->LockScale()
+			->LockSpriteReflection(capybara_SpriteComponent)
+			->SetPositionOffset({ 0,-1 });
 
 	return capybara_GameObject;
 }

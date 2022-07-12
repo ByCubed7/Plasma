@@ -22,6 +22,7 @@ namespace Engine
 	{
 	public:
 		static App* instance;
+		Input input;
 
 		App();
 
@@ -45,7 +46,7 @@ namespace Engine
 		/// </summary>
 		/// <param name="scene"></param>
 		/// <returns>The result ID of the opperation, if any.</returns>
-		int Run(Engine::Scene* scene);
+		int Run();
 
 		// Returns the current window
 		Engine::Window* GetWindow();

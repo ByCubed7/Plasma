@@ -32,7 +32,9 @@ public:
     Vector() : Object("Vector"), _contents{ 0 },
         x(_contents[0]), y(_contents[1]), z(_contents[2]), w(_contents[3])
     {
-        _contents = std::array<T, N>({ 0 });
+        //_contents = std::array<T, N>({ 0 });
+        for (int i = 0; i < N; i++)
+            _contents[i] = 0;
     }
 
     Vector(T value) : Object("Vector"), _contents{ value },
@@ -60,6 +62,16 @@ public:
     {
         for (int i = 0; i < N; i++)
             _contents[i] = value._contents[i];
+    }
+
+    // Random
+    static Vector<T, N> Random(Vector<int, N> bound) {
+        Vector<T, N> randomVector = Vector<T, N>();
+
+        for (int i = 0; i < N; i++)
+            randomVector._contents[i] = (T) (rand() % bound._contents[i]);
+
+        return randomVector;
     }
 
 
@@ -282,6 +294,7 @@ public:
             if (_contents[i] < other._contents[i]) return true;
             return false;
         }
+        return false;
     }
     bool operator> (const Vector<T, N>& other) const
     {
@@ -291,6 +304,7 @@ public:
             if (_contents[i] > other._contents[i]) return true;
             return false;
         }
+        return false;
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -517,6 +531,7 @@ public:
 // Some Cool™ sugar syntax typedefs
 
 typedef class Vector<int, 2> Vector2Int;
+typedef class Vector<unsigned int, 2> Vector2UInt;
 typedef class Vector<float, 2> Vector2Float;
 typedef class Vector<float, 2> Vector2;
 

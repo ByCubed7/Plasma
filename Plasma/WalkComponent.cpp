@@ -12,6 +12,8 @@ WalkComponent::WalkComponent(Engine::GameObject* gameObject, std::string name)
 	target = 0;
 	step = 5;
 	wobble = Vector2({ 800, 10 });
+	
+	sprite = gameObject->Get<SpriteComponent>();
 }
 
 void WalkComponent::Update(double time, double delta, Engine::Scene& game)
@@ -35,7 +37,8 @@ void WalkComponent::Update(double time, double delta, Engine::Scene& game)
 
 	gameObject->rotation = sin(stepCount * wobble.x * step) * wobble.y;
 
-	gameObject->scale.x = abs(gameObject->scale.x) * (gameObject->position > target.x ? 1 : -1);
+	if (sprite != nullptr)
+		sprite->reflection.x = gameObject->position < target.x;
 }
 
 WalkComponent* WalkComponent::SetTargetPosition(Vector2 position)

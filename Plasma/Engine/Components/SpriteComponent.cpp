@@ -15,50 +15,54 @@
 SpriteComponent::SpriteComponent(Engine::GameObject* gameObject, std::string name)
     : Component(gameObject, name)
 {
-    color = { 1, 1, 1 };
-
-    animationPoint = 0;
-    animationSpeed = 0;
+    color = { 255, 255, 255, 255 };
 
 	sprite = Texture2D();
-	spriteFrame = 0;
-	spriteSize = 1024;
+    reflection = { false, false };
 
-    pivot = { 0.5, 0.5 };
+    pivot = 0.5f;
 
     bounds = AABB();
+    crop = 0;
+    size = 64;
 }
 
 void SpriteComponent::Draw(Render::Renderers& renderer)
 {
     //std::cout << "Draw!" << std::endl;
 
-    //color = RGBA({
-    //    (unsigned char)(rand() % 255),
-    //    (unsigned char)(rand() % 255),
-    //    (unsigned char)(rand() % 255)
-    //});
-    //color.w = 255;
-
     int ppu = gameObject->scene->GetWindow()->GetPPU();
 
-    renderer.sprite.DrawSprite(
-        this->sprite,
-        { gameObject->position.x, gameObject->position.y },
-        { gameObject->scale.x * ppu, gameObject->scale.y * ppu },
-        { pivot.x, pivot.y },
+    Vector scale = gameObject->scale * ppu;
+
+    if (reflection.x) scale.x = -scale.x;
+    if (reflection.y) scale.y = -scale.y;
+
+    //renderer.sprite.DrawSprite(
+    //    this->sprite,
+    //    { gameObject->position.x, gameObject->position.y },
+    //    { gameObject->scale.x * ppu, gameObject->scale.y * ppu },
+    //    { pivot.x, pivot.y },
+    //    gameObject->rotation,
+    //    spriteFrame,
+    //    glm::vec3(color.x / 255.0f, color.y / 255.0f, color.z / 255.0f)
+    //);
+
+    sprite.Draw(
+        sprite,
+        gameObject->position,
+        size,
+        scale,
+        pivot,
         gameObject->rotation,
-        spriteFrame,
-        glm::vec3(color.x / 255.0f, color.y / 255.0f, color.z / 255.0f)
+        crop,
+        color
     );
 }
 
 void SpriteComponent::Update(double time, double delta, Engine::Scene& game)
 {
-    //std::cout << "Update!" << std::endl;
 
-    animationPoint += delta;
-    spriteFrame = (int) animationPoint * animationSpeed;
 }
 
 AABB SpriteComponent::GetBounds() { return bounds; }
@@ -72,10 +76,12 @@ void SpriteComponent::CalcBounds()
     this->bounds = AABB(lowerBound, upperBound);
 }
 
-SpriteComponent* SpriteComponent::Set(Texture2D sprite) { this->sprite = sprite; return this; }
-Texture2D SpriteComponent::Get() { return this->sprite; }
+SpriteComponent* SpriteComponent::Set(Texture2D newSprite) {
+    size = sprite.size.Cast<unsigned int>();
+    sprite = newSprite;
+    return this; 
+}
+Texture2D SpriteComponent::Get() { return sprite; }
 
-SpriteComponent* SpriteComponent::AnimationSpeed(int speed) { this->animationSpeed = speed; return this; }
 SpriteComponent* SpriteComponent::SetColour(RGBA newColour) { color = newColour; return this; }
-int SpriteComponent::GetAnimationSpeed() { return this->animationSpeed; }
 

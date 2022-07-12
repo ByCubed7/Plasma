@@ -19,6 +19,7 @@ namespace Engine {
 		// Singleton D:<
 		instance = this;
 
+		input = Input();
 	}
 
 	Engine::Scene* App::CreateGame()
@@ -82,20 +83,22 @@ namespace Engine {
 	void App::Load(Engine::Scene* newScene)
 	{
 		this->scene = newScene;
+		window->LoadScene(scene);
 	}
 
-	int App::Run(Engine::Scene* setScene)
+	int App::Run()
 	{
-		window->LoadScene(scene);
-
-		SetSize(window->GetMonitorSize());
-
 		//const int framerate = 30;
 		const double framerate = 1.0 / 30;
 
+		int fps = 0;
+		float smoothing = 0.9f;
+
+		float measurement = 0;
+
 		// Delta Time
 		double time = 0.0;
-		const double deltaTime = 0.05;
+		const double deltaTime = 0.05; // Updates per frame time
 
 		double currentTime = 0;
 		double accumulator = 0;
@@ -105,19 +108,28 @@ namespace Engine {
 		{
 			//quit = window->state != Window::State::RUNNING;
 
+			// Clear render
+			//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+
 			// Calculate frame time
-			double newTime = glfwGetTime();
-			double frameTime = newTime - currentTime; //std::cout << "Frame time: " << frameTime << std::endl;
+			const double newTime = glfwGetTime();
+			const double frameTime = newTime - currentTime; //std::cout << "Frame time: " << frameTime << std::endl;
 			currentTime = newTime;
 
 			accumulator += frameTime;
 
+
 			while (accumulator >= deltaTime)
 			{
+				// Process the User Input
+
+				input.Clear();
+				input.Update();
+
+				scene->ProcessInput();
 				glfwPollEvents();
 
-				// Process the User Input
-				scene->ProcessInput();
 
 				// Update game state
 				scene->Update(time, deltaTime);
@@ -127,16 +139,10 @@ namespace Engine {
 				accumulator -= deltaTime;
 				time += deltaTime;
 			}
-
-			//Text::Draw(testText, {0,0}, { 1,1 }, { 0,0 }, 0, 0, { 1, 1, 1 });
-			//Texture2D::Draw(Texture2D::Get("capybara"), { 100,100 }, { 320,320 }, { 0, 0 }, 0, 0, { 1,1,1 });
-
+			
+			measurement = (measurement * smoothing) + (frameTime * (1.0 - smoothing));
 			window->Render();
 			//std::cout << "Render" << std::endl;
-
-			// Clear render
-			//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
 
 			std::this_thread::sleep_for(std::chrono::duration<double>(framerate - frameTime));
 

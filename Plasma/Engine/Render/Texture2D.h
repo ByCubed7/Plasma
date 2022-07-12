@@ -13,7 +13,7 @@ class Texture2D : public Resource<Texture2D>, public Renderable<Texture2D>
 {
 public:
     unsigned int id;
-    unsigned int width, height; 
+    Vector2UInt size;
     
     // Format of texture object and loaded image
     unsigned int internalFormat, imageFormat;
@@ -44,5 +44,5 @@ protected:
     void LoadRenderer() override;
     void UnloadRenderer() override;
 
-    void Render(glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color) override;
+    void Render(glm::vec2 position, glm::vec2 size, glm::vec2 scale, glm::vec2 pivot, float rotate, glm::vec2 crop, glm::vec3 color) override;
 };

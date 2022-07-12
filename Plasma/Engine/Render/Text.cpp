@@ -33,7 +33,7 @@ void Text::UnloadRenderer()
 {
 }
 
-void Text::Render(glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color)
+void Text::Render(glm::vec2 position, glm::vec2 size, glm::vec2 scale, glm::vec2 pivot, float rotate, glm::vec2 crop, glm::vec3 color)
 {
 #ifdef VERBOSE
     std::cout << "[Text::Render]" << std::endl;

@@ -22,31 +22,24 @@ public:
 
 	RGBA color;
 
-	double animationPoint;
-	int animationSpeed;
-
 	Texture2D sprite;
-	int spriteFrame;
-	int spriteSize;
 	Vector2 pivot;
+	Vector<bool, 2> reflection;
+	Vector2Int crop;
+	Vector2UInt size;
 
 	// Set the texture
-	SpriteComponent* Set(Texture2D sprite);
+	SpriteComponent* Set(Texture2D newSprite);
 
 	// Get the texture
 	Texture2D Get();
 
 	// Set the animation speed
-	SpriteComponent* AnimationSpeed(int speed);
-
-	// Set the animation speed
 	SpriteComponent* SetColour(RGBA newColour);
-
-	// Get the Animation speed
-	int GetAnimationSpeed();
 
 	// Bounds
 	AABB bounds;
 	AABB GetBounds();
 	void CalcBounds();
+
 };

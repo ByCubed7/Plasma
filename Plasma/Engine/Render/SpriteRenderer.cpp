@@ -54,7 +54,7 @@ namespace Render
         shader.SetVector3f("spriteColor", color);
 
         // Set shadow render dims
-        shader.SetVector2f("spriteSize", { texture.height, texture.height });
+        shader.SetVector2f("spriteSize", { size.x, size.y });
 
         // Texture Frame
         shader.SetInteger("index", frame);

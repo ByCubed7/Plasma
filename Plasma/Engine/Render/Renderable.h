@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../Vector.h"
 #include "Shader.h"
 #include "glad.h"
 
@@ -33,11 +34,19 @@ public:
 		//delete renderable;
 	}
 
-	static void Draw(T object, glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color) 
+	static void Draw(T object, Vector2 position, Vector2UInt size, Vector2 scale, Vector2 pivot, float rotate, Vector2Int crop, RGBA color)
 	{
 		//std::cout << "renderable->Render: " << vertexArrayObject << std::endl;
 		Renderable* renderable = (Renderable*) &object;
-		renderable->Render(position, size, pivot, rotate, frame, color);
+		renderable->Render(
+			{ position.x, position.y }, 
+			{ size.x, size.y }, 
+			{ scale.x, scale.y }, 
+			{ pivot.x, pivot.y }, 
+			rotate, 
+			{ crop.x, crop.y }, 
+			{ color.x / 255.0f, color.y / 255.0f, color.z / 255.0f }
+		);
 	}
 
 	Shader& GetShader() 
@@ -60,5 +69,5 @@ protected:
 	virtual void LoadRenderer() = 0;
 	virtual void UnloadRenderer() = 0;
 
-	virtual void Render(glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color) = 0;
+	virtual void Render(glm::vec2 position, glm::vec2 size, glm::vec2 scale, glm::vec2 pivot, float rotate, glm::vec2 crop, glm::vec3 color) = 0;
 };

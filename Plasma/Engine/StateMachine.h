@@ -13,8 +13,16 @@ template<typename States, typename Actions>
 class FiniteStateMachine {
 public:
 
-    //event EventHandler StateExitEv;    
-    //event EventHandler StateEnterEv;
+    // Event Params
+    struct OnUpdateStateParams {
+        OnUpdateStateParams(States currentState, Actions cause) : state(currentState), action(cause) {}
+        States state;
+        Actions action;
+    };
+
+    // Event Dispatchers
+    Dispatcher<OnUpdateStateParams> onEnterEvent;
+    Dispatcher<OnUpdateStateParams> onExitEvent;
 
     FiniteStateMachine(States startState)
     {
@@ -26,17 +34,6 @@ public:
         std::pair<States, Actions> pair = std::make_pair(fromState, action);
         stateTable[pair] = newState;
     }
-
-    // Event Params
-    struct OnUpdateStateParams {
-        OnUpdateStateParams(States currentState, Actions cause) : state(currentState), action(cause) {}
-        States state;
-        Actions action;
-    };
-
-    // Event Dispatchers
-    Dispatcher<OnUpdateStateParams> onEnterEvent;
-    Dispatcher<OnUpdateStateParams> onExitEvent;
 
 protected:
     void ProcessEvent(Actions action)
@@ -59,16 +56,17 @@ protected:
 
         // Raise exit events.        
         //OnEnterEvent.Invoke(this, null);  
-        Event<OnUpdateStateParams> exitEvent(currentState);
-        onExitEvent.Invoke(exitEvent);
+//        OnUpdateStateParams param = OnUpdateStateParams(currentState, action);
+//        auto exitEvent = Event<OnUpdateStateParams>(param);
+//        onExitEvent.Invoke(exitEvent);
 
         // Update state.        
         currentState = newState;
 
-        // Raise enter events.    
-        Event<OnUpdateStateParams> enterEvent(currentState);
-        onEnterEvent.Invoke(enterEvent);
-        //OnExitEvent.Invoke(this, null);    
+        // Raise enter events.  
+//        param = OnUpdateStateParams(currentState, action);
+//        auto enterEvent = Event<OnUpdateStateParams>(param);
+//        onEnterEvent.Invoke(enterEvent);  
     }
 
     States GetState() {

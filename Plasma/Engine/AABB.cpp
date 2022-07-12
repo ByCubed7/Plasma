@@ -1,9 +1,10 @@
 // By @ByCubed7 on Twitter
 
-
 //#define VERBOSE
 
 #include "AABB.h"
+
+
 
 AABB::AABB(Vector2 lower, Vector2 upper)
 {

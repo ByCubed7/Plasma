@@ -14,34 +14,48 @@ namespace Engine
     {
         this->scene = scene;
 
-        position = { 0.0f, 0.0f };
-        rotation = 0.0f;
-        scale = { 1.0f, 1.0f };
+        position = 0;
+        rotation = 0;
+        scale = 1;
 
         isSolid = false;
         destroyed = false;
     }
-    /*
-    GameObject::GameObject(Vector2 position, float rotation, Vector2 scale, Vector2 velocity, float angularVelocity, Texture2D sprite, glm::vec3 color)
-        : Object("GameObject")
-    {
-        this->position = position;
-        this->rotation = rotation;
-        this->scale = scale;
 
-        this->isSolid = false;
-        this->destroyed = false;
+    Vector2& GameObject::GetPosition() { return position; }
+    float&   GameObject::GetRotation() { return rotation; }
+    Vector2& GameObject::GetScale()    { return scale; }
+
+    GameObject* GameObject::SetPosition(Vector2 value) { position = value; return this; }
+    GameObject* GameObject::SetRotation(float value)   { rotation = value; return this; }
+    GameObject* GameObject::SetScale(Vector2 value)    { scale = value; return this; }
+
+
+    void GameObject::AddTag(std::string tag)
+    {
+        tags.insert(tag);
     }
-    */
+
+    void GameObject::RemoveTag(std::string tag)
+    {
+        tags.erase(tag);
+    }
+
+    bool GameObject::HasTag(std::string tag)
+    {
+        return tags.contains(tag);
+    }
+
+
     Component* GameObject::AddComponent(Component* component)
     {
-        components.push_back(component);
+        components.insert(component);
         //component->gameObject = this;
         scene->AddComponent(component);
         return component;
     }
 
-    void GameObject::RemoveComponent(Component* component) { components.remove(component); }
+    void GameObject::RemoveComponent(Component* component) { components.erase(component); }
 
 
     Component* GameObject::GetComponent(std::string componentName)
@@ -67,4 +81,5 @@ namespace Engine
     }
 
     GameObject::operator bool() { return !destroyed; }
+
 }

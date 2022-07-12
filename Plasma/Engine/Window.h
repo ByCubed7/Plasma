@@ -38,11 +38,16 @@ namespace Engine
 		GLFWwindow* Get();
 		void Render();
 		void Title(std::string newName);
+		void Interactable(bool toggle);
+		void ShowInTaskbar(bool toggle);
 
 		int GetPPU();
 		Vector2Int GetMonitorSize();
 
 		void UpdateSize();
+
+
+
 
 	private:
 		App* app;

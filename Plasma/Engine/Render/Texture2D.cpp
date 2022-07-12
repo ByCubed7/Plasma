@@ -12,15 +12,15 @@
 #include <lodepng.h>
 
 
-Texture2D::Texture2D() : width(0), height(0), internalFormat(GL_RGB), imageFormat(GL_RGB), wrapS(GL_REPEAT), wrapT(GL_REPEAT), filterMin(GL_NEAREST), filterMax(GL_NEAREST)
+Texture2D::Texture2D() : size(0), internalFormat(GL_RGB), imageFormat(GL_RGB), wrapS(GL_REPEAT), wrapT(GL_REPEAT), filterMin(GL_NEAREST), filterMax(GL_NEAREST)
 {
     glGenTextures(1, &id);
 }
 
 void Texture2D::Generate(unsigned int width, unsigned int height, unsigned char* data)
 {
-    this->width = width;
-    this->height = height;
+    this->size.x = width;
+    this->size.y = height;
 
     // Bind Texture
     glBindTexture(GL_TEXTURE_2D, id);
@@ -108,17 +108,17 @@ void Texture2D::UnloadRenderer()
 
 }
 
-void Texture2D::Render(glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color)
+void Texture2D::Render(glm::vec2 position, glm::vec2 size, glm::vec2 scale, glm::vec2 pivot, float rotate, glm::vec2 crop, glm::vec3 color)
 {
     // Prepare transformations
     shader.Use();
 
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(position - size * pivot, 0.0f)); // translate
-    model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.0f)); // move origin of rotation to center of quad
+    model = glm::translate(model, glm::vec3(position - scale * pivot, 0.0f)); // translate
+    model = glm::translate(model, glm::vec3(0.5f * scale.x, 0.5f * scale.y, 0.0f)); // move origin of rotation to center of quad
     model = glm::rotate(model, glm::radians(rotate), glm::vec3(0.0f, 0.0f, 1.0f)); // rotate
-    model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, 0.0f)); // move origin back
-    model = glm::scale(model, glm::vec3(size, 1.0f)); // scale
+    model = glm::translate(model, glm::vec3(-0.5f * scale.x, -0.5f * scale.y, 0.0f)); // move origin back
+    model = glm::scale(model, glm::vec3(scale, 1.0f)); // scale
 
     shader.SetMatrix4("model", model);
 
@@ -126,10 +126,10 @@ void Texture2D::Render(glm::vec2 position, glm::vec2 size, glm::vec2 pivot, floa
     shader.SetVector3f("spriteColor", color);
 
     // Set shadow render dims
-    shader.SetVector2f("spriteSize", { height, height });
+    shader.SetVector2f("size", { size.x, size.y });
 
-    // Texture Frame
-    shader.SetInteger("index", frame);
+    // Texture crop
+    shader.SetVector2f("crop", { crop.x, crop.y });
 
     glActiveTexture(GL_TEXTURE0);
     Bind();

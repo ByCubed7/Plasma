@@ -177,6 +177,7 @@
     <ClCompile Include="Engine\Render\Text.cpp">
       <Filter>Engine\Render</Filter>
     </ClCompile>
+    <ClCompile Include="FoodSpawner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\glad.h">
@@ -387,6 +388,11 @@
     <ClInclude Include="Engine\Render\Animation.h">
       <Filter>Engine\Render</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Components\AnimatedSprite.h">
+      <Filter>Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FoodSpawner.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\TiledLibrary\RapidXML\manual.html">
@@ -394,5 +400,11 @@
     </None>
     <None Include="packages.config" />
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Plasma.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Docs\ico.ico" />
   </ItemGroup>
 </Project>

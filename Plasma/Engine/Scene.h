@@ -38,7 +38,6 @@ namespace Engine
 
 		// The game state
 		State state;
-		Input input;
 
 		Audio::Scene* audio;
 		Render::Renderers* renderer;

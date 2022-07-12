@@ -87,46 +87,16 @@ namespace Engine {
 		auto callbackFramebuffer = [](GLFWwindow* window, int width, int height)
 		{ return Window::instance->GraphicsCallbackFramebuffer(window, width, height); };
 		glfwSetFramebufferSizeCallback(window, callbackFramebuffer);
-
-
-		// Grab the HWND of the window
-		// Defining GLFW_EXPOSE_NATIVE_WIN32 to grab the glfw3native macro
-		hWnd = glfwGetWin32Window(window);
-
-		// Grab window ex+style
-		long style = GetWindowLong(hWnd, GWL_STYLE);
-		long exstyle = GetWindowLong(hWnd, GWL_EXSTYLE);
-
-		// - - IGNORE FOCUS
-		// This took months to work out--
-		// This tells the window to ignore all focus calls, causing them to fallback behind the window
-		// https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getwindowlonga
-		// https://docs.microsoft.com/en-us/windows/win32/winmsg/extended-window-
-		// 32	  (0x20)    is WS_EX_TRANSPARENT
-		// 524288 (0x80000) is WS_EX_LAYERED
-		exstyle |= WS_EX_LAYERED | WS_EX_TRANSPARENT;
-		//*/
-
-
-		// - - HIDE FROM TASKBAR
-		// https://stackoverflow.com/questions/7219063/win32-how-to-hide-3rd-party-windows-in-taskbar-by-hwnd
-		exstyle &= ~(WS_VISIBLE);    // this works - window become invisible 
-		exstyle |= WS_EX_TOOLWINDOW;   // flags don't work - windows remains in taskbar
-		exstyle &= ~(WS_EX_APPWINDOW);
-		//*/
-
-		// Update Style
-		ShowWindow(hWnd, SW_HIDE); // hide the window
-		SetWindowLong(hWnd, GWL_STYLE, style);
-		SetWindowLong(hWnd, GWL_EXSTYLE, exstyle);
-		ShowWindow(hWnd, SW_SHOW); // show the window for the new style to come into effect
-		//*/
-
+		
+		Interactable(false);
+		ShowInTaskbar(false);
+		//Interactable(true);
+		//ShowInTaskbar(true);
 
 		// Done setting up the window, reset the window hints.
 		//glfwDefaultWindowHints();
 
-		gladLoadGL();
+		//gladLoadGL();
 
 		//UpdateSize();
 		//std::cout << "[Window::Ctor] END " << std::endl;
@@ -176,17 +146,92 @@ namespace Engine {
 
 	Vector2Int Window::GetMonitorSize()
 	{
-		return Vector2Int({ monitorSize.x, monitorSize.y });
+		return monitorSize;
 	}
 
 	//
 
+	void Window::Interactable(bool toggle)
+	{
+		// Grab the HWND of the window
+		// Defining GLFW_EXPOSE_NATIVE_WIN32 to grab the glfw3native macro
+		hWnd = glfwGetWin32Window(window);
+
+		// Grab window ex+style		
+		//long style = GetWindowLong(hWnd, GWL_STYLE);
+		//long exstyle = GetWindowLong(hWnd, GWL_EXSTYLE);
+		// "To write code that is compatible with both 32-bit and 64-bit versions of Windows, use GetWindowLongPtr."
+		long style = GetWindowLongPtrA(hWnd, GWL_STYLE);
+		long exstyle = GetWindowLongPtrA(hWnd, GWL_EXSTYLE);
+
+		// - - IGNORE FOCUS
+		// This took months to work out--
+		// This tells the window to ignore all focus calls, causing them to fallback behind the window
+		// https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getwindowlonga
+		// https://docs.microsoft.com/en-us/windows/win32/winmsg/extended-window-
+		// 32	  (0x20)    is WS_EX_TRANSPARENT
+		// 524288 (0x80000) is WS_EX_LAYERED
+		if (toggle) 
+			exstyle &= ~(WS_EX_LAYERED | WS_EX_TRANSPARENT);
+		else
+			exstyle |= WS_EX_LAYERED | WS_EX_TRANSPARENT;
+
+		//*/
+
+		// Update Style
+		ShowWindow(hWnd, SW_HIDE); // hide the window
+		//SetWindowLong(hWnd, GWL_STYLE, style);
+		//SetWindowLong(hWnd, GWL_EXSTYLE, exstyle);
+		SetWindowLongPtrA(hWnd, GWL_STYLE, style);
+		SetWindowLongPtrA(hWnd, GWL_EXSTYLE, exstyle);
+		ShowWindow(hWnd, SW_SHOW); // show the window for the new style to come into effect
+	}
+
+	void Window::ShowInTaskbar(bool toggle)
+	{
+		// Grab the HWND of the window
+		// Defining GLFW_EXPOSE_NATIVE_WIN32 to grab the glfw3native macro
+		hWnd = glfwGetWin32Window(window);
+
+		// Grab window ex+style
+		long style = GetWindowLong(hWnd, GWL_STYLE);
+		long exstyle = GetWindowLong(hWnd, GWL_EXSTYLE);
+		// "To write code that is compatible with both 32-bit and 64-bit versions of Windows, use GetWindowLongPtr."
+		//long style = GetWindowLongPtrA(hWnd, GWL_STYLE);
+		//long exstyle = GetWindowLongPtrA(hWnd, GWL_EXSTYLE);
+
+		// - - HIDE FROM TASKBAR
+		// https://stackoverflow.com/questions/7219063/win32-how-to-hide-3rd-party-windows-in-taskbar-by-hwnd
+				
+		if (toggle) {
+			exstyle |= WS_VISIBLE;   // this works - window become invisible 
+			exstyle &= ~(WS_EX_TOOLWINDOW); // flags don't work - windows remains in taskbar
+			exstyle |= WS_EX_APPWINDOW;
+		}
+		else {
+			exstyle &= ~(WS_VISIBLE);    
+			exstyle |= WS_EX_TOOLWINDOW;  
+			exstyle &= ~(WS_EX_APPWINDOW);
+		}
+
+		//*/
+
+		// Update Style
+		ShowWindow(hWnd, SW_HIDE); // hide the window
+		//SetWindowLong(hWnd, GWL_STYLE, style);
+		//SetWindowLong(hWnd, GWL_EXSTYLE, exstyle);
+		SetWindowLongPtrA(hWnd, GWL_STYLE, style);
+		SetWindowLongPtrA(hWnd, GWL_EXSTYLE, exstyle);
+		ShowWindow(hWnd, SW_SHOW); // show the window for the new style to come into effect
+	}
+
 	void Window::GraphicsCallbackKey(GLFWwindow* window, int key, int scancode, int action, int mode)
 	{
-		if (!scene->input.KeyExists(key)) return;
-		if (action != GLFW_PRESS && action != GLFW_RELEASE) return;
+		//if (!scene->input.KeyExists(key)) return;
+		//if (action != GLFW_PRESS && action != GLFW_RELEASE) return;
+		std::cout << "Window::GraphicsCallbackKey" << std::endl;
 
-		scene->input.SetKey(key, action == GLFW_PRESS);
+		Engine::App::instance->input.SetKey(key, action == GLFW_PRESS);
 		//if (action == GLFW_PRESS) App.input.Pressed(key);
 		//else if (action == GLFW_RELEASE) App.input.Releas.ed(key);
 
@@ -208,7 +253,7 @@ namespace Engine {
 		if (action != GLFW_PRESS && action != GLFW_RELEASE) return;
 
 		//if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
-		scene->input.SetMouseButton(button, action == GLFW_PRESS);
+		Engine::App::instance->input.SetMouseButton(button, action == GLFW_PRESS);
 	}
 
 	void Window::GraphicsCallbackCursorPosition(GLFWwindow* window, double xpos, double ypos)
