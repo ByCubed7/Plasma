@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href=""><img width="200" height="200" src="https://github.com/ByCubed7/Plasma/blob/master/Docs/PlasmaLogo.png"/></a>
+  <a href=""><img width="200" height="200" src="https://github.com/ByCubed7/Plasma/blob/master/docs/PlasmaLogo.png"/></a>
   <br>
   The Plasma Engine Project
 </h1>
