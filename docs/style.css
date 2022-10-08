@@ -1,0 +1,46 @@
+body {
+  padding: 10px 5% 0 5%;
+  margin: 0;
+
+  height:100vh;
+
+  background-image: url("r/Background Padding.png");
+  background-size: 100vw 4vw;
+  background-repeat: repeat-y;
+
+
+  image-rendering: pixelated;
+}
+
+.title {
+  text-align: center;
+  font-family: var(--font-family-title);
+
+  font-size: 100px;
+}
+
+.menu {
+  padding: 10px 5% 0 5%;
+  width: auto;
+}
+
+.item {
+  text-align: center;
+  padding: 2px;
+  margin: 1% auto;
+  width: 200px;
+
+  font-family: var(--font-family-subtitle);
+  font-size: 30px;
+  color: black;
+
+  background-image: url("r/Button.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+}
+
+.menu a:hover, a:visited, a:link, a:active
+{
+  text-decoration: none;
+}
