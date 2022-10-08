@@ -40,7 +40,7 @@ protected:
     {
         std::pair<States, Actions> pair = std::make_pair(currentState, action);
 
-        if (!stateTable.contains(pair)) {
+        if (stateTable.find(pair) == stateTable.end()) {
             // Do NOT update the state.            
             std::cout << "Warning : Action '" << action << "' not expected while in state '" << currentState << "'" << std::endl;
             return;

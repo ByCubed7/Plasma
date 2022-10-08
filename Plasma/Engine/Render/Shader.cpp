@@ -12,6 +12,14 @@
 #include <glad.h>
 #include <glm/gtc/type_ptr.hpp>
 
+
+inline bool ends_with(std::string const& value, std::string const& ending)
+{
+    if (ending.size() > value.size()) return false;
+    return std::equal(ending.rbegin(), ending.rend(), value.rbegin());
+}
+
+
 Shader::Shader()
 {
     program = 0;
@@ -137,7 +145,7 @@ Shader Shader::FromFile(const std::string filename)
 {
     std::string filetype = ".shader";
     // Filename is EXPECTED to end with filetype
-    if (!filename.ends_with(filetype)) std::cout << "Shader::FromFile::Error: Filename does not end with `" << filetype << "`" << std::endl;
+    if (!ends_with(filename, filetype)) std::cout << "Shader::FromFile::Error: Filename does not end with `" << filetype << "`" << std::endl;
 
     // Get the shader filepath
     std::string filepath = filename.substr(0, filename.size() - filetype.size());

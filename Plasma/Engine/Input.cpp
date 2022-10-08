@@ -14,7 +14,7 @@
 void Input::Update()
 {
 	for (Key i = 0; i < keyboardBufferSize; i++) {
-		if (state_keyboard_frame.contains(i)) continue;
+		if (state_keyboard_frame.find(i) != state_keyboard_frame.end()) continue;
 		bool pressed = GetAsyncKeyState(i);
 
 		if (pressed ^ state_keyboard[i])

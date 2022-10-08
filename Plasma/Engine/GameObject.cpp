@@ -43,7 +43,7 @@ namespace Engine
 
     bool GameObject::HasTag(std::string tag)
     {
-        return tags.contains(tag);
+        return tags.find(tag) != tags.end();
     }
 
 
