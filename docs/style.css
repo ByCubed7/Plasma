@@ -5006,8 +5006,8 @@ iframe#discourse-embed-frame {
 .footer {
 	background-color: rgba(37,46,63,.5);
 	color: #fff;
-	padding: 8rem 1rem;
-	margin-top: 7rem;
+	padding: 2rem 1rem;
+	margin-top: 12rem;
 }
 
 @media screen and (max-width:849px) {
