@@ -80,18 +80,30 @@
                 <div class="content">
                     <h2>What?</h2>
                     <div>
-                        Plasma was my first university personal project, which I started for a university assignment around mid October 2021. It was my first large C++ project, which I committed to over the course of about 8 months. This project has been instrumental in helping me develop the skills needed to to take a step forward in creating intricate and complex systems, and has been a valuable learning experience for me.
+                        Plasma was my first university personal project, which I started for a university
+                        assignment around mid October 2021. It was my first large C++ project, which I
+                        committed to over the course of about 8 months. This project has been instrumental
+                        in helping me develop the skills needed to to take a step forward in creating
+                        intricate and complex systems, and has been a valuable learning experience for me.
                     </div>
                     <br>
                     <div>
-                        Plasma is a 2D Entity-Component-System simulation library that enables users to construct and manipulate a simulated environment through the attachment of components to gameobjects. Initially, it was designed for use in the development of a Pacman game using OpenGL, later on the project evolved through the modularization of its rendering pipeline and eventually resulted in the modularization of a significant portion of the project.
+                        Plasma is a 2D Entity-Component-System simulation library that enables users
+                        to construct and manipulate a simulated environment through the attachment
+                        of components to gameobjects. Initially, it was designed for use in the
+                        development of a Pacman game using OpenGL, later on the project evolved
+                        through the modularization of its rendering pipeline and eventually resulted
+                        in the modularization of a significant portion of the project.
                     </div>
 
                     <h2>
                         Goals
                     </h2>
                     <div>
-                        The project was initiatially an assignment where I aimed to improve my skills in system creation and C++/programming knowledge, however, as this project progressed, the focus shifted to the creation and modularization of a ECS game engine with the purpose of being easy to use and develop on.
+                        The project was initiatially an assignment where I aimed to improve my
+                        skills in system creation and C++/programming knowledge, however, as this
+                        project progressed, the focus shifted to the creation and modularization
+                        of a ECS game engine with the purpose of being easy to use and develop on.
                     </div>
 
 
@@ -114,14 +126,25 @@
                         GLFW, OpenGL and maths
                     </h2>
                     <div>
-                        At the start of the assignment we were provided with an optional template to use, this included the <a href="https://github.com/libsdl-org/SDL">SDL</a> library and some initiation code that loads in and creates a window. After a discussion with my lecturer, I decided not to use the library, template nor the provided tutorials in order to show myself how far I could go with left to my own resources, and what level I was at in the industry.
+                        At the start of the assignment we were provided with an optional template
+                        to use, this included the
+                        <a href="https://github.com/libsdl-org/SDL">SDL</a>
+                        library and some initiation code that loads in and creates a window.
+                        After a discussion with my lecturer, I decided not to use the library,
+                        template nor the provided tutorials in order to show myself how far I
+                        could go with left to my own resources, and what level I was at in the
+                        industry.
                     </div>
                     <div>
                         We were given around 9 weeks to learn C++ and SDL in order to make a Pacman game, or at least some resembulence of
                     </div>
                     <br>
                     <div>
-                        In the end, I decided to use <a href="https://github.com/glfw/glfw">GLFW</a>: a library for the <a href="https://www.opengl.org/">OpenGL</a> API.
+                        In the end, I decided to use
+                        <a href="https://github.com/glfw/glfw">GLFW</a>:
+                        a library for the
+                        <a href="https://www.opengl.org/">OpenGL</a>
+                        API.
                     </div>
 
                     <h2>
@@ -130,7 +153,7 @@
 
                     <div>
                         Following a getting started tutorial from
-                        <a href="https://learnopengl.com/Getting-started/OpenGL">LearnOpenGL</a>
+                        <a href="https://learnopengl.com/Getting-started/OpenGL">LearnOpenGL</a>;
                         I created a program, window and some vertices and then compiled a vertex & fragment shader to render a triangle on the screen.
                     </div>
 
@@ -149,26 +172,40 @@
                     <h2>
                         Fonts and Text
                     </h2>
+
+
                     <h2>
                         GameObjects
                     </h2>
 
                     <div>
-                        Orginally, my plan was for each actor to inherit a gameObject class and override it's methods in order to update and render. However, during the development I revised the design with a friend and came to the conclusion that using a enetiy component system
+                        Orginally, my plan was for each actor to inherit a gameObject class and override it's methods
+                        in order to update and render. However, during the development I revised the design with a
+                        friend and came to the conclusion that using a enetiy component system
                     </div>
 
 
                     <div>
-                        The App class is responsible for initializing the window and setting up the environment for the game to run. It also handles keyboard input and manages various settings.
-                        The Game class is the base class for the game and serves as the foundation for the gameplay. Subclasses of the Game class can be created to define the specific behavior of the game, including loading and saving data. The Game class also manages GameObjects and communicates with the App class to determine the next actions to be taken.
+                        The App class is responsible for initializing the window and setting up the environment for the
+                        game to run. It also handles keyboard input and manages various settings.
+                        The Game class is the base class for the game and serves as the foundation for the gameplay.
+                        Subclasses of the Game class can be created to define the specific behavior of the game,
+                        including loading and saving data. The Game class also manages GameObjects and communicates
+                        with the App class to determine the next actions to be taken.
                     </div>
                     <br>
                     <div>
-                        The Input class is responsible for tracking the state of the keyboard, mouse, and controller (when available). The Resources class is a singleton class that handles the loading, caching, and saving of various types of resources, such as images, audio files, sprite sheets, and text fonts.
+                        The Input class is responsible for tracking the state of the keyboard, mouse, and controller (when available).
+                        The Resources class is a singleton class that handles the loading, caching, and saving of
+                        various types of resources, such as images, audio files, sprite sheets, and text fonts.
                     </div>
                     <br>
                     <div>
-                        The Renderer class is responsible for rendering various elements of the game, including shaders, textures, fonts, and sprite sheets. GameObjects are objects that are present in the game world and have a position, rotation, and scale. They also contain Components, which are the building blocks that make up a GameObject. The engine includes a SpriteComponent and a RigidbodyComponent, but custom Components can also be created.
+                        The Renderer class is responsible for rendering various elements of the game, including shaders,
+                        textures, fonts, and sprite sheets. GameObjects are objects that are present in the game world
+                        and have a position, rotation, and scale. They also contain Components, which are the building
+                        blocks that make up a GameObject. The engine includes a SpriteComponent and a Rigidbody Component,
+                        but custom Components can also be created.
                     </div>
                     <br>
                     <div>
@@ -193,7 +230,13 @@
                     </div>
 
                     <div>
-                        The 600+ fps here isn't particularly great on the grounds that we're only rendering a single stationary sprite. Idealy, the player texture would be loaded in and referenced, rather than using a lookup table in the Resource instance every draw; And there are plenty more optimizations I can do in the renderer before that--
+                        The 600+ fps here isn't particularly great on the grounds that we're only rendering a single
+                        stationary sprite. Idealy, the player texture would be loaded in and referenced, rather than
+                        using a lookup table in the Resource instance every draw; And there are plenty more
+                        optimizations I can do in the renderer before that--
+                    </div>
+                    <br>
+                    <div>
                         But it gets the job done for now.
                     </div>
                 </div>
@@ -214,7 +257,9 @@
                         Sprites and Animations
                     </h2>
 
-                    Created a generic Renderable class to be used in renderable objects, like textures and fonts.
+                    <div>
+                        Created a generic Renderable class to be used in renderable objects, like textures and fonts.
+                    </div>
                     <pre><code class="language-cpp">
                         class Texture2D
                             : public Resource&lt;Texture2D>, public Renderable&lt;Texture2D>
@@ -300,8 +345,8 @@
                         Event Handlers
                     </h2>
                     <div>
-                        While researching how one would go about executing Event-Driven Architecture in C++,
-                        I found a well documented resource on a simple implementation and used that to implement my basics of the observer pattern.
+                        While researching how one would go about executing Event-Driven Architecture in C++, I found a well
+                        documented resource on a simple implementation and used that to implement my  basics of the observer pattern.
                         However there are some severe limitation of the design, such as the inability to handle events in different threads;
                         Though, at this point in time, I was not planning so far ahead just yet.
                     </div>
@@ -447,7 +492,9 @@
                         </h2>
 
                         <div>
-                            Over the course of the few weeks that I was working on the window management, my friends and community had became very passionate about capybaras, the cute social rodent native to South America; And I had mentioned on occation that I would add them to a project... eventually.
+                            Over the course of the few weeks that I was working on the window management, my friends and
+                            community had became very passionate about capybaras, the cute social rodent native to
+                            South America; And I had mentioned on occation that I would add them to a project... eventually.
                             <a href="https://en.wikipedia.org/wiki/Capybara#Popularity_and_meme_culture"><img src="imgs/capybara.png"></a>
                         </div>
                         <br>
@@ -457,7 +504,9 @@
                         </h2>
 
                         <div>
-                            Desktop Goose is a popular desktop buddy windows/mac application made by <a href="https://samperson.itch.io/">samperson</a>. Which is one of the many things that inspired me to take my learning in programming further.
+                            Desktop Goose is a popular desktop buddy windows/mac application made by
+                            <a href="https://samperson.itch.io/">samperson</a>.
+                            Which is one of the many things that inspired me to take my learning in programming further.
                             See: 👇
                         </div>
 
@@ -491,14 +540,17 @@
                         </h2>
 
                         <div>
-                            Drew up a small pixelated sprite for the capybara, I went for this style to synergize with it's potentially untidy movement and current lack of animations.
+                            Drew up a small pixelated sprite for the capybara, I went for this style to synergize with
+                            it's potentially untidy movement and current lack of animations.
                             <img src="imgs/20220227 the boi.png">
                             I found it overly saturated here and later softed the fur colour to a more lighter blonde.
                         </div>
                         <br>
 
                         <div>
-                            Gave the capybara a GameObject and a SpriteComponent for now, ready to be rendered on the screen~ Below, I had forgotten about setting a colour and scale, making our boy into a cute small silhouette.
+                            Gave the capybara a GameObject and a SpriteComponent for now, ready to be rendered on the
+                            screen~ Below, I had forgotten about setting a colour and scale, making our boy into a
+                            cute small silhouette.
                             <img src="imgs/20220227 small.png">
                         </div>
 
@@ -518,8 +570,9 @@
                         </h2>
 
                         <div>
-                            I wanted to add some customization to each of the capybaras, every time you open the application a new kind of capybara would spawn:
-                            Slightly different size, fur colour, and most importantly a different hat. I designed a few hats
+                            I wanted to add some customization to each of the capybaras, every time you open the
+                            application a new kind of capybara would spawn: Slightly different size, fur colour,
+                            and most importantly a different hat. I designed a few hats
                         </div>
 
                         <div>
@@ -542,7 +595,8 @@
 
                     <div>
                         <img src="imgs/20220303 itchiobanner.png">
-                        <iframe src="https://itch.io/embed/1426955?bg_color=222222&amp;fg_color=ffffff&amp;border_color=363636" width="552" height="167" frameborder="0"><a href="https://bycubed7.itch.io/desktop-capybara">Desktop Capybara by ByCubed7</a>
+                        <iframe src="https://itch.io/embed/1426955?bg_color=222222&amp;fg_color=ffffff&amp;border_color=363636" width="552" height="167" frameborder="0">
+                            <a href="https://bycubed7.itch.io/desktop-capybara">Desktop Capybara by ByCubed7</a>
                         </iframe>
                         You can download and play around with the capybara above! 👆
                     </div>
@@ -570,11 +624,15 @@
                     </div>
 
                     <div>
-                        In the end, I achieved a plentiful amount of my goals, creating 2 games over all, and seeing one all the way from production to release; And I have collected a substantial amount of knowledge in C++, planning & design, production management and motivation techniques.
+                        In the end, I achieved a plentiful amount of my goals, creating 2 games over all,
+                        and seeing one all the way from production to release; And I have collected a
+                        substantial amount of knowledge in C++, planning & design, production management
+                        and motivation techniques.
                     </div>
                     <br>
                     <div>
-                        One thing I hope to improve on in the future is my routine in publishing content and my social media usage in general. I will aim to work on this in my next project.
+                        One thing I hope to improve on in the future is my routine in publishing content
+                        and my social media usage in general. I will aim to work on this in my next project.
                     </div>
 
 
