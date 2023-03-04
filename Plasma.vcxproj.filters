@@ -411,6 +411,7 @@
     <ClInclude Include="Plasma\Tests\VectorTest.h">
       <Filter>Tests</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="assets\shaders\tile.vs">
@@ -464,5 +465,13 @@
     <CopyFileToFolders Include="assets\shaders\tile.frag">
       <Filter>Game\assets</Filter>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="docs\ico.ico">
+      <Filter>Game\assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Plasma.rc" />
   </ItemGroup>
 </Project>

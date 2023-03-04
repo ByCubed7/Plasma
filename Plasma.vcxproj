@@ -80,10 +80,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>Desktop Capybara</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
+    <TargetName>Desktop Capybara</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -319,6 +321,7 @@
     <ClInclude Include="Plasma\Tests\VectorTest.h" />
     <ClInclude Include="Plasma\WalkComponent.h" />
     <ClInclude Include="Plasma\WarpComponent.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="assets\audio\Capybara Baby Exams B-Roll.mp3">
@@ -379,6 +382,12 @@
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="docs\ico.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Plasma.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
