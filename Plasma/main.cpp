@@ -41,25 +41,25 @@ int main(int argc, char* argv[])
 	app.Load(scene);
 
 
-	Shader::Load("Plasma/assets/shaders/sprite.shader", "sprite");
-	Shader::Load("Plasma/assets/shaders/text.shader", "text");
-	Shader::Load("Plasma/assets/shaders/tile.shader", "tile");
+	Shader::Load("assets/shaders/sprite.shader", "sprite");
+	Shader::Load("assets/shaders/text.shader", "text");
+	Shader::Load("assets/shaders/tile.shader", "tile");
 
 	//Texture2D::Init();
-	Texture2D::Load("Plasma/assets/textures/Capybara.png", "capybara");
-	Texture2D::Load("Plasma/assets/textures/Shadow.png", "shadow");
-	Texture2D::Load("Plasma/assets/textures/Hat.png", "hat");
-	Texture2D::Load("Plasma/assets/textures/Food.png", "food");
+	Texture2D::Load("assets/textures/Capybara.png", "capybara");
+	Texture2D::Load("assets/textures/Shadow.png", "shadow");
+	Texture2D::Load("assets/textures/Hat.png", "hat");
+	Texture2D::Load("assets/textures/Food.png", "food");
 
-	Font::Load("Plasma/assets/fonts/arial.ttf", "arial");
+	Font::Load("assets/fonts/arial.ttf", "arial");
 
 	Texture2D::PrepareRenderer(Shader::Get("sprite"));
 	Text::PrepareRenderer(Shader::Get("text"));
 
 	scene->Load();
 
-	//Resources::LoadTilemap("Plasma/assets/tilemaps/Pacman.tmx", "tilesheet");
-	Resources::LoadWav("Plasma/assets/audio/Capybara.wav", "capybara");
+	//Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
+	Resources::LoadWav("assets/audio/Capybara.wav", "capybara");
 
 
 	// - Create audio
