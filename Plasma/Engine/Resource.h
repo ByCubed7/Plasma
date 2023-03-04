@@ -4,6 +4,7 @@
 
 #include <map>
 #include <string>
+#include <iostream>
 
 template<class T>
 class Resource 
@@ -18,7 +19,7 @@ public:
 		if (!Has(name)) 
 		{
 			// NOTE: I dispise this implementation
-			Resource* resource = (Resource*)(new T()); 
+			Resource* resource = (Resource*) (new T()); 
 			cache[name] = resource->FromFile(file);
 			//delete resource;
 		}
@@ -26,18 +27,30 @@ public:
 	}
 
 	static void CleanUp() {
-		for (auto const& [key, val] : cache) {
-			Resource* resource = (Resource*) &val;
+		// std:c++17
+		//for (auto const& [key, val] : cache) {
+		//	Resource* resource = (Resource*) &val;
+		//	resource->Clear();
+		//}
+
+		typename std::map<std::string, T>::iterator it;
+		for (it = cache.begin(); it != cache.end(); it++)
+		{
+			Resource* resource = (Resource*)&it->second;
+			//if (resource != nullptr)
 			resource->Clear();
 		}
 	}
 
 protected:
 	// All the objs we have cached
-	static inline std::map<std::string, T> cache = std::map<std::string, T>();
+	static std::map<std::string, T> cache;
 
 	//std::string filepath, name;
 
 	virtual T FromFile(const std::string filepath) = 0;
 	virtual void Clear() = 0;
 };
+
+template<class T>
+std::map<std::string, T> Resource<T>::cache = std::map<std::string, T>();

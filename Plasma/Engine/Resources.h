@@ -4,7 +4,8 @@
 
 #include "Audio/Wav.h"
 
-#include <al.h>
+#include "OpenAL/AL/al.h"
+#include "OpenAL/AL/alc.h"
 
 #include <map>
 #include <string>

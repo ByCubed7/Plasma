@@ -14,13 +14,12 @@
 #include "GameObject.h"
 #include "Component.h"
 #include "Input.h"
+#include "App.h"
+
+#include "OpenGL.h"
 
 #include <typeinfo>
 #include <algorithm>
-
-#include <glm/glm.hpp>
-#include <glm/ext/matrix_transform.hpp>
-#include <glm/ext/matrix_clip_space.hpp>
 
 namespace Engine 
 {
@@ -61,7 +60,7 @@ namespace Engine
 		components.emplace_back(component);
 	}
 
-	void Scene::Load() 
+	void Scene::Load()
 	{
 		Vector2Int size = app->GetSize();
 		glm::mat4 projection = glm::ortho(0.0f, (float)size.x, (float)size.y, 0.0f, -1.0f, 1.0f);
@@ -237,8 +236,8 @@ namespace Engine
 		for (const auto& component : components)
 		{
 			component->Draw(*renderer);
-			//cout << "Drawing: " << component->ToString() << endl;
-			//cout << "Drawing: " << component->gameObject->position.x << "," << component->gameObject->position.y << endl;
+			//std::cout << "Drawing: " << component->ToString() << std::endl;
+			//std::cout << "Drawing: " << component->gameObject->position.x << "," << component->gameObject->position.y << std::endl;
 			//cout << "Game::GRender.Renderer:" << renderer << " Object:" << typeid(*component).name() << endl;
 		}
 

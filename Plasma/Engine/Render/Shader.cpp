@@ -5,12 +5,12 @@
 
 #include "shader.h"
 
+#include "OpenGL.h"
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
 
-#include <glad.h>
-#include <glm/gtc/type_ptr.hpp>
 
 
 inline bool ends_with(std::string const& value, std::string const& ending)

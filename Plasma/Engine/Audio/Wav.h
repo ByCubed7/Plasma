@@ -2,12 +2,12 @@
 
 #pragma once
 
+#include "OpenAL/AL/al.h"
+#include "OpenAL/AL/alc.h"
+
 #include <iostream>
 #include <vector>
 #include <string>
-
-#include <al.h>
-//#include <alc.h>
 
 struct Wav
 {

@@ -10,7 +10,7 @@
 
 #include "../Engine/GameObject.h"
 #include "../Engine/Component.h"
-#include "../Engine/StateMachine.h"
+#include "../Engine/FiniteStateMachine.h"
 
 // Events
 #include "../Engine/Dispatcher.h"
@@ -20,7 +20,6 @@
 #include "../Engine/Scene.h"
 #include "../Engine/Input.h"
 #include "../Engine/App.h"
-#include "../Engine/FiniteStateMachine.h"
 #include "../Engine/Window.h"
 
 // Soon to be gone

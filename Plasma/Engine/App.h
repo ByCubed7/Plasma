@@ -2,13 +2,12 @@
 
 #pragma once
 
-#include <glad.h>
-#include <GLFW/glfw3.h>
-
 #include "Audio/AudioScene.h"
 
 #include "Scene.h"
 #include "Resources.h"
+
+#include "OpenGL.h"
 
 #include <iostream>
 

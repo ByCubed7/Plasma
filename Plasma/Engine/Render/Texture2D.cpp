@@ -7,8 +7,7 @@
 
 #include <iostream>
 
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "OpenGL.h"
 #include <lodepng.h>
 
 
@@ -58,10 +57,10 @@ Texture2D Texture2D::FromFile(const std::string filename)
     //int width, height, nrChannels;
     //unsigned char* data = stbi_load(file.c_str(), &width, &height, &nrChannels, 0);
 
-    std::vector<unsigned char> data;
+    std::vector<unsigned char> data = std::vector<unsigned char>();
     unsigned width, height;
     unsigned error = lodepng::decode(data, width, height, filename);
-
+    //std::cout << lodepng_error_text(error) << std::endl;
 
     // Generate texture
     Generate(width, height, &data[0]);

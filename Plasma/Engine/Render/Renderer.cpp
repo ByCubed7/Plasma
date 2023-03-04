@@ -5,7 +5,7 @@
 
 #include "Renderer.h"
 
-#include <glad.h>
+#include "OpenGL.h"
 
 namespace Render {
     Renderer::Renderer(Shader& shader)

@@ -20,12 +20,16 @@
 #include <iostream>
 #include "Engine/Components/AnimatedSprite.h"
 
+#include "Tests/VectorTest.h"
+
 using namespace Engine;
 
 GameObject* ForgeCapybara(Scene* scene);
 
 int main(int argc, char* argv[])
 {
+	Tests::TestVector3();
+
 	srand(static_cast <unsigned>(time(0)));
 
 	//FreeConsole();
@@ -37,31 +41,25 @@ int main(int argc, char* argv[])
 	app.Load(scene);
 
 
-	Shader::Load("assets/shaders/sprite.shader", "sprite");
-	Shader::Load("assets/shaders/text.shader", "text");
-	Shader::Load("assets/shaders/tile.shader", "tile");
+	Shader::Load("Plasma/assets/shaders/sprite.shader", "sprite");
+	Shader::Load("Plasma/assets/shaders/text.shader", "text");
+	Shader::Load("Plasma/assets/shaders/tile.shader", "tile");
 
 	//Texture2D::Init();
-	Texture2D::Load("assets/textures/Capybara.png", "capybara");
-	Texture2D::Load("assets/textures/Shadow.png", "shadow");
-	Texture2D::Load("assets/textures/Hat.png", "hat");
-	Texture2D::Load("assets/textures/Food.png", "food");
+	Texture2D::Load("Plasma/assets/textures/Capybara.png", "capybara");
+	Texture2D::Load("Plasma/assets/textures/Shadow.png", "shadow");
+	Texture2D::Load("Plasma/assets/textures/Hat.png", "hat");
+	Texture2D::Load("Plasma/assets/textures/Food.png", "food");
 
-	Font::Load("assets/fonts/arial.ttf", "arial");
+	Font::Load("Plasma/assets/fonts/arial.ttf", "arial");
 
 	Texture2D::PrepareRenderer(Shader::Get("sprite"));
 	Text::PrepareRenderer(Shader::Get("text"));
 
-
-
 	scene->Load();
 
-	// - Load Resources
-	//Resources::LoadTexture("assets/textures/Capybara.png", true, "capybara");
-	//Resources::LoadTexture("assets/textures/Shadow.png", true, "shadow");
-
-	//Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
-	Resources::LoadWav("assets/audio/Capybara.wav", "capybara");
+	//Resources::LoadTilemap("Plasma/assets/tilemaps/Pacman.tmx", "tilesheet");
+	Resources::LoadWav("Plasma/assets/audio/Capybara.wav", "capybara");
 
 
 	// - Create audio

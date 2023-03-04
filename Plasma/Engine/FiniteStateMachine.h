@@ -1,5 +1,8 @@
 #pragma once
 
+#include "Event.h"
+#include "Dispatcher.h"
+
 #include <iostream>
 #include <map>
 
@@ -9,8 +12,16 @@ namespace Engine
     class FiniteStateMachine {
     public:
 
-        //event EventHandler StateExitEv;    
-        //event EventHandler StateEnterEv;
+        // Event Params
+        struct OnUpdateStateParams {
+            OnUpdateStateParams(States currentState, Actions cause) : state(currentState), action(cause) {}
+            States state;
+            Actions action;
+        };
+
+        // Event Dispatchers
+        Dispatcher<OnUpdateStateParams> onEnterEvent;
+        Dispatcher<OnUpdateStateParams> onExitEvent;
 
         FiniteStateMachine(States startState)
         {
@@ -24,37 +35,38 @@ namespace Engine
         }
 
     protected:
-        // Returns whether the event changed the state
-        bool ProcessEvent(Actions action)
+        void ProcessEvent(Actions action)
         {
             std::pair<States, Actions> pair = std::make_pair(currentState, action);
 
-            if (stateTable.count(pair) == 0) {
+            if (stateTable.find(pair) == stateTable.end()) {
                 // Do NOT update the state.            
-                //std::cout << "Warning : Action '" << action << "' not expected while in state '" << currentState << "'" << std::endl;
-                //std::cout << "Action '" << action << "' in state '" << currentState << "'" << std::endl;
-                return false;
+                std::cout << "Warning : Action '" << action << "' not expected while in state '" << currentState << "'" << std::endl;
+                return;
             }
 
             States newState = stateTable[pair];
 
             // If the state has not changed then do not raise a change event.        
-            if (newState == currentState) return false;
+            if (newState == currentState) return;
+
 
             //Debug.Log("FSM - ProcessEvent =" + theAction + " : State=" + currentState + " : NewState=" + newState);        
 
             // Raise exit events.        
-            //StateExitEv.Invoke(this, null);        
+            //OnEnterEvent.Invoke(this, null);  
+    //        OnUpdateStateParams param = OnUpdateStateParams(currentState, action);
+    //        auto exitEvent = Event<OnUpdateStateParams>(param);
+    //        onExitEvent.Invoke(exitEvent);
 
             // Update state.        
             currentState = newState;
 
-            // Raise enter events.          
-            //StateEnterEv.Invoke(this, null);   
-            return true;
+            // Raise enter events.  
+    //        param = OnUpdateStateParams(currentState, action);
+    //        auto enterEvent = Event<OnUpdateStateParams>(param);
+    //        onEnterEvent.Invoke(enterEvent);  
         }
-
-
 
         States GetState() {
             return currentState;

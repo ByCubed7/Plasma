@@ -11,11 +11,13 @@
 
 
 namespace Tilemaps {
+
+    Tiled::Loader* Tilemap::tiled = nullptr;
+
 	Tilemap::Tilemap() 
     {
-        if (!tiledLoaded) {
-            tiled = Tiled::Loader();
-            tiledLoaded = true;
+        if (tiled == nullptr) {
+            tiled = new Tiled::Loader();
         }
     }
 
@@ -31,9 +33,9 @@ namespace Tilemaps {
 
         // What happens when we can't find the file?
         // Invalid format? ect.
-        tiled.LoadMap(filename, filename);
+        tiled->LoadMap(filename, filename);
 
-        Tiled::Map* tiledMap = tiled.GetMap(filename);
+        Tiled::Map* tiledMap = tiled->GetMap(filename);
 
         // Convert the loaded map into a tilemap
         std::vector<Tiled::Layer> layers = tiledMap->Layers();
@@ -86,7 +88,7 @@ namespace Tilemaps {
                         map.layers[j].SetTile(
                             Tilemaps::Tile(
                                 map.tileset.GetIndexFromId(id),
-                                { x, y },
+                                Vector2Int({ x, y }),
                                 rotat, scale
                             )
                         );

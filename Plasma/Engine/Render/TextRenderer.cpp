@@ -7,10 +7,10 @@
 
 #include "Texture2D.h"
 #include "Font.h"
-
 #include "../Resources.h"
 
-#include <glm/gtc/matrix_transform.hpp>
+#include "OpenGL.h"
+
 #include <ft2build.h>
 #include <freetype.h>
 
@@ -75,7 +75,8 @@ namespace Render
             //Character ch = font.GetCharacter(*c);
 
             width += ch.Size.x * scale;
-            height = std::max(height, ch.Size.y * scale);
+            //height = std::max(height, ch.Size.y * scale);
+            height = max(height, ch.Size.y * scale);
         }
 
         // Iterate through all characters

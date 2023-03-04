@@ -1,9 +1,14 @@
 #include "Text.h"
+
+//#define VERBOSE
+
 #include "Font.h"
+
+#include "OpenGL.h"
 
 #include <iostream>
 
-//#define VERBOSE
+unsigned int Text::verticeVBO = 0;
 
 void Text::LoadRenderer()
 {
@@ -61,7 +66,8 @@ void Text::Render(glm::vec2 position, glm::vec2 size, glm::vec2 scale, glm::vec2
         //Character ch = font.GetCharacter(*c);
 
         width += ch.Size.x * size.x;
-        height = std::max(height, ch.Size.y * size.y);
+        //height = std::max(height, ch.Size.y * size.y);
+        height = max(height, ch.Size.y * size.y);
     }
 
     float cursorX = position.x;

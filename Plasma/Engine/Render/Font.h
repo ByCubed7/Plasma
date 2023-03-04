@@ -6,8 +6,6 @@
 #include "Renderable.h"
 #include "../Resource.h"
 
-#include <glm/glm.hpp>
-
 #include <map>
 
 /// Holds all state information relevant to a character as loaded using FreeType

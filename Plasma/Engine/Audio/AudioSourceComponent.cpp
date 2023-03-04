@@ -8,6 +8,7 @@
 #include "AudioScene.h"
 #include "../Component.h"
 #include "../GameObject.h"
+#include "../Scene.h"
 #include "../Components/SpriteComponent.h"
 
 AudioSourceComponent::AudioSourceComponent(Engine::GameObject* gameObject, std::string name)

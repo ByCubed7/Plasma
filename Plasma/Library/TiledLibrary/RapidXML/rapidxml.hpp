@@ -239,7 +239,8 @@ namespace rapidxml
 
     //! Parse flag instructing the parser to condense all whitespace runs of data nodes to a single space character.
     //! Trimming of leading and trailing whitespace of data is controlled by rapidxml::parse_trim_whitespace flag.
-    //! By default, whitespace is not normalized. 
+    //! By default, whitespace is not 
+    //! d. 
     //! If this flag is specified, source text will be modified.
     //! Can be combined with other flags by use of | operator.
     //! <br><br>

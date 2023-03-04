@@ -119,7 +119,6 @@ namespace Engine {
 
 	void Window::Render()
 	{
-		scene->Render();
 		glfwSwapBuffers(window);
 
 		//GLenum err;

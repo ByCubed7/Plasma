@@ -4,8 +4,6 @@
 
 #include "Renderer.h"
 
-#include <glm/glm.hpp>
-
 class Shader;
 
 namespace Render

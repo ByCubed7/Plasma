@@ -2,8 +2,6 @@
 
 #pragma once
 
-
-
 #include "../Engine/Tilemaps/Tile.h"
 #include "../Engine/Tilemaps/TileLayer.h"
 #include "../Engine/Tilemaps/Tilemap.h"

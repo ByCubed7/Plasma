@@ -18,9 +18,9 @@ public:
 	LockComponent* LockScale(bool doLock = true);
 	LockComponent* LockSpriteReflection(SpriteComponent* sprite);
 
-	LockComponent* SetPositionOffset(Vector2Float value);
+	LockComponent* SetPositionOffset(Vector2 value);
 	LockComponent* SetRotationOffset(float value);
-	LockComponent* SetScaleOffset(Vector2Float value);
+	LockComponent* SetScaleOffset(Vector2 value);
 
 private:
 	Engine::GameObject* target;
@@ -31,8 +31,8 @@ private:
 	SpriteComponent* gameObjectSprite;
 	SpriteComponent* targetSprite;
 
-	Vector2Float positionOffset;
+	Vector2 positionOffset;
 	float rotationOffset;
-	Vector2Float scaleOffset;
+	Vector2 scaleOffset;
 };
 

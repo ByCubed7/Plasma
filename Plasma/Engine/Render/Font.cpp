@@ -6,7 +6,9 @@
 #include "Font.h"
 
 #include <ft2build.h>
-#include <freetype.h>  
+#include <freetype.h>
+
+#include "OpenGL.h"
 
 unsigned int Font::defaultFontSize = 24;
 

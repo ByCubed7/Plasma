@@ -36,7 +36,7 @@ void CharacterControllerComponent::Update(double time, double delta, Engine::Sce
 	// Normilize velo
 	if (velocity.Magnitude())
 	{
-		velocity.Normalize();
+		velocity = velocity.Normalize();
 		velocity *= 300;
 	}
 

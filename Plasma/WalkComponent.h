@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Core.h"
+#include "Components.h"
 
 class WalkComponent : public Engine::Component
 {

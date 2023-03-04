@@ -19,7 +19,7 @@ namespace Tilemaps {
         std::vector<TileLayer> layers;
 
         Texture2D tileSheet;
-    
+
         Vector2 tileSize;
         Tileset tileset;
 
@@ -29,8 +29,7 @@ namespace Tilemaps {
         void AddLayer(TileLayer layer);
 
         // Lazy
-        static inline Tiled::Loader tiled;
-        static inline bool tiledLoaded = false;
+        static Tiled::Loader* tiled;
 
     protected:
         Tilemap FromFile(const std::string filename) override;

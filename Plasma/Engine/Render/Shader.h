@@ -4,7 +4,8 @@
 
 #include "../Resource.h"
 
-#include <glm/glm.hpp>
+#include "OpenGL.h"
+
 #include <string>
 
 // General purpose shader class.

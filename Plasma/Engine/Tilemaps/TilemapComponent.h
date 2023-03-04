@@ -3,9 +3,7 @@
 #pragma once
 
 #include "../Component.h"
-#include "../Event.h"
-#include "../Dispatcher.h"
-#include "../Tilemaps/Tilemap.h"
+#include "Tilemap.h"
 
 #include <vector>
 
@@ -35,9 +33,7 @@ public:
 
 	Vector2 GetTileDensity();
 
-
 	// Getting tiles
-
 	int GetTileAtScenePosition(Vector2 pos);
 	bool IsTileAtScenePosition(Vector2 pos);
 };

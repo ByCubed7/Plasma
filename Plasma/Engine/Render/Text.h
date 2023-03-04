@@ -20,5 +20,5 @@ protected:
 
     void Render(glm::vec2 position, glm::vec2 size, glm::vec2 scale, glm::vec2 pivot, float rotate, glm::vec2 crop, glm::vec3 color) override;
 private:
-    static inline unsigned int verticeVBO = 0;
+    static unsigned int verticeVBO;
 };

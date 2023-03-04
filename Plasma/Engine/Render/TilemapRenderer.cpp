@@ -1,18 +1,17 @@
 // By @ByCubed7 on Twitter
 
-
 //#define VERBOSE
-
-#pragma once
 
 #include "TilemapRenderer.h"
 
 #include "Renderer.h"
 #include "Texture2D.h"
 #include "Shader.h"
-#include "Font.h"
 #include "../Resources.h"
 #include "../Tilemaps/Tilemap.h"
+//#include "Font.h"
+
+#include "OpenGL.h"
 
 namespace Render
 {

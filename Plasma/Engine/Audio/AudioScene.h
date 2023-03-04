@@ -5,10 +5,10 @@
 #include "AudioBuffer.h"
 #include "AudioSource.h"
 #include "AudioListener.h"
-#include "Audio.h"
 #include "Wav.h"
 
-#include "al.h"
+#include "OpenAL/AL/al.h"
+#include "OpenAL/AL/alc.h"
 
 #include <iostream>
 #include <vector>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\OpenAL.Soft.1.19.1\build\openal.soft.props" Condition="Exists('packages\OpenAL.Soft.1.19.1\build\openal.soft.props')" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{de628e88-5ae2-4173-bde8-5807e650cc91}</ProjectGuid>
+    <RootNamespace>Plasma</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\ByCubed7\Desktop\Plasma\Plasma\Include;C:\Users\ByCubed7\Desktop\Plasma\Plasma\Library;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Plasma\Library\TiledLibrary\RapidXML\manual.html" />
+    <None Include="Plasma\packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Plasma\CapybaraAI.cpp" />
+    <ClCompile Include="Plasma\Engine\AABB.cpp" />
+    <ClCompile Include="Plasma\Engine\App.cpp" />
+    <ClCompile Include="Plasma\Engine\Audio\AudioBuffer.cpp" />
+    <ClCompile Include="Plasma\Engine\Audio\AudioListener.cpp" />
+    <ClCompile Include="Plasma\Engine\Audio\AudioScene.cpp" />
+    <ClCompile Include="Plasma\Engine\Audio\AudioSource.cpp" />
+    <ClCompile Include="Plasma\Engine\Audio\AudioSourceComponent.cpp" />
+    <ClCompile Include="Plasma\Engine\Component.cpp" />
+    <ClCompile Include="Plasma\Engine\Components\BoxColliderComponent.cpp" />
+    <ClCompile Include="Plasma\Engine\Components\CharacterControllerComponent.cpp" />
+    <ClCompile Include="Plasma\Engine\Components\SpriteComponent.cpp" />
+    <ClCompile Include="Plasma\Engine\GameObject.cpp" />
+    <ClCompile Include="Plasma\Engine\Input.cpp" />
+    <ClCompile Include="Plasma\Engine\Object.cpp" />
+    <ClCompile Include="Plasma\Engine\Render\Font.cpp" />
+    <ClCompile Include="Plasma\Engine\Render\Renderer.cpp" />
+    <ClCompile Include="Plasma\Engine\Render\Renderers.cpp" />
+    <ClCompile Include="Plasma\Engine\Render\Shader.cpp" />
+    <ClCompile Include="Plasma\Engine\Render\SpriteRenderer.cpp" />
+    <ClCompile Include="Plasma\Engine\Render\Text.cpp" />
+    <ClCompile Include="Plasma\Engine\Render\TextRenderer.cpp" />
+    <ClCompile Include="Plasma\Engine\Render\Texture2D.cpp" />
+    <ClCompile Include="Plasma\Engine\Render\TilemapRenderer.cpp" />
+    <ClCompile Include="Plasma\Engine\Resources.cpp" />
+    <ClCompile Include="Plasma\Engine\Scene.cpp" />
+    <ClCompile Include="Plasma\Engine\Tilemaps\Tile.cpp" />
+    <ClCompile Include="Plasma\Engine\Tilemaps\TileLayer.cpp" />
+    <ClCompile Include="Plasma\Engine\Tilemaps\Tilemap.cpp" />
+    <ClCompile Include="Plasma\Engine\Tilemaps\TilemapColliderComponent.cpp" />
+    <ClCompile Include="Plasma\Engine\Tilemaps\TilemapComponent.cpp" />
+    <ClCompile Include="Plasma\Engine\Tilemaps\TileRender.cpp" />
+    <ClCompile Include="Plasma\Engine\Tilemaps\Tileset.cpp" />
+    <ClCompile Include="Plasma\Engine\UI\TextboxComponent.cpp" />
+    <ClCompile Include="Plasma\Engine\Vector2 OLD.cpp" />
+    <ClCompile Include="Plasma\Engine\Window.cpp" />
+    <ClCompile Include="Plasma\FoodSpawner.cpp" />
+    <ClCompile Include="Plasma\Library\glad.c" />
+    <ClCompile Include="Plasma\Library\TiledLibrary\TiledLayer.cpp" />
+    <ClCompile Include="Plasma\Library\TiledLibrary\TiledLoader.cpp" />
+    <ClCompile Include="Plasma\Library\TiledLibrary\TiledMap.cpp" />
+    <ClCompile Include="Plasma\Library\TiledLibrary\TiledSet.cpp" />
+    <ClCompile Include="Plasma\Library\TiledLibrary\TiledTile.cpp" />
+    <ClCompile Include="Plasma\LockComponent.cpp" />
+    <ClCompile Include="Plasma\main.cpp" />
+    <ClCompile Include="Plasma\TargetMouseComponent.cpp" />
+    <ClCompile Include="Plasma\WalkComponent.cpp" />
+    <ClCompile Include="Plasma\WarpComponent.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Plasma\CapybaraAI.h" />
+    <ClInclude Include="Plasma\Engine\AABB.h" />
+    <ClInclude Include="Plasma\Engine\App.h" />
+    <ClInclude Include="Plasma\Engine\Audio\AudioBuffer.h" />
+    <ClInclude Include="Plasma\Engine\Audio\AudioListener.h" />
+    <ClInclude Include="Plasma\Engine\Audio\AudioScene.h" />
+    <ClInclude Include="Plasma\Engine\Audio\AudioSource.h" />
+    <ClInclude Include="Plasma\Engine\Audio\AudioSourceComponent.h" />
+    <ClInclude Include="Plasma\Engine\Audio\Wav.h" />
+    <ClInclude Include="Plasma\Engine\Component.h" />
+    <ClInclude Include="Plasma\Engine\Components\AnimatedSprite.h" />
+    <ClInclude Include="Plasma\Engine\Components\BoxColliderComponent.h" />
+    <ClInclude Include="Plasma\Engine\Components\CharacterControllerComponent.h" />
+    <ClInclude Include="Plasma\Engine\Components\SpriteComponent.h" />
+    <ClInclude Include="Plasma\Engine\Dispatcher.h" />
+    <ClInclude Include="Plasma\Engine\Event.h" />
+    <ClInclude Include="Plasma\Engine\FiniteStateMachine.h" />
+    <ClInclude Include="Plasma\Engine\GameObject.h" />
+    <ClInclude Include="Plasma\Engine\Input.h" />
+    <ClInclude Include="Plasma\Engine\Object.h" />
+    <ClInclude Include="Plasma\Engine\Render\Animation.h" />
+    <ClInclude Include="Plasma\Engine\Render\Font.h" />
+    <ClInclude Include="Plasma\Engine\Render\Renderable.h" />
+    <ClInclude Include="Plasma\Engine\Render\Renderer.h" />
+    <ClInclude Include="Plasma\Engine\Render\Renderers.h" />
+    <ClInclude Include="Plasma\Engine\Render\Shader.h" />
+    <ClInclude Include="Plasma\Engine\Render\SpriteRenderer.h" />
+    <ClInclude Include="Plasma\Engine\Render\Text.h" />
+    <ClInclude Include="Plasma\Engine\Render\TextRenderer.h" />
+    <ClInclude Include="Plasma\Engine\Render\Texture2D.h" />
+    <ClInclude Include="Plasma\Engine\Render\TilemapRenderer.h" />
+    <ClInclude Include="Plasma\Engine\Resource.h" />
+    <ClInclude Include="Plasma\Engine\Resources.h" />
+    <ClInclude Include="Plasma\Engine\Scene.h" />
+    <ClInclude Include="Plasma\Engine\Tilemaps\Tile.h" />
+    <ClInclude Include="Plasma\Engine\Tilemaps\TileLayer.h" />
+    <ClInclude Include="Plasma\Engine\Tilemaps\Tilemap.h" />
+    <ClInclude Include="Plasma\Engine\Tilemaps\TilemapColliderComponent.h" />
+    <ClInclude Include="Plasma\Engine\Tilemaps\TilemapComponent.h" />
+    <ClInclude Include="Plasma\Engine\Tilemaps\TileRender.h" />
+    <ClInclude Include="Plasma\Engine\Tilemaps\Tileset.h" />
+    <ClInclude Include="Plasma\Engine\UI\TextboxComponent.h" />
+    <ClInclude Include="Plasma\Engine\Vector.h" />
+    <ClInclude Include="Plasma\Engine\Vector2 OLD.h" />
+    <ClInclude Include="Plasma\Engine\Window.h" />
+    <ClInclude Include="Plasma\FoodSpawner.h" />
+    <ClInclude Include="Plasma\Include\All.h" />
+    <ClInclude Include="Plasma\Include\Audio.h" />
+    <ClInclude Include="Plasma\Include\Components.h" />
+    <ClInclude Include="Plasma\Include\Core.h" />
+    <ClInclude Include="Plasma\Include\Render.h" />
+    <ClInclude Include="Plasma\Include\Tilemaps.h" />
+    <ClInclude Include="Plasma\Include\UI.h" />
+    <ClInclude Include="Plasma\Library\AudioFile.h" />
+    <ClInclude Include="Plasma\Library\glad.h" />
+    <ClInclude Include="Plasma\Library\khrplatform.h" />
+    <ClInclude Include="Plasma\Library\OpenAL\AL\al.h" />
+    <ClInclude Include="Plasma\Library\OpenAL\AL\alc.h" />
+    <ClInclude Include="Plasma\Library\OpenAL\AL\alext.h" />
+    <ClInclude Include="Plasma\Library\OpenAL\AL\efx-creative.h" />
+    <ClInclude Include="Plasma\Library\OpenAL\AL\efx-presets.h" />
+    <ClInclude Include="Plasma\Library\OpenAL\AL\efx.h" />
+    <ClInclude Include="Plasma\Library\OpenGL.h" />
+    <ClInclude Include="Plasma\Library\stb_image.h" />
+    <ClInclude Include="Plasma\Library\TiledLibrary\RapidXML\rapidxml.hpp" />
+    <ClInclude Include="Plasma\Library\TiledLibrary\RapidXML\rapidxml_iterators.hpp" />
+    <ClInclude Include="Plasma\Library\TiledLibrary\RapidXML\rapidxml_print.hpp" />
+    <ClInclude Include="Plasma\Library\TiledLibrary\RapidXML\rapidxml_utils.hpp" />
+    <ClInclude Include="Plasma\Library\TiledLibrary\TiledLayer.h" />
+    <ClInclude Include="Plasma\Library\TiledLibrary\TiledLoader.h" />
+    <ClInclude Include="Plasma\Library\TiledLibrary\TiledMap.h" />
+    <ClInclude Include="Plasma\Library\TiledLibrary\TiledSet.h" />
+    <ClInclude Include="Plasma\Library\TiledLibrary\TiledTile.h" />
+    <ClInclude Include="Plasma\LockComponent.h" />
+    <ClInclude Include="Plasma\TargetMouseComponent.h" />
+    <ClInclude Include="Plasma\Tests\VectorTest.h" />
+    <ClInclude Include="Plasma\WalkComponent.h" />
+    <ClInclude Include="Plasma\WarpComponent.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\freetype2.2.6.0.1\build\native\freetype2.targets" Condition="Exists('packages\freetype2.2.6.0.1\build\native\freetype2.targets')" />
+    <Import Project="packages\glfw.3.3.8\build\native\glfw.targets" Condition="Exists('packages\glfw.3.3.8\build\native\glfw.targets')" />
+    <Import Project="packages\glm.0.9.9.800\build\native\glm.targets" Condition="Exists('packages\glm.0.9.9.800\build\native\glm.targets')" />
+    <Import Project="packages\LodePNG.1.2.0\build\native\lodepng.targets" Condition="Exists('packages\LodePNG.1.2.0\build\native\lodepng.targets')" />
+    <Import Project="packages\nlohmann.json.3.11.2\build\native\nlohmann.json.targets" Condition="Exists('packages\nlohmann.json.3.11.2\build\native\nlohmann.json.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\freetype2.2.6.0.1\build\native\freetype2.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\freetype2.2.6.0.1\build\native\freetype2.targets'))" />
+    <Error Condition="!Exists('packages\glfw.3.3.8\build\native\glfw.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\glfw.3.3.8\build\native\glfw.targets'))" />
+    <Error Condition="!Exists('packages\glm.0.9.9.800\build\native\glm.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\glm.0.9.9.800\build\native\glm.targets'))" />
+    <Error Condition="!Exists('packages\LodePNG.1.2.0\build\native\lodepng.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\LodePNG.1.2.0\build\native\lodepng.targets'))" />
+    <Error Condition="!Exists('packages\nlohmann.json.3.11.2\build\native\nlohmann.json.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\nlohmann.json.3.11.2\build\native\nlohmann.json.targets'))" />
+    <Error Condition="!Exists('packages\OpenAL.Soft.1.19.1\build\openal.soft.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\OpenAL.Soft.1.19.1\build\openal.soft.props'))" />
+  </Target>
+</Project>

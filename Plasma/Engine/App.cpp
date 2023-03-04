@@ -5,11 +5,15 @@
 
 #include "App.h"
 #include "Window.h"
-#include "../Library/OpenAL/AL/al.h"
+#include "Render/Texture2D.h"
+#include "Render/Font.h"
+#include "Render/Text.h"
+
+#include "OpenAL/AL/al.h"
+#include "OpenGL.h"
 
 #include <chrono>
 #include <thread>
-#include "Render/Text.h"
 
 namespace Engine {
 	App* App::instance = nullptr;
@@ -39,7 +43,7 @@ namespace Engine {
 
 		// Specify the client API version that the created context must be compatible with. 
 		// The exact behavior of these hints depend on the requested client API.
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); // Was 3
 		
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
@@ -89,7 +93,7 @@ namespace Engine {
 	int App::Run()
 	{
 		//const int framerate = 30;
-		const double framerate = 1.0 / 30;
+		const double framerate = 1.0 / 72;
 
 		int fps = 0;
 		float smoothing = 0.9f;
@@ -109,7 +113,7 @@ namespace Engine {
 			//quit = window->state != Window::State::RUNNING;
 
 			// Clear render
-			//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			// Calculate frame time
@@ -130,7 +134,6 @@ namespace Engine {
 				scene->ProcessInput();
 				glfwPollEvents();
 
-
 				// Update game state
 				scene->Update(time, deltaTime);
 				//std::cout << "Update" << std::endl;
@@ -140,16 +143,17 @@ namespace Engine {
 				time += deltaTime;
 			}
 			
-			measurement = (measurement * smoothing) + (frameTime * (1.0 - smoothing));
+			//measurement = (measurement * smoothing) + (frameTime * (1.0 - smoothing));
+			scene->Render();
 			window->Render();
 			//std::cout << "Render" << std::endl;
-
-			std::this_thread::sleep_for(std::chrono::duration<double>(framerate - frameTime));
 
 			//* Print any errors
 			GLenum err;
 			while ((err = glGetError()) != GL_NO_ERROR)
 				std::cout << "[MAINLOOP] OpenGL Error: " << err << std::endl;
+
+			std::this_thread::sleep_for(std::chrono::duration<double>(framerate - frameTime));
 		}
 
 		//delete audio;

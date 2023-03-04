@@ -5,10 +5,6 @@
 #include "Renderer.h"
 #include "Texture2D.h"
 
-#include <glad.h>
-#include <glm/glm.hpp>
-#include <glm/ext/matrix_transform.hpp>
-
 class Shader;
 class Texture2D;
 

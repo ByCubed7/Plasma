@@ -9,7 +9,7 @@
 namespace Render
 {
 	template<typename States, typename Actions>
-	class Animation : public FiniteStateMachine<States, Actions>
+	class Animation : public Engine::FiniteStateMachine<States, Actions>
 	{
 	public:
 		Vector2Int size;
@@ -17,7 +17,7 @@ namespace Render
 		double index;
 		double speed;
 		
-		Animation(States startState) : FiniteStateMachine<States, Actions>(startState)
+		Animation(States startState) : Engine::FiniteStateMachine<States, Actions>(startState)
 		{
 			size = 32;
 			index = 0;

@@ -12,8 +12,8 @@ struct Input
 	typedef unsigned int Button;
 
 private:
-	static const inline Key keyboardBufferSize = 256;
-	static const inline Button mouseBufferSize = 8;
+	static const Key keyboardBufferSize = 256;
+	static const Button mouseBufferSize = 8;
 
 public:
 	void Update();

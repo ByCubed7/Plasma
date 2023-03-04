@@ -1,7 +1,4 @@
 #include "CapybaraAI.h"
-#include "WalkComponent.h"
-
-#include "All.h"
 
 CapybaraAI::CapybaraAI(Engine::GameObject* gameObject, std::string name) :
 	Component(gameObject, name), FiniteStateMachine(CapybaraStates::WANDER)

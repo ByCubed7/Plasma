@@ -2,10 +2,10 @@
 
 //#define VERBOSE
 
-#pragma once
-
 #include "SpriteRenderer.h"
 #include "Shader.h"
+
+#include "OpenGL.h"
 
 namespace Render
 {

@@ -5,6 +5,8 @@
 
 #include "AudioListener.h"
 
+#include "Audio.h"
+
 namespace Audio
 {
 	Listener::Listener()

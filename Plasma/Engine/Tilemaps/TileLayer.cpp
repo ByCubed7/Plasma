@@ -33,7 +33,7 @@ namespace Tilemaps {
 		//position.Round(1);
 		std::map<Vector2Int, Tile>::iterator tile = tiles.find(position);
 		if (tile == tiles.end()) {
-			std::cerr << "[TileLayer::GetTile] Can't find tile at " << position.ToString() << std::endl
+			std::cerr << "[TileLayer::GetTile] Can't find tile at " << position << std::endl
 				<< "Use TileLayer::IsTile(Vector2) to check whether a tile exists at location.";
 		}
 		return tile->second;

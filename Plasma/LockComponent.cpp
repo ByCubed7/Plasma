@@ -30,8 +30,10 @@ void LockComponent::Update(double time, double delta, Engine::Scene& game)
 	if (lockRotation) gameObject->rotation = target->rotation + rotationOffset;
 	if (lockScale)    gameObject->scale = target->scale + scaleOffset;
 	
-	if (gameObjectSprite != nullptr && targetSprite != nullptr)
-		gameObjectSprite->reflection = targetSprite->reflection;
+	if (gameObjectSprite != nullptr && targetSprite != nullptr) {
+		gameObjectSprite->reflectionX = targetSprite->reflectionX;
+		gameObjectSprite->reflectionY = targetSprite->reflectionY;
+	}
 }
 
 LockComponent* LockComponent::SetTarget(Engine::GameObject* newTarget)
@@ -65,7 +67,7 @@ LockComponent* LockComponent::LockSpriteReflection(SpriteComponent* newSprite)
 	return this;
 }
 
-LockComponent* LockComponent::SetPositionOffset(Vector2Float value)
+LockComponent* LockComponent::SetPositionOffset(Vector2 value)
 {
 	positionOffset = value;
 	return this;
@@ -77,7 +79,7 @@ LockComponent* LockComponent::SetRotationOffset(float value)
 	return this;
 }
 
-LockComponent* LockComponent::SetScaleOffset(Vector2Float value)
+LockComponent* LockComponent::SetScaleOffset(Vector2 value)
 {
 	positionOffset = value;
 	return this;

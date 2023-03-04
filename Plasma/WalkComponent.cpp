@@ -27,8 +27,8 @@ void WalkComponent::Update(double time, double delta, Engine::Scene& game)
 	if (distance > 10) {
 		stepCount += delta;
 
-		Vector2 targetStep = Vector2(target - gameObject->position);
-		targetStep.Normalize();
+		Vector2 targetStep = target - gameObject->position;
+		targetStep = targetStep.Normalize();
 
 		gameObject->position += targetStep * step;
 	}
@@ -38,7 +38,7 @@ void WalkComponent::Update(double time, double delta, Engine::Scene& game)
 	gameObject->rotation = sin(stepCount * wobble.x * step) * wobble.y;
 
 	if (sprite != nullptr)
-		sprite->reflection.x = gameObject->position < target.x;
+		sprite->reflectionX = gameObject->position < target.x;
 }
 
 WalkComponent* WalkComponent::SetTargetPosition(Vector2 position)

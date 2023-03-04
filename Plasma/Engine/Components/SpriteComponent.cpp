@@ -5,12 +5,13 @@
 
 #include "SpriteComponent.h"
 
+#include "../Scene.h"
+#include "../Render/Renderers.h"
 #include "../GameObject.h"
-#include "../Component.h"
 #include "../Vector.h"
 #include "../Window.h"
 
-#include "../Render/Renderers.h"
+#include "OpenGL.h"
 
 SpriteComponent::SpriteComponent(Engine::GameObject* gameObject, std::string name)
     : Component(gameObject, name)
@@ -18,7 +19,8 @@ SpriteComponent::SpriteComponent(Engine::GameObject* gameObject, std::string nam
     color = { 255, 255, 255, 255 };
 
 	sprite = Texture2D();
-    reflection = { false, false };
+    reflectionX = false;
+    reflectionY = false;
 
     pivot = 0.5f;
 
@@ -33,10 +35,10 @@ void SpriteComponent::Draw(Render::Renderers& renderer)
 
     int ppu = gameObject->scene->GetWindow()->GetPPU();
 
-    Vector scale = gameObject->scale * ppu;
+    Vector2 scale = gameObject->scale * ppu;
 
-    if (reflection.x) scale.x = -scale.x;
-    if (reflection.y) scale.y = -scale.y;
+    if (reflectionX) scale.x = -scale.x;
+    if (reflectionY) scale.y = -scale.y;
 
     //renderer.sprite.DrawSprite(
     //    this->sprite,
@@ -72,7 +74,7 @@ void SpriteComponent::CalcBounds()
 {
     int ppu = gameObject->scene->GetWindow()->GetPPU();
     Vector2 upperBound = Vector2(ppu) / 2;
-    Vector2 lowerBound = Vector2(-ppu) / 2;
+    Vector2 lowerBound = -upperBound;
     this->bounds = AABB(lowerBound, upperBound);
 }
 
@@ -83,5 +85,5 @@ SpriteComponent* SpriteComponent::Set(Texture2D newSprite) {
 }
 Texture2D SpriteComponent::Get() { return sprite; }
 
-SpriteComponent* SpriteComponent::SetColour(RGBA newColour) { color = newColour; return this; }
+SpriteComponent* SpriteComponent::SetColour(Colour4 newColour) { color = newColour; return this; }
 
