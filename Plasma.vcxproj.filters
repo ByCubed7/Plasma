@@ -25,6 +25,9 @@
     <Filter Include="Tests">
       <UniqueIdentifier>{0952db00-18c5-477e-bb37-ff8ed90bf2a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\assets">
+      <UniqueIdentifier>{9cb17893-f0d7-4506-beb8-eb4b0b7fdb95}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Plasma\CapybaraAI.cpp">
@@ -171,6 +174,7 @@
     <ClCompile Include="Plasma\Library\TiledLibrary\TiledTile.cpp">
       <Filter>Library</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\lodepng.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Plasma\CapybaraAI.h">
@@ -407,5 +411,58 @@
     <ClInclude Include="Plasma\Tests\VectorTest.h">
       <Filter>Tests</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="assets\shaders\tile.vs">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\fonts\arial.ttf">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\audio\Capybara Baby Exams B-Roll.mp3">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\audio\Capybara Click.wav">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\audio\Capybara.aup3">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\textures\Capybara.png">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\audio\Capybara.wav">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\textures\food.png">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\textures\Hat.png">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\textures\Heart.png">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\textures\Shadow.png">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\shaders\sprite.frag">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\shaders\sprite.vs">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\textures\Sugercan.png">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\shaders\text.frag">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\shaders\text.vs">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="assets\shaders\tile.frag">
+      <Filter>Game\assets</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
