@@ -175,6 +175,7 @@
       <Filter>Library</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\lodepng.cpp" />
+    <ClCompile Include="Plasma\CapybaraForge.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Plasma\CapybaraAI.h">
@@ -412,6 +413,9 @@
       <Filter>Tests</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Plasma\CapybaraForge.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="assets\shaders\tile.vs">

@@ -43,6 +43,7 @@ public:
 	const static Key Key_Escape = 256;
 	const static Key Key_W = 87;
 	const static Key Key_A = 65;
+	const static Key Key_C = 67;
 	const static Key Key_D = 68;
 	const static Key Key_S = 83;
 	const static Key Key_P = 80;

@@ -194,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Plasma\CapybaraAI.cpp" />
+    <ClCompile Include="Plasma\CapybaraForge.cpp" />
     <ClCompile Include="Plasma\Engine\AABB.cpp" />
     <ClCompile Include="Plasma\Engine\App.cpp" />
     <ClCompile Include="Plasma\Engine\Audio\AudioBuffer.cpp" />
@@ -244,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Plasma\CapybaraAI.h" />
+    <ClInclude Include="Plasma\CapybaraForge.h" />
     <ClInclude Include="Plasma\Engine\AABB.h" />
     <ClInclude Include="Plasma\Engine\App.h" />
     <ClInclude Include="Plasma\Engine\Audio\AudioBuffer.h" />
