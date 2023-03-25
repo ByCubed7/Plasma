@@ -80,12 +80,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
-    <TargetName>Desktop Capybara</TargetName>
+    <TargetName>Plasma</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)Output\$(Platform)\$(Configuration)\</OutDir>
-    <TargetName>Desktop Capybara</TargetName>
+    <TargetName>Plasma</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -146,55 +146,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="assets\audio\Capybara.aup3">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Document</FileType>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\shaders\sprite.frag">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Document</FileType>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\shaders\sprite.vs">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Document</FileType>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\shaders\text.frag">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Document</FileType>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\shaders\text.vs">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Document</FileType>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\shaders\tile.frag">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Document</FileType>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\shaders\tile.vs">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Document</FileType>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
     <None Include="packages.config" />
     <None Include="Plasma\Library\TiledLibrary\RapidXML\manual.html" />
-    <None Include="Plasma\packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Plasma\CapybaraAI.cpp" />
-    <ClCompile Include="Plasma\CapybaraForge.cpp" />
     <ClCompile Include="Plasma\Engine\AABB.cpp" />
     <ClCompile Include="Plasma\Engine\App.cpp" />
     <ClCompile Include="Plasma\Engine\Audio\AudioBuffer.cpp" />
@@ -230,22 +185,15 @@
     <ClCompile Include="Plasma\Engine\UI\TextboxComponent.cpp" />
     <ClCompile Include="Plasma\Engine\Vector2 OLD.cpp" />
     <ClCompile Include="Plasma\Engine\Window.cpp" />
-    <ClCompile Include="Plasma\FoodSpawner.cpp" />
     <ClCompile Include="Plasma\Library\glad.c" />
     <ClCompile Include="Plasma\Library\TiledLibrary\TiledLayer.cpp" />
     <ClCompile Include="Plasma\Library\TiledLibrary\TiledLoader.cpp" />
     <ClCompile Include="Plasma\Library\TiledLibrary\TiledMap.cpp" />
     <ClCompile Include="Plasma\Library\TiledLibrary\TiledSet.cpp" />
     <ClCompile Include="Plasma\Library\TiledLibrary\TiledTile.cpp" />
-    <ClCompile Include="Plasma\LockComponent.cpp" />
     <ClCompile Include="Plasma\main.cpp" />
-    <ClCompile Include="Plasma\TargetMouseComponent.cpp" />
-    <ClCompile Include="Plasma\WalkComponent.cpp" />
-    <ClCompile Include="Plasma\WarpComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Plasma\CapybaraAI.h" />
-    <ClInclude Include="Plasma\CapybaraForge.h" />
     <ClInclude Include="Plasma\Engine\AABB.h" />
     <ClInclude Include="Plasma\Engine\App.h" />
     <ClInclude Include="Plasma\Engine\Audio\AudioBuffer.h" />
@@ -290,7 +238,6 @@
     <ClInclude Include="Plasma\Engine\Vector.h" />
     <ClInclude Include="Plasma\Engine\Vector2 OLD.h" />
     <ClInclude Include="Plasma\Engine\Window.h" />
-    <ClInclude Include="Plasma\FoodSpawner.h" />
     <ClInclude Include="Plasma\Include\All.h" />
     <ClInclude Include="Plasma\Include\Audio.h" />
     <ClInclude Include="Plasma\Include\Components.h" />
@@ -318,75 +265,8 @@
     <ClInclude Include="Plasma\Library\TiledLibrary\TiledMap.h" />
     <ClInclude Include="Plasma\Library\TiledLibrary\TiledSet.h" />
     <ClInclude Include="Plasma\Library\TiledLibrary\TiledTile.h" />
-    <ClInclude Include="Plasma\LockComponent.h" />
-    <ClInclude Include="Plasma\TargetMouseComponent.h" />
     <ClInclude Include="Plasma\Tests\VectorTest.h" />
-    <ClInclude Include="Plasma\WalkComponent.h" />
-    <ClInclude Include="Plasma\WarpComponent.h" />
     <ClInclude Include="resource.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="assets\audio\Capybara Baby Exams B-Roll.mp3">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Document</FileType>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\audio\Capybara Click.wav">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Document</FileType>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\audio\Capybara.wav">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Document</FileType>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="assets\fonts\arial.ttf">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Document</FileType>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="assets\textures\Capybara.png">
-      <DeploymentContent>true</DeploymentContent>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\textures\food.png">
-      <DeploymentContent>true</DeploymentContent>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\textures\Hat.png">
-      <DeploymentContent>true</DeploymentContent>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\textures\Heart.png">
-      <DeploymentContent>true</DeploymentContent>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\textures\Shadow.png">
-      <DeploymentContent>true</DeploymentContent>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\textures\Sugercan.png">
-      <DeploymentContent>true</DeploymentContent>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename)%(Extension)</DestinationFileName>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="docs\ico.ico" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Plasma.rc" />

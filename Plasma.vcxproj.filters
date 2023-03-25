@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Plasma\packages.config">
-      <Filter>Game</Filter>
-    </None>
     <None Include="Plasma\Library\TiledLibrary\RapidXML\manual.html">
       <Filter>Library</Filter>
     </None>
@@ -12,9 +9,6 @@
   <ItemGroup>
     <Filter Include="Engine">
       <UniqueIdentifier>{342036d2-ba20-466e-bc94-9e09530e8ac0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game">
-      <UniqueIdentifier>{0f8a6a9a-b6c0-406c-aa04-2b48561302bd}</UniqueIdentifier>
     </Filter>
     <Filter Include="Includes">
       <UniqueIdentifier>{afb575ee-82f8-4fbf-9b43-91375f041aa5}</UniqueIdentifier>
@@ -25,32 +19,8 @@
     <Filter Include="Tests">
       <UniqueIdentifier>{0952db00-18c5-477e-bb37-ff8ed90bf2a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\assets">
-      <UniqueIdentifier>{9cb17893-f0d7-4506-beb8-eb4b0b7fdb95}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Plasma\CapybaraAI.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Plasma\FoodSpawner.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Plasma\LockComponent.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Plasma\main.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Plasma\TargetMouseComponent.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Plasma\WalkComponent.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Plasma\WarpComponent.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Plasma\Engine\Input.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -175,27 +145,9 @@
       <Filter>Library</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\lodepng.cpp" />
-    <ClCompile Include="Plasma\CapybaraForge.cpp" />
+    <ClCompile Include="Plasma\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Plasma\CapybaraAI.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Plasma\FoodSpawner.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Plasma\LockComponent.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Plasma\TargetMouseComponent.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Plasma\WalkComponent.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Plasma\WarpComponent.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="Plasma\Include\Tilemaps.h">
       <Filter>Includes</Filter>
     </ClInclude>
@@ -413,67 +365,6 @@
       <Filter>Tests</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Plasma\CapybaraForge.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="assets\shaders\tile.vs">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\fonts\arial.ttf">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\audio\Capybara Baby Exams B-Roll.mp3">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\audio\Capybara Click.wav">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\audio\Capybara.aup3">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\textures\Capybara.png">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\audio\Capybara.wav">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\textures\food.png">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\textures\Hat.png">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\textures\Heart.png">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\textures\Shadow.png">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\shaders\sprite.frag">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\shaders\sprite.vs">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\textures\Sugercan.png">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\shaders\text.frag">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\shaders\text.vs">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="assets\shaders\tile.frag">
-      <Filter>Game\assets</Filter>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="docs\ico.ico">
-      <Filter>Game\assets</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Plasma.rc" />
