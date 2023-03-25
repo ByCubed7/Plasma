@@ -19,6 +19,9 @@
     <Filter Include="Tests">
       <UniqueIdentifier>{0952db00-18c5-477e-bb37-ff8ed90bf2a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DesktopCapybara">
+      <UniqueIdentifier>{b27c10a7-87df-4431-8c83-a3749c3d220f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Plasma\Engine\Input.cpp">
@@ -146,6 +149,27 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\lodepng.cpp" />
     <ClCompile Include="Plasma\main.cpp" />
+    <ClCompile Include="DesktopCapybara\FoodSpawner.cpp">
+      <Filter>DesktopCapybara</Filter>
+    </ClCompile>
+    <ClCompile Include="DesktopCapybara\LockComponent.cpp">
+      <Filter>DesktopCapybara</Filter>
+    </ClCompile>
+    <ClCompile Include="DesktopCapybara\TargetMouseComponent.cpp">
+      <Filter>DesktopCapybara</Filter>
+    </ClCompile>
+    <ClCompile Include="DesktopCapybara\WalkComponent.cpp">
+      <Filter>DesktopCapybara</Filter>
+    </ClCompile>
+    <ClCompile Include="DesktopCapybara\WarpComponent.cpp">
+      <Filter>DesktopCapybara</Filter>
+    </ClCompile>
+    <ClCompile Include="DesktopCapybara\CapybaraAI.cpp">
+      <Filter>DesktopCapybara</Filter>
+    </ClCompile>
+    <ClCompile Include="DesktopCapybara\CapybaraForge.cpp">
+      <Filter>DesktopCapybara</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Plasma\Include\Tilemaps.h">
@@ -365,6 +389,27 @@
       <Filter>Tests</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="DesktopCapybara\CapybaraForge.h">
+      <Filter>DesktopCapybara</Filter>
+    </ClInclude>
+    <ClInclude Include="DesktopCapybara\FoodSpawner.h">
+      <Filter>DesktopCapybara</Filter>
+    </ClInclude>
+    <ClInclude Include="DesktopCapybara\LockComponent.h">
+      <Filter>DesktopCapybara</Filter>
+    </ClInclude>
+    <ClInclude Include="DesktopCapybara\TargetMouseComponent.h">
+      <Filter>DesktopCapybara</Filter>
+    </ClInclude>
+    <ClInclude Include="DesktopCapybara\WalkComponent.h">
+      <Filter>DesktopCapybara</Filter>
+    </ClInclude>
+    <ClInclude Include="DesktopCapybara\WarpComponent.h">
+      <Filter>DesktopCapybara</Filter>
+    </ClInclude>
+    <ClInclude Include="DesktopCapybara\CapybaraAI.h">
+      <Filter>DesktopCapybara</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Plasma.rc" />

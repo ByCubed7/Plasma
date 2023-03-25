@@ -1,8 +1,7 @@
 // By @ByCubed7 on Twitter
 
-#include "All.h"
 #include "WarpComponent.h"
-#include "Engine/Window.h"
+#include "All.h"
 
 
 WarpComponent::WarpComponent(Engine::GameObject* gameObject, std::string name)

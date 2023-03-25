@@ -150,6 +150,13 @@
     <None Include="Plasma\Library\TiledLibrary\RapidXML\manual.html" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DesktopCapybara\CapybaraAI.cpp" />
+    <ClCompile Include="DesktopCapybara\CapybaraForge.cpp" />
+    <ClCompile Include="DesktopCapybara\FoodSpawner.cpp" />
+    <ClCompile Include="DesktopCapybara\LockComponent.cpp" />
+    <ClCompile Include="DesktopCapybara\TargetMouseComponent.cpp" />
+    <ClCompile Include="DesktopCapybara\WalkComponent.cpp" />
+    <ClCompile Include="DesktopCapybara\WarpComponent.cpp" />
     <ClCompile Include="Plasma\Engine\AABB.cpp" />
     <ClCompile Include="Plasma\Engine\App.cpp" />
     <ClCompile Include="Plasma\Engine\Audio\AudioBuffer.cpp" />
@@ -194,6 +201,13 @@
     <ClCompile Include="Plasma\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DesktopCapybara\CapybaraAI.h" />
+    <ClInclude Include="DesktopCapybara\CapybaraForge.h" />
+    <ClInclude Include="DesktopCapybara\FoodSpawner.h" />
+    <ClInclude Include="DesktopCapybara\LockComponent.h" />
+    <ClInclude Include="DesktopCapybara\TargetMouseComponent.h" />
+    <ClInclude Include="DesktopCapybara\WalkComponent.h" />
+    <ClInclude Include="DesktopCapybara\WarpComponent.h" />
     <ClInclude Include="Plasma\Engine\AABB.h" />
     <ClInclude Include="Plasma\Engine\App.h" />
     <ClInclude Include="Plasma\Engine\Audio\AudioBuffer.h" />
