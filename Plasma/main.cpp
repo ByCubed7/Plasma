@@ -1,13 +1,5 @@
 // By @ByCubed7 on Twitter
 
-//#define VERBOSE
-
-//#include "Core.h"
-//#include "Components.h"
-//#include "Tilemaps.h"
-//#include "Render.h"
-//#include "Audio.h"
-//#include "UI.h"
 #include "All.h"
 
 #include <iostream>
