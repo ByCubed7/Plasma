@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html class=" fmzxlfybv idc0_345" lang="en">
+<head>
+    <!-- Default tags -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imgs/favicon.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta property="og:type" content="website" />
+    <meta name="author" content="ByCubed7">
+    <meta name="twitter:creator" content="@ByCubed7">
+
+    <!-- Project dependent tags -->
+    <title>The Plasma Engine Project</title>
+    <meta name="og:title" content="The Plasma Engine Project">
+    <meta name="og:description" content="Plasma, assignments, Pacman and capybaras!">
+    <meta name="description" content="Plasma, assignments, Pacman and capybaras!">
+    <meta property="og:image" content="https://bycubed7.github.io/Plasma/card.png" />
+    <meta name="keywords" content="game game-engine cpp engine game-development">
+
+
+    <!-- SEE: https://unpkg.com/browse/@highlightjs/cdn-assets@11.7.0/styles/ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/tokyo-night-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+    <!-- Ready each code display correctly and highlightjs them -->
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre code').forEach((el) => {
+            var newContent = "";
+            el.textContent.split('\n').forEach((line) => {
+                // Unindent each line 6 times.
+                newContent += line.replace("    ".repeat(6), "") + '\n';
+                //i = 6; while(i > 0) { line = line.replace("    ", ""); i--; }
+                //newContent += line + '\n';
+            });
+            //newContent = newContent.replaceAll("<", "&lt;");
+
+            el.textContent = newContent.trim();
+            hljs.highlightElement(el);
+        });
+    });
+    </script>
+</head>
+<body>
+
+    <img class="background-media" src="imgs/Capybara Wallpaper.png">
+
+    <header class="header">
+        <div class="container">
+            <a href="https://github.com/ByCubed7" class="header-brand">
+                <img src="https://avatars.githubusercontent.com/u/38486990?s=500&v=5" alt="Logo">
+            </a>
+            <div class="header-navigation">
+                <a href="https://bycubed7.github.io/">home</a>
+                <a href="https://github.com/ByCubed7/Plasma">about</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="blog">
+
+        <div class="container">
+            <div class="header">
+                <div class="date">Oct 12, 2021</div>
+                <h1 class="title" type="text">Plasma Engine</h1>
+                <div class="subtitle" type="text">Plasma, assignments, Pacman and capybaras!</div>
+            </div>
+        </div>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!--# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #-->
+        <div class="news-section-block" id="0">
+            <div class="section"><div class="inner">
+
+                <div class="section-header">
+                    <a href="#0"><div class="title">Summary</div></a>
+                </div>
+
+                <div class="content">
+                    <h2>What?</h2>
+                    <div>
+                        Plasma was my first university personal project, which I started for a university
+                        assignment around mid October 2021. It was my first large C++ project, which I
+                        committed to over the course of about 8 months. This project has been instrumental
+                        in helping me develop the skills needed to to take a step forward in creating
+                        intricate and complex systems, and has been a valuable learning experience for me.
+                    </div>
+                    <br>
+                    <div>
+                        Plasma is a 2D Entity-Component-System simulation library that enables users
+                        to construct and manipulate a simulated environment through the attachment
+                        of components to gameobjects. Initially, it was designed for use in the
+                        development of a Pacman game using OpenGL, later on the project evolved
+                        through the modularization of its rendering pipeline and eventually resulted
+                        in the modularization of a significant portion of the project.
+                    </div>
+
+                    <h2>Goals</h2>
+                    <div>
+                        The project was initiatially an assignment where I aimed to improve my
+                        skills in system creation and C++/programming knowledge, however, as this
+                        project progressed, the focus shifted to the creation and modularization
+                        of a ECS game engine with the purpose of being easy to use and develop on.
+                    </div>
+
+
+                </div>
+
+            </div></div>
+        </div>
+
+        <div class="news-section-block" id="1">
+            <div class="section"><div class="inner">
+
+                <div class="section-header">
+                    <a href="#1"><div class="title">Starting out</div></a>
+                    <!-- <div class="author"> <a href="https://github.com/ByCubed7">ByCubed7</a> </div> -->
+                    <div class="date">Oct 12 -> Oct 25</div>
+                </div>
+
+                <div class="content">
+                    <h2>
+                        GLFW, OpenGL and maths
+                    </h2>
+                    <div>
+                        At the start of the assignment we were provided with an optional template
+                        to use, this included the
+                        <a href="https://github.com/libsdl-org/SDL">SDL</a>
+                        library and some initiation code that loads in and creates a window.
+                        After a discussion with my lecturer, I decided not to use the library,
+                        template nor the provided tutorials in order to show myself how far I
+                        could go with left to my own resources, and what level I was at in the
+                        industry.
+                    </div>
+                    <div>
+                        We were given around 9 weeks to learn C++ and SDL in order to make a Pacman game, or at least some resembulence of
+                    </div>
+                    <br>
+                    <div>
+                        In the end, I decided to use
+                        <a href="https://github.com/glfw/glfw">GLFW</a>:
+                        a library for the
+                        <a href="https://www.opengl.org/">OpenGL</a>
+                        API.
+                    </div>
+
+                    <h2>
+                        Vertices and Shaders
+                    </h2>
+
+                    <div>
+                        Following a getting started tutorial from
+                        <a href="https://learnopengl.com/Getting-started/OpenGL">LearnOpenGL</a>;
+                        I created a program, window and some vertices and then compiled a vertex & fragment shader to render a triangle on the screen.
+                    </div>
+
+                    <pre><code class="language-cpp">
+                        std::vector&lt;float> vertices = {
+                            -0.5f, -0.5f, 0.0f,
+                             0.5f, -0.5f, 0.0f,
+                             0.0f,  0.5f, 0.0f
+                        };
+                    </code></pre>
+                    <div>
+                        <img src="https://learnopengl.com/img/getting-started/hellotriangle.png">
+                    </div>
+
+
+                    <h2>
+                        Fonts and Text
+                    </h2>
+
+
+                    <h2>
+                        GameObjects
+                    </h2>
+
+                    <div>
+                        Orginally, my plan was for each actor to inherit a gameObject class and override it's methods
+                        in order to update and render. However, during the development I revised the design with a
+                        friend and came to the conclusion that using a enetiy component system
+                    </div>
+
+
+                    <div>
+                        The App class is responsible for initializing the window and setting up the environment for the
+                        game to run. It also handles keyboard input and manages various settings.
+                        The Game class is the base class for the game and serves as the foundation for the gameplay.
+                        Subclasses of the Game class can be created to define the specific behavior of the game,
+                        including loading and saving data. The Game class also manages GameObjects and communicates
+                        with the App class to determine the next actions to be taken.
+                    </div>
+                    <br>
+                    <div>
+                        The Input class is responsible for tracking the state of the keyboard, mouse, and controller (when available).
+                        The Resources class is a singleton class that handles the loading, caching, and saving of
+                        various types of resources, such as images, audio files, sprite sheets, and text fonts.
+                    </div>
+                    <br>
+                    <div>
+                        The Renderer class is responsible for rendering various elements of the game, including shaders,
+                        textures, fonts, and sprite sheets. GameObjects are objects that are present in the game world
+                        and have a position, rotation, and scale. They also contain Components, which are the building
+                        blocks that make up a GameObject. The engine includes a SpriteComponent and a Rigidbody Component,
+                        but custom Components can also be created.
+                    </div>
+                    <br>
+                    <div>
+                        Now, using the Renderer and Resource class we can easily draw a sprite to our screen!
+                    </div>
+
+                    <pre><code class="language-cpp">
+                        void Game::Render()
+                        {
+                            Renderer->DrawSprite(
+                            Resources::GetTexture("Player"),  // Texture data
+                            glm::vec2(200.0f, 200.0f),        // Position
+                            glm::vec2(300.0f, 400.0f),        // Size
+                            45.0f,                            // Rotation
+                            glm::vec3(0.0f, 1.0f, 0.0f)       // Tint
+                            );
+                        }
+                    </code></pre>
+
+                    <div>
+                        <img src="imgs/20211125.png">
+                    </div>
+
+                    <div>
+                        The 600+ fps here isn't particularly great on the grounds that we're only rendering a single
+                        stationary sprite. Idealy, the player texture would be loaded in and referenced, rather than
+                        using a lookup table in the Resource instance every draw; And there are plenty more
+                        optimizations I can do in the renderer before that--
+                    </div>
+                    <br>
+                    <div>
+                        But it gets the job done for now.
+                    </div>
+                </div>
+
+            </div>
+        </div></div>
+
+        <div class="news-section-block" id="2">
+            <div class="section"><div class="inner">
+
+                <div class="section-header">
+                    <a href="#2"><div class="title">ECSs, Tiles & Pain</div></a>
+                    <div class="date">Oct 26 -> Nov 30</div>
+                </div>
+
+                <div class="content">
+                    <h2>
+                        Sprites and Animations
+                    </h2>
+
+                    <div>
+                        Created a generic Renderable class to be used in renderable objects, like textures and fonts.
+                    </div>
+                    <pre><code class="language-cpp">
+                        class Texture2D
+                            : public Resource&lt;Texture2D>, public Renderable&lt;Texture2D>
+                        ...
+                    </code></pre>
+
+
+                    <div>
+                        Which changes our usage from:
+                    </div>
+                    <pre><code class="language-cpp">
+                        renderer.sprite.DrawSprite(...);
+                        renderer.text.DrawText(...);
+                        ect.
+                    </code></pre>
+
+                    <div>
+                        To:
+                    </div>
+                    <pre><code class="language-cpp">
+                        Texture2D::Draw(...);
+                        Text::Draw(...);
+                    </code></pre>
+
+                    <div>
+                        Now we no longer need a referenced SpriteRenderer instance in order to render a texture on to the screen.
+                        Also making it easier to read. 😄
+                    </div>
+
+                    <h2>
+                        Component Oriented Programming
+                    </h2>
+                    <div>
+                        When it came to designing the components for the engine, I took inspiration from the architecture used in Unity,
+                        structuring each component to be self-contained and able to communicate with others through event handlers.
+                    </div>
+                    <br>
+                    <div>
+                        To keep the design flexible, I made sure to decouple the components as much as possible so that they can
+                        be easily added, removed or replaced without affecting the rest of the application. This allows for greater
+                        modularity and reduces the risk of bugs caused by complex inter-dependencies.
+                    </div>
+                    <br>
+                    <div>
+                        However, it's important to note that the components currently only support sequential execution and do
+                        not have the capability to handle multi-threaded processing. This is something I plan to address in
+                        future iterations of the engine, but for now, the focus was on building a solid foundation for future
+                        expansion.
+                    </div>
+                    <pre><code class="language-cpp">
+                        namespace Engine {
+
+                        	// Forward Declaration
+                        	class Scene;
+                        	class GameObject;
+
+                        	class Component : public Object
+                        	{
+                        	public:
+                        		Component(GameObject* gameObject, std::string name = "Component");
+
+                        		GameObject* gameObject;
+                        		Engine::Scene* scene;
+
+                        		virtual void Update(double time, double delta, Engine::Scene& game);
+                        		virtual void Draw(Render::Renderers& renderer);
+                        	};
+                        }
+                    </code></pre>
+
+                    <h2>
+                        Colliders and Efficiencies
+                    </h2>
+                    <div>
+                        I began working on the collision dection for detecting responding to collisions between components.
+                        After researching various methods for implementing Colliders, I decided to utilize the classical
+                        Axis-Aligned Bounding Box method. These provide sufficient collision detection, though it should
+                        be noted that more advanced collision detection methods, such as polygonal colliders,
+                        may be required for more complex games in the future.
+                    </div>
+
+                    <h2>
+                        Event Handlers
+                    </h2>
+                    <div>
+                        While researching how one would go about executing Event-Driven Architecture in C++, I found a well
+                        documented resource on a simple implementation and used that to implement my  basics of the observer pattern.
+                        However there are some severe limitation of the design, such as the inability to handle events in different threads;
+                        Though, at this point in time, I was not planning so far ahead just yet.
+                    </div>
+
+                    <pre><code class="language-cpp">
+                        template&lt;typename T>
+                        class Event
+                        {
+                        public:
+                        	// Constructors
+                        	Event() = default;
+                        	Event(T type, const std::string& name = "")
+                                    : _type(type), _name(name) {};
+
+                        	inline const T type() const { return _type; };
+                        	inline const std::string& getName() const { return _name; };
+                        	virtual bool isHandled() { return _handled; };
+
+                        protected:
+                        	T _type;
+                        	std::string _name;
+                        	bool _handled = false;
+                        };
+                    </code></pre>
+
+                    <h2>
+                        Tilemaps and Instancing
+                    </h2>
+
+                    <div>
+                        Tilemaps allow for the creation of vast game worlds with a minimal amount of data.
+                        I implemented tilemaps using a 2D array of integers, where each integer represents
+                        a specific tile type. This allows for efficient storage and fast access to the tile data.
+                    </div>
+                    <br>
+                    <div>
+                        Rendering the tile instances is handled by a separate componant that takes the tilemap
+                        data and creates a visual representation of the tiles on the screen. The rendering
+                        component uses the tile types to determine which sprite to use for each tile, ensuring
+                        that the correct visual is applied.
+                    </div>
+
+                    <div class="edit-block" title="Don't mind the cursed looking Pacman-">
+                        <img src="imgs/20211126.gif">
+                    </div>
+
+                    <div>
+                        <img src="imgs/20211127.png">
+                    </div>
+
+                    <div>
+                        <img src="imgs/20211128 abc.png">
+                    </div>
+
+                    <div>
+                    </div>
+
+
+
+
+                    <h2>
+                        Tiled, Rotations and Save data!
+                    </h2>
+
+                    <div>
+                        <img src="imgs/20211202.png">
+                    </div>
+
+                    <div>
+                        After some tilemap rework, I implemented pellets pickups and a simple score display.
+                        By around I had finished this, the deadline of the assignment was within a few days
+                        <img src="imgs/20211225.gif">
+                    </div>
+
+
+                    <br>
+                    </div>
+
+                </div>
+
+                <!-- <div class="likes"> -->
+                <!-- <div class="like-button has-likes" like-type="0"><span class="icon"><i>thumb_up</i></span><span>269</span></div> -->
+                <!-- <div class="like-button has-likes" like-type="1"><span class="icon"><i>thumb_down</i></span><span>1</span></div> -->
+                <!-- </div> -->
+            </div></div>
+
+            <div class="news-section-block" id="3">
+                <div class="section"><div class="inner">
+
+                    <div class="section-header">
+                        <a href="#3"><div class="title">Hwnd, transparency and window styles!</div></a>
+                        <div class="date">❓ -> ❔</div>
+                    </div>
+
+                    <div class="content">
+                        <h2>
+                            Messing around with Hwnd
+                        </h2>
+
+                        <div>
+                            - Inspired by the python tkinter snake game in highschool
+                            - Trying to make pacman transparent
+                            - Tab management
+                        </div>
+
+                        <br>
+
+                        <div>
+                            <img src="imgs/20220227 wind.png">
+                        </div>
+
+                        <div>
+                            Notice how mouse events now go straight through the pacman window and interacts with Visual Studio behind it.
+                            <video src="imgs/20220227 click through.mp4" muted="true" autoplay="autoplay"></video>
+                        </div>
+                        <br>
+
+                        <div>
+                            Getting the window to run fullscreen, the red here defines the windows bounds, so you can see it's working as intended~
+                            <img src="imgs/20220227 fullscreen.png">
+                        </div>
+
+
+                        <div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div></div>
+
+            <div class="news-section-block" id="4">
+                <div class="section"><div class="inner">
+
+                    <div class="section-header">
+                        <a href="#4"><div class="title">Later Inspiration!</div></a>
+                        <div class="date">❓ -> ❔</div>
+                    </div>
+
+                    <div class="content">
+                        <h2>
+                            Capybaras
+                        </h2>
+
+                        <div>
+                            Over the course of the few weeks that I was working on the window management, my friends and
+                            community had became very passionate about capybaras, the cute social rodent native to
+                            South America; And I had mentioned on occation that I would add them to a project... eventually.
+                            <a href="https://en.wikipedia.org/wiki/Capybara#Popularity_and_meme_culture"><img src="imgs/capybara.png"></a>
+                        </div>
+                        <br>
+
+                        <h2>
+                            Desktop Goose
+                        </h2>
+
+                        <div>
+                            Desktop Goose is a popular desktop buddy windows/mac application made by
+                            <a href="https://samperson.itch.io/">samperson</a>.
+                            Which is one of the many things that inspired me to take my learning in programming further.
+                            See: 👇
+                        </div>
+
+                        <div>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/EQx6fyrZDWM" title="YouTube video player" frameborder="0">
+                            </iframe>
+                        </div>
+                        <br>
+
+                        <div>
+                            This, and the ongoing popularity of Capybaras, inspired me to make a Capybara desktop buddy!
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div></div>
+
+            <div class="news-section-block" id="5">
+                <div class="section"><div class="inner">
+
+                    <div class="section-header">
+                        <a href="#5"><div class="title">Desktop Capybara!</div></a>
+                        <div class="date">❓ -> ❔</div>
+                    </div>
+
+                    <div class="content">
+                        <h2>
+                            Here comes the boi
+                        </h2>
+                        <div>
+                            Drew up a small pixelated sprite for the capybara, I went for this style to synergize with
+                            it's potentially untidy movement and current lack of animations.
+                            <img src="imgs/20220227 the boi.png">
+                            I found it overly saturated here and later softed the fur colour to a more lighter blonde.
+                        </div>
+                        <br>
+                        <div>
+                            Gave the capybara a GameObject and a SpriteComponent for now, ready to be rendered on the
+                            screen~ Below, I had forgotten about setting a colour and scale, making our boy into a
+                            cute small silhouette.
+                            <img src="imgs/20220227 small.png">
+                        </div>
+
+
+
+                        <h2>
+                            AI
+                        </h2>
+                        <div>
+
+                        </div>
+                        <div>
+                            <img src="imgs/20220303.gif">
+                        </div>
+
+                        <h2>
+                            Hats & variety
+                        </h2>
+                        <div>
+                            I wanted to add some customization to each of the capybaras, every time you open the
+                            application a new kind of capybara would spawn: Slightly different size, fur colour,
+                            and most importantly a different hat. I designed a few hats
+                        </div>
+                        <div>
+                            <img src="imgs/20220603 hats.png">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div></div>
+
+            <div class="news-section-block" id="6">
+                <div class="section"><div class="inner">
+
+                    <div class="section-header">
+                        <a href="#6"><div class="title">Release!</div></a>
+                        <div class="date">Mar 3</div>
+                    </div>
+
+
+                    <div>
+                        <img src="imgs/20220303 itchiobanner.png">
+                        <iframe src="https://itch.io/embed/1426955?bg_color=222222&amp;fg_color=ffffff&amp;border_color=363636" width="552" height="167" frameborder="0">
+                            <a href="https://bycubed7.itch.io/desktop-capybara">Desktop Capybara by ByCubed7</a>
+                        </iframe>
+                        You can download and play around with the capybara above! 👆
+                    </div>
+
+                    <br>
+
+                    <div>
+                        If you have any questions or wish to get in contact with me, you can ping me in
+                        <a href="https://discord.gg/hQvvMGwJTG">discord</a>
+                        or see my
+                        <a href="https://bycubed7.github.io/socials/">socials</a>~
+                    </div>
+
+
+                </div>
+            </div></div>
+
+            <div class="news-section-block" id="7">
+                <div class="section"><div class="inner">
+
+                    <div class="section-header">
+                        <a href="#7"><div class="title">Conclusion</div></a>
+                        <div class="author"> <a href="https://github.com/ByCubed7">ByCubed7</a> </div>
+                        <div class="date"></div>
+                    </div>
+
+                    <div>
+                        In the end, I achieved a plentiful amount of my goals, creating 2 games over all,
+                        and seeing one all the way from production to release; And I have collected a
+                        substantial amount of knowledge in C++, planning & design, production management
+                        and motivation techniques.
+                    </div>
+                    <br>
+                    <div>
+                        One thing I hope to improve on in the future is my routine in publishing content
+                        and my social media usage in general. I will aim to work on this in my next project.
+                    </div>
+
+
+                </div>
+            </div></div>
+
+
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="has-text-centered">
+                <a href="https://github.com/ByCubed7"><img src="https://avatars.githubusercontent.com/u/38486990?s=100&v=5" alt="Logo"></a>
+                <div>ByCubed7</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
