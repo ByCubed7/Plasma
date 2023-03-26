@@ -48,14 +48,13 @@ int main(int argc, char* argv[])
 	scene->Load();
 
 	//Resources::LoadTilemap("assets/tilemaps/Pacman.tmx", "tilesheet");
-	Resources::LoadWav("assets/audio/Capybara.wav", "capybara");
-
+	Wav::Load("assets/audio/Capybara.wav", "capybara");
 
 	// - Create audio
 	GameObject* audi = scene->CreateGameObject();
 
 	AudioSourceComponent* audiComp = new AudioSourceComponent(audi);
-	audiComp->Attach(Resources::GetWav("capybara"));
+	audiComp->Attach(Wav::Get("capybara"));
 
 	audiComp->source->Play();
 	//while (audiComp->source->IsPlaying()) ;
