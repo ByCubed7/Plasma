@@ -13,7 +13,7 @@ namespace UI {
 		: Component(gameObject, name)
 	{}
 
-	void TextboxComponent::Draw(Render::Renderers& renderer)
+	void TextboxComponent::draw(Render::Renderers& renderer)
 	{
 		renderer.text.RenderText(
 			text,

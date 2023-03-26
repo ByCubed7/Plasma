@@ -12,7 +12,7 @@ class Texture2D : public Resource<Texture2D>, public Renderable<Texture2D>
 {
 public:
     unsigned int id;
-    Vector2UInt size;
+    Vector2Int size;
     
     // Format of texture object and loaded image
     unsigned int internalFormat, imageFormat;
@@ -27,10 +27,10 @@ public:
     Texture2D();
 
     // Generates texture from image data
-    void Generate(unsigned int width, unsigned int height, unsigned char* data);
+    void generate(unsigned int width, unsigned int height, unsigned char* data);
     
     // Binds the texture as the current active GL_TEXTURE_2D texture object
-    void Bind() const;
+    void bind() const;
 
 protected:
 

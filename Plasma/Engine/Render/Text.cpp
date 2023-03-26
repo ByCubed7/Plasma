@@ -67,7 +67,7 @@ void Text::Render(glm::vec2 position, glm::vec2 size, glm::vec2 scale, glm::vec2
 
         width += ch.Size.x * size.x;
         //height = std::max(height, ch.Size.y * size.y);
-        height = max(height, ch.Size.y * size.y);
+        height = std::max(height, ch.Size.y * size.y);
     }
 
     float cursorX = position.x;

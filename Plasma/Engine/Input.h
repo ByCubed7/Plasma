@@ -16,7 +16,7 @@ private:
 	static const Button mouseBufferSize = 8;
 
 public:
-	void Update();
+	void update();
 	void Clear();
 	
 	// Keyboard

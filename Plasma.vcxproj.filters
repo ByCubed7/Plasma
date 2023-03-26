@@ -360,6 +360,12 @@
       <Filter>Tests</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Plasma\Engine\Colour.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Plasma\Engine\Quaternion.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Plasma.rc" />

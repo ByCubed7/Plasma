@@ -19,11 +19,7 @@ namespace Engine {
 		this->app = app;
 
 		title = "Title";
-
-		state = State::RUNNING;
-
 		position = 0;
-
 
 
 		// See: https://gist.github.com/esmitt/e722265936f0ebe96fc166bdf1fff41b
@@ -46,16 +42,13 @@ namespace Engine {
 
 
 		// Initialize window
-		Vector2Int size = app->GetSize();
+		Vector2Int size = app->getSize();
 		window = glfwCreateWindow((float)size.x, (float)size.y, title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window); // Make the window's context 
 		glfwSetWindowAspectRatio(window, 1, 1);
 		glfwShowWindow(window);
 
 
-		// - - MONITOR
-		monitor = glfwGetPrimaryMonitor();
-		glfwGetMonitorWorkarea(monitor, &monitorPosition.x, &monitorPosition.y, &monitorSize.x, &monitorSize.y);
 
 		glfwMaximizeWindow(window);
 
@@ -87,8 +80,8 @@ namespace Engine {
 		{ return Window::instance->GraphicsCallbackFramebuffer(window, width, height); };
 		glfwSetFramebufferSizeCallback(window, callbackFramebuffer);
 		
-		Interactable(false);
-		ShowInTaskbar(false);
+		setInteractable(false);
+		setShowInTaskbar(false);
 		//Interactable(true);
 		//ShowInTaskbar(true);
 
@@ -101,51 +94,36 @@ namespace Engine {
 		//std::cout << "[Window::Ctor] END " << std::endl;
 	}
 
-	void Window::LoadScene(Scene* newScene)
+	void Window::loadScene(Scene* newScene)
 	{
 		scene = newScene;
 	}
 
-	void Window::Update()
-	{
-
-	}
-
-	GLFWwindow* Window::Get()
+	GLFWwindow* Window::getGLFW()
 	{
 		return window;
 	}
 
-	void Window::Render()
-	{
-		glfwSwapBuffers(window);
-
-		//GLenum err;
-		//while ((err = glGetError()) != GL_NO_ERROR)
-		//	std::cout << "[Window::Render] OpenGL Error: " << err << std::endl;
-	}
-
-	void Window::Title(std::string newName)
+	void Window::setTitle(std::string newName)
 	{
 		title = newName;
 		glfwSetWindowTitle(window, title.c_str());
 	}
 
-	void Window::UpdateSize()
-	{
-		Vector2Int size = app->GetSize();
-		glfwSetWindowSize(window, size.x, size.y);
-	}
+	//Vector2Int Window::getMonitorSize()
+	//{
+	//	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
 
+	//	Vector2Int size;
+	//	Vector2Int position;
 
-	Vector2Int Window::GetMonitorSize()
-	{
-		return monitorSize;
-	}
+	//	glfwGetMonitorWorkarea(monitor, &position.x, &position.y, &size.x, &size.y);
+	//	return size;
+	//}
 
 	//
 
-	void Window::Interactable(bool toggle)
+	void Window::setInteractable(bool toggle)
 	{
 		// Grab the HWND of the window
 		// Defining GLFW_EXPOSE_NATIVE_WIN32 to grab the glfw3native macro
@@ -181,7 +159,7 @@ namespace Engine {
 		ShowWindow(hWnd, SW_SHOW); // show the window for the new style to come into effect
 	}
 
-	void Window::ShowInTaskbar(bool toggle)
+	void Window::setShowInTaskbar(bool toggle)
 	{
 		// Grab the HWND of the window
 		// Defining GLFW_EXPOSE_NATIVE_WIN32 to grab the glfw3native macro
@@ -219,6 +197,10 @@ namespace Engine {
 		ShowWindow(hWnd, SW_SHOW); // show the window for the new style to come into effect
 	}
 
+	void Window::setSize(Vector2Int value)
+	{
+	}
+
 	void Window::GraphicsCallbackKey(GLFWwindow* window, int key, int scancode, int action, int mode)
 	{
 		//if (!scene->input.KeyExists(key)) return;
@@ -239,7 +221,6 @@ namespace Engine {
 		SetForegroundWindow(notepad);
 
 		*/
-
 	}
 
 	void Window::GraphicsCallbackMouseButton(GLFWwindow* window, int button, int action, int mods)

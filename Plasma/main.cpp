@@ -27,11 +27,11 @@ int main(int argc, char* argv[])
 	Scene* scene = app.CreateGame();
 
 	// Prepares an OpenGL context so that we can send API calls
-	app.Build();
-	app.Load(scene);
+	app.build();
+	app.load(scene);
 
 	// Mainloop
-	return app.Run();
+	return app.run();
 }
 
 

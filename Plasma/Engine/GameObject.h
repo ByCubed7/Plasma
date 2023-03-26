@@ -45,7 +45,7 @@ namespace Engine
 		bool HasComponent(std::string componentName);
 		void RemoveComponent(Component* component);
 
-		template<class T> T* Get();
+		template<class T> T* getGLFW();
 		template<class T> T* Add();
 
 		bool isSolid;
@@ -61,7 +61,7 @@ namespace Engine
 
 
 	template<class T>
-	inline T* GameObject::Get()
+	inline T* GameObject::getGLFW()
 	{
 		for (Component* component : components)
 		{

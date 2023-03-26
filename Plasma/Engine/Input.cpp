@@ -11,7 +11,7 @@
 #include <windows.h> // GetAsyncKeyState
 
 
-void Input::Update()
+void Input::update()
 {
 	for (Key i = 0; i < keyboardBufferSize; i++) {
 		if (state_keyboard_frame.find(i) != state_keyboard_frame.end()) continue;

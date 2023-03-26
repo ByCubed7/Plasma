@@ -35,9 +35,9 @@ namespace Tiled {
     std::string Map::Orientation() const noexcept { return orientation; }
     std::string Map::RenderOrder() const noexcept { return renderOrder; }
 
-    void Map::AddTileset(Set const& newTileSet) noexcept { tiles.push_back(newTileSet); }
+    void Map::AddTileset(setTexture2D const& newTileSet) noexcept { tiles.push_back(newTileSet); }
 
-    Set* Map::GetTileset(std::string const& name) noexcept
+    setTexture2D* Map::GetTileset(std::string const& name) noexcept
     {
         for (size_t i = 0; i < tiles.size(); ++i)
             if (tiles[i].Name() == name)

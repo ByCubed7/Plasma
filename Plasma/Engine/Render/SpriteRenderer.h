@@ -17,7 +17,7 @@ namespace Render
         SpriteRenderer(Shader& shader);
 
         // Renders a defined quad textured with given sprite
-        void DrawSprite(Texture2D& texture, glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color);
+        void drawSprite(Texture2D& texture, glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color);
 
     private:
         unsigned int verticeVBO;

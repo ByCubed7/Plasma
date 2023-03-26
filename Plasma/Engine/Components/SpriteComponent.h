@@ -14,8 +14,8 @@ class SpriteComponent : public Engine::Component
 public:
 	SpriteComponent(Engine::GameObject* gameObject, std::string name = "SpriteComponent");
 
-	void Update(double time, double delta, Engine::Scene& game) override;
-	void Draw(Render::Renderers& renderer) override;
+	void update(double time, double delta, Engine::Scene& game) override;
+	void draw(Render::Renderers& renderer) override;
 
 	Colour4 color;
 
@@ -24,20 +24,20 @@ public:
 	bool reflectionX;
 	bool reflectionY;
 	Vector2Int crop;
-	Vector2UInt size;
+	Vector2Int size;
 
 	// Set the texture
-	SpriteComponent* Set(Texture2D newSprite);
+	SpriteComponent* setTexture2D(Texture2D newSprite);
 
 	// Get the texture
-	Texture2D Get();
+	Texture2D getGLFW();
 
 	// Set the animation speed
-	SpriteComponent* SetColour(Colour4 newColour);
+	SpriteComponent* setColour(Colour4 newColour);
 
 	// Bounds
 	AABB bounds;
-	AABB GetBounds();
-	void CalcBounds();
+	AABB getBounds();
+	void calcBounds();
 
 };

@@ -17,8 +17,8 @@ namespace Engine
         {
         }
 
-        //void Draw(SDL_Renderer* renderer) override;
-        void Update(double time, double delta, Engine::Scene& game) override
+        //void draw(SDL_Renderer* renderer) override;
+        void update(double time, double delta, Engine::Scene& game) override
         {
             //Vector2Int offset = animation.Get();
             //SDL_Rect& area = sprite->Source();
@@ -31,7 +31,7 @@ namespace Engine
             animation.Tick();
         }
 
-        AnimatedSprite* SetSize(Vector2Int newSize) {
+        AnimatedSprite* setSize(Vector2Int newSize) {
             animation.size = newSize;
             return this;
         }

@@ -12,19 +12,19 @@ BoxColliderComponent::BoxColliderComponent(Engine::GameObject* gameObject, std::
 	bounds = AABB();
 }
 
-BoxColliderComponent* BoxColliderComponent::Bind(Engine::Scene* game)
+BoxColliderComponent* BoxColliderComponent::bind(Engine::Scene* game)
 {
 	game->colliders.push_back(this);
 	return this;
 }
 
-BoxColliderComponent* BoxColliderComponent::SetSize(Vector2 size)
+BoxColliderComponent* BoxColliderComponent::setSize(Vector2 size)
 {
 	bounds = AABB(size / 2, -size / 2);
 	return this;
 }
 
-AABB BoxColliderComponent::GetBounds()
+AABB BoxColliderComponent::getBounds()
 {
 	AABB value = AABB(bounds);
 	value.max += gameObject->position;

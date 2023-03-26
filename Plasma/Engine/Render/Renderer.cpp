@@ -22,7 +22,7 @@ namespace Render {
         glDeleteVertexArrays(1, &vertexArrayObject);
     }
 
-    Shader& Renderer::GetShader()
+    Shader& Renderer::getShader()
     {
         return shader;
     }

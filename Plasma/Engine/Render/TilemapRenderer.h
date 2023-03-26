@@ -23,7 +23,7 @@ namespace Render
         void DrawTileLayer(Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, int frame, glm::vec3 color);
 
         // Updates the tilemaps render data
-        void Update(Tilemaps::TileRender render);
+        void update(Tilemaps::TileRender render);
 
     private:
 

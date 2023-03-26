@@ -16,7 +16,7 @@ Texture2D::Texture2D() : size(0), internalFormat(GL_RGB), imageFormat(GL_RGB), w
     glGenTextures(1, &id);
 }
 
-void Texture2D::Generate(unsigned int width, unsigned int height, unsigned char* data)
+void Texture2D::generate(unsigned int width, unsigned int height, unsigned char* data)
 {
     this->size.x = width;
     this->size.y = height;
@@ -35,7 +35,7 @@ void Texture2D::Generate(unsigned int width, unsigned int height, unsigned char*
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Texture2D::Bind() const
+void Texture2D::bind() const
 {
     glBindTexture(GL_TEXTURE_2D, id);
 }
@@ -63,7 +63,7 @@ Texture2D Texture2D::FromFile(const std::string filename)
     //std::cout << lodepng_error_text(error) << std::endl;
 
     // Generate texture
-    Generate(width, height, &data[0]);
+    generate(width, height, &data[0]);
 
     // Free image data
     //stbi_image_free(data);
@@ -131,7 +131,7 @@ void Texture2D::Render(glm::vec2 position, glm::vec2 size, glm::vec2 scale, glm:
     shader.SetVector2f("crop", { crop.x, crop.y });
 
     glActiveTexture(GL_TEXTURE0);
-    Bind();
+    bind();
 
     glBindVertexArray(vertexArrayObject);
     glDrawArrays(GL_TRIANGLES, 0, 6);

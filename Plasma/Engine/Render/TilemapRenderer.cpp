@@ -89,14 +89,14 @@ namespace Render
         shader.SetVector2f("spriteSize", { size.x, size.y });
 
         glActiveTexture(GL_TEXTURE0);
-        texture.Bind();
+        texture.bind();
 
         glBindVertexArray(vertexArrayObject);
         glDrawArraysInstanced(GL_TRIANGLES, 0, 6, tileIds.size());
         glBindVertexArray(0);
     }
 
-    void TilemapRenderer::Update(Tilemaps::TileRender render)
+    void TilemapRenderer::update(Tilemaps::TileRender render)
     {
         UpdateRender(render);
         UpdateRenderBuffer();
@@ -167,7 +167,7 @@ namespace Render
         /* Print any errors
         GLenum err;
         while ((err = glGetError()) != GL_NO_ERROR)
-            cout << "[TilemapRenderer::Update] ERROR:" << err << endl;
+            cout << "[TilemapRenderer::update] ERROR:" << err << endl;
         //*/
     }
 }

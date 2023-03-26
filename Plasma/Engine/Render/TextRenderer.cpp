@@ -52,7 +52,7 @@ namespace Render
         #endif
 
         // Get Font from resources
-        Font font = Font::Get("arial");
+        Font font = Font::getGLFW("arial");
 
         // Activate corresponding render state	
         this->shader.Use();
@@ -75,7 +75,7 @@ namespace Render
 
             width += ch.Size.x * scale;
             //height = std::max(height, ch.Size.y * scale);
-            height = max(height, ch.Size.y * scale);
+            height = std::max(height, ch.Size.y * scale);
         }
 
         // Iterate through all characters

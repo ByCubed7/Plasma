@@ -37,9 +37,9 @@ namespace Engine
 		delete renderer;
 	}
 
-	Window* Scene::GetWindow()
+	Window* Scene::getWindow()
 	{
-		return app->GetWindow();
+		return app->getWindow();
 	}
 
 	GameObject* Scene::CreateGameObject()
@@ -59,27 +59,27 @@ namespace Engine
 		components.emplace_back(component);
 	}
 
-	void Scene::Load()
+	void Scene::load()
 	{
-		Vector2Int size = app->GetSize();
+		Vector2Int size = app->getSize();
 		glm::mat4 projection = glm::ortho(0.0f, (float)size.x, (float)size.y, 0.0f, -1.0f, 1.0f);
 		
 		// - Config shaders
 
-		Shader ShaderSprite = Shader::Get("sprite");
+		Shader ShaderSprite = Shader::getGLFW("sprite");
 		ShaderSprite.Use()
 			.SetInteger("image", 0)
 			.SetInteger("index", 1)
 			.SetMatrix4("projection", projection);
 
 		// Text
-		Shader ShaderText = Shader::Get("text");
+		Shader ShaderText = Shader::getGLFW("text");
 		ShaderText.Use()
 			.SetInteger("text", 0)
 			.SetMatrix4("projection", projection);
 		
 		//* Tilemap
-		Shader ShaderTile = Shader::Get("tile");
+		Shader ShaderTile = Shader::getGLFW("tile");
 		ShaderTile.Use()
 			.SetInteger("image", 0)
 			.SetInteger("index", 1)
@@ -99,19 +99,19 @@ namespace Engine
 	void Scene::UpdateProjection()
 	{
 		// As this is 2D we don't have to worry about perspective, use orthographic projection
-		Vector2Int size = app->GetSize();
+		Vector2Int size = app->getSize();
 		glm::mat4 projection = glm::ortho(0.0f, (float)size.x, (float)size.y, 0.0f, -1.0f, 1.0f);
 
-		Shader::Get("sprite").Use().SetMatrix4("projection", projection);
-		Shader::Get("text").Use().SetMatrix4("projection", projection);
-		Shader::Get("tile").Use().SetMatrix4("projection", projection);
+		Shader::getGLFW("sprite").Use().SetMatrix4("projection", projection);
+		Shader::getGLFW("text").Use().SetMatrix4("projection", projection);
+		Shader::getGLFW("tile").Use().SetMatrix4("projection", projection);
 	}
 
 	void Scene::ProcessInput()
 	{
 		// Get mouse position
 		double xpos, ypos;
-		glfwGetCursorPos(app->GetWindow()->Get(), &xpos, &ypos);
+		glfwGetCursorPos(app->getWindow()->getGLFW(), &xpos, &ypos);
 		app->input.SetMousePosition(xpos, ypos);
 
 		// If the escape key is pressed, set the game to closing
@@ -124,7 +124,7 @@ namespace Engine
 		//std::cout << input.IsKeyDown(input.Key_P);
 	}
 
-	void Scene::Update(double time, double delta)
+	void Scene::update(double time, double delta)
 	{
 		// - IF PAUSED, DO NOTHING!
 		if (state != State::ACTIVE) return;
@@ -132,7 +132,7 @@ namespace Engine
 		// Update all of the components
 		for (const auto& component : components)
 		{
-			component->Update(time, delta, *this);
+			component->update(time, delta, *this);
 		}
 
 		// We don't currently use colliders
@@ -237,7 +237,7 @@ namespace Engine
 
 		for (const auto& component : components)
 		{
-			component->Draw(*renderer);
+			component->draw(*renderer);
 			//std::cout << "Drawing: " << component->ToString() << std::endl;
 			//std::cout << "Drawing: " << component->gameObject->position.x << "," << component->gameObject->position.y << std::endl;
 			//cout << "Game::GRender.Renderer:" << renderer << " Object:" << typeid(*component).name() << endl;

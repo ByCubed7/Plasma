@@ -49,7 +49,7 @@ namespace Engine
 		std::list<BoxColliderComponent*> colliders;
 		std::map<BoxColliderComponent*, BoxColliderComponent*> collidersColliding;
 
-		Window* GetWindow();
+		Window* getWindow();
 
 		// Constructor
 		Scene(App* app);
@@ -70,7 +70,7 @@ namespace Engine
 		/// <summary>
 		/// Initializes the DEFAULT shaders, textures, projection, renderers and fonts.
 		/// </summary>
-		void Load();
+		void load();
 
 		void UpdateProjection();
 
@@ -78,7 +78,7 @@ namespace Engine
 		/// Called every frame. Updates all components, collisions and events.
 		/// </summary>
 		/// <param name="delta">- the interval in seconds from the last frame to the current one.</param>
-		void Update(double time, double delta);
+		void update(double time, double delta);
 
 		/// <summary>
 		/// Called at the end of each frame. Renders all of the components.

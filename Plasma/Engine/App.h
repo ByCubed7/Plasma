@@ -27,36 +27,30 @@ namespace Engine
 		Engine::Scene* CreateGame();
 		//Scene* GetScene();
 
-		/// <summary>
-		/// Prepares and configuares GLWF to recieve calls, creates the window, prepares window callbacks. ect
-		/// </summary>
+		/// <summary>Prepares and configuares GLWF to recieve calls, creates the window, prepares window callbacks. ect</summary>
 		/// <returns>The result ID of the opperation, if any.</returns>
-		int Build();
+		int build();
 
-		/// <summary>
-		/// Loads a scene onto the app
-		/// </summary>
+		/// <summary>Loads a scene onto the app</summary>
 		/// <param name="newScene">- the scene to load.</param>
-		void Load(Engine::Scene* newScene);
+		void load(Engine::Scene* newScene);
 
-		/// <summary>
-		/// Runs the Mainloop.
-		/// </summary>
+		/// <summary>Runs the Mainloop.</summary>
 		/// <param name="scene"></param>
 		/// <returns>The result ID of the opperation, if any.</returns>
-		int Run();
+		int run();
 
 		// Returns the current window
-		Engine::Window* GetWindow();
+		Engine::Window* getWindow();
 
 		// Returns the current loaded scene
-		Engine::Scene* GetScene();
+		Engine::Scene* getScene();
 		
 		// Returns the size of the window
-		Vector2Int GetSize();
+		Vector2Int getSize();
 
 		// Sets the size of the window
-		void SetSize(Vector2Int newSize);
+		void setSize(Vector2Int newSize);
 
 	private:
 		Engine::Window* window;

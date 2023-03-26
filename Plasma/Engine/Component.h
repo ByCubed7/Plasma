@@ -21,7 +21,7 @@ namespace Engine {
 		GameObject* gameObject;
 		Engine::Scene* scene;
 
-		virtual void Update(double time, double delta, Engine::Scene& game);
-		virtual void Draw(Render::Renderers& renderer);
+		virtual void update(double time, double delta, Engine::Scene& game);
+		virtual void draw(Render::Renderers& renderer);
 	};
 }

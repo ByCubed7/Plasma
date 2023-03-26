@@ -20,47 +20,37 @@ namespace Engine
 
 	class Window : public Object
 	{
-	public:
-		enum class State { RUNNING, QUITTING };
-		State state;
-		
+	public:		
 		static Window* instance;
 
-		// Constructors
+		// Constructor
 		Window(App* app);
 
-		void LoadScene(Scene* newScene);
-		void Update();
-		GLFWwindow* Get();
-		void Render();
-		void Title(std::string newName);
-		void Interactable(bool toggle);
-		void ShowInTaskbar(bool toggle);
+		//void Render();
+		
+		GLFWwindow* getGLFW();
 
-		int GetPPU();
-		Vector2Int GetMonitorSize();
+		void loadScene(Scene* newScene);
 
-		void UpdateSize();
+		//Vector2Int getMonitorSize();
 
-
-
+		void setTitle(std::string newName);
+		void setInteractable(bool toggle);
+		void setShowInTaskbar(bool toggle);
+		void setSize(Vector2Int value);
 
 	private:
 		App* app;
 
 		GLFWwindow* window;
-		Engine::Scene* scene;
+		HWND hWnd;
+		
+		Scene* scene;
 
 		std::string title;
 		Vector2Int position;
 
-		GLFWmonitor* monitor;
-		Vector2Int monitorSize;
-		Vector2Int monitorPosition;
-
-		/// <summary>
-		/// Notifys when a physical key is pressed, released or repeats.
-		/// </summary>
+		/// <summary> Notifys when a physical key is pressed, released or repeats. </summary>
 		/// <param name="window">- the window that the event was sent to</param>
 		/// <param name="key">- the key token associated with the key that was pressed. See: https://www.glfw.org/docs/3.3/group__keys.html </param>
 		/// <param name="scancode">- scancode is unique for every key, regardless of whether it has a key token</param>
@@ -71,7 +61,6 @@ namespace Engine
 		void GraphicsCallbackCursorPosition(GLFWwindow* window, double xpos, double ypos);
 		void GraphicsCallbackFramebuffer(GLFWwindow* window, int width, int height);
 
-		HWND hWnd;
 	};
 
 }

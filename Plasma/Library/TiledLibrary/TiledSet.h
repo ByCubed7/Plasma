@@ -7,11 +7,11 @@
 #include "TiledTile.h"
 
 namespace Tiled {
-	class Set
+	class setTexture2D
 	{
 	public:
 		// File Constructor
-		Set(std::unordered_map<std::string, std::string> const& data,
+		setTexture2D(std::unordered_map<std::string, std::string> const& data,
 			std::unordered_map<std::string, std::string> const& properties,
 			std::vector<Tile> const& tiles);
 
