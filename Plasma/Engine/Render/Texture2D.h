@@ -35,8 +35,8 @@ public:
 protected:
 
     // Resource
-    Texture2D FromFile(const std::string filename) override;
-    void Clear() override;
+    Texture2D fromFile(const std::string filename) override;
+    void clear() override;
 
     // Renderable
     unsigned int verticeVBO;

@@ -22,7 +22,7 @@ void Input::update()
 	}
 }
 
-void Input::Clear()
+void Input::clear()
 {
 	state_keyboard_frame.clear();
 }

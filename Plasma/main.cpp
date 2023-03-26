@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
 
 	//FreeConsole();
 	App app = App();
-	Scene* scene = app.CreateGame();
+	Scene* scene = app.createScene();
 
 	// Prepares an OpenGL context so that we can send API calls
 	app.build();

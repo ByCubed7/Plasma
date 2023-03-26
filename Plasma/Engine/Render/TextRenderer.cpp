@@ -73,9 +73,9 @@ namespace Render
             Character ch = font.Characters[*c];
             //Character ch = font.GetCharacter(*c);
 
-            width += ch.Size.x * scale;
+            width += ch.getSize.x * scale;
             //height = std::max(height, ch.Size.y * scale);
-            height = std::max(height, ch.Size.y * scale);
+            height = std::max(height, ch.getSize.y * scale);
         }
 
         // Iterate through all characters
@@ -91,8 +91,8 @@ namespace Render
             xpos -= (width * pivot.x);
             ypos -= (height * pivot.y);
 
-            float w = ch.Size.x * scale;
-            float h = ch.Size.y * scale;
+            float w = ch.getSize.x * scale;
+            float h = ch.getSize.y * scale;
 
             // Update VBO
             float vertices[6][4] = {

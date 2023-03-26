@@ -10,7 +10,7 @@ Wav::Wav()
     size            = 0;
 }
 
-Wav Wav::FromFile(const std::string filename)
+Wav Wav::fromFile(const std::string filename)
 {
     Wav wav = {};
 
@@ -31,7 +31,7 @@ Wav Wav::FromFile(const std::string filename)
     return wav;
 }
 
-void Wav::Clear()
+void Wav::clear()
 {
 }
 

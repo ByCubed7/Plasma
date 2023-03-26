@@ -65,9 +65,9 @@ void Text::Render(glm::vec2 position, glm::vec2 size, glm::vec2 scale, glm::vec2
         Character ch = font.Characters[*c];
         //Character ch = font.GetCharacter(*c);
 
-        width += ch.Size.x * size.x;
+        width += ch.getSize.x * size.x;
         //height = std::max(height, ch.Size.y * size.y);
-        height = std::max(height, ch.Size.y * size.y);
+        height = std::max(height, ch.getSize.y * size.y);
     }
 
     float cursorX = position.x;
@@ -84,8 +84,8 @@ void Text::Render(glm::vec2 position, glm::vec2 size, glm::vec2 scale, glm::vec2
         xpos -= (width * pivot.x);
         ypos -= (height * pivot.y);
 
-        float w = ch.Size.x * size.x;
-        float h = ch.Size.y * size.y;
+        float w = ch.getSize.x * size.x;
+        float h = ch.getSize.y * size.y;
 
         // Update VBO
         float vertices[6][4] = {

@@ -22,7 +22,7 @@ Character Font::GetCharacter(char c)
     return Characters[c];
 }
 
-Font Font::FromFile(const std::string filename)
+Font Font::fromFile(const std::string filename)
 {
     FT_Library ft;
     if (FT_Init_FreeType(&ft))
@@ -89,7 +89,7 @@ Font Font::FromFile(const std::string filename)
     return newFont;
 }
 
-void Font::Clear()
+void Font::clear()
 {
 }
 //

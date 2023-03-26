@@ -24,7 +24,7 @@ namespace Engine
 
 		App();
 
-		Engine::Scene* CreateGame();
+		Engine::Scene* createScene();
 		//Scene* GetScene();
 
 		/// <summary>Prepares and configuares GLWF to recieve calls, creates the window, prepares window callbacks. ect</summary>

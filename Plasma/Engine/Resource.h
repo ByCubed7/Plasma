@@ -10,23 +10,23 @@ template<class T>
 class Resource 
 {
 public:
-	static bool Has(std::string name) { return cache.find(name) != cache.end(); } // Returns whether the Resource has the obj cached
+	static bool has(std::string name) { return cache.find(name) != cache.end(); } // Returns whether the Resource has the obj cached
 	static T getGLFW(std::string name) { return cache[name]; } // Retrieves a cached objs.
 
 	// Virtual static idiom
 	static void load(const std::string file, const std::string name)
 	{
-		if (!Has(name)) 
+		if (!has(name)) 
 		{
 			// NOTE: I dispise this implementation
 			Resource* resource = (Resource*) (new T()); 
-			cache[name] = resource->FromFile(file);
+			cache[name] = resource->fromFile(file);
 			//delete resource;
 		}
 		//return cache[name];
 	}
 
-	static void CleanUp() {
+	static void cleanUp() {
 		// std:c++17
 		//for (auto const& [key, val] : cache) {
 		//	Resource* resource = (Resource*) &val;
@@ -38,7 +38,7 @@ public:
 		{
 			Resource* resource = (Resource*)&it->second;
 			//if (resource != nullptr)
-			resource->Clear();
+			resource->clear();
 		}
 	}
 
@@ -48,8 +48,8 @@ protected:
 
 	//std::string filepath, name;
 
-	virtual T FromFile(const std::string filepath) = 0;
-	virtual void Clear() = 0;
+	virtual T fromFile(const std::string filepath) = 0;
+	virtual void clear() = 0;
 };
 
 template<class T>

@@ -98,7 +98,7 @@ namespace Audio
 		buffers.push_back(buf);
 		return buf;
 	}
-	Buffer* Scene::CreateBuffer(Wav wavFile) { return CreateBuffer(wavFile.Format(), wavFile.Data(), wavFile.Size(), wavFile.sampleRate); }
+	Buffer* Scene::CreateBuffer(Wav wavFile) { return CreateBuffer(wavFile.Format(), wavFile.getData(), wavFile.getSize(), wavFile.sampleRate); }
 
 	Source* Scene::CreateSource()
 	{

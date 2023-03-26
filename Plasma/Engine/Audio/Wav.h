@@ -27,8 +27,8 @@ public:
 
     std::vector<char> data;
 
-    char* Data() { return data.data(); }
-    size_t Size() { return data.size(); }
+    char* getData() { return data.data(); }
+    size_t getSize() { return data.size(); }
 
     ALenum Format() {
 
@@ -50,8 +50,8 @@ public:
     }
 
 protected:
-    Wav FromFile(const std::string filename) override;
-    void Clear() override;
+    Wav fromFile(const std::string filename) override;
+    void clear() override;
 
 
 private:

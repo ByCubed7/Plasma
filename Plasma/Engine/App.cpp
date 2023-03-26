@@ -26,7 +26,7 @@ namespace Engine {
 		input = Input();
 	}
 
-	Engine::Scene* App::CreateGame()
+	Engine::Scene* App::createScene()
 	{
 		Engine::Scene* newScene = new Engine::Scene(this);
 		// Add scene to list
@@ -128,7 +128,7 @@ namespace Engine {
 			{
 				// Process the User Input
 
-				input.Clear();
+				input.clear();
 				input.update();
 
 				scene->ProcessInput();
@@ -162,9 +162,9 @@ namespace Engine {
 
 		// Clear all of the loaded resources 
 		
-		Texture2D::CleanUp();
-		Shader::CleanUp();
-		Font::CleanUp();
+		Texture2D::cleanUp();
+		Shader::cleanUp();
+		Font::cleanUp();
 
 		// Terminate the OpenGL window
 		glfwTerminate();

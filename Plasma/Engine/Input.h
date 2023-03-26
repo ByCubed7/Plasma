@@ -17,7 +17,7 @@ private:
 
 public:
 	void update();
-	void Clear();
+	void clear();
 	
 	// Keyboard
 	bool state_keyboard[keyboardBufferSize];

@@ -40,7 +40,7 @@ void Texture2D::bind() const
     glBindTexture(GL_TEXTURE_2D, id);
 }
 
-Texture2D Texture2D::FromFile(const std::string filename)
+Texture2D Texture2D::fromFile(const std::string filename)
 {
     bool alpha = true;
 
@@ -70,7 +70,7 @@ Texture2D Texture2D::FromFile(const std::string filename)
     return *this;
 }
 
-void Texture2D::Clear()
+void Texture2D::clear()
 {
     glDeleteTextures(1, &id);
 }

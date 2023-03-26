@@ -32,7 +32,7 @@ namespace Tilemaps {
         static Tiled::Loader* tiled;
 
     protected:
-        Tilemap FromFile(const std::string filename) override;
-        void Clear() override;
+        Tilemap fromFile(const std::string filename) override;
+        void clear() override;
     };
 }
