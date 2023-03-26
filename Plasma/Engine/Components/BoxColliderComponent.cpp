@@ -20,16 +20,15 @@ BoxColliderComponent* BoxColliderComponent::Bind(Engine::Scene* game)
 
 BoxColliderComponent* BoxColliderComponent::SetSize(Vector2 size)
 {
-	bounds.lowerBound = size / -2;
-	bounds.upperBound = size / 2;
+	bounds = AABB(size / 2, -size / 2);
 	return this;
 }
 
 AABB BoxColliderComponent::GetBounds()
 {
 	AABB value = AABB(bounds);
-	value.lowerBound += gameObject->position;
-	value.upperBound += gameObject->position;
+	value.max += gameObject->position;
+	value.min += gameObject->position;
 	return value;
 }
 

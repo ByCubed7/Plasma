@@ -29,12 +29,6 @@ void TilemapComponent::Update(double time, double delta, Engine::Scene& game)
 
 void TilemapComponent::Draw(Render::Renderers& renderer)
 {
-    int ppu = gameObject->scene->GetWindow()->GetPPU();
-
-    //for (auto& tile : tilemap.layers[0].tiles)
-    //    tile.rotation += 1;
-
-
     for (auto& layer : tilemap.layers)
     {
         renderer.tilemap.Update(layer.GetRender());

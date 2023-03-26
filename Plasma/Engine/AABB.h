@@ -1,43 +1,47 @@
-// By @ByCubed7 on Twitter
-
 #pragma once
 
-#include <list>
 #include "Vector.h"
 
-// An axis aligned bounding box.
-struct AABB
-{
-	// Constructor
-	AABB();
-	AABB(Vector2 lower, Vector2 upper);
-	AABB(Vector2 bounds);
-	AABB(float length);
+#ifdef min
+#undef min
+#undef max
+#endif
 
-	// Functions
+class AABB {
+public:
+    AABB() {
+        min = Vector2();
+        max = Vector2();
+    }
 
-	Vector2 Center();
-	Vector2 Extents();
-	float Perimeter();
-	bool Contains(const AABB& aabb);
-	bool Overlaps(const AABB& aabb);
+    AABB(Vector2 vectorA, Vector2 vectorB) {
+        min = Vector2::min(vectorA, vectorB);
+        max = Vector2::max(vectorA, vectorB);
+    }
 
-	void Combine(const AABB& aabb);
-	void Combine(const AABB& aabb1, const AABB& aabb2);
+    Vector2 min;
+    Vector2 max;
 
-	// Operators
+    // Expands the box to fix the point
+    void fit(Vector2 point) {
+        if (min.x > point.x) min.x = point.x;
+        if (min.y > point.y) min.y = point.y;
+        if (max.x < point.x) max.x = point.x;
+        if (max.y < point.y) max.y = point.y;
+    }
 
-	bool operator<<(const AABB& otherAABB);
+    //
 
-	// Attributes
+    static bool overlaps(const AABB& a, const AABB& b)
+    {
+        if (b.min.x - a.max.x > 0) return false;
+        if (b.min.y - a.max.y > 0) return false;
+        if (a.min.x - b.max.x > 0) return false;
+        if (a.min.y - b.max.y > 0) return false;
+        return true;
+    }
 
-	Vector2 lowerBound;
-	Vector2 upperBound;
-
-	// Static Functions
-	//std::list<AABB> SortAndSweep(std::list<AABB> aabbs);
-
-
-
-};// AxisAlignedBoundingBox;
+    Vector2 center();
+    Vector2 extents();
+};
 

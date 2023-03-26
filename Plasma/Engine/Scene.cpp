@@ -145,13 +145,16 @@ namespace Engine
 		for (const auto& collider : colliders)
 		{
 			BoxColliderComponent box = *collider;
+
+			AABB bounds = collider->getBounds();
+
 			axis.push_back({
-				collider->GetBounds().lowerBound,
+				bounds.min,
 				false,
 				collider
 			});
 			axis.push_back({
-				collider->GetBounds().upperBound,
+				bounds.max,
 				true,
 				collider
 			});
@@ -190,7 +193,7 @@ namespace Engine
 			BoxColliderComponent* currentCollider = current.first;
 			BoxColliderComponent* collidingCollider = current.second;
 
-			bool colliding = currentCollider->GetBounds().Overlaps(collidingCollider->GetBounds());
+			bool colliding = AABB::overlaps(currentCollider->getBounds(), collidingCollider->getBounds());
 
 			// Calculate whether the the collider was already colliding from the frame before
 			auto it = collidersColliding.find(currentCollider);
