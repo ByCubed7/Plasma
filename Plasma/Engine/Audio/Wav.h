@@ -2,16 +2,22 @@
 
 #pragma once
 
+#include "../Resource.h"
+
 #include "OpenAL/AL/al.h"
 #include "OpenAL/AL/alc.h"
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <string>
 
-struct Wav
+class Wav : public Resource<Wav>
 {
-    std::string name;
+public:
+
+    Wav();
+
     std::string filepath;
 
     uint8_t channels;
@@ -42,4 +48,13 @@ struct Wav
 
         return format;
     }
+
+protected:
+    Wav FromFile(const std::string filename) override;
+    void Clear() override;
+
+
+private:
+    static bool LoadWavHeader(std::ifstream& file, std::uint8_t& channels, std::int32_t& sampleRate, std::uint8_t& bitsPerSample, ALsizei& size);
+
 };

@@ -27,9 +27,6 @@
     <ClCompile Include="Plasma\Engine\Object.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Plasma\Engine\Resources.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Plasma\Engine\Scene.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -146,6 +143,7 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\lodepng.cpp" />
     <ClCompile Include="Plasma\main.cpp" />
+    <ClCompile Include="Plasma\Engine\Audio\Wav.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Plasma\Include\Tilemaps.h">
@@ -179,9 +177,6 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Plasma\Engine\Resource.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Plasma\Engine\Resources.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Plasma\Engine\Scene.h">

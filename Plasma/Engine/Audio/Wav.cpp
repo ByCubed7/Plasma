@@ -1,56 +1,41 @@
-// By @ByCubed7 on Twitter
+#include "Wav.h"
 
-
-//#define VERBOSE
-
-#include "Resources.h"
-
-#include "Tilemaps/Tile.h"
-
-#include <iostream>
-#include <sstream>
-#include <fstream>
-#include <iostream>
-#include <bit>
-
-#include "lodepng.h"
-
-#include <ft2build.h>
-#include <freetype.h>  
-
-// Cache any resources we load
-std::map<std::string, Wav> Resources::wavs;
-
-
-Wav Resources::LoadWav(const std::string file, std::string name)
+Wav::Wav()
 {
-    Wav wav;
+    filepath = "";
 
-    std::ifstream in(file, std::ios::binary);
+    channels        = 0;
+    sampleRate      = 0;
+    bitsPerSample   = 0;
+    size            = 0;
+}
+
+Wav Wav::FromFile(const std::string filename)
+{
+    Wav wav = {};
+
+    std::ifstream in(filename, std::ios::binary);
     if (!in.is_open())
-        std::cout << "ERROR: Could not open \"" << file << "\"" << std::endl;
+        std::cout << "ERROR: Could not open \"" << filename << "\"" << std::endl;
 
     if (!LoadWavHeader(in, wav.channels, wav.sampleRate, wav.bitsPerSample, wav.size))
-        std::cout << "ERROR: Could not load wav header of \"" << file << "\"" << std::endl;
+        std::cout << "ERROR: Could not load wav header of \"" << filename << "\"" << std::endl;
 
     char* data = new char[wav.size];
     in.read(data, wav.size);
 
     wav.data = std::vector<char>(data, data + wav.size);
 
-    wav.name = name;
-    wav.filepath = file;
+    wav.filepath = filename;
 
-    wavs[name] = wav;
     return wav;
 }
 
-Wav Resources::GetWav(std::string name)
+void Wav::Clear()
 {
-    return wavs[name];
 }
 
-bool Resources::LoadWavHeader(std::ifstream& file, std::uint8_t& channels, std::int32_t& sampleRate, std::uint8_t& bitsPerSample, ALsizei& size)
+bool Wav::LoadWavHeader(std::ifstream& file, std::uint8_t& channels, std::int32_t& sampleRate, std::uint8_t& bitsPerSample, ALsizei& size)
 {
     char buffer[4];
     if (!file.is_open())
@@ -184,11 +169,4 @@ bool Resources::LoadWavHeader(std::ifstream& file, std::uint8_t& channels, std::
     }
 
     return true;
-}
-
-//
-
-std::vector<char> Resources::LoadWavFromFile(const std::string file)
-{
-    return std::vector<char>();
 }
