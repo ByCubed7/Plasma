@@ -48,8 +48,6 @@ namespace Engine
 	private:
 		App* app;
 
-		int PPU;
-
 		GLFWwindow* window;
 		Engine::Scene* scene;
 

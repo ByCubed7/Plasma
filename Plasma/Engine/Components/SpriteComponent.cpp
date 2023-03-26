@@ -33,9 +33,7 @@ void SpriteComponent::Draw(Render::Renderers& renderer)
 {
     //std::cout << "Draw!" << std::endl;
 
-    int ppu = gameObject->scene->GetWindow()->GetPPU();
-
-    Vector2 scale = gameObject->scale * ppu;
+    Vector2 scale = gameObject->scale;
 
     if (reflectionX) scale.x = -scale.x;
     if (reflectionY) scale.y = -scale.y;
@@ -72,15 +70,14 @@ AABB SpriteComponent::GetBounds() { return bounds; }
 // Update bounds
 void SpriteComponent::CalcBounds() 
 {
-    int ppu = gameObject->scene->GetWindow()->GetPPU();
-    Vector2 upperBound = Vector2(ppu) / 2;
-    Vector2 lowerBound = -upperBound;
+    Vector2 upperBound = 1;
+    Vector2 lowerBound = -1;
     this->bounds = AABB(lowerBound, upperBound);
 }
 
-SpriteComponent* SpriteComponent::Set(Texture2D newSprite) {
-    size = sprite.size.Cast<unsigned int>();
+SpriteComponent* SpriteComponent::setTexture2D(Texture2D newSprite) {
     sprite = newSprite;
+    size = sprite.size;
     return this; 
 }
 Texture2D SpriteComponent::Get() { return sprite; }

@@ -42,7 +42,7 @@ void TilemapComponent::Draw(Render::Renderers& renderer)
         renderer.tilemap.DrawTileLayer(
             tilemap.tileSheet,
             { gameObject->position.x, gameObject->position.y },
-            { gameObject->scale.x * ppu, gameObject->scale.y * ppu },
+            { gameObject->scale.x, gameObject->scale.y },
             gameObject->rotation,
             spriteFrame,
             { 1, 1, 1 }
@@ -83,8 +83,7 @@ Vector2 TilemapComponent::GetTilePositionAtScenePosition(Vector2 pos)
 {
     // Transform position to gameobject
     pos += gameObject->position;
-    pos /= GetTileDensity();
-    pos.Round(1);
+    pos.round(1);
 
     return pos;
 }
@@ -92,20 +91,11 @@ Vector2 TilemapComponent::GetTilePositionAtScenePosition(Vector2 pos)
 Vector2 TilemapComponent::GetScenePositionAtTilePosition(Vector2 pos)
 {
     // Transform position to gameobject
-    pos *= GetTileDensity();
     pos -= gameObject->position;
     return pos;
 }
 
-
-Vector2 TilemapComponent::GetTileDensity()
-{
-    // Scale position from PPU
-    // Note: Also scale by gameobject scale
-    return Vector2(gameObject->scene->GetWindow()->GetPPU());
-}
-
-int TilemapComponent::GetTileAtScenePosition(Vector2 pos)
+int TilemapComponent::getTileAtScenePosition(Vector2 pos)
 {
     pos = GetTilePositionAtScenePosition(pos);
     Vector2Int posInt = Vector2Int({ (int)pos.x, (int)pos.y });

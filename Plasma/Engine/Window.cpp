@@ -24,7 +24,6 @@ namespace Engine {
 
 		position = 0;
 
-		PPU = 20;
 
 
 		// See: https://gist.github.com/esmitt/e722265936f0ebe96fc166bdf1fff41b
@@ -138,10 +137,6 @@ namespace Engine {
 		glfwSetWindowSize(window, size.x, size.y);
 	}
 
-	int Window::GetPPU()
-	{
-		return PPU;
-	}
 
 	Vector2Int Window::GetMonitorSize()
 	{

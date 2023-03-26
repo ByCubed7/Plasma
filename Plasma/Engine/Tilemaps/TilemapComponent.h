@@ -31,7 +31,6 @@ public:
 	Vector2 GetTilePositionAtScenePosition(Vector2 pos);
 	Vector2 GetScenePositionAtTilePosition(Vector2 pos);
 
-	Vector2 GetTileDensity();
 
 	// Getting tiles
 	int GetTileAtScenePosition(Vector2 pos);
