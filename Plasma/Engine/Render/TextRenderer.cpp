@@ -7,7 +7,6 @@
 
 #include "Texture2D.h"
 #include "Font.h"
-#include "../Resources.h"
 
 #include "OpenGL.h"
 

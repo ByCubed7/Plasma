@@ -22,6 +22,3 @@
 #include "../Engine/App.h"
 #include "../Engine/Window.h"
 
-// Soon to be gone
-#include "../Engine/Resources.h"
-
