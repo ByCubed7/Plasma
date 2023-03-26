@@ -164,6 +164,7 @@
     <ClCompile Include="Plasma\Engine\Audio\AudioScene.cpp" />
     <ClCompile Include="Plasma\Engine\Audio\AudioSource.cpp" />
     <ClCompile Include="Plasma\Engine\Audio\AudioSourceComponent.cpp" />
+    <ClCompile Include="Plasma\Engine\Audio\Wav.cpp" />
     <ClCompile Include="Plasma\Engine\Component.cpp" />
     <ClCompile Include="Plasma\Engine\Components\BoxColliderComponent.cpp" />
     <ClCompile Include="Plasma\Engine\Components\CharacterControllerComponent.cpp" />
@@ -180,7 +181,6 @@
     <ClCompile Include="Plasma\Engine\Render\TextRenderer.cpp" />
     <ClCompile Include="Plasma\Engine\Render\Texture2D.cpp" />
     <ClCompile Include="Plasma\Engine\Render\TilemapRenderer.cpp" />
-    <ClCompile Include="Plasma\Engine\Resources.cpp" />
     <ClCompile Include="Plasma\Engine\Scene.cpp" />
     <ClCompile Include="Plasma\Engine\Tilemaps\Tile.cpp" />
     <ClCompile Include="Plasma\Engine\Tilemaps\TileLayer.cpp" />
@@ -239,7 +239,6 @@
     <ClInclude Include="Plasma\Engine\Render\Texture2D.h" />
     <ClInclude Include="Plasma\Engine\Render\TilemapRenderer.h" />
     <ClInclude Include="Plasma\Engine\Resource.h" />
-    <ClInclude Include="Plasma\Engine\Resources.h" />
     <ClInclude Include="Plasma\Engine\Scene.h" />
     <ClInclude Include="Plasma\Engine\Tilemaps\Tile.h" />
     <ClInclude Include="Plasma\Engine\Tilemaps\TileLayer.h" />

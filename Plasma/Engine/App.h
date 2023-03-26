@@ -5,7 +5,6 @@
 #include "Audio/AudioScene.h"
 
 #include "Scene.h"
-#include "Resources.h"
 
 #include "OpenGL.h"
 

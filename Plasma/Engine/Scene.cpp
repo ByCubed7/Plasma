@@ -10,7 +10,6 @@
 #include "Audio/AudioScene.h"
 
 #include "Window.h"
-#include "Resources.h"
 #include "GameObject.h"
 #include "Component.h"
 #include "Input.h"
