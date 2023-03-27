@@ -46,7 +46,7 @@ namespace Engine
 		void RemoveComponent(Component* component);
 
 		template<class T> T* getGLFW();
-		template<class T> T* Add();
+		template<class T> T* add();
 
 		bool isSolid;
 		bool destroyed;
@@ -74,7 +74,7 @@ namespace Engine
 	}
 
 	template<class T>
-	inline T* GameObject::Add()
+	inline T* GameObject::add()
 	{
 		T* newComponent = new T(this, typeid(T).name());
 		return newComponent;

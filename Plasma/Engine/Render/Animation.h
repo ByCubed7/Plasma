@@ -25,7 +25,7 @@ namespace Render
 		}
 
 		// Add an animation to the list of the state
-		void Add(States state, Vector2Int offset)
+		void add(States state, Vector2Int offset)
 		{
 			std::vector<Vector2Int>& animation = data[state];
 			animation.push_back(offset);

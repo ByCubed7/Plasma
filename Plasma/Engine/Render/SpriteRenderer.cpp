@@ -36,7 +36,7 @@ namespace Render
         glBindVertexArray(0);
     }
 
-    void SpriteRenderer::drawSprite(Texture2D& texture, glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color)
+    void SpriteRenderer::draw(Texture2D& texture, glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color)
     {
         // Prepare transformations
         shader.Use();

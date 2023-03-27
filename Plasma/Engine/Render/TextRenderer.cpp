@@ -44,11 +44,11 @@ namespace Render
 
     }
 
-    void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec2 pivot, glm::vec3 color)
+    void TextRenderer::draw(std::string text, float x, float y, float scale, glm::vec2 pivot, glm::vec3 color)
     {
         #ifdef VERBOSE
-        std::cout << "[TextRenderer::RenderText]" << std::endl;
-        std::cout << "\t - Attempting to render: " << text << std::endl;
+        std::cout << "[TextRenderer::draw]" << std::endl;
+        std::cout << "\t - Attempting to draw: " << text << std::endl;
         #endif
 
         // Get Font from resources

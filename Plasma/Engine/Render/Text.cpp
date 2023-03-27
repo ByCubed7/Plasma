@@ -42,7 +42,7 @@ void Text::Render(glm::vec2 position, glm::vec2 size, glm::vec2 scale, glm::vec2
 {
 #ifdef VERBOSE
     std::cout << "[Text::Render]" << std::endl;
-    std::cout << "\t - Attempting to render: " << contents << std::endl;
+    std::cout << "\t - Attempting to draw: " << contents << std::endl;
 #endif
 
     // Configure VBO for texture quads

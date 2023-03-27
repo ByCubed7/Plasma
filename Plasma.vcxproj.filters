@@ -30,9 +30,6 @@
     <ClCompile Include="Plasma\Engine\Scene.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Plasma\Engine\Vector2 OLD.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Plasma\Engine\Window.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -183,9 +180,6 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Plasma\Engine\Vector.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Plasma\Engine\Vector2 OLD.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Plasma\Engine\Window.h">

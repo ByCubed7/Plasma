@@ -55,12 +55,12 @@ namespace Tilemaps {
 
 			//if (tile.second.position == VectorInt(0) && tile.second.id == 0) std::cout << "INDEX: " << i << std::endl;
 
-			renderData.Add(tile.second);
+			renderData.add(tile.second);
 			i++;
 		}
 		
 		return renderData;
 	}
 
-	size_t TileLayer::Count() { return tiles.size(); }
+	size_t TileLayer::size() { return tiles.size(); }
 }

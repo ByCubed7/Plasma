@@ -35,7 +35,7 @@ namespace Tiled {
 		unsigned int OffsetX() const noexcept;
 		unsigned int OffsetY() const noexcept;
 
-		unsigned int Count() const noexcept;
+		unsigned int size() const noexcept;
 
 		std::array<unsigned int, 3> TransparentColour() const noexcept;
 

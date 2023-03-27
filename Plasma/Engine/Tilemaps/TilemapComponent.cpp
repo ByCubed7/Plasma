@@ -31,7 +31,7 @@ void TilemapComponent::draw(Render::Renderers& renderer)
     {
         renderer.tilemap.update(layer.GetRender());
 
-        renderer.tilemap.DrawTileLayer(
+        renderer.tilemap.draw(
             tilemap.tileSheet,
             { gameObject->position.x, gameObject->position.y },
             { gameObject->scale.x, gameObject->scale.y },

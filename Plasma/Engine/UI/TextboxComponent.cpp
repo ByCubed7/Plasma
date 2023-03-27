@@ -15,7 +15,7 @@ namespace UI {
 
 	void TextboxComponent::draw(Render::Renderers& renderer)
 	{
-		renderer.text.RenderText(
+		renderer.text.draw(
 			text,
 			gameObject->position.x, gameObject->position.y,
 			gameObject->scale.x,

@@ -9,7 +9,7 @@
 
 namespace Tilemaps {
 
-	void TileRender::Add(Tile& tile)
+	void TileRender::add(const Tile& tile)
 	{
 		//if (tile.position == 0 && tile.id == 0) return;
 		
@@ -34,25 +34,7 @@ namespace Tilemaps {
 		rotscas.push_back(transform);
 	}
 
-	std::vector<float> TileRender::Ids()
-	{
-		std::vector<float> data;
-		for (int& tile : ids)
-			data.push_back((float)tile);
-		return data;
-	}
-
-	std::vector<glm::vec2> TileRender::Positions()
-	{
-		return positions;
-	}
-
-	std::vector<glm::mat4> TileRender::RotScas()
-	{
-		return rotscas;
-	}
-
-	size_t TileRender::Count()
+	const size_t& TileRender::size() const
 	{
 		return ids.size();
 	}

@@ -61,7 +61,7 @@ namespace Tiled {
 	unsigned int setTexture2D::OffsetX() const noexcept { return offsetX; }
 	unsigned int setTexture2D::OffsetY() const noexcept { return offsetY; }
 
-	unsigned int setTexture2D::Count() const noexcept { return count; }
+	unsigned int setTexture2D::size() const noexcept { return count; }
 
 	std::array<unsigned int, 3> setTexture2D::TransparentColour() const noexcept { return transparentColour; }
 

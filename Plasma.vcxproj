@@ -183,7 +183,6 @@
     <ClCompile Include="Plasma\Engine\Tilemaps\TileRender.cpp" />
     <ClCompile Include="Plasma\Engine\Tilemaps\Tileset.cpp" />
     <ClCompile Include="Plasma\Engine\UI\TextboxComponent.cpp" />
-    <ClCompile Include="Plasma\Engine\Vector2 OLD.cpp" />
     <ClCompile Include="Plasma\Engine\Window.cpp" />
     <ClCompile Include="Plasma\Library\glad.c" />
     <ClCompile Include="Plasma\Library\TiledLibrary\TiledLayer.cpp" />
@@ -237,7 +236,6 @@
     <ClInclude Include="Plasma\Engine\Tilemaps\Tileset.h" />
     <ClInclude Include="Plasma\Engine\UI\TextboxComponent.h" />
     <ClInclude Include="Plasma\Engine\Vector.h" />
-    <ClInclude Include="Plasma\Engine\Vector2 OLD.h" />
     <ClInclude Include="Plasma\Engine\Window.h" />
     <ClInclude Include="Plasma\Include\All.h" />
     <ClInclude Include="Plasma\Include\Audio.h" />
