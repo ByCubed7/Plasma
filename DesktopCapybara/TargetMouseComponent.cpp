@@ -13,11 +13,7 @@ TargetMouseComponent::TargetMouseComponent(Engine::GameObject* gameObject, std::
 	walkComponent = nullptr;
 }
 
-<<<<<<< Updated upstream
-void TargetMouseComponent::Update(double time, double delta, Engine::Scene& game)
-=======
 void TargetMouseComponent::update(double time, double delta, Engine::Scene& game)
->>>>>>> Stashed changes
 {
 	walkComponent->SetTargetPosition(Engine::App::instance->input.mousePosition);
 }

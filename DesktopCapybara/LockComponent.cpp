@@ -66,11 +66,8 @@ LockComponent* LockComponent::LockScale(bool doLock)
 
 LockComponent* LockComponent::LockSpriteReflection(SpriteComponent* newSprite)
 {
-<<<<<<< Updated upstream
-	gameObjectSprite = gameObject->Get<SpriteComponent>();
-=======
 	gameObjectSprite = gameObject->getComponent<SpriteComponent>();
->>>>>>> Stashed changes
+
 	targetSprite = newSprite;
 	return this;
 }
