@@ -24,11 +24,7 @@ LockComponent::LockComponent(Engine::GameObject* gameObject, std::string name)
 
 }
 
-<<<<<<< Updated upstream
-void LockComponent::Update(double time, double delta, Engine::Scene& game)
-=======
 void LockComponent::update(double time, double delta, Engine::Scene& game)
->>>>>>> Stashed changes
 {
 	if (lockPosition) gameObject->position = target->position + positionOffset * target->scale;
 	if (lockRotation) gameObject->rotation = target->rotation + rotationOffset;
