@@ -33,9 +33,6 @@
     <ClCompile Include="Plasma\Engine\Scene.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Plasma\Engine\Vector2 OLD.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Plasma\Engine\Window.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -209,9 +206,6 @@
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Plasma\Engine\Vector.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Plasma\Engine\Vector2 OLD.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Plasma\Engine\Window.h">
@@ -407,8 +401,29 @@
     <ClInclude Include="DesktopCapybara\CapybaraAI.h">
       <Filter>DesktopCapybara</Filter>
     </ClInclude>
+    <ClInclude Include="Plasma\Engine\Colour.h" />
+    <ClInclude Include="Plasma\Engine\Quaternion.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Plasma.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="assets\textures\Sugercan.png" />
+    <CopyFileToFolders Include="assets\audio\Capybara Baby Exams B-Roll.mp3" />
+    <CopyFileToFolders Include="assets\audio\Capybara Click.wav" />
+    <CopyFileToFolders Include="assets\audio\Capybara.aup3" />
+    <CopyFileToFolders Include="assets\audio\Capybara.wav" />
+    <CopyFileToFolders Include="assets\fonts\arial.ttf" />
+    <CopyFileToFolders Include="assets\shaders\sprite.frag" />
+    <CopyFileToFolders Include="assets\shaders\sprite.vs" />
+    <CopyFileToFolders Include="assets\shaders\text.frag" />
+    <CopyFileToFolders Include="assets\shaders\text.vs" />
+    <CopyFileToFolders Include="assets\shaders\tile.frag" />
+    <CopyFileToFolders Include="assets\shaders\tile.vs" />
+    <CopyFileToFolders Include="assets\textures\Capybara.png" />
+    <CopyFileToFolders Include="assets\textures\food.png" />
+    <CopyFileToFolders Include="assets\textures\Hat.png" />
+    <CopyFileToFolders Include="assets\textures\Heart.png" />
+    <CopyFileToFolders Include="assets\textures\Shadow.png" />
   </ItemGroup>
 </Project>
