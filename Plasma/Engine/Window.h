@@ -37,7 +37,6 @@ namespace Engine
 		void setTitle(std::string newName);
 		void setInteractable(bool toggle);
 		void setShowInTaskbar(bool toggle);
-		void setSize(Vector2Int value);
 
 	private:
 		App* app;

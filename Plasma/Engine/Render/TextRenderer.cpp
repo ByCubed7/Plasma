@@ -51,8 +51,10 @@ namespace Render
         std::cout << "\t - Attempting to draw: " << text << std::endl;
         #endif
 
+        scale *= PPU;
+
         // Get Font from resources
-        Font font = Font::getGLFW("arial");
+        Font font = Font::get("arial");
 
         // Activate corresponding render state	
         this->shader.Use();

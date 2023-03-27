@@ -18,7 +18,7 @@ namespace Engine
         this->gameObject = gameObject;
         this->scene = gameObject->scene;
 
-        gameObject->AddComponent(this);
+        gameObject->addComponent(this);
     }
 
     void Component::update(double time, double delta, Engine::Scene& game) {}

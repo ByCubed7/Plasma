@@ -40,13 +40,13 @@ namespace Engine
 		void RemoveTag(std::string tag);
 		bool HasTag(std::string tag);
 
-		Component* AddComponent(Component* component);
-		Component* GetComponent(std::string componentName);
-		bool HasComponent(std::string componentName);
-		void RemoveComponent(Component* component);
+		Component* addComponent(Component* component);
+		Component* getComponent(std::string componentName);
+		bool hasComponent(std::string componentName);
+		void removeComponent(Component* component);
 
-		template<class T> T* getGLFW();
-		template<class T> T* add();
+		template<class T> T* getComponent();
+		template<class T> T* addComponent();
 
 		bool isSolid;
 		bool destroyed;
@@ -61,7 +61,7 @@ namespace Engine
 
 
 	template<class T>
-	inline T* GameObject::getGLFW()
+	inline T* GameObject::getComponent()
 	{
 		for (Component* component : components)
 		{
@@ -74,7 +74,7 @@ namespace Engine
 	}
 
 	template<class T>
-	inline T* GameObject::add()
+	inline T* GameObject::addComponent()
 	{
 		T* newComponent = new T(this, typeid(T).name());
 		return newComponent;

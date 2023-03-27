@@ -39,7 +39,6 @@ template<class Type, class Value, size_t N>
 class Vector
 {
 public:
-
     // Default Contructors
     Vector() : _contents{}
     {
@@ -86,6 +85,7 @@ public:
     /// <summary>Gets the size of the Vector.</summary>
     /// <returns>The size of the Vector.</returns>
     constexpr size_t size() const { return N; }
+
 
     void invert() {
         for (int i = 0; i < N; i++) _contents[i] = -_contents[i];
@@ -141,11 +141,12 @@ public:
     // - Static methods
 
     // Random
-    static Type random(const Type& bounds) {
+    static Type random(const Vector& bounds) {
         Type randomVector = Type();
 
-        for (int i = 0; i < N; i++)
-            randomVector._contents[i] = (Value)(rand() % bounds._contents[i]);
+        for (int i = 0; i < N; i++) {
+            randomVector._contents[i] = (Value)(rand() % (int)bounds._contents[i]);
+        }
 
         return randomVector;
     }
@@ -226,29 +227,12 @@ public:
     /// <summary>Casts the vectors value to another type.</summary>
     /// <typeparam name="newT">The new type to assign the values to.</typeparam>
     /// <returns>The casted vector.</returns>
-    template<class newT>
-    constexpr Vector<Type, newT, N> Cast() {
-        Vector<Type, newT, N> newVector = Vector<Type, newT, N>();
+    template<class newType>
+    newType Cast() {
+        newType newVector = {};
         for (int i = 0; i < N; i++)
-            newVector._contents[i] = (newT)_contents[i];
+            newVector._contents[i] = _contents[i];
         
-        return newVector;
-    }
-
-    /// <summary>No idea why you would use this, appends one vector onto the other.</summary>
-    /// <param name="first">- the first vector.</param>
-    /// <param name="second">- the second vector.</param>
-    /// <returns>The appended vector.</returns>
-    template<size_t A, size_t B>
-    static Vector<Type, Value, A + B> Append(Vector<Type, Value, A> first, Vector<Type, Value, B> second) {
-        Vector<Type, Value, A + B> newVector = Vector<Type, Value, A + B>();
-
-        for (int i = 0; i < A; i++)
-            newVector._contents[i] = first._contents[i];
-
-        for (int i = 0; i < B; i++)
-            newVector._contents[A + i] = second._contents[i];
-
         return newVector;
     }
 
@@ -564,8 +548,8 @@ public:
         return other + operator std::string();
     }*/
 
-protected:
     std::array<Value, N> _contents;
+protected:
 };
 
 // All of this, just to use vector.x  :`)

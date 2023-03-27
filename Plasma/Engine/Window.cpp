@@ -197,10 +197,6 @@ namespace Engine {
 		ShowWindow(hWnd, SW_SHOW); // show the window for the new style to come into effect
 	}
 
-	void Window::setSize(Vector2Int value)
-	{
-	}
-
 	void Window::GraphicsCallbackKey(GLFWwindow* window, int key, int scancode, int action, int mode)
 	{
 		//if (!scene->input.KeyExists(key)) return;
