@@ -34,7 +34,7 @@ namespace Tilemaps {
         // - Attribute Gets
 
 
-        size_t Count();
+        size_t size();
     private:
         std::map<Vector2Int, Tile> tiles;
     };

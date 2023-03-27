@@ -39,7 +39,7 @@ namespace Audio
 		alDeleteSources(1, &id);
 	}
 
-	void Source::Bind(ALint bufferId) 
+	void Source::bind(ALint bufferId) 
 	{ 
 		#ifdef VERBOSE
 		std::cout << "[Audio::Source::Bind]" << std::endl;

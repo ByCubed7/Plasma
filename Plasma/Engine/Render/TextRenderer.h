@@ -20,7 +20,7 @@ namespace Render
         TextRenderer(Shader& shader);
 
         // Renders a string of text using the precompiled list of characters
-        void RenderText(std::string text, float x, float y, float scale, glm::vec2 pivot, glm::vec3 color);
+        void draw(std::string text, float x, float y, float scale, glm::vec2 pivot, glm::vec3 color);
 
     private:
         unsigned int verticeVBO;

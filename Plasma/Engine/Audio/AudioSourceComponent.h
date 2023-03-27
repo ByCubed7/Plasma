@@ -15,7 +15,7 @@ class AudioSourceComponent : public Engine::Component
 public:
 	AudioSourceComponent(Engine::GameObject* gameObject, std::string name = "AudioSourceComponent");
 
-	void Update(double delta, Engine::Scene& game);
+	void update(double delta, Engine::Scene& game);
 
 	void Attach(Wav wavFile);
 

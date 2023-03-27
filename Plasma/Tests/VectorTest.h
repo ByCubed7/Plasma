@@ -99,11 +99,11 @@ namespace Tests {
 		assert(valueC.z == 23.0f);
 
 		// normilize
-		valueC = Vector3({ 4, 0, 3 }).Normalize();
+		valueC = Vector3({ 4, 0, 3 }).normalize();
 		assert(valueC == Vector3({ 0.8f, 0, 0.6f }));
 
 		// Size
-		assert(valueC.Size() == 3);
+		assert(valueC.size() == 3);
 	}
 
 }

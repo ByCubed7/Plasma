@@ -26,7 +26,7 @@ namespace Audio
 		/// Bind a buffer object to this source
 		/// </summary>
 		/// <param name="bufferId">- the pointer to the memory buffer.</param>
-		void Bind(ALint bufferId);
+		void bind(ALint bufferId);
 		void Play();
 
 		bool IsPlaying();

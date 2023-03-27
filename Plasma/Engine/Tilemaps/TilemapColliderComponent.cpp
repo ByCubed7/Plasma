@@ -13,13 +13,13 @@ TilemapColliderComponent::TilemapColliderComponent(Engine::GameObject* gameObjec
 {
 }
 
-TilemapColliderComponent* TilemapColliderComponent::Bind(Engine::Scene* game)
+TilemapColliderComponent* TilemapColliderComponent::bind(Engine::Scene* game)
 {
 	//game->colliders.push_back(this);
 	return this;
 }
 
-TilemapColliderComponent* TilemapColliderComponent::SetTilemap(Tilemaps::Tilemap tilemap)
+TilemapColliderComponent* TilemapColliderComponent::setTilemap(Tilemaps::Tilemap tilemap)
 {
 	this->tilemap = tilemap;
 	return this;

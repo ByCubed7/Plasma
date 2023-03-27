@@ -14,12 +14,8 @@ namespace Tilemaps {
         std::vector<glm::vec2> positions;
         std::vector<glm::mat4> rotscas;
 
-        void Add(Tile& tile);
+        void add(const Tile& tile);
 
-        std::vector<float> Ids();
-        std::vector<glm::vec2> Positions();
-        std::vector<glm::mat4> RotScas();
-
-        size_t Count();
+        const size_t& size() const;
     };
 }

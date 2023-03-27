@@ -18,7 +18,7 @@ CharacterControllerComponent::CharacterControllerComponent(Engine::GameObject* g
 
 }
 
-void CharacterControllerComponent::Update(double time, double delta, Engine::Scene& game)
+void CharacterControllerComponent::update(double time, double delta, Engine::Scene& game)
 {
 	// - Input
 
@@ -34,9 +34,9 @@ void CharacterControllerComponent::Update(double time, double delta, Engine::Sce
 	else velocity.y = 0;
 
 	// Normilize velo
-	if (velocity.Magnitude())
+	if (velocity.magnitude())
 	{
-		velocity = velocity.Normalize();
+		velocity = velocity.normalize();
 		velocity *= 300;
 	}
 

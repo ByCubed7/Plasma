@@ -190,7 +190,6 @@
     <ClCompile Include="Plasma\Engine\Tilemaps\TileRender.cpp" />
     <ClCompile Include="Plasma\Engine\Tilemaps\Tileset.cpp" />
     <ClCompile Include="Plasma\Engine\UI\TextboxComponent.cpp" />
-    <ClCompile Include="Plasma\Engine\Vector2 OLD.cpp" />
     <ClCompile Include="Plasma\Engine\Window.cpp" />
     <ClCompile Include="Plasma\Library\glad.c" />
     <ClCompile Include="Plasma\Library\TiledLibrary\TiledLayer.cpp" />
@@ -216,6 +215,7 @@
     <ClInclude Include="Plasma\Engine\Audio\AudioSource.h" />
     <ClInclude Include="Plasma\Engine\Audio\AudioSourceComponent.h" />
     <ClInclude Include="Plasma\Engine\Audio\Wav.h" />
+    <ClInclude Include="Plasma\Engine\Colour.h" />
     <ClInclude Include="Plasma\Engine\Component.h" />
     <ClInclude Include="Plasma\Engine\Components\AnimatedSprite.h" />
     <ClInclude Include="Plasma\Engine\Components\BoxColliderComponent.h" />
@@ -227,6 +227,7 @@
     <ClInclude Include="Plasma\Engine\GameObject.h" />
     <ClInclude Include="Plasma\Engine\Input.h" />
     <ClInclude Include="Plasma\Engine\Object.h" />
+    <ClInclude Include="Plasma\Engine\Quaternion.h" />
     <ClInclude Include="Plasma\Engine\Render\Animation.h" />
     <ClInclude Include="Plasma\Engine\Render\Font.h" />
     <ClInclude Include="Plasma\Engine\Render\Renderable.h" />
@@ -249,7 +250,6 @@
     <ClInclude Include="Plasma\Engine\Tilemaps\Tileset.h" />
     <ClInclude Include="Plasma\Engine\UI\TextboxComponent.h" />
     <ClInclude Include="Plasma\Engine\Vector.h" />
-    <ClInclude Include="Plasma\Engine\Vector2 OLD.h" />
     <ClInclude Include="Plasma\Engine\Window.h" />
     <ClInclude Include="Plasma\Include\All.h" />
     <ClInclude Include="Plasma\Include\Audio.h" />

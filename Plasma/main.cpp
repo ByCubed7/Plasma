@@ -23,11 +23,11 @@ int main(int argc, char* argv[])
 
 	//FreeConsole();
 	App app = App();
-	Scene* scene = app.CreateGame();
+	Scene* scene = app.createScene();
 
 	// Prepares an OpenGL context so that we can send API calls
-	app.Build();
-	app.Load(scene);
+	app.build();
+	app.load(scene);
 
 
 	Shader::Load("assets/shaders/sprite.shader", "sprite");
@@ -79,7 +79,7 @@ int main(int argc, char* argv[])
 
 
 	// Mainloop
-	return app.Run();
+	return app.run();
 }
 
 

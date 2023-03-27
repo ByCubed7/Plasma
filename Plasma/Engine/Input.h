@@ -16,8 +16,8 @@ private:
 	static const Button mouseBufferSize = 8;
 
 public:
-	void Update();
-	void Clear();
+	void update();
+	void clear();
 	
 	// Keyboard
 	bool state_keyboard[keyboardBufferSize];

@@ -141,11 +141,11 @@ Shader& Shader::SetMatrix4(const char* name, const glm::mat4& matrix, bool useSh
     return *this;
 }
 
-Shader Shader::FromFile(const std::string filename)
+Shader Shader::fromFile(const std::string filename)
 {
     std::string filetype = ".shader";
     // Filename is EXPECTED to end with filetype
-    if (!ends_with(filename, filetype)) std::cout << "Shader::FromFile::Error: Filename does not end with `" << filetype << "`" << std::endl;
+    if (!ends_with(filename, filetype)) std::cout << "Shader::fromFile::Error: Filename does not end with `" << filetype << "`" << std::endl;
 
     // Get the shader filepath
     std::string filepath = filename.substr(0, filename.size() - filetype.size());
@@ -216,7 +216,7 @@ Shader Shader::FromFile(const std::string filename)
     return shader;
 }
 
-void Shader::Clear()
+void Shader::clear()
 {
     glDeleteProgram(program);
 }

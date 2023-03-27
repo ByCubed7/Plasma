@@ -9,7 +9,7 @@ namespace Tiled {
 
 	// Load in from file
 	
-	Set::Set(
+	setTexture2D::setTexture2D(
 		std::unordered_map<std::string, std::string> const& data,
 		std::unordered_map<std::string, std::string> const& properties,
 		std::vector<Tile> const& tiles)
@@ -46,29 +46,29 @@ namespace Tiled {
 		*/
 	}
 
-	unsigned int Set::FirstGID() const noexcept { return firstGID; }
-	unsigned int Set::LastGID() const noexcept { return lastGID; }
+	unsigned int setTexture2D::FirstGID() const noexcept { return firstGID; }
+	unsigned int setTexture2D::LastGID() const noexcept { return lastGID; }
 
-	unsigned int Set::ImageWidth() const noexcept { return imageWidth; }
-	unsigned int Set::ImageHeight() const noexcept { return imageHeight; }
+	unsigned int setTexture2D::ImageWidth() const noexcept { return imageWidth; }
+	unsigned int setTexture2D::ImageHeight() const noexcept { return imageHeight; }
 
-	unsigned int Set::TileWidth() const noexcept { return tileWidth; }
-	unsigned int Set::TileHeight() const noexcept { return tileHeight; }
+	unsigned int setTexture2D::TileWidth() const noexcept { return tileWidth; }
+	unsigned int setTexture2D::TileHeight() const noexcept { return tileHeight; }
 
-	unsigned int Set::Spacing() const noexcept { return spacing; }
-	unsigned int Set::Margin() const noexcept { return margin; }
+	unsigned int setTexture2D::Spacing() const noexcept { return spacing; }
+	unsigned int setTexture2D::Margin() const noexcept { return margin; }
 
-	unsigned int Set::OffsetX() const noexcept { return offsetX; }
-	unsigned int Set::OffsetY() const noexcept { return offsetY; }
+	unsigned int setTexture2D::OffsetX() const noexcept { return offsetX; }
+	unsigned int setTexture2D::OffsetY() const noexcept { return offsetY; }
 
-	unsigned int Set::Count() const noexcept { return count; }
+	unsigned int setTexture2D::size() const noexcept { return count; }
 
-	std::array<unsigned int, 3> Set::TransparentColour() const noexcept { return transparentColour; }
+	std::array<unsigned int, 3> setTexture2D::TransparentColour() const noexcept { return transparentColour; }
 
-	std::string Set::Name() const noexcept { return name; }
-	std::string Set::Source() const noexcept { return source; }
+	std::string setTexture2D::Name() const noexcept { return name; }
+	std::string setTexture2D::Source() const noexcept { return source; }
 
-	std::string Set::Property(std::string const &key) noexcept
+	std::string setTexture2D::Property(std::string const &key) noexcept
 	{
 		auto prop = properties.find(key);
 		if (prop != properties.end()) return prop->second;
@@ -76,7 +76,7 @@ namespace Tiled {
 		return nullptr;
 	}
 
-	Tile* Set::GetTile(unsigned int id)
+	Tile* setTexture2D::GetTile(unsigned int id)
 	{
 		for (unsigned int i = 0; i < lastGID; ++i)
 			if (id == tiles[i].Id())

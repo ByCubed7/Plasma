@@ -25,7 +25,7 @@ namespace Render
 		}
 
 		// Add an animation to the list of the state
-		void Add(States state, Vector2Int offset)
+		void add(States state, Vector2Int offset)
 		{
 			std::vector<Vector2Int>& animation = data[state];
 			animation.push_back(offset);
@@ -37,7 +37,7 @@ namespace Render
 		}
 
 		// Return the Rect the render should use
-		Vector2Int Get()
+		Vector2Int getGLFW()
 		{
 			// BUG: data might not have state.
 			

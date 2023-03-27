@@ -21,7 +21,7 @@ AudioSourceComponent::AudioSourceComponent(Engine::GameObject* gameObject, std::
 	buffer = 0;
 }
 
-void AudioSourceComponent::Update(double delta, Engine::Scene& game)
+void AudioSourceComponent::update(double delta, Engine::Scene& game)
 {
 	//source->SetPosition(gameObject->position);
 }
@@ -29,5 +29,5 @@ void AudioSourceComponent::Update(double delta, Engine::Scene& game)
 void AudioSourceComponent::Attach(Wav wavFile)
 {
 	buffer = gameObject->scene->audio->CreateBuffer(wavFile);
-	source->Bind(buffer->id);
+	source->bind(buffer->id);
 }

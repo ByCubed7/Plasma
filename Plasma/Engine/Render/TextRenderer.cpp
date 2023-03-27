@@ -44,15 +44,15 @@ namespace Render
 
     }
 
-    void TextRenderer::RenderText(std::string text, float x, float y, float scale, glm::vec2 pivot, glm::vec3 color)
+    void TextRenderer::draw(std::string text, float x, float y, float scale, glm::vec2 pivot, glm::vec3 color)
     {
         #ifdef VERBOSE
-        std::cout << "[TextRenderer::RenderText]" << std::endl;
-        std::cout << "\t - Attempting to render: " << text << std::endl;
+        std::cout << "[TextRenderer::draw]" << std::endl;
+        std::cout << "\t - Attempting to draw: " << text << std::endl;
         #endif
 
         // Get Font from resources
-        Font font = Font::Get("arial");
+        Font font = Font::getGLFW("arial");
 
         // Activate corresponding render state	
         this->shader.Use();
@@ -73,9 +73,9 @@ namespace Render
             Character ch = font.Characters[*c];
             //Character ch = font.GetCharacter(*c);
 
-            width += ch.Size.x * scale;
+            width += ch.getSize.x * scale;
             //height = std::max(height, ch.Size.y * scale);
-            height = max(height, ch.Size.y * scale);
+            height = std::max(height, ch.getSize.y * scale);
         }
 
         // Iterate through all characters
@@ -91,8 +91,8 @@ namespace Render
             xpos -= (width * pivot.x);
             ypos -= (height * pivot.y);
 
-            float w = ch.Size.x * scale;
-            float h = ch.Size.y * scale;
+            float w = ch.getSize.x * scale;
+            float h = ch.getSize.y * scale;
 
             // Update VBO
             float vertices[6][4] = {

@@ -26,14 +26,14 @@ namespace Engine {
 		input = Input();
 	}
 
-	Engine::Scene* App::CreateGame()
+	Engine::Scene* App::createScene()
 	{
 		Engine::Scene* newScene = new Engine::Scene(this);
 		// Add scene to list
 		return newScene;
 	}
 
-	int App::Build()
+	int App::build()
 	{
 		glfwInit();
 
@@ -84,13 +84,13 @@ namespace Engine {
 		return 0;
 	}
 
-	void App::Load(Engine::Scene* newScene)
+	void App::load(Engine::Scene* newScene)
 	{
 		this->scene = newScene;
-		window->LoadScene(scene);
+		window->loadScene(scene);
 	}
 
-	int App::Run()
+	int App::run()
 	{
 		//const int framerate = 30;
 		const double framerate = 1.0 / 72;
@@ -128,14 +128,14 @@ namespace Engine {
 			{
 				// Process the User Input
 
-				input.Clear();
-				input.Update();
+				input.clear();
+				input.update();
 
 				scene->ProcessInput();
 				glfwPollEvents();
 
 				// Update game state
-				scene->Update(time, deltaTime);
+				scene->update(time, deltaTime);
 				//std::cout << "Update" << std::endl;
 				//integrate(state, t, dt);
 
@@ -145,7 +145,9 @@ namespace Engine {
 			
 			//measurement = (measurement * smoothing) + (frameTime * (1.0 - smoothing));
 			scene->Render();
-			window->Render();
+
+			glfwSwapBuffers(window->getGLFW());
+
 			//std::cout << "Render" << std::endl;
 
 			//* Print any errors
@@ -160,9 +162,9 @@ namespace Engine {
 
 		// Clear all of the loaded resources 
 		
-		Texture2D::CleanUp();
-		Shader::CleanUp();
-		Font::CleanUp();
+		Texture2D::cleanUp();
+		Shader::cleanUp();
+		Font::cleanUp();
 
 		// Terminate the OpenGL window
 		glfwTerminate();
@@ -170,22 +172,22 @@ namespace Engine {
 		return 0;
 	}
 
-	Engine::Window* App::GetWindow()
+	Engine::Window* App::getWindow()
 	{
 		return window;
 	}
 
-	Engine::Scene* App::GetScene()
+	Engine::Scene* App::getScene()
 	{
 		return scene;
 	}
 
-	Vector2Int App::GetSize()
+	Vector2Int App::getSize()
 	{
 		return size;
 	}
 
-	void App::SetSize(Vector2Int newSize)
+	void App::setSize(Vector2Int newSize)
 	{
 		size = newSize;
 		
@@ -193,7 +195,7 @@ namespace Engine {
 		scene->UpdateProjection();
 
 		// Update the windows size
-		window->UpdateSize();
+		window->setSize(newSize);
 
 		glViewport(0, 0, size.x, size.y);
 	}

@@ -22,7 +22,7 @@ namespace Render
 		// Deconstructor
 		~Renderer();
 
-		Shader& GetShader();
+		Shader& getShader();
 
 	protected:
 		/// <summary>

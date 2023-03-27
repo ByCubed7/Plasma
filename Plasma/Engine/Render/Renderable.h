@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Vector.h"
+#include "../Colour.h"
 #include "Shader.h"
 #include "OpenGL.h"
 
@@ -15,9 +16,9 @@ public:
 
 	static void CleanUpRenderer();
 
-	static void Draw(T object, Vector2 position, Vector2UInt size, Vector2 scale, Vector2 pivot, float rotate, Vector2Int crop, Colour4 color);
+	static void draw(T object, Vector2 position, Vector2Int size, Vector2 scale, Vector2 pivot, float rotate, Vector2Int crop, Colour4 color);
 
-	Shader& GetShader() 
+	Shader& getShader() 
 	{
 		return shader;
 	}
@@ -72,7 +73,7 @@ void Renderable<T>::CleanUpRenderer()
 }
 
 template<class T>
-void Renderable<T>::Draw(T object, Vector2 position, Vector2UInt size, Vector2 scale, Vector2 pivot, float rotate, Vector2Int crop, Colour4 color)
+void Renderable<T>::draw(T object, Vector2 position, Vector2Int size, Vector2 scale, Vector2 pivot, float rotate, Vector2Int crop, Colour4 color)
 {
 	//std::cout << "renderable->Render: " << vertexArrayObject << std::endl;
 	Renderable* renderable = (Renderable*)&object;
@@ -83,6 +84,6 @@ void Renderable<T>::Draw(T object, Vector2 position, Vector2UInt size, Vector2 s
 		{ pivot.x, pivot.y },
 		rotate,
 		{ crop.x, crop.y },
-		{ color.x / 255.0f, color.y / 255.0f, color.z / 255.0f }
+		{ color.r / 255.0f, color.g / 255.0f, color.b / 255.0f }
 	);
 }

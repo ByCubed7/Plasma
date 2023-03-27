@@ -20,22 +20,22 @@ namespace Render
         TilemapRenderer(Shader& shader);
 
         // Renders a defined quad textured with given sprite
-        void DrawTileLayer(Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, int frame, glm::vec3 color);
+        void draw(Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, int frame, glm::vec3 color);
 
         // Updates the tilemaps render data
-        void Update(Tilemaps::TileRender render);
+        void update(Tilemaps::TileRender draw);
 
     private:
 
-        void UpdateRender(Tilemaps::TileRender render);
-        void UpdateRenderBuffer();
+        void updateRender(Tilemaps::TileRender draw);
+        void updateBuffer();
 
         // Rendering VBOs
         unsigned int verticesVBO, idInstanceVBO, positionInstanceVBO, rotscaInstanceVBO;
         unsigned int rotscaRow1InstanceVBO, rotscaRow2InstanceVBO, rotscaRow3InstanceVBO, rotscaRow4InstanceVBO;
 
         // Rendering States
-        std::vector<float> tileIds;
+        std::vector<int> tileIds;
         std::vector<glm::vec2> tilePositions;
         std::vector<glm::vec4> tileRotScasRow1, tileRotScasRow2, tileRotScasRow3, tileRotScasRow4;
     };

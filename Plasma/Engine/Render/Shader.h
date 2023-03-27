@@ -91,8 +91,8 @@ public:
 
 
 protected:
-    Shader FromFile(const std::string filename) override;
-    void Clear() override;
+    Shader fromFile(const std::string filename) override;
+    void clear() override;
 
 private:
     /// <summary>

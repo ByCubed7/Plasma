@@ -17,8 +17,8 @@ namespace UI {
 
 		std::string text;
 
-		//void Update(double delta, Engine::Scene& game) override;
-		void Draw(Render::Renderers& renderer) override;
+		//void update(double delta, Engine::Scene& game) override;
+		void draw(Render::Renderers& renderer) override;
 
 
 		//void NameEvent();

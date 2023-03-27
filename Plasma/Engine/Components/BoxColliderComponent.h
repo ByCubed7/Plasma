@@ -23,10 +23,10 @@ public:
 
 	AABB bounds;
 
-	BoxColliderComponent* Bind(Engine::Scene* game);
-	BoxColliderComponent* SetSize(Vector2 size);
+	BoxColliderComponent* bind(Engine::Scene* game);
+	BoxColliderComponent* setSize(Vector2 size);
 
-	AABB GetBounds();
+	AABB getBounds();
 
 	// Event Dispatchers
 	Dispatcher<OnEnterEventParams> OnCollisionEnterEvent;

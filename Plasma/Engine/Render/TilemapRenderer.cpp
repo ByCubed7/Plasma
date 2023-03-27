@@ -68,7 +68,7 @@ namespace Render
         glBindVertexArray(0);
     }
 
-    void TilemapRenderer::DrawTileLayer(Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, int frame, glm::vec3 color)
+    void TilemapRenderer::draw(Texture2D& texture, glm::vec2 position, glm::vec2 size, float rotate, int frame, glm::vec3 color)
     {
         shader.Use();
 
@@ -89,27 +89,27 @@ namespace Render
         shader.SetVector2f("spriteSize", { size.x, size.y });
 
         glActiveTexture(GL_TEXTURE0);
-        texture.Bind();
+        texture.bind();
 
         glBindVertexArray(vertexArrayObject);
         glDrawArraysInstanced(GL_TRIANGLES, 0, 6, tileIds.size());
         glBindVertexArray(0);
     }
 
-    void TilemapRenderer::Update(Tilemaps::TileRender render)
+    void TilemapRenderer::update(Tilemaps::TileRender draw)
     {
-        UpdateRender(render);
-        UpdateRenderBuffer();
+        updateRender(draw);
+        updateBuffer();
     }
 
-    void TilemapRenderer::UpdateRender(Tilemaps::TileRender render)
+    void TilemapRenderer::updateRender(Tilemaps::TileRender draw)
     {
-        if (render.Count() == 0) return;
+        if (draw.size() == 0) return;
         //if (tileIds == render.Ids()) return;
 
-        tileIds = render.Ids();
-        tilePositions = render.Positions();
-        std::vector<glm::mat4> tileRotScas = render.RotScas();
+        tileIds = draw.ids;
+        tilePositions = draw.positions;
+        std::vector<glm::mat4> tileRotScas = draw.rotscas;
 
         size_t len = tileIds.size();
         tileRotScasRow1.resize(len);
@@ -126,7 +126,7 @@ namespace Render
         }
     }
 
-    void TilemapRenderer::UpdateRenderBuffer()
+    void TilemapRenderer::updateBuffer()
     {
         glBindVertexArray(vertexArrayObject);
 
@@ -167,7 +167,7 @@ namespace Render
         /* Print any errors
         GLenum err;
         while ((err = glGetError()) != GL_NO_ERROR)
-            cout << "[TilemapRenderer::Update] ERROR:" << err << endl;
+            cout << "[TilemapRenderer::update] ERROR:" << err << endl;
         //*/
     }
 }

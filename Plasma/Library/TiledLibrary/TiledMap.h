@@ -25,8 +25,8 @@ namespace Tiled {
         std::string RenderOrder() const noexcept;
 
         // TileSets
-        void AddTileset(Set const& newTileSet) noexcept;
-        Set* GetTileset(std::string const& tileSetName) noexcept;
+        void AddTileset(setTexture2D const& newTileSet) noexcept;
+        setTexture2D* GetTileset(std::string const& tileSetName) noexcept;
 
         // Layers
         void AddLayer(Layer const& newLayer) noexcept;
@@ -44,6 +44,6 @@ namespace Tiled {
         std::unordered_map<std::string, std::string> properties;
 
         std::vector<Layer> layers;
-        std::vector<Set> tiles;
+        std::vector<setTexture2D> tiles;
     };
 }

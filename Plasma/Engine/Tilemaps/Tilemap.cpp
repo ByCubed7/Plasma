@@ -27,7 +27,7 @@ namespace Tilemaps {
 	}
     void Tilemap::AddLayer() { AddLayer(TileLayer()); }
 
-	Tilemap Tilemap::FromFile(const std::string filename)
+	Tilemap Tilemap::fromFile(const std::string filename)
 	{
         Tilemap map = Tilemap();
 
@@ -117,7 +117,7 @@ namespace Tilemaps {
         return map;
 	}
 
-    void Tilemap::Clear()
+    void Tilemap::clear()
     {
     }
 

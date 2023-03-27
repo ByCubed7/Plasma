@@ -28,8 +28,8 @@ public:
 
 	Tilemaps::Tilemap tilemap;
 
-	TilemapColliderComponent* Bind(Engine::Scene* game);
-	TilemapColliderComponent* SetTilemap(Tilemaps::Tilemap tilemap);
+	TilemapColliderComponent* bind(Engine::Scene* game);
+	TilemapColliderComponent* setTilemap(Tilemaps::Tilemap tilemap);
 
 	void OnCollisionEnter();
 	void OnCollisionStay();

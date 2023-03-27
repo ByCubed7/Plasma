@@ -36,7 +36,7 @@ namespace Render
         glBindVertexArray(0);
     }
 
-    void SpriteRenderer::DrawSprite(Texture2D& texture, glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color)
+    void SpriteRenderer::draw(Texture2D& texture, glm::vec2 position, glm::vec2 size, glm::vec2 pivot, float rotate, int frame, glm::vec3 color)
     {
         // Prepare transformations
         shader.Use();
@@ -60,7 +60,7 @@ namespace Render
         shader.SetInteger("index", frame);
 
         glActiveTexture(GL_TEXTURE0);
-        texture.Bind();
+        texture.bind();
 
         glBindVertexArray(vertexArrayObject);
         glDrawArrays(GL_TRIANGLES, 0, 6);
