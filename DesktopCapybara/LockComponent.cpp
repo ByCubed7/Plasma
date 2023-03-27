@@ -24,7 +24,11 @@ LockComponent::LockComponent(Engine::GameObject* gameObject, std::string name)
 
 }
 
+<<<<<<< Updated upstream
 void LockComponent::Update(double time, double delta, Engine::Scene& game)
+=======
+void LockComponent::update(double time, double delta, Engine::Scene& game)
+>>>>>>> Stashed changes
 {
 	if (lockPosition) gameObject->position = target->position + positionOffset * target->scale;
 	if (lockRotation) gameObject->rotation = target->rotation + rotationOffset;
@@ -62,7 +66,11 @@ LockComponent* LockComponent::LockScale(bool doLock)
 
 LockComponent* LockComponent::LockSpriteReflection(SpriteComponent* newSprite)
 {
+<<<<<<< Updated upstream
 	gameObjectSprite = gameObject->Get<SpriteComponent>();
+=======
+	gameObjectSprite = gameObject->getComponent<SpriteComponent>();
+>>>>>>> Stashed changes
 	targetSprite = newSprite;
 	return this;
 }

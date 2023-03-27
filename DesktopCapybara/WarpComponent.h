@@ -9,7 +9,7 @@ class WarpComponent : public Engine::Component
 public:
 	WarpComponent(Engine::GameObject* gameObject, std::string name = "WarpComponent");
 
-	void Update(double time, double delta, Engine::Scene& game) override;
+	void update(double time, double delta, Engine::Scene& game) override;
 
 	Vector2 offset;
 

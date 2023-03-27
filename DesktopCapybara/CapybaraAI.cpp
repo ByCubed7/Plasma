@@ -3,9 +3,9 @@
 CapybaraAI::CapybaraAI(Engine::GameObject* gameObject, std::string name) :
 	Component(gameObject, name), FiniteStateMachine(CapybaraStates::WANDER)
 {
-	walkComponent = gameObject->Get<WalkComponent>();
+	walkComponent = gameObject->getComponent<WalkComponent>();
 
-	wanderTargetPosition = Vector2::Random(gameObject->scene->GetWindow()->GetMonitorSize());
+	wanderTargetPosition = Vector2::random((Vector2)gameObject->scene->app->getSize().Cast<Vector2>());
 
 	AddTransition(CapybaraStates::STAND, CapybaraActions::WANDERTICK, CapybaraStates::WANDER);
 	AddTransition(CapybaraStates::FOLLOW, CapybaraActions::WANDERTICK, CapybaraStates::WANDER);
@@ -16,7 +16,7 @@ CapybaraAI::CapybaraAI(Engine::GameObject* gameObject, std::string name) :
 	AddTransition(CapybaraStates::WANDER, CapybaraActions::WANDERED, CapybaraStates::STAND);
 }
 
-void CapybaraAI::Update(double time, double delta, Engine::Scene& game)
+void CapybaraAI::update(double time, double delta, Engine::Scene& game)
 {
 	if (walkComponent == nullptr) return;
 
@@ -34,17 +34,17 @@ void CapybaraAI::Update(double time, double delta, Engine::Scene& game)
 	if (state == WANDER) {
 		walkComponent->SetTargetPosition(wanderTargetPosition);
 
-		if (Vector2::Distance(gameObject->position, wanderTargetPosition) < 50) {
+		if (Vector2::distance(gameObject->position, wanderTargetPosition) < 50) {
 			ProcessEvent(WANDERED);
-			Vector2Int size = gameObject->scene->GetWindow()->GetMonitorSize();
-			wanderTargetPosition = Vector2::Random(size);
+			Vector2Int size = gameObject->scene->app->getSize();
+			wanderTargetPosition = Vector2::random(size.Cast<Vector2>());
 		}
 	}
 
 	if (state == FOLLOW) {
 		walkComponent->SetTargetPosition(Engine::App::instance->input.mousePosition);
 
-		if (Vector2::Distance(gameObject->position, Engine::App::instance->input.mousePosition) < 50) {
+		if (Vector2::distance(gameObject->position, Engine::App::instance->input.mousePosition) < 50) {
 			
 		}
 	}

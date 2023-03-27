@@ -11,19 +11,17 @@ WarpComponent::WarpComponent(Engine::GameObject* gameObject, std::string name)
     warpY = true;
 }
 
-void WarpComponent::Update(double time, double delta, Engine::Scene& game)
+void WarpComponent::update(double time, double delta, Engine::Scene& game)
 {
-    int ppu = gameObject->scene->GetWindow()->GetPPU();
-
     if (warpX) {
-        int maxLeftSide = game.app->GetSize().x + offset.x - gameObject->scale.x * ppu;
+        int maxLeftSide = game.app->getSize().x + offset.x - gameObject->scale.x;
         
         if (gameObject->position.x < 0 - offset.x) gameObject->position.x = maxLeftSide;
         if (gameObject->position.x > maxLeftSide) gameObject->position.x = 0 - offset.x;
     }
 
     if (warpY) {
-        int maxTopSide = game.app->GetSize().y + offset.y - gameObject->scale.y * ppu;
+        int maxTopSide = game.app->getSize().y + offset.y - gameObject->scale.y;
 
         if (gameObject->position.y < 0 - offset.x) gameObject->position.y = maxTopSide;
         if (gameObject->position.y > maxTopSide) gameObject->position.y = 0 - offset.x;

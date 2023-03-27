@@ -11,7 +11,8 @@ CapybaraForge::CapybaraForge(Engine::GameObject* gameObject, std::string name)
 {
 }
 
-void CapybaraForge::Update(double time, double delta, Engine::Scene& game)
+
+void CapybaraForge::update(double time, double delta, Engine::Scene& game)
 {
 	Input input = Engine::App::instance->input;
 	if (input.IsKey(GLFW_KEY_C) && input.IsKey(GLFW_KEY_A))
@@ -30,9 +31,9 @@ Engine::GameObject* CapybaraForge::ForgeCapybara()
 	Engine::GameObject* shadow_GameObject = scene->CreateGameObject();
 
 	auto shadow_SpriteComponent =
-		shadow_GameObject->Add<SpriteComponent>()
-		->Set(Texture2D::Get("shadow"))
-		->SetColour({ 0,0,0,128 });
+		shadow_GameObject->addComponent<SpriteComponent>()
+		->setTexture2D(Texture2D::get("shadow"))
+		->setColour({ 0,0,0,128 });
 	shadow_SpriteComponent->size = 16;
 
 
@@ -43,8 +44,8 @@ Engine::GameObject* CapybaraForge::ForgeCapybara()
 		->SetScale(rand() % 2 + 3);
 
 	auto capybara_SpriteComponent =
-		capybara_GameObject->Add<SpriteComponent>()
-		->Set(Texture2D::Get("capybara"));
+		capybara_GameObject->addComponent<SpriteComponent>()
+		->setTexture2D(Texture2D::get("capybara"));
 	capybara_SpriteComponent->size = 16;
 	capybara_SpriteComponent->crop = { rand() % 4, 0 };
 
@@ -62,7 +63,7 @@ Engine::GameObject* CapybaraForge::ForgeCapybara()
 
 	SpriteComponent* hat_SpriteComponent = new SpriteComponent(hat_GameObject);
 	hat_SpriteComponent
-		->Set(Texture2D::Get("hat"));
+		->setTexture2D(Texture2D::get("hat"));
 	hat_SpriteComponent->size = 64;
 	hat_SpriteComponent->crop = { rand() % 10,0 };
 
@@ -71,13 +72,13 @@ Engine::GameObject* CapybaraForge::ForgeCapybara()
 	// Tell the gameobjects to follow the capybara
 
 	auto shadow_LockComponent =
-		shadow_GameObject->Add<LockComponent>()
+		shadow_GameObject->addComponent<LockComponent>()
 		->SetTarget(capybara_GameObject)
 		->LockPosition()->LockRotation()->LockScale()
 		->LockSpriteReflection(capybara_SpriteComponent);
 
 	auto hat_LockComponent =
-		hat_GameObject->Add<LockComponent>()
+		hat_GameObject->addComponent<LockComponent>()
 		->SetTarget(capybara_GameObject)
 		->LockPosition()->LockRotation()->LockScale()
 		->LockSpriteReflection(capybara_SpriteComponent)

@@ -13,6 +13,7 @@ WalkComponent::WalkComponent(Engine::GameObject* gameObject, std::string name)
 	step = 5;
 	wobble = Vector2({ 800, 10 });
 	
+<<<<<<< Updated upstream
 	sprite = gameObject->Get<SpriteComponent>();
 }
 
@@ -20,6 +21,15 @@ void WalkComponent::Update(double time, double delta, Engine::Scene& game)
 {
 	float absoluteDistance = Vector2::Distance(absoluteTarget, target);
 	float distance = Vector2::Distance(target, gameObject->position);
+=======
+	sprite = gameObject->getComponent<SpriteComponent>();
+}
+
+void WalkComponent::update(double time, double delta, Engine::Scene& game)
+{
+	float absoluteDistance = Vector2::distance(absoluteTarget, target);
+	float distance = Vector2::distance(target, gameObject->position);
+>>>>>>> Stashed changes
 
 	if (absoluteDistance > 10)
 		target = absoluteTarget;
@@ -28,7 +38,11 @@ void WalkComponent::Update(double time, double delta, Engine::Scene& game)
 		stepCount += delta;
 
 		Vector2 targetStep = target - gameObject->position;
+<<<<<<< Updated upstream
 		targetStep = targetStep.Normalize();
+=======
+		targetStep = targetStep.normalize();
+>>>>>>> Stashed changes
 
 		gameObject->position += targetStep * step;
 	}
