@@ -47,18 +47,18 @@ namespace Engine
     }
 
 
-    Component* GameObject::AddComponent(Component* component)
+    Component* GameObject::addComponent(Component* component)
     {
         components.insert(component);
         //component->gameObject = this;
-        scene->AddComponent(component);
+        scene->addComponent(component);
         return component;
     }
 
-    void GameObject::RemoveComponent(Component* component) { components.erase(component); }
+    void GameObject::removeComponent(Component* component) { components.erase(component); }
 
 
-    Component* GameObject::GetComponent(std::string componentName)
+    Component* GameObject::getComponent(std::string componentName)
     {
         for (Component* component : components)
         {
@@ -69,7 +69,7 @@ namespace Engine
         return nullptr;
     }
 
-    bool GameObject::HasComponent(std::string componentName)
+    bool GameObject::hasComponent(std::string componentName)
     {
         for (Component* component : components)
         {

@@ -59,8 +59,8 @@ namespace Engine
 
 		GameObject* CreateGameObject();
 		void AddGameObject(GameObject* gameObject);
-		void AddComponent(Component* component);
-		//void AddComponent(GameObject* gameObject, Component* component);
+		void addComponent(Component* component);
+		//void addComponent(GameObject* gameObject, Component* component);
 
 		/// <summary>
 		/// Stores the state of the current input. Keyboard presses, mouse position, ect

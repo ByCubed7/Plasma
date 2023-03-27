@@ -11,7 +11,7 @@ class Resource
 {
 public:
 	static bool has(std::string name) { return cache.find(name) != cache.end(); } // Returns whether the Resource has the obj cached
-	static T getGLFW(std::string name) { return cache[name]; } // Retrieves a cached objs.
+	static T get(std::string name) { return cache[name]; } // Retrieves a cached objs.
 
 	// Virtual static idiom
 	static void load(const std::string file, const std::string name)

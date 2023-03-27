@@ -24,6 +24,8 @@ namespace Render
 
 		Shader& getShader();
 
+		static const int PPU = 16;
+
 	protected:
 		/// <summary>
 		/// Our shader that we'll use to render

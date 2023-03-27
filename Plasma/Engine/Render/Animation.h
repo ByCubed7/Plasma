@@ -37,7 +37,7 @@ namespace Render
 		}
 
 		// Return the Rect the render should use
-		Vector2Int getGLFW()
+		Vector2Int getTarget()
 		{
 			// BUG: data might not have state.
 			

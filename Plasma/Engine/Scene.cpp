@@ -54,7 +54,7 @@ namespace Engine
 		gameObjects.emplace_back(gameObject);
 	}
 
-	void Scene::AddComponent(Component* component)
+	void Scene::addComponent(Component* component)
 	{
 		components.emplace_back(component);
 	}
@@ -66,20 +66,20 @@ namespace Engine
 		
 		// - Config shaders
 
-		Shader ShaderSprite = Shader::getGLFW("sprite");
+		Shader ShaderSprite = Shader::get("sprite");
 		ShaderSprite.Use()
 			.SetInteger("image", 0)
 			.SetInteger("index", 1)
 			.SetMatrix4("projection", projection);
 
 		// Text
-		Shader ShaderText = Shader::getGLFW("text");
+		Shader ShaderText = Shader::get("text");
 		ShaderText.Use()
 			.SetInteger("text", 0)
 			.SetMatrix4("projection", projection);
 		
 		//* Tilemap
-		Shader ShaderTile = Shader::getGLFW("tile");
+		Shader ShaderTile = Shader::get("tile");
 		ShaderTile.Use()
 			.SetInteger("image", 0)
 			.SetInteger("index", 1)
@@ -102,9 +102,9 @@ namespace Engine
 		Vector2Int size = app->getSize();
 		glm::mat4 projection = glm::ortho(0.0f, (float)size.x, (float)size.y, 0.0f, -1.0f, 1.0f);
 
-		Shader::getGLFW("sprite").Use().SetMatrix4("projection", projection);
-		Shader::getGLFW("text").Use().SetMatrix4("projection", projection);
-		Shader::getGLFW("tile").Use().SetMatrix4("projection", projection);
+		Shader::get("sprite").Use().SetMatrix4("projection", projection);
+		Shader::get("text").Use().SetMatrix4("projection", projection);
+		Shader::get("tile").Use().SetMatrix4("projection", projection);
 	}
 
 	void Scene::ProcessInput()

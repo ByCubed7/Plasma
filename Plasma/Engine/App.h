@@ -48,6 +48,9 @@ namespace Engine
 		
 		// Returns the size of the window
 		Vector2Int getSize();
+		
+		// Returns the size of the monitor
+		Vector2Int getMonitorSize();
 
 		// Sets the size of the window
 		void setSize(Vector2Int newSize);

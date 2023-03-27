@@ -187,15 +187,23 @@ namespace Engine {
 		return size;
 	}
 
+	Vector2Int App::getMonitorSize()
+	{
+		GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+
+		Vector2Int pos = 0;
+		Vector2Int size = 0;
+		glfwGetMonitorWorkarea(monitor, &pos.x, &pos.y, &size.x, &size.y);
+
+		return size;
+	}
+
 	void App::setSize(Vector2Int newSize)
 	{
 		size = newSize;
 		
 		// Update the scenes projection matrix
 		scene->UpdateProjection();
-
-		// Update the windows size
-		window->setSize(newSize);
 
 		glViewport(0, 0, size.x, size.y);
 	}
