@@ -95,7 +95,6 @@ namespace Engine {
 		//const int framerate = 30;
 		const double framerate = 1.0 / 72;
 
-		int fps = 0;
 		float smoothing = 0.9f;
 
 		float measurement = 0;

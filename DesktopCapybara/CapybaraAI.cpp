@@ -7,13 +7,9 @@ CapybaraAI::CapybaraAI(Engine::GameObject* gameObject, std::string name) :
 
 	wanderTargetPosition = Vector2::random((Vector2)gameObject->scene->app->getSize().Cast<Vector2>());
 
-	AddTransition(CapybaraStates::STAND, CapybaraActions::WANDERTICK, CapybaraStates::WANDER);
-	AddTransition(CapybaraStates::FOLLOW, CapybaraActions::WANDERTICK, CapybaraStates::WANDER);
-
 	//AddTransition(CapybaraStates::STAND, CapybaraActions::FOLLOWTICK, CapybaraStates::FOLLOW);
 
-	AddTransition(CapybaraStates::WANDER, CapybaraActions::WANDERTICK, CapybaraStates::WANDER);
-	AddTransition(CapybaraStates::WANDER, CapybaraActions::WANDERED, CapybaraStates::STAND);
+	AddTransition(WANDER, WANDERED,	  STAND);
 }
 
 void CapybaraAI::update(double time, double delta, Engine::Scene& game)
@@ -27,8 +23,11 @@ void CapybaraAI::update(double time, double delta, Engine::Scene& game)
 
 	if (state == STAND) 
 	{
-		if (rand() % 100 == 50)
-			ProcessEvent(CapybaraActions::WANDERTICK);
+		if (rand() % 100 == 0)
+			SetState(WANDER);
+
+		if (rand() % 500 == 0)
+			SetState(FOLLOW);
 	}
 
 	if (state == WANDER) {
@@ -45,7 +44,8 @@ void CapybaraAI::update(double time, double delta, Engine::Scene& game)
 		walkComponent->SetTargetPosition(Engine::App::instance->input.mousePosition);
 
 		if (Vector2::distance(gameObject->position, Engine::App::instance->input.mousePosition) < 50) {
-			
+			// Once got the mouse
+			SetState(STAND);
 		}
 	}
 
