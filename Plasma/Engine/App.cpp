@@ -9,7 +9,7 @@
 #include "Render/Font.h"
 #include "Render/Text.h"
 
-#include "OpenAL/AL/al.h"
+#include "OpenAL/al.h"
 #include "OpenGL.h"
 
 #include <chrono>
