@@ -141,7 +141,6 @@
     <ClCompile Include="Plasma\Library\TiledLibrary\TiledTile.cpp">
       <Filter>Library</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\lodepng.cpp" />
     <ClCompile Include="Plasma\main.cpp" />
     <ClCompile Include="DesktopCapybara\FoodSpawner.cpp">
       <Filter>DesktopCapybara</Filter>
